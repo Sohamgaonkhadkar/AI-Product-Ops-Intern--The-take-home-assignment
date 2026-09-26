@@ -1,0 +1,2662 @@
+{
+  "schema_version": "1.0",
+  "run_id": "arena-native-web-batch05-20260924",
+  "run_started_at": "2026-09-24T19:25:22Z",
+  "run_completed_at": "2026-09-24T19:25:22Z",
+  "source_mode": "LIVE_AGENT",
+  "tool": "Arena.ai Agent Mode native web_search + fetch_page; official-source-led manual research",
+  "provider_credentials": {
+    "TAVILY_API_KEY": "NOT_USED_BY_NATIVE_WEB_TOOL",
+    "OPENAI_API_KEY": "NOT_USED_BY_NATIVE_WEB_TOOL"
+  },
+  "raw_dataset_hashes_before_and_after": {
+    "json": "eb12c32a3ad7cd92b2e20c3a96974e8040ab104beaa47344d2ad0bdde443516c",
+    "csv": "d5e844ebcb6503fee7e9c16cb9355e97aeac0c414a8e69926eeaf3a04e7a068d"
+  },
+  "scope": "Apps 62-70 only. Standalone native-web capture; not merged into data/raw/final_full_research.json or CSV and not the completed 100-app dataset.",
+  "search_result_policy": "Search snippets are discovery leads only and excluded from claim evidence; evidence cites opened official sources.",
+  "records": [
+    {
+      "schema_version": "1.0",
+      "app_id": 62,
+      "app": "Vercel",
+      "category": "Developer, Infra and Data platforms",
+      "website_hint": "http://vercel.com/docs/rest-api",
+      "description": "Vercel is a cloud platform for deploying and operating web applications, with projects, deployments, domains, environment variables, logs and analytics managed through its dashboard, CLI, APIs and MCP.",
+      "auth_status": "CONFIRMED",
+      "auth_methods": [
+        "Bearer/token",
+        "OAuth 2.0"
+      ],
+      "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+      "self_serve_details": "Hobby is listed at $0/month for personal projects; Pro is $20/month and Enterprise is custom. Vercel MCP is in Beta on all plans, but production eligibility, resource limits and team permissions remain plan/account dependent.",
+      "credential_access": {
+        "status": "SELF_SERVE",
+        "path": "Create/manage an access token in Vercel account settings; REST requests send Authorization: Bearer <TOKEN>. MCP uses an OAuth consent flow. Tokens can be scoped to a project/team and the bearer value is returned only once when created.",
+        "plan_or_gate": "Requires a Vercel user/account with access to the target personal account or team. MCP clients must be on Vercel's reviewed/approved list; OAuth grants the connected user's account permissions."
+      },
+      "api": {
+        "available": "YES",
+        "types": [
+          "REST",
+          "SDK"
+        ],
+        "breadth": "BROAD",
+        "details": "Vercel's REST API/SDK covers deployments, projects, domains, environment variables/secrets, logs, analytics, teams, integrations and related platform services. Bearer tokens and team identifiers scope access; endpoint rate limits apply."
+      },
+      "mcp": {
+        "status": "AVAILABLE",
+        "details": "Official remote MCP at https://mcp.vercel.com uses OAuth and exposes documentation search, project/deployment management, logs and Web Analytics tools; public and authenticated tools are distinguished. It is a public Beta on all Vercel plans.",
+        "search_scope": "Opened Vercel's official MCP overview/setup/security sections, REST API reference, token endpoint and current plan page. The capture confirms a first-party remote server; no Vercel account was connected or tools executed."
+      },
+      "buildability": {
+        "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+        "blocker": "Requires an authorized Vercel user/team and a supported MCP client or a scoped API token; MCP is Beta and an agent can exercise the connected user's project permissions.",
+        "rationale": "The documented REST/SDK and hosted OAuth MCP surfaces are technically usable for project/deployment automation. Use least privilege, approved clients and human confirmation for production changes; Hobby is described for personal projects, and no account-specific entitlement was checked."
+      },
+      "evidence": [
+        {
+          "claim": "Vercel's REST API manages web applications through projects, deployments, domains, environment variables/secrets and logs, supporting the cloud deployment-platform classification.",
+          "field": "description",
+          "source_url": "https://vercel.com/docs/rest-api",
+          "source_title": "Vercel REST API Reference",
+          "source_type": "official_api_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "REST calls use Authorization: Bearer access tokens; the hosted MCP connection uses OAuth.",
+          "field": "auth",
+          "source_url": "https://vercel.com/docs/rest-api",
+          "source_title": "Vercel REST API Reference",
+          "source_type": "official_api_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Hobby is $0/month for personal projects, Pro is $20/month and Enterprise is custom; official MCP Beta is available on all plans.",
+          "field": "self_serve",
+          "source_url": "https://vercel.com/pricing",
+          "source_title": "Vercel Pricing: Hobby, Pro, and Enterprise plans",
+          "source_type": "official_pricing",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Vercel documents hosted MCP Beta availability on all plans, separately from plan-specific project eligibility.",
+          "field": "self_serve",
+          "source_url": "https://vercel.com/docs/agent-resources/vercel-mcp",
+          "source_title": "Use Vercel's MCP server",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Users create/manage access tokens in account settings; the create-token endpoint can scope the token to a project/team and returns the bearer secret once.",
+          "field": "credential_access",
+          "source_url": "https://vercel.com/docs/rest-api/authentication/create-an-auth-token",
+          "source_title": "Create an Auth Token | Vercel REST API",
+          "source_type": "official_auth_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "The official REST reference lists resource groups including deployments, projects, domains, environment, logs, teams, analytics and integrations; SDK or direct HTTP use is supported.",
+          "field": "api",
+          "source_url": "https://vercel.com/docs/rest-api",
+          "source_title": "Vercel REST API Reference",
+          "source_type": "official_api_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Vercel documents a hosted OAuth endpoint, public/authenticated tools and project, deployment, log, documentation and analytics interactions.",
+          "field": "mcp",
+          "source_url": "https://vercel.com/docs/agent-resources/vercel-mcp",
+          "source_title": "Use Vercel's MCP server",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Vercel restricts its MCP to reviewed clients and warns that the agent receives the user's Vercel access; explicit consent and human confirmation are recommended.",
+          "field": "buildability",
+          "source_url": "https://vercel.com/docs/agent-resources/vercel-mcp",
+          "source_title": "Use Vercel's MCP server",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        }
+      ],
+      "confidence": "HIGH",
+      "research_timestamp": "2026-09-24T19:25:22Z",
+      "research_status": "COMPLETE",
+      "verification_status": "NOT_CHECKED",
+      "source_conflicts": [],
+      "limitations": [
+        "No Vercel account/team was accessed; token creation, OAuth consent, API requests, deployments, MCP calls, plan checks and human review were not performed. Beta features and user permissions may change."
+      ],
+      "researcher_notes": "The erroneous REST authentication group URL opened a Vercel SSO-token-exchange page, not the REST access-token guide; the official REST API and Create an Auth Token sources were opened and used instead. No live deployment was attempted.",
+      "source_mode": "LIVE_AGENT",
+      "research_tool": "Arena.ai Agent Mode native web_search + fetch_page; official-source-led manual research",
+      "query_count": 1,
+      "source_count": 4,
+      "attempt_count": 8,
+      "research_run_id": "arena-native-web-batch05-20260924",
+      "failure_reason": null,
+      "quality_gate": {
+        "status": "PASS",
+        "errors": [],
+        "warnings": []
+      },
+      "trace_limitations": [
+        "This standalone trace enumerates the targeted searches and source captures retained for Batch05 IDs 62-70. Redundant navigation-only HTML captures are not reconstructed; material failed/redirected paths are retained as non-evidence attempts.",
+        "Search results/snippets are discovery leads only. Claim evidence cites opened first-party sources; fetch_page capture time is date-only because the tool does not expose a per-page clock time.",
+        "LIVE_AGENT denotes native web research only. No provider credentials, vendor account, tenant, API call, MCP execution, deployment, or human review is claimed.",
+        "This partial capture covers IDs 62-70 only and is not merged into the authoritative 100-row dataset. Full-population research, verification, human QA, analysis, tests, HTML regeneration and deployment gates remain unfinished."
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "app_id": 63,
+      "app": "Netlify",
+      "category": "Developer, Infra and Data platforms",
+      "website_hint": "http://docs.netlify.com/api",
+      "description": "Netlify is a cloud platform for building, deploying and operating websites/apps, with site, deploy, forms, DNS and related resources available through a REST API, CLI and MCP.",
+      "auth_status": "CONFIRMED",
+      "auth_methods": [
+        "OAuth 2.0",
+        "Bearer/token"
+      ],
+      "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+      "self_serve_details": "The current credit plans list Free at $0/month with 300 hard-limited credits, Personal at $9/month and Pro from $20/month; Enterprise is sales-contact. Metered features, team seats and add-ons depend on plan. The hosted MCP prompts for Netlify login when account-backed actions are needed.",
+      "credential_access": {
+        "status": "SELF_SERVE",
+        "path": "Authorize Netlify CLI/MCP in a browser or create a PAT under user Applications settings. API requests use Authorization: Bearer <PAT>; public third-party integrations must register/use OAuth2 rather than collecting user PATs.",
+        "plan_or_gate": "Requires a Netlify user/account for account-backed calls; team SSO can require explicit token authorization. PATs can have an expiration and must be kept out of repositories."
+      },
+      "api": {
+        "available": "YES",
+        "types": [
+          "REST",
+          "SDK",
+          "CLI"
+        ],
+        "breadth": "BROAD",
+        "details": "Netlify REST API v1 manages sites, atomic deploys, forms, DNS and more; official Go/JavaScript clients and the Netlify CLI are also documented. Typical REST limits are 500 requests/minute, while deploy calls have stricter per-minute/day caps."
+      },
+      "mcp": {
+        "status": "AVAILABLE",
+        "details": "Netlify operates a remote MCP server at https://netlify-mcp.netlify.app/mcp and publishes an official local @netlify/mcp package. Setup uses Netlify authorization; a PAT is documented as a local troubleshooting fallback. The official repository describes site building, deployment and management workflows.",
+        "search_scope": "Opened Netlify's official remote-MCP setup guide, first-party MCP repository/README, REST API authentication reference, CLI auth instructions and current credit-plan docs. This confirms the official remote and local surfaces; no account was connected or deploy action run."
+      },
+      "buildability": {
+        "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+        "blocker": "Requires a Netlify account/token/OAuth grant for account-backed actions, respects team SSO and plan credit limits, and API deploy operations are more tightly rate-limited than ordinary requests.",
+        "rationale": "The documented REST/CLI/MCP paths cover site and deployment automation. Use a scoped/expiring credential, keep PATs outside source control, and use draft or temporary anonymous deployment for safe testing; production deployment and account permissions were not checked."
+      },
+      "evidence": [
+        {
+          "claim": "Netlify's REST guide covers site/app deploys, form submissions, DNS and other resources; its MCP/CLI setup describes building and deploying sites.",
+          "field": "description",
+          "source_url": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/",
+          "source_title": "Get started with the Netlify API | Netlify Docs",
+          "source_type": "official_api_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Netlify API uses OAuth2; manually created PATs are sent as Bearer tokens, while public integrations must implement OAuth2.",
+          "field": "auth",
+          "source_url": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/",
+          "source_title": "Get started with the Netlify API | Netlify Docs",
+          "source_type": "official_api_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "The official credit-plan docs list Free at $0/month with 300 monthly credits, Personal at $9/month and Pro from $20/month; Enterprise requires contacting Sales.",
+          "field": "self_serve",
+          "source_url": "https://docs.netlify.com/manage/accounts-and-billing/billing/billing-for-credit-based-plans/credit-based-pricing-plans/",
+          "source_title": "Credit-based pricing plans | Netlify Docs",
+          "source_type": "official_pricing",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Netlify CLI login authorizes through a browser, and the user settings page allows creating an expiring PAT for scripts and CLI use.",
+          "field": "credential_access",
+          "source_url": "https://docs.netlify.com/api-and-cli-guides/cli-guides/get-started-with-cli/",
+          "source_title": "Get started with Netlify CLI | Netlify Docs",
+          "source_type": "official_auth_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "The API guide documents REST v1, site/deploy/forms/DNS use cases, official Go/JavaScript clients and API rate limits.",
+          "field": "api",
+          "source_url": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/",
+          "source_title": "Get started with the Netlify API | Netlify Docs",
+          "source_type": "official_api_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Netlify's first-party docs publish a hosted remote MCP endpoint and the official repository documents @netlify/mcp plus a PAT fallback.",
+          "field": "mcp",
+          "source_url": "https://docs.netlify.com/build/build-with-ai/agent-setup-guides/set-up-claude-code-for-netlify/",
+          "source_title": "Set up Claude Code for Netlify | Netlify Docs",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "The first-party repository identifies the package as Netlify's official MCP server and warns against committing PATs.",
+          "field": "mcp",
+          "source_url": "https://github.com/netlify/netlify-mcp",
+          "source_title": "Netlify's Official MCP server",
+          "source_type": "official_github",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "The official setup guide separates draft, production and short-lived anonymous deploys and requires login when account-backed actions are needed.",
+          "field": "buildability",
+          "source_url": "https://docs.netlify.com/build/build-with-ai/agent-setup-guides/set-up-claude-code-for-netlify/",
+          "source_title": "Set up Claude Code for Netlify | Netlify Docs",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        }
+      ],
+      "confidence": "HIGH",
+      "research_timestamp": "2026-09-24T19:25:22Z",
+      "research_status": "COMPLETE",
+      "verification_status": "NOT_CHECKED",
+      "source_conflicts": [],
+      "limitations": [
+        "No Netlify account/team, SSO policy, API token, deployment, MCP client or billable usage was tested; public MCP setup and API docs do not verify account-specific permissions."
+      ],
+      "researcher_notes": "A public deployment capability is not equivalent to permission to deploy into a user's site. Anonymous deploys described by the docs are temporary and claimable, not used in this research.",
+      "source_mode": "LIVE_AGENT",
+      "research_tool": "Arena.ai Agent Mode native web_search + fetch_page; official-source-led manual research",
+      "query_count": 1,
+      "source_count": 5,
+      "attempt_count": 8,
+      "research_run_id": "arena-native-web-batch05-20260924",
+      "failure_reason": null,
+      "quality_gate": {
+        "status": "PASS",
+        "errors": [],
+        "warnings": []
+      },
+      "trace_limitations": [
+        "This standalone trace enumerates the targeted searches and source captures retained for Batch05 IDs 62-70. Redundant navigation-only HTML captures are not reconstructed; material failed/redirected paths are retained as non-evidence attempts.",
+        "Search results/snippets are discovery leads only. Claim evidence cites opened first-party sources; fetch_page capture time is date-only because the tool does not expose a per-page clock time.",
+        "LIVE_AGENT denotes native web research only. No provider credentials, vendor account, tenant, API call, MCP execution, deployment, or human review is claimed.",
+        "This partial capture covers IDs 62-70 only and is not merged into the authoritative 100-row dataset. Full-population research, verification, human QA, analysis, tests, HTML regeneration and deployment gates remain unfinished."
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "app_id": 64,
+      "app": "Cloudflare",
+      "category": "Developer, Infra and Data platforms",
+      "website_hint": "http://developers.cloudflare.com/api",
+      "description": "Cloudflare is a cloud connectivity, security and developer platform spanning DNS, CDN, Workers, storage, Zero Trust, analytics and related services.",
+      "auth_status": "CONFIRMED",
+      "auth_methods": [
+        "API key",
+        "Bearer/token",
+        "OAuth 2.0"
+      ],
+      "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+      "self_serve_details": "Cloudflare lists a $0 Free plan and self-serve Pro/Business subscriptions; a custom Contract tier is also available. Product-specific quotas, account/zone eligibility and paid add-ons differ, so a Free account does not imply access to every API endpoint or MCP tool.",
+      "credential_access": {
+        "status": "SELF_SERVE",
+        "path": "Create a user or account API token from the Cloudflare dashboard, choose a permission template or custom scopes/resources, then send it as an Authorization: Bearer token. Interactive remote MCP uses Cloudflare OAuth and lets the user select permissions.",
+        "plan_or_gate": "Token creation is dashboard/account-bound and grants only selected account/zone resources. Some API services and product MCP servers have separate plan or usage quotas."
+      },
+      "api": {
+        "available": "YES",
+        "types": [
+          "REST",
+          "SDK"
+        ],
+        "breadth": "BROAD",
+        "details": "Cloudflare exposes a large REST API across accounts, zones, DNS, Workers, R2, security and other products; the API reference provides TypeScript, Python and Go clients and Terraform support. Endpoint permissions and product entitlements vary."
+      },
+      "mcp": {
+        "status": "AVAILABLE",
+        "details": "Cloudflare runs a hosted remote MCP catalog. The API MCP endpoint uses two Code Mode tools (search/execute) across 2,500+ API endpoints; additional product MCP servers cover docs, Workers bindings/builds, observability and more. OAuth is interactive; scoped bearer API tokens are documented for automation.",
+        "search_scope": "Opened Cloudflare's first-party managed MCP catalog, REST API reference, API-token guide and plan page. The official docs distinguish managed remotes and scoped token access; no account, token or MCP server was exercised."
+      },
+      "buildability": {
+        "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+        "blocker": "A Cloudflare account/token or OAuth grant is needed for account operations; wide API access is permission-scoped and some services are separately metered or unavailable on Free.",
+        "rationale": "The REST API, official SDKs and hosted MCP provide broad integration paths. Limit tokens to the required account/zone, validate which endpoints are enabled on the target plan, and require review before agents apply security, DNS or deployment changes."
+      },
+      "evidence": [
+        {
+          "claim": "Cloudflare's API/MCP catalog spans DNS, Workers, R2, Zero Trust and other platform products, supporting a broad developer/security platform description.",
+          "field": "description",
+          "source_url": "https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/",
+          "source_title": "Cloudflare's own MCP servers · Cloudflare Agents docs",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Cloudflare's remote API MCP uses OAuth, while API tokens are passed in a Bearer Authorization header.",
+          "field": "auth",
+          "source_url": "https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/",
+          "source_title": "Cloudflare's own MCP servers · Cloudflare Agents docs",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Cloudflare's official plans page lists Free at $0, Pro and Business self-serve subscriptions, and a custom Contract plan.",
+          "field": "self_serve",
+          "source_url": "https://www.cloudflare.com/plans/",
+          "source_title": "Pricing | Cloudflare",
+          "source_type": "official_pricing",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "The dashboard token flow lets an account user create user/account tokens, select permissions/resources, set optional IP/TTL restrictions and copy the generated secret.",
+          "field": "credential_access",
+          "source_url": "https://developers.cloudflare.com/fundamentals/api/get-started/create-token/",
+          "source_title": "Create API token · Cloudflare Fundamentals docs",
+          "source_type": "official_auth_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "The first-party API reference catalogs REST operations and official TypeScript, Python and Go clients plus Terraform support.",
+          "field": "api",
+          "source_url": "https://developers.cloudflare.com/api/",
+          "source_title": "API Reference | Cloudflare API",
+          "source_type": "official_api_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Cloudflare documents a managed remote MCP catalog and OAuth flow, with product-specific endpoints for docs, Workers, builds and observability.",
+          "field": "mcp",
+          "source_url": "https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/",
+          "source_title": "Cloudflare's own MCP servers · Cloudflare Agents docs",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Cloudflare token templates/custom scopes can limit resource permissions, while the plan page lists product-specific free and paid quotas.",
+          "field": "buildability",
+          "source_url": "https://developers.cloudflare.com/fundamentals/api/get-started/create-token/",
+          "source_title": "Create API token · Cloudflare Fundamentals docs",
+          "source_type": "official_auth_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        }
+      ],
+      "confidence": "HIGH",
+      "research_timestamp": "2026-09-24T19:25:22Z",
+      "research_status": "COMPLETE",
+      "verification_status": "NOT_CHECKED",
+      "source_conflicts": [],
+      "limitations": [
+        "No Cloudflare account, zone, token, API request, MCP authorization or billable service was checked. The API catalog count and available tools are vendor-documented, not independently enumerated or run."
+      ],
+      "researcher_notes": "The documentation's API catalog is broad, but specific endpoint access and service pricing remain account/plan/permission dependent.",
+      "source_mode": "LIVE_AGENT",
+      "research_tool": "Arena.ai Agent Mode native web_search + fetch_page; official-source-led manual research",
+      "query_count": 1,
+      "source_count": 4,
+      "attempt_count": 5,
+      "research_run_id": "arena-native-web-batch05-20260924",
+      "failure_reason": null,
+      "quality_gate": {
+        "status": "PASS",
+        "errors": [],
+        "warnings": []
+      },
+      "trace_limitations": [
+        "This standalone trace enumerates the targeted searches and source captures retained for Batch05 IDs 62-70. Redundant navigation-only HTML captures are not reconstructed; material failed/redirected paths are retained as non-evidence attempts.",
+        "Search results/snippets are discovery leads only. Claim evidence cites opened first-party sources; fetch_page capture time is date-only because the tool does not expose a per-page clock time.",
+        "LIVE_AGENT denotes native web research only. No provider credentials, vendor account, tenant, API call, MCP execution, deployment, or human review is claimed.",
+        "This partial capture covers IDs 62-70 only and is not merged into the authoritative 100-row dataset. Full-population research, verification, human QA, analysis, tests, HTML regeneration and deployment gates remain unfinished."
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "app_id": 65,
+      "app": "Supabase",
+      "category": "Developer, Infra and Data platforms",
+      "website_hint": "http://supabase.com/docs",
+      "description": "Supabase is a managed Postgres application platform with an auto-generated REST Data API and services for authentication, storage, edge functions, realtime and database operations.",
+      "auth_status": "CONFIRMED",
+      "auth_methods": [
+        "API key",
+        "Bearer/token",
+        "OAuth 2.0"
+      ],
+      "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+      "self_serve_details": "Supabase offers a $0 Free plan with unlimited API requests, 500 MB database per project, 5 GB egress and 1 GB storage; Free is limited to two active projects and pauses projects after one inactive week. Pro starts at $25/month and Team at $599/month; project quotas and add-ons vary by plan.",
+      "credential_access": {
+        "status": "SELF_SERVE",
+        "path": "Retrieve a project's publishable or secret API key in Dashboard/CLI; public components use publishable keys under RLS, while secret keys are server-only and bypass RLS. Hosted MCP uses browser OAuth/dynamic registration; CI can use a scoped PAT header.",
+        "plan_or_gate": "Requires a Supabase user/project. Account tools operate with developer permissions; scope MCP to a project, enable read-only mode and restrict tool groups. Branching MCP features require a paid plan."
+      },
+      "api": {
+        "available": "YES",
+        "types": [
+          "REST",
+          "SDK"
+        ],
+        "breadth": "BROAD",
+        "details": "Supabase auto-generates a PostgREST REST Data API from Postgres schemas for CRUD, relationships, views and functions, secured through API keys and RLS. Projects also expose service APIs; the available schema and enabled products depend on the project."
+      },
+      "mcp": {
+        "status": "AVAILABLE",
+        "details": "Supabase hosts https://mcp.supabase.com/mcp with OAuth/dynamic client registration and project-scoping, read-only and feature-group options. Tools span database/SQL/migrations, logs/advisors, Edge Functions, account management and docs; branching is experimental/paid and storage is disabled by default.",
+        "search_scope": "Opened the current Supabase hosted MCP guide including setup, tools, authentication and security sections, the Data REST API, key guide and pricing page. The remote server is first-party; no user account or project was connected and no query/tool was executed."
+      },
+      "buildability": {
+        "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+        "blocker": "MCP may execute SQL/migrations and other account actions under the connected developer's permissions; production use needs explicit project scope, read-only/tool restrictions, RLS/role review and plan/usage checks.",
+        "rationale": "The hosted MCP and schema-generated REST API are directly documented and can support application/database integrations. Supabase explicitly warns about prompt injection and recommends project scoping, read-only mode, limited feature groups and manual approval for interactive work."
+      },
+      "evidence": [
+        {
+          "claim": "Supabase's docs describe a Postgres-backed platform with a schema-generated Data REST API; the MCP guide lists database, Auth-related account, storage and Edge Function tool groups.",
+          "field": "description",
+          "source_url": "https://supabase.com/docs/guides/api",
+          "source_title": "Data REST API | Supabase Docs",
+          "source_type": "official_api_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Data API calls use project API keys; hosted MCP uses OAuth and can use a Bearer PAT for CI.",
+          "field": "auth",
+          "source_url": "https://supabase.com/docs/guides/ai-tools/mcp",
+          "source_title": "Supabase MCP Server | Supabase Docs",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Supabase distinguishes publishable project keys from elevated secret keys and legacy anon/service_role keys.",
+          "field": "auth",
+          "source_url": "https://supabase.com/docs/guides/getting-started/api-keys",
+          "source_title": "API keys | Supabase Docs",
+          "source_type": "official_auth_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "The pricing page lists the free quota/limits and paid Pro/Team plans; project quotas and add-ons vary by plan.",
+          "field": "self_serve",
+          "source_url": "https://supabase.com/pricing",
+          "source_title": "Pricing & Fees | Supabase",
+          "source_type": "official_pricing",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Project keys are retrieved from the dashboard/CLI; publishable keys rely on RLS and secret keys bypass RLS and must remain server-side.",
+          "field": "credential_access",
+          "source_url": "https://supabase.com/docs/guides/getting-started/api-keys",
+          "source_title": "API keys | Supabase Docs",
+          "source_type": "official_auth_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "The Data API is auto-generated REST over Postgres and supports CRUD, nested relationships, views, functions, grants and RLS.",
+          "field": "api",
+          "source_url": "https://supabase.com/docs/guides/api",
+          "source_title": "Data REST API | Supabase Docs",
+          "source_type": "official_api_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Supabase documents a hosted endpoint, browser OAuth/dynamic registration, project scope/read-only controls and first-party database/account tool groups.",
+          "field": "mcp",
+          "source_url": "https://supabase.com/docs/guides/ai-tools/mcp",
+          "source_title": "Supabase MCP Server | Supabase Docs",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Supabase recommends project-scoping, read-only mode and restricted feature groups to mitigate prompt-injection and production-data risks.",
+          "field": "buildability",
+          "source_url": "https://supabase.com/docs/guides/ai-tools/mcp",
+          "source_title": "Supabase MCP Server | Supabase Docs",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        }
+      ],
+      "confidence": "HIGH",
+      "research_timestamp": "2026-09-24T19:25:22Z",
+      "research_status": "COMPLETE",
+      "verification_status": "NOT_CHECKED",
+      "source_conflicts": [],
+      "limitations": [
+        "No organization, project, database schema, API key, OAuth grant or billing account was inspected. No SQL/API/MCP operation or human security review was performed; exact RLS and project entitlements remain unknown."
+      ],
+      "researcher_notes": "Publishable keys are not user identity and do not replace RLS; secret keys bypass RLS and must remain server-side. MCP authentication and Data API key authentication are distinct surfaces.",
+      "source_mode": "LIVE_AGENT",
+      "research_tool": "Arena.ai Agent Mode native web_search + fetch_page; official-source-led manual research",
+      "query_count": 1,
+      "source_count": 4,
+      "attempt_count": 7,
+      "research_run_id": "arena-native-web-batch05-20260924",
+      "failure_reason": null,
+      "quality_gate": {
+        "status": "PASS",
+        "errors": [],
+        "warnings": []
+      },
+      "trace_limitations": [
+        "This standalone trace enumerates the targeted searches and source captures retained for Batch05 IDs 62-70. Redundant navigation-only HTML captures are not reconstructed; material failed/redirected paths are retained as non-evidence attempts.",
+        "Search results/snippets are discovery leads only. Claim evidence cites opened first-party sources; fetch_page capture time is date-only because the tool does not expose a per-page clock time.",
+        "LIVE_AGENT denotes native web research only. No provider credentials, vendor account, tenant, API call, MCP execution, deployment, or human review is claimed.",
+        "This partial capture covers IDs 62-70 only and is not merged into the authoritative 100-row dataset. Full-population research, verification, human QA, analysis, tests, HTML regeneration and deployment gates remain unfinished."
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "app_id": 66,
+      "app": "Neo4j",
+      "category": "Developer, Infra and Data platforms",
+      "website_hint": "http://neo4j.com/docs/api",
+      "description": "Neo4j is a graph database platform with managed Aura cloud instances and self-managed deployments, queried with Cypher through drivers and an HTTP Query API.",
+      "auth_status": "CONFIRMED",
+      "auth_methods": [
+        "Basic",
+        "Bearer/token"
+      ],
+      "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+      "self_serve_details": "AuraDB Free is $0 and requires no payment method; Professional starts at $65/GB/month and Business Critical at $146/GB/month. Aura MCP is documented for Free, Professional and Business Critical instances; VDC was not supported in the opened MCP page.",
+      "credential_access": {
+        "status": "SELF_SERVE",
+        "path": "Create an Aura instance/user in Neo4j Console and use valid database login credentials for Query API/local MCP. Query API supports Basic user/password and Bearer tokens generated through configured SSO; hosted Aura MCP uses a per-instance endpoint.",
+        "plan_or_gate": "A running Aura/self-managed instance and a user with appropriate database permissions are required. Aura Free is suitable for limited learning/prototyping; account-specific roles, plan limits and hosted MCP authentication details were not tested."
+      },
+      "api": {
+        "available": "YES",
+        "types": [
+          "REST",
+          "SDK"
+        ],
+        "breadth": "MODERATE",
+        "details": "The HTTP Query API executes Cypher against databases and is enabled by default on current Neo4j/Aura. Official drivers are recommended when available; the older HTTP API is deprecated. Aura API/instance-management capabilities and Query API entitlements vary by tier."
+      },
+      "mcp": {
+        "status": "AVAILABLE",
+        "details": "Neo4j offers hosted MCP for Aura at a unique HTTP URL per Aura instance and a local stdio MCP server. Tools include schema inspection, read-only Cypher, optional write-Cypher and GDS procedure listing; read-only mode hides write tools. Hosted Aura MCP authentication flow was not resolved in this capture.",
+        "search_scope": "Opened Neo4j Aura MCP, client configuration, tool and security docs, Query API/auth docs and pricing. A guessed HTTP-authentication page returned 404; no credentials were inferred from the separate API docs, no instance was connected, and MCP auth remains unverified here."
+      },
+      "buildability": {
+        "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+        "blocker": "Requires an Aura or self-managed database, user credentials/permissions and careful query controls; write-Cypher can change or delete production data, and hosted MCP auth details were not confirmed.",
+        "rationale": "The REST Query API, official drivers and hosted/local MCP are documented. Use a restricted user, enable read-only mode and review generated Cypher before production execution; Free/paid tier limits and VDC support differ."
+      },
+      "evidence": [
+        {
+          "claim": "Neo4j's Query API executes Cypher against graph databases, while Aura is Neo4j's managed cloud service.",
+          "field": "description",
+          "source_url": "https://neo4j.com/docs/query-api/current/",
+          "source_title": "Introduction - Query API",
+          "source_type": "official_api_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Query API requests require valid user credentials and support Basic authentication or Bearer tokens when SSO is configured.",
+          "field": "auth",
+          "source_url": "https://neo4j.com/docs/query-api/current/authentication-authorization/",
+          "source_title": "Authorize requests - Query API",
+          "source_type": "official_auth_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "AuraDB pricing lists a no-payment-method Free tier, paid Professional/Business Critical tiers and the feature matrix for Query API/Aura tools.",
+          "field": "self_serve",
+          "source_url": "https://neo4j.com/pricing/",
+          "source_title": "Cloud & self-hosted graph database platform pricing | Neo4j",
+          "source_type": "official_pricing",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Local MCP examples require a Neo4j URI, database username/password and database name; API access uses a valid database user's credentials.",
+          "field": "credential_access",
+          "source_url": "https://neo4j.com/docs/mcp/current/client-configuration/",
+          "source_title": "Client configuration - Neo4j MCP",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Neo4j documents an HTTP Query API for Cypher, enabled by default in current versions/Aura and distinct from the deprecated HTTP API.",
+          "field": "api",
+          "source_url": "https://neo4j.com/docs/query-api/current/",
+          "source_title": "Introduction - Query API",
+          "source_type": "official_api_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Neo4j documents an HTTP hosted MCP endpoint per Aura instance and availability on Free, Professional and Business Critical tiers.",
+          "field": "mcp",
+          "source_url": "https://neo4j.com/docs/mcp/current/mcp-for-aura/",
+          "source_title": "MCP for Aura - Neo4j MCP",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "The official MCP tool reference lists schema/read/write Cypher and GDS tools; read-only mode removes write tools.",
+          "field": "mcp",
+          "source_url": "https://neo4j.com/docs/mcp/current/tools/",
+          "source_title": "Tools - Neo4j MCP",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Neo4j advises using a restricted user and reviewing LLM-generated Cypher; local MCP supports a read-only mode.",
+          "field": "buildability",
+          "source_url": "https://neo4j.com/docs/mcp/current/security/",
+          "source_title": "Security - Neo4j MCP",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        }
+      ],
+      "confidence": "MEDIUM",
+      "research_timestamp": "2026-09-24T19:25:22Z",
+      "research_status": "COMPLETE",
+      "verification_status": "NOT_CHECKED",
+      "source_conflicts": [],
+      "limitations": [
+        "No Aura instance, database user, Query API request or MCP connection was used. The guessed HTTP-authentication route returned 404; authentication claims describe the Query API/local database path and do not establish hosted Aura MCP's auth flow."
+      ],
+      "researcher_notes": "Do not conflate Aura's MCP URL with its connection or Query API URL. The documented API login mechanisms are not assumed to be the hosted MCP authorization scheme.",
+      "source_mode": "LIVE_AGENT",
+      "research_tool": "Arena.ai Agent Mode native web_search + fetch_page; official-source-led manual research",
+      "query_count": 3,
+      "source_count": 7,
+      "attempt_count": 11,
+      "research_run_id": "arena-native-web-batch05-20260924",
+      "failure_reason": null,
+      "quality_gate": {
+        "status": "PASS",
+        "errors": [],
+        "warnings": []
+      },
+      "trace_limitations": [
+        "This standalone trace enumerates the targeted searches and source captures retained for Batch05 IDs 62-70. Redundant navigation-only HTML captures are not reconstructed; material failed/redirected paths are retained as non-evidence attempts.",
+        "Search results/snippets are discovery leads only. Claim evidence cites opened first-party sources; fetch_page capture time is date-only because the tool does not expose a per-page clock time.",
+        "LIVE_AGENT denotes native web research only. No provider credentials, vendor account, tenant, API call, MCP execution, deployment, or human review is claimed.",
+        "This partial capture covers IDs 62-70 only and is not merged into the authoritative 100-row dataset. Full-population research, verification, human QA, analysis, tests, HTML regeneration and deployment gates remain unfinished."
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "app_id": 67,
+      "app": "Snowflake",
+      "category": "Developer, Infra and Data platforms",
+      "website_hint": "http://docs.snowflake.com/",
+      "description": "Snowflake is a managed cloud data and AI platform with SQL access, data storage/compute, Cortex AI services and governed database roles.",
+      "auth_status": "CONFIRMED",
+      "auth_methods": [
+        "OAuth 2.0",
+        "Bearer/token",
+        "Custom"
+      ],
+      "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+      "self_serve_details": "Snowflake advertises a 30-day trial with $400 in Snowflake credits; AI and platform services are consumption-metered and may incur separate costs. This capture does not infer card requirements or a universally free production plan.",
+      "credential_access": {
+        "status": "RESTRICTED",
+        "path": "Create/connect a Snowflake account, user and role; SQL API accepts OAuth Bearer tokens or key-pair JWTs. For the managed MCP server, create the database/schema MCP object and grant least-privilege role/tool permissions; Snowflake OAuth is default, External OAuth is optional.",
+        "plan_or_gate": "Requires a Snowflake account plus database/schema and role privileges. Cortex AI/warehouse use consumes credits; tool access must be granted separately and account/network policies apply."
+      },
+      "api": {
+        "available": "YES",
+        "types": [
+          "REST"
+        ],
+        "breadth": "BROAD",
+        "details": "The Snowflake SQL REST API submits SQL, polls/cancels statements, fetches results and supports most DDL/DML and deployment management. Cortex REST/API services add AI operations; supported statement types, network policies and usage charges apply."
+      },
+      "mcp": {
+        "status": "AVAILABLE",
+        "details": "Snowflake-managed MCP is a server object inside a database/schema and exposes Cortex Agents, Analyst, Search, SQL execution and generic tools. It uses Snowflake OAuth by default or External OAuth, with RBAC and separate per-tool grants; it removes the need to deploy separate MCP infrastructure.",
+        "search_scope": "Opened Snowflake managed-MCP, SQL REST API, SQL API authentication, Cortex AI pricing and official trial pages. The capture confirms first-party managed server and token/auth options; no Snowflake account, SQL, role grant or MCP client was used."
+      },
+      "buildability": {
+        "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+        "blocker": "Requires an account, schema-level MCP object, least-privilege grants and available platform/AI credits; a broad SQL tool can execute data-changing statements if the role permits them.",
+        "rationale": "The REST SQL API and Snowflake-managed MCP/Cortex tools provide buildable integration paths. Restrict allowed roles/tools, review SQL, account for AI and warehouse consumption, and verify regional/network controls before production."
+      },
+      "evidence": [
+        {
+          "claim": "The SQL API supports queries and deployment/resource management, while Snowflake's Cortex pricing docs list AI services and data-platform compute.",
+          "field": "description",
+          "source_url": "https://docs.snowflake.com/en/developer-guide/sql-api/intro",
+          "source_title": "Introduction to the SQL API | Snowflake Documentation",
+          "source_type": "official_api_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "SQL API requests accept OAuth Bearer tokens or key-pair JWTs; managed MCP defaults to Snowflake OAuth with optional External OAuth.",
+          "field": "auth",
+          "source_url": "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating",
+          "source_title": "Authenticating to the server | Snowflake Documentation",
+          "source_type": "official_auth_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Snowflake's official trial page advertises 30 days and $400 in Snowflake credits; usage pricing is consumption-based.",
+          "field": "self_serve",
+          "source_url": "https://www.snowflake.com/en/snowflake-trial/",
+          "source_title": "Snowflake Trial: Build AI & Apps in Minutes",
+          "source_type": "official_pricing",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Snowflake requires account users/roles; MCP tools need separate grants, and least-privilege OAuth/roles are recommended.",
+          "field": "credential_access",
+          "source_url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp",
+          "source_title": "Snowflake-managed MCP server | Snowflake Documentation",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "The SQL API is a REST interface for statements, execution status, cancellation and results, with most DDL/DML supported.",
+          "field": "api",
+          "source_url": "https://docs.snowflake.com/en/developer-guide/sql-api/intro",
+          "source_title": "Introduction to the SQL API | Snowflake Documentation",
+          "source_type": "official_api_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "The managed MCP guide documents an in-account server object, supported Cortex/SQL tool types, OAuth and role/tool governance.",
+          "field": "mcp",
+          "source_url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp",
+          "source_title": "Snowflake-managed MCP server | Snowflake Documentation",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Snowflake pricing separates AI Credits from Platform Credits and states that warehouse/data services continue to consume platform usage.",
+          "field": "buildability",
+          "source_url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/pricing",
+          "source_title": "Snowflake AI pricing | Snowflake Documentation",
+          "source_type": "official_pricing",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "The MCP guide recommends least privilege, separate tool grants, OAuth and safeguards against recursive or unbounded agent loops.",
+          "field": "buildability",
+          "source_url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp",
+          "source_title": "Snowflake-managed MCP server | Snowflake Documentation",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        }
+      ],
+      "confidence": "HIGH",
+      "research_timestamp": "2026-09-24T19:25:22Z",
+      "research_status": "COMPLETE",
+      "verification_status": "NOT_CHECKED",
+      "source_conflicts": [],
+      "limitations": [
+        "No Snowflake trial/account, role, OAuth client, SQL API request or MCP server object was created or tested. No account-specific Cortex/warehouse entitlement, region or credit balance was checked."
+      ],
+      "researcher_notes": "The Snowflake MCP server is a database/schema object; it is not a globally shared vendor endpoint. Distinguish AI Credits from ordinary Platform Credits and compute charges.",
+      "source_mode": "LIVE_AGENT",
+      "research_tool": "Arena.ai Agent Mode native web_search + fetch_page; official-source-led manual research",
+      "query_count": 3,
+      "source_count": 5,
+      "attempt_count": 8,
+      "research_run_id": "arena-native-web-batch05-20260924",
+      "failure_reason": null,
+      "quality_gate": {
+        "status": "PASS",
+        "errors": [],
+        "warnings": []
+      },
+      "trace_limitations": [
+        "This standalone trace enumerates the targeted searches and source captures retained for Batch05 IDs 62-70. Redundant navigation-only HTML captures are not reconstructed; material failed/redirected paths are retained as non-evidence attempts.",
+        "Search results/snippets are discovery leads only. Claim evidence cites opened first-party sources; fetch_page capture time is date-only because the tool does not expose a per-page clock time.",
+        "LIVE_AGENT denotes native web research only. No provider credentials, vendor account, tenant, API call, MCP execution, deployment, or human review is claimed.",
+        "This partial capture covers IDs 62-70 only and is not merged into the authoritative 100-row dataset. Full-population research, verification, human QA, analysis, tests, HTML regeneration and deployment gates remain unfinished."
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "app_id": 68,
+      "app": "MongoDB Atlas",
+      "category": "Developer, Infra and Data platforms",
+      "website_hint": "http://mongodb.com/docs/atlas/api",
+      "description": "MongoDB Atlas is MongoDB's managed cloud document-database service, with separate administration APIs and database-level access for cluster data.",
+      "auth_status": "CONFIRMED",
+      "auth_methods": [
+        "OAuth 2.0",
+        "API key"
+      ],
+      "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+      "self_serve_details": "Atlas lists a free-forever $0/hour tier with 512 MB storage plus Flex and Dedicated usage-priced tiers. MCP/API access depends on Atlas organization/project settings, role and database tier; the free price listing does not prove every managed MCP tool is available on M0.",
+      "credential_access": {
+        "status": "RESTRICTED",
+        "path": "Atlas Administration API supports OAuth service-account access tokens or API keys (HTTP Digest); create service accounts/organization keys as an Organization Owner and grant project access with the appropriate owner role. Atlas Managed MCP plugin uses delegated OAuth/App Connections; programmatic MCP setup creates a config client ID/secret.",
+        "plan_or_gate": "An Atlas organization/project is required. Organization owner enables AI Clients for plugin use; API keys/service accounts require owner privileges and may require an IP access-list entry. Database reads/writes use separate database-user credentials."
+      },
+      "api": {
+        "available": "YES",
+        "types": [
+          "REST"
+        ],
+        "breadth": "MODERATE",
+        "details": "The Atlas Administration REST API manages Atlas organizations/projects/clusters and credentials, but does not read/write data stored in clusters. Database data-plane access requires separate database-user credentials; do not treat the admin API as a general document-query API."
+      },
+      "mcp": {
+        "status": "AVAILABLE",
+        "details": "MongoDB provides an official Atlas Managed MCP server hosted by MongoDB and a self-managed local MCP implementation. Atlas plugin access uses user-delegated OAuth/App Connections; programmatic configurations use service-account OAuth credentials, roles/IP access lists and optional read-only enforcement. Tools cover cluster/database operations and performance context.",
+        "search_scope": "Opened MongoDB MCP overview and setup docs, Atlas Administration API access guide and current pricing. This verifies first-party managed/local MCP paths and the control-plane/data-plane distinction; no Atlas account, cluster, IP list or MCP session was checked."
+      },
+      "buildability": {
+        "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+        "blocker": "Atlas organization/project permissions and AI-client opt-in are required; admin REST credentials do not access cluster data, and managed MCP role/IP/read-only settings must be reviewed.",
+        "rationale": "The official managed MCP and REST administration API can support Atlas automation; database reads/writes require separate database credentials. Use least privilege, read-only mode where possible and verify tier/tool support before touching production data."
+      },
+      "evidence": [
+        {
+          "claim": "MongoDB documents Atlas as a managed database deployment and distinguishes it from local/self-managed MongoDB deployments.",
+          "field": "description",
+          "source_url": "https://www.mongodb.com/docs/mcp-server/overview/",
+          "source_title": "MongoDB MCP Server Overview - MongoDB MCP Server - MongoDB Docs",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Atlas Administration API uses OAuth service-account tokens or API keys with HTTP Digest; managed MCP plugin setup uses an OAuth flow.",
+          "field": "auth",
+          "source_url": "https://www.mongodb.com/docs/atlas/configure-api-access/?interface=atlas-ui&programmatic-access=service-account",
+          "source_title": "Get Started with the Atlas Administration API - Atlas - MongoDB Docs",
+          "source_type": "official_api_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "MongoDB's official Atlas pricing page lists a free-forever $0/hour tier with 512 MB storage and paid Flex/Dedicated tiers.",
+          "field": "self_serve",
+          "source_url": "https://www.mongodb.com/pricing",
+          "source_title": "Pricing | MongoDB",
+          "source_type": "official_pricing",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Only an Organization Owner can create organization service accounts/API keys; Project Owner grants project access and API use can be IP-list restricted.",
+          "field": "credential_access",
+          "source_url": "https://www.mongodb.com/docs/atlas/configure-api-access/?interface=atlas-ui&programmatic-access=service-account",
+          "source_title": "Get Started with the Atlas Administration API - Atlas - MongoDB Docs",
+          "source_type": "official_api_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "An organization owner must enable AI Clients for the Atlas MCP plugin, and programmatic setup creates configuration credentials/roles/IP rules.",
+          "field": "credential_access",
+          "source_url": "https://www.mongodb.com/docs/mcp-server/get-started/?ai-client=claude-code",
+          "source_title": "Get Started with the MongoDB MCP Server - MongoDB MCP Server - MongoDB Docs",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "The Atlas Administration API is REST for administrative resources and explicitly does not provide cluster data access; database users are separate.",
+          "field": "api",
+          "source_url": "https://www.mongodb.com/docs/atlas/configure-api-access/?interface=atlas-ui&programmatic-access=service-account",
+          "source_title": "Get Started with the Atlas Administration API - Atlas - MongoDB Docs",
+          "source_type": "official_api_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "MongoDB documents an official Atlas-managed MCP server and local server, with Atlas App Connections/OAuth and programmatic configuration options.",
+          "field": "mcp",
+          "source_url": "https://www.mongodb.com/docs/mcp-server/overview/",
+          "source_title": "MongoDB MCP Server Overview - MongoDB MCP Server - MongoDB Docs",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "The managed MCP overview documents project-level access controls and read-only enforcement; setup requires organization opt-in and role/IP configuration.",
+          "field": "buildability",
+          "source_url": "https://www.mongodb.com/docs/mcp-server/get-started/?ai-client=claude-code",
+          "source_title": "Get Started with the MongoDB MCP Server - MongoDB MCP Server - MongoDB Docs",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        }
+      ],
+      "confidence": "HIGH",
+      "research_timestamp": "2026-09-24T19:25:22Z",
+      "research_status": "COMPLETE",
+      "verification_status": "NOT_CHECKED",
+      "source_conflicts": [],
+      "limitations": [
+        "No Atlas org/project, AI-client opt-in, service account, IP access list, database user, cluster or MCP client was accessed. No specific Atlas tier's complete MCP tool compatibility was verified."
+      ],
+      "researcher_notes": "Atlas Administration API is a control-plane REST API, not a database query API. OAuth delegated App Connections and programmatic service-account credentials are different MCP setup modes.",
+      "source_mode": "LIVE_AGENT",
+      "research_tool": "Arena.ai Agent Mode native web_search + fetch_page; official-source-led manual research",
+      "query_count": 1,
+      "source_count": 4,
+      "attempt_count": 5,
+      "research_run_id": "arena-native-web-batch05-20260924",
+      "failure_reason": null,
+      "quality_gate": {
+        "status": "PASS",
+        "errors": [],
+        "warnings": []
+      },
+      "trace_limitations": [
+        "This standalone trace enumerates the targeted searches and source captures retained for Batch05 IDs 62-70. Redundant navigation-only HTML captures are not reconstructed; material failed/redirected paths are retained as non-evidence attempts.",
+        "Search results/snippets are discovery leads only. Claim evidence cites opened first-party sources; fetch_page capture time is date-only because the tool does not expose a per-page clock time.",
+        "LIVE_AGENT denotes native web research only. No provider credentials, vendor account, tenant, API call, MCP execution, deployment, or human review is claimed.",
+        "This partial capture covers IDs 62-70 only and is not merged into the authoritative 100-row dataset. Full-population research, verification, human QA, analysis, tests, HTML regeneration and deployment gates remain unfinished."
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "app_id": 69,
+      "app": "Datadog",
+      "category": "Developer, Infra and Data platforms",
+      "website_hint": "http://docs.datadoghq.com/api",
+      "description": "Datadog is a cloud observability and security platform with telemetry collection, dashboards, monitors, logs, traces, synthetic tests, integrations and account-management APIs.",
+      "auth_status": "CONFIRMED",
+      "auth_methods": [
+        "API key",
+        "Bearer/token",
+        "OAuth 2.0",
+        "Service account"
+      ],
+      "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+      "self_serve_details": "Datadog's pricing is product-specific and usage/seat/host/credit-metered; the opened pricing page includes trial CTAs and separate product prices. Datadog MCP additionally depends on account permissions, selected regional site and product/toolset availability; no single universal API/MCP fee was inferred.",
+      "credential_access": {
+        "status": "RESTRICTED",
+        "path": "Create organization API keys for telemetry intake, and user/service-account PATs or SATs for API access; legacy application keys plus API keys are still documented for some endpoints/MCP fallback. Credentials inherit creator permissions and can be scoped.",
+        "plan_or_gate": "Requires a Datadog organization/user or service account with relevant product permissions. MCP endpoints are site-specific; some toolsets/sites are unsupported. Prefer short-lived scoped PAT/SAT and least-privilege service accounts."
+      },
+      "api": {
+        "available": "YES",
+        "types": [
+          "REST",
+          "SDK"
+        ],
+        "breadth": "BROAD",
+        "details": "The HTTP REST API and official clients cover telemetry submission/query, integrations, dashboards, monitors, logs, events, traces, synthetic tests, users, roles, organization settings, keys and usage. Some operations require both an API key and application key or other scoped credentials."
+      },
+      "mcp": {
+        "status": "AVAILABLE",
+        "details": "Datadog runs a hosted, site-specific remote MCP server with OAuth and product toolsets; the Agent Observability toolset searches/analyzes LLM traces, spans and experiments. API key plus application key headers are a documented fallback for that toolset; US-FED and US2-FED are unsupported in the opened docs.",
+        "search_scope": "Opened current Datadog MCP setup and Agent Observability pages, API reference/usage guide, credential-management and key docs, and product pricing. The capture is bounded to public docs; no site/org was selected, OAuth completed, account entitlement checked or MCP/API tool run."
+      },
+      "buildability": {
+        "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+        "blocker": "Requires a Datadog org/site, endpoint-specific product permissions and appropriately scoped credentials; available MCP toolsets and commercial plans vary by site/product.",
+        "rationale": "Datadog's REST API/client libraries and hosted OAuth MCP are documented for broad telemetry/account workflows. Use short-lived service access tokens and least privilege, confirm regional endpoint/toolset support, and avoid sending sensitive telemetry to unapproved agents."
+      },
+      "evidence": [
+        {
+          "claim": "Datadog's HTTP API guide covers telemetry, dashboards, monitors, logs, SLOs, integrations and account resources.",
+          "field": "description",
+          "source_url": "https://docs.datadoghq.com/api/latest/using-the-api.md",
+          "source_title": "Using the API",
+          "source_type": "official_api_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "The API reference documents DD-API-KEY and, for some endpoints, DD-APPLICATION-KEY headers; newer guidance distinguishes PAT/SAT and legacy app keys.",
+          "field": "auth",
+          "source_url": "https://docs.datadoghq.com/api/latest.md",
+          "source_title": "API Reference",
+          "source_type": "official_api_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Datadog recommends PATs for interactive API use and SATs for automation, with app keys treated as legacy; hosted MCP uses OAuth by default.",
+          "field": "auth",
+          "source_url": "https://docs.datadoghq.com/getting_started/access_for_enterprises/credential_management.md",
+          "source_title": "Credential Management",
+          "source_type": "official_auth_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "The official product-pricing page displays self-serve trial CTAs and metered, product-specific prices, including separate AI credits.",
+          "field": "self_serve",
+          "source_url": "https://www.datadoghq.com/pricing/",
+          "source_title": "Pricing | Datadog",
+          "source_type": "official_pricing",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Datadog keys are organization/user/service-account scoped; application keys inherit creator permissions and require permissions to create/scope.",
+          "field": "credential_access",
+          "source_url": "https://docs.datadoghq.com/account_management/api-app-keys.md",
+          "source_title": "API and Application Keys",
+          "source_type": "official_auth_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Datadog documents an HTTP REST API and official client libraries; API endpoints cover platform, telemetry and account administration.",
+          "field": "api",
+          "source_url": "https://docs.datadoghq.com/api/latest.md",
+          "source_title": "API Reference",
+          "source_type": "official_api_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "The API guide lists integrations, metrics, events, synthetic tests, traces, dashboards, monitors, logs, security signals, users, roles and usage endpoints.",
+          "field": "api",
+          "source_url": "https://docs.datadoghq.com/api/latest/using-the-api.md",
+          "source_title": "Using the API",
+          "source_type": "official_api_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Datadog publishes a hosted site-specific MCP server using OAuth and selectable product toolsets, with unsupported sites clearly identified.",
+          "field": "mcp",
+          "source_url": "https://docs.datadoghq.com/mcp_server/setup.md",
+          "source_title": "Set Up the Datadog MCP Server",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "The Agent Observability MCP guide documents LLM trace/span/experiment tools and an API-key/application-key fallback.",
+          "field": "mcp",
+          "source_url": "https://docs.datadoghq.com/llm_observability/build_with_ai/mcp_server.md?tab=remoteauthentication",
+          "source_title": "Agent Observability MCP and Skills",
+          "source_type": "official_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Current credential guidance recommends short-lived scoped tokens/service accounts, while MCP requires account permission and a supported Datadog site.",
+          "field": "buildability",
+          "source_url": "https://docs.datadoghq.com/getting_started/access_for_enterprises/credential_management.md",
+          "source_title": "Credential Management",
+          "source_type": "official_auth_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        }
+      ],
+      "confidence": "MEDIUM",
+      "research_timestamp": "2026-09-24T19:25:22Z",
+      "research_status": "COMPLETE",
+      "verification_status": "NOT_CHECKED",
+      "source_conflicts": [
+        {
+          "field": "auth",
+          "summary": "The general API reference documents API-key and application-key headers for common API calls, while current credential guidance prefers short-lived PAT/SAT and calls application keys legacy; Agent Observability MCP uses OAuth by default with API/app-key fallback.",
+          "source_urls": [
+            "https://docs.datadoghq.com/api/latest.md",
+            "https://docs.datadoghq.com/getting_started/access_for_enterprises/credential_management.md",
+            "https://docs.datadoghq.com/llm_observability/build_with_ai/mcp_server.md?tab=remoteauthentication"
+          ],
+          "resolution": "Treat credentials as endpoint/product specific, not mutually interchangeable. Follow each endpoint's current auth guide and use scoped PAT/SAT where supported; retain API keys for ingestion and avoid assuming a legacy application key is the preferred new pattern."
+        }
+      ],
+      "limitations": [
+        "No Datadog organization/site, pricing account, trial, key, user permission or product entitlement was checked. No API request, MCP login or human review was performed; legacy-versus-current credential guidance may vary by endpoint."
+      ],
+      "researcher_notes": "Datadog API keys are for telemetry ingestion; read/configuration APIs use user/service-account credentials and sometimes legacy application keys. Do not generalize Agent Observability MCP availability to unsupported government sites or every product plan.",
+      "source_mode": "LIVE_AGENT",
+      "research_tool": "Arena.ai Agent Mode native web_search + fetch_page; official-source-led manual research",
+      "query_count": 2,
+      "source_count": 7,
+      "attempt_count": 12,
+      "research_run_id": "arena-native-web-batch05-20260924",
+      "failure_reason": null,
+      "quality_gate": {
+        "status": "PASS",
+        "errors": [],
+        "warnings": []
+      },
+      "trace_limitations": [
+        "This standalone trace enumerates the targeted searches and source captures retained for Batch05 IDs 62-70. Redundant navigation-only HTML captures are not reconstructed; material failed/redirected paths are retained as non-evidence attempts.",
+        "Search results/snippets are discovery leads only. Claim evidence cites opened first-party sources; fetch_page capture time is date-only because the tool does not expose a per-page clock time.",
+        "LIVE_AGENT denotes native web research only. No provider credentials, vendor account, tenant, API call, MCP execution, deployment, or human review is claimed.",
+        "This partial capture covers IDs 62-70 only and is not merged into the authoritative 100-row dataset. Full-population research, verification, human QA, analysis, tests, HTML regeneration and deployment gates remain unfinished."
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "app_id": 70,
+      "app": "Sentry",
+      "category": "Developer, Infra and Data platforms",
+      "website_hint": "http://docs.sentry.io/api",
+      "description": "Sentry is a developer observability platform for application errors, performance traces, releases and debugging, with a web API and an agent-facing MCP server.",
+      "auth_status": "CONFIRMED",
+      "auth_methods": [
+        "Bearer/token",
+        "OAuth 2.0"
+      ],
+      "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+      "self_serve_details": "The $0 Developer plan is limited to one user and includes MCP access; Team is listed at $26/month annually and adds API/third-party integrations. Data quotas, roles and paid product features vary, so API entitlement on Developer was not inferred from public documentation alone.",
+      "credential_access": {
+        "status": "SELF_SERVE",
+        "path": "Create scoped personal tokens in User Settings or an internal integration; third-party applications can use OAuth2 authorization-code/PKCE. The hosted Sentry MCP server prompts an OAuth flow and can be scoped to an organization or project endpoint.",
+        "plan_or_gate": "Requires a Sentry user and access to the selected organization/project. The Developer plan has one user and quotas; pricing identifies API/third-party integrations as a Team feature, so confirm the target API plan entitlement."
+      },
+      "api": {
+        "available": "YES",
+        "types": [
+          "REST"
+        ],
+        "breadth": "MODERATE",
+        "details": "Sentry's web API v0 manages organization/team resources and reads/exports data, with regional domains and endpoint-specific scopes/permissions. Public endpoints are generally stable; beta endpoints can change."
+      },
+      "mcp": {
+        "status": "AVAILABLE",
+        "details": "Sentry hosts a remote MCP endpoint at https://mcp.sentry.dev/mcp with OAuth. The server provides issue, trace/performance, documentation and debugging context; optional organization/project-scoped endpoint paths are documented, and MCP access is included on the Developer plan.",
+        "search_scope": "Opened Sentry's official MCP product site, API reference/authentication pages and pricing. The docs page redirected to the product site; no Sentry org, OAuth grant, API request, MCP call or account plan was inspected."
+      },
+      "buildability": {
+        "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+        "blocker": "Requires an authorized Sentry organization/project and OAuth or scoped token; Developer plan limits users/quotas and the pricing page lists API/third-party integrations as a Team feature.",
+        "rationale": "The public REST v0 API and hosted OAuth MCP are documented and suitable for issue/trace debugging workflows. Confirm API plan/endpoint access, use narrow scopes/project scoping, and protect telemetry/error data; no account-specific access was tested."
+      },
+      "evidence": [
+        {
+          "claim": "Sentry's API documentation exposes organization/team management and data export, while its MCP site centers on issue, trace and debugging context.",
+          "field": "description",
+          "source_url": "https://docs.sentry.io/api/",
+          "source_title": "API Reference | Sentry Docs",
+          "source_type": "official_api_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Sentry API requests use Bearer tokens; OAuth2 authorization-code/PKCE is available for third-party apps and the hosted MCP setup uses OAuth.",
+          "field": "auth",
+          "source_url": "https://docs.sentry.io/api/auth/",
+          "source_title": "API Authentication | Sentry Docs",
+          "source_type": "official_auth_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Sentry's pricing page lists a $0 one-user Developer plan with MCP access and paid Team/Business plans with different feature quotas.",
+          "field": "self_serve",
+          "source_url": "https://sentry.io/pricing/",
+          "source_title": "Pricing: Free Developer Plan, Pay as You Grow | Sentry",
+          "source_type": "official_pricing",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Users can create scoped tokens in User Settings and third-party apps can request scoped OAuth authorization; organization scoping is applied.",
+          "field": "credential_access",
+          "source_url": "https://docs.sentry.io/api/auth/",
+          "source_title": "API Authentication | Sentry Docs",
+          "source_type": "official_auth_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Sentry documents a versioned v0 web API for organization/team resources and data access/export, with regional API domains.",
+          "field": "api",
+          "source_url": "https://docs.sentry.io/api/",
+          "source_title": "API Reference | Sentry Docs",
+          "source_type": "official_api_docs",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Sentry's product site publishes a hosted remote MCP URL and OAuth setup for coding agents; pricing separately confirms MCP is on Developer.",
+          "field": "mcp",
+          "source_url": "https://mcp.sentry.dev/",
+          "source_title": "Sentry MCP",
+          "source_type": "official_product",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "The current pricing page lists MCP access on the Free Developer plan, distinct from the Team API/integrations feature listing.",
+          "field": "mcp",
+          "source_url": "https://sentry.io/pricing/",
+          "source_title": "Pricing: Free Developer Plan, Pay as You Grow | Sentry",
+          "source_type": "official_pricing",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        },
+        {
+          "claim": "Sentry pricing makes API/third-party integration a Team feature and the Developer tier has one user/quotas; target plan must be verified.",
+          "field": "buildability",
+          "source_url": "https://sentry.io/pricing/",
+          "source_title": "Pricing: Free Developer Plan, Pay as You Grow | Sentry",
+          "source_type": "official_pricing",
+          "accessed_at": "2026-09-24",
+          "support": "supports"
+        }
+      ],
+      "confidence": "HIGH",
+      "research_timestamp": "2026-09-24T19:25:22Z",
+      "research_status": "COMPLETE",
+      "verification_status": "NOT_CHECKED",
+      "source_conflicts": [
+        {
+          "field": "self_serve",
+          "summary": "Sentry's public API reference documents a web API, while current pricing lists API and third-party integrations as a Team-plan feature; the separate hosted MCP is explicitly included on the one-user Developer plan.",
+          "source_urls": [
+            "https://docs.sentry.io/api/",
+            "https://sentry.io/pricing/",
+            "https://mcp.sentry.dev/"
+          ],
+          "resolution": "Keep API plan entitlement distinct from MCP availability. Do not infer that every REST endpoint/integration is included on the free Developer plan; verify the specific organization and endpoint before implementation."
+        }
+      ],
+      "limitations": [
+        "No Sentry organization/project, API token, OAuth flow, MCP client, event quota or plan entitlement was checked. No error/trace data was read and no human review was performed."
+      ],
+      "researcher_notes": "Public API documentation does not itself prove free-plan access. Pricing explicitly lists MCP access on Developer and API/third-party integrations on Team; keep those product surfaces separate.",
+      "source_mode": "LIVE_AGENT",
+      "research_tool": "Arena.ai Agent Mode native web_search + fetch_page; official-source-led manual research",
+      "query_count": 1,
+      "source_count": 4,
+      "attempt_count": 6,
+      "research_run_id": "arena-native-web-batch05-20260924",
+      "failure_reason": null,
+      "quality_gate": {
+        "status": "PASS",
+        "errors": [],
+        "warnings": []
+      },
+      "trace_limitations": [
+        "This standalone trace enumerates the targeted searches and source captures retained for Batch05 IDs 62-70. Redundant navigation-only HTML captures are not reconstructed; material failed/redirected paths are retained as non-evidence attempts.",
+        "Search results/snippets are discovery leads only. Claim evidence cites opened first-party sources; fetch_page capture time is date-only because the tool does not expose a per-page clock time.",
+        "LIVE_AGENT denotes native web research only. No provider credentials, vendor account, tenant, API call, MCP execution, deployment, or human review is claimed.",
+        "This partial capture covers IDs 62-70 only and is not merged into the authoritative 100-row dataset. Full-population research, verification, human QA, analysis, tests, HTML regeneration and deployment gates remain unfinished."
+      ]
+    }
+  ],
+  "traces": [
+    {
+      "app_id": 62,
+      "app": "Vercel",
+      "source_mode": "LIVE_AGENT",
+      "status": "COMPLETE",
+      "research_run_id": "arena-native-web-batch05-20260924",
+      "research_tool": "Arena.ai Agent Mode native web_search + fetch_page; official-source-led manual research",
+      "queries": [
+        {
+          "query": "Vercel official MCP remote server docs API authentication pricing plan deploy search docs site:vercel.com/docs OR site:vercel.com/pricing",
+          "depth": "2",
+          "search_status": "SUCCESS",
+          "lead_only": true,
+          "note": "Search results were discovery leads only; snippets were not used as claim evidence."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://vercel.com/docs/agent-resources/vercel-mcp",
+          "title": "Use Vercel's MCP server",
+          "source_type": "official_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0,
+            1,
+            2
+          ],
+          "excerpt_or_observation": "Vercel documents an official remote MCP endpoint at https://mcp.vercel.com with OAuth, public and authenticated tools, account/project access, and Beta availability on all Vercel plans. The opened setup/security sections state only reviewed/approved clients are supported, user consent is required, and an MCP client receives the connected Vercel user's access."
+        },
+        {
+          "url": "https://vercel.com/docs/rest-api",
+          "title": "Vercel REST API Reference",
+          "source_type": "official_api_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "The official REST reference says the API supports HTTP requests/SDKs, Bearer access tokens, team scoping, and endpoints for projects, deployments, domains, environment variables/secrets, logs, analytics and other platform resources."
+        },
+        {
+          "url": "https://vercel.com/docs/rest-api/authentication/create-an-auth-token",
+          "title": "Create an Auth Token | Vercel REST API",
+          "source_type": "official_auth_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "The token endpoint creates a bearer token for an authenticated Vercel user; token creation can scope to a project/team, and the token value is returned only once. Vercel account settings also provide access-token management."
+        },
+        {
+          "url": "https://vercel.com/pricing",
+          "title": "Vercel Pricing: Hobby, Pro, and Enterprise plans",
+          "source_type": "official_pricing",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "The pricing page lists Hobby at $0/month for personal projects, Pro at $20/month, and custom Enterprise plans with additional controls/support. API/MCP research does not infer broader production eligibility from the Hobby label."
+        }
+      ],
+      "attempts": [
+        {
+          "tool": "web_search",
+          "query": "Vercel official MCP remote server docs API authentication pricing plan deploy search docs site:vercel.com/docs OR site:vercel.com/pricing",
+          "depth": "2",
+          "status": "SUCCESS",
+          "note": "Discovery lead only; not claim evidence."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://vercel.com/docs/agent-resources/vercel-mcp",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://vercel.com/docs/agent-resources/vercel-mcp",
+          "chunk_index": 1,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://vercel.com/docs/agent-resources/vercel-mcp",
+          "chunk_index": 2,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://vercel.com/docs/rest-api",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://vercel.com/docs/rest-api/authentication/create-an-auth-token",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://vercel.com/pricing",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://vercel.com/docs/rest-api/authentication",
+          "chunk_index": 0,
+          "status": "REDIRECTED_NOT_RELEVANT",
+          "note": "The guessed group URL opened the SSO Token Exchange endpoint rather than the authentication overview; the REST API reference and Create an Auth Token page were opened for the relevant claims."
+        }
+      ],
+      "trace_limitations": [
+        "This standalone trace enumerates the targeted searches and source captures retained for Batch05 IDs 62-70. Redundant navigation-only HTML captures are not reconstructed; material failed/redirected paths are retained as non-evidence attempts.",
+        "Search results/snippets are discovery leads only. Claim evidence cites opened first-party sources; fetch_page capture time is date-only because the tool does not expose a per-page clock time.",
+        "LIVE_AGENT denotes native web research only. No provider credentials, vendor account, tenant, API call, MCP execution, deployment, or human review is claimed.",
+        "This partial capture covers IDs 62-70 only and is not merged into the authoritative 100-row dataset. Full-population research, verification, human QA, analysis, tests, HTML regeneration and deployment gates remain unfinished."
+      ]
+    },
+    {
+      "app_id": 63,
+      "app": "Netlify",
+      "source_mode": "LIVE_AGENT",
+      "status": "COMPLETE",
+      "research_run_id": "arena-native-web-batch05-20260924",
+      "research_tool": "Arena.ai Agent Mode native web_search + fetch_page; official-source-led manual research",
+      "queries": [
+        {
+          "query": "Netlify official MCP server docs hosted MCP API auth pricing free plan site:docs.netlify.com OR site:netlify.com/pricing",
+          "depth": "2",
+          "search_status": "SUCCESS",
+          "lead_only": true,
+          "note": "Search results were discovery leads only; snippets were not used as claim evidence."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.netlify.com/build/build-with-ai/agent-setup-guides/set-up-claude-code-for-netlify/",
+          "title": "Set up Claude Code for Netlify | Netlify Docs",
+          "source_type": "official_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0,
+            1
+          ],
+          "excerpt_or_observation": "Netlify recommends the hosted remote MCP endpoint https://netlify-mcp.netlify.app/mcp. The setup guide says an initial setup can begin without a Netlify account/team, then prompts for login when needed; it also documents local installation and Netlify CLI authentication. The page covers draft, production and temporary anonymous deploy workflows."
+        },
+        {
+          "url": "https://github.com/netlify/netlify-mcp",
+          "title": "Netlify's Official MCP server",
+          "source_type": "official_github",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0,
+            8
+          ],
+          "excerpt_or_observation": "The first-party netlify/netlify-mcp repository identifies the official server, documents local installation through @netlify/mcp, remote setup via Netlify docs, and personal-access-token fallback for local authentication. It warns not to commit PATs."
+        },
+        {
+          "url": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/",
+          "title": "Get started with the Netlify API | Netlify Docs",
+          "source_type": "official_api_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Netlify documents a versioned REST API at api.netlify.com/api/v1 for site/deploy management, forms, DNS and other resources, with JavaScript and Go clients. Manual use supports bearer PATs; public integrations must use OAuth2. Typical limit is 500 requests/minute, with stricter deploy limits."
+        },
+        {
+          "url": "https://docs.netlify.com/api-and-cli-guides/cli-guides/get-started-with-cli/",
+          "title": "Get started with Netlify CLI | Netlify Docs",
+          "source_type": "official_auth_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Netlify CLI obtains OAuth authorization through browser login or a user-generated PAT in account settings; a PAT can be scoped to SAML team access and assigned an expiration. The CLI supports local build/deploy workflows."
+        },
+        {
+          "url": "https://docs.netlify.com/manage/accounts-and-billing/billing/billing-for-credit-based-plans/credit-based-pricing-plans/",
+          "title": "Credit-based pricing plans | Netlify Docs",
+          "source_type": "official_pricing",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Current self-serve credit plans are Free ($0, 300 monthly credits with a hard limit), Personal ($9/month, 1,000 credits) and Pro (from $20/month, 3,000+ credits); Enterprise is sales-contact. Features and add-ons vary by plan."
+        }
+      ],
+      "attempts": [
+        {
+          "tool": "web_search",
+          "query": "Netlify official MCP server docs hosted MCP API auth pricing free plan site:docs.netlify.com OR site:netlify.com/pricing",
+          "depth": "2",
+          "status": "SUCCESS",
+          "note": "Discovery lead only; not claim evidence."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://docs.netlify.com/build/build-with-ai/agent-setup-guides/set-up-claude-code-for-netlify/",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://docs.netlify.com/build/build-with-ai/agent-setup-guides/set-up-claude-code-for-netlify/",
+          "chunk_index": 1,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://github.com/netlify/netlify-mcp",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://github.com/netlify/netlify-mcp",
+          "chunk_index": 8,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://docs.netlify.com/api-and-cli-guides/cli-guides/get-started-with-cli/",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://docs.netlify.com/manage/accounts-and-billing/billing/billing-for-credit-based-plans/credit-based-pricing-plans/",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        }
+      ],
+      "trace_limitations": [
+        "This standalone trace enumerates the targeted searches and source captures retained for Batch05 IDs 62-70. Redundant navigation-only HTML captures are not reconstructed; material failed/redirected paths are retained as non-evidence attempts.",
+        "Search results/snippets are discovery leads only. Claim evidence cites opened first-party sources; fetch_page capture time is date-only because the tool does not expose a per-page clock time.",
+        "LIVE_AGENT denotes native web research only. No provider credentials, vendor account, tenant, API call, MCP execution, deployment, or human review is claimed.",
+        "This partial capture covers IDs 62-70 only and is not merged into the authoritative 100-row dataset. Full-population research, verification, human QA, analysis, tests, HTML regeneration and deployment gates remain unfinished."
+      ]
+    },
+    {
+      "app_id": 64,
+      "app": "Cloudflare",
+      "source_mode": "LIVE_AGENT",
+      "status": "COMPLETE",
+      "research_run_id": "arena-native-web-batch05-20260924",
+      "research_tool": "Arena.ai Agent Mode native web_search + fetch_page; official-source-led manual research",
+      "queries": [
+        {
+          "query": "Cloudflare official MCP server remote docs API token free tier pricing site:developers.cloudflare.com OR site:cloudflare.com/plans",
+          "depth": "2",
+          "search_status": "SUCCESS",
+          "lead_only": true,
+          "note": "Search results were discovery leads only; snippets were not used as claim evidence."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/",
+          "title": "Cloudflare's own MCP servers · Cloudflare Agents docs",
+          "source_type": "official_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Cloudflare documents a catalog of hosted remote MCP servers, including the API server at https://mcp.cloudflare.com/mcp. The API server exposes search/execute Code Mode over 2,500+ Cloudflare API endpoints; interactive access uses OAuth with permission selection, and automation can use scoped bearer API tokens. Product-specific MCP servers cover docs, Workers, builds, observability and other tools."
+        },
+        {
+          "url": "https://developers.cloudflare.com/api/",
+          "title": "API Reference | Cloudflare API",
+          "source_type": "official_api_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Cloudflare's official API reference catalogs REST endpoints across accounts, zones, DNS, Workers and other platform resources and offers TypeScript, Python and Go clients plus Terraform support."
+        },
+        {
+          "url": "https://developers.cloudflare.com/fundamentals/api/get-started/create-token/",
+          "title": "Create API token · Cloudflare Fundamentals docs",
+          "source_type": "official_auth_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Cloudflare users can create user or account API tokens in the dashboard, select permission groups and resources, optionally set IP/TTL restrictions, and use the secret as a Bearer token. Token templates/custom permissions are available."
+        },
+        {
+          "url": "https://www.cloudflare.com/plans/",
+          "title": "Pricing | Cloudflare",
+          "source_type": "official_pricing",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "The plans page lists Free at $0/month, Pro at $20/month billed annually (or $25 monthly), Business at $200/month billed annually (or $250 monthly), and custom Contract plans. Product-specific usage/limits differ; the page also lists free and paid Workers/resource quotas."
+        }
+      ],
+      "attempts": [
+        {
+          "tool": "web_search",
+          "query": "Cloudflare official MCP server remote docs API token free tier pricing site:developers.cloudflare.com OR site:cloudflare.com/plans",
+          "depth": "2",
+          "status": "SUCCESS",
+          "note": "Discovery lead only; not claim evidence."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://developers.cloudflare.com/api/",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://developers.cloudflare.com/fundamentals/api/get-started/create-token/",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://www.cloudflare.com/plans/",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        }
+      ],
+      "trace_limitations": [
+        "This standalone trace enumerates the targeted searches and source captures retained for Batch05 IDs 62-70. Redundant navigation-only HTML captures are not reconstructed; material failed/redirected paths are retained as non-evidence attempts.",
+        "Search results/snippets are discovery leads only. Claim evidence cites opened first-party sources; fetch_page capture time is date-only because the tool does not expose a per-page clock time.",
+        "LIVE_AGENT denotes native web research only. No provider credentials, vendor account, tenant, API call, MCP execution, deployment, or human review is claimed.",
+        "This partial capture covers IDs 62-70 only and is not merged into the authoritative 100-row dataset. Full-population research, verification, human QA, analysis, tests, HTML regeneration and deployment gates remain unfinished."
+      ]
+    },
+    {
+      "app_id": 65,
+      "app": "Supabase",
+      "source_mode": "LIVE_AGENT",
+      "status": "COMPLETE",
+      "research_run_id": "arena-native-web-batch05-20260924",
+      "research_tool": "Arena.ai Agent Mode native web_search + fetch_page; official-source-led manual research",
+      "queries": [
+        {
+          "query": "Supabase official MCP server docs hosted remote API auth free plan pricing site:supabase.com/docs OR site:supabase.com/pricing",
+          "depth": "2",
+          "search_status": "SUCCESS",
+          "lead_only": true,
+          "note": "Search results were discovery leads only; snippets were not used as claim evidence."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://supabase.com/docs/guides/ai-tools/mcp",
+          "title": "Supabase MCP Server | Supabase Docs",
+          "source_type": "official_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0,
+            1,
+            2
+          ],
+          "excerpt_or_observation": "Supabase operates a hosted MCP server at https://mcp.supabase.com/mcp with browser OAuth/dynamic client registration and optional PAT headers for CI. The server can be project-scoped, read-only, and limited to feature groups; tools include SQL/migrations, logs/advisors, Edge Functions, account management and docs. Branching tools require a paid plan; the docs warn about prompt-injection and write-access risks."
+        },
+        {
+          "url": "https://supabase.com/docs/guides/api",
+          "title": "Data REST API | Supabase Docs",
+          "source_type": "official_api_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Supabase auto-generates a PostgREST REST API from each Postgres schema for CRUD, relationships, views, functions and RLS-governed access, with a project-specific REST base URL."
+        },
+        {
+          "url": "https://supabase.com/docs/guides/getting-started/api-keys",
+          "title": "API keys | Supabase Docs",
+          "source_type": "official_auth_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Project keys are available in Dashboard/CLI: publishable keys are for public components and rely on RLS, while secret keys are elevated and bypass RLS. Supabase states legacy anon/service_role keys are being deprecated by end of 2026; secrets must remain server-side."
+        },
+        {
+          "url": "https://supabase.com/pricing",
+          "title": "Pricing & Fees | Supabase",
+          "source_type": "official_pricing",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Current plans list Free at $0/month with unlimited API requests, 500 MB database per project, 5 GB egress and 1 GB storage; free projects pause after one week inactive and are limited to two active projects. Pro starts at $25/month; Team at $599/month; Enterprise is custom."
+        }
+      ],
+      "attempts": [
+        {
+          "tool": "web_search",
+          "query": "Supabase official MCP server docs hosted remote API auth free plan pricing site:supabase.com/docs OR site:supabase.com/pricing",
+          "depth": "2",
+          "status": "SUCCESS",
+          "note": "Discovery lead only; not claim evidence."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://supabase.com/docs/guides/ai-tools/mcp",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://supabase.com/docs/guides/ai-tools/mcp",
+          "chunk_index": 1,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://supabase.com/docs/guides/ai-tools/mcp",
+          "chunk_index": 2,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://supabase.com/docs/guides/api",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://supabase.com/docs/guides/getting-started/api-keys",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://supabase.com/pricing",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        }
+      ],
+      "trace_limitations": [
+        "This standalone trace enumerates the targeted searches and source captures retained for Batch05 IDs 62-70. Redundant navigation-only HTML captures are not reconstructed; material failed/redirected paths are retained as non-evidence attempts.",
+        "Search results/snippets are discovery leads only. Claim evidence cites opened first-party sources; fetch_page capture time is date-only because the tool does not expose a per-page clock time.",
+        "LIVE_AGENT denotes native web research only. No provider credentials, vendor account, tenant, API call, MCP execution, deployment, or human review is claimed.",
+        "This partial capture covers IDs 62-70 only and is not merged into the authoritative 100-row dataset. Full-population research, verification, human QA, analysis, tests, HTML regeneration and deployment gates remain unfinished."
+      ]
+    },
+    {
+      "app_id": 66,
+      "app": "Neo4j",
+      "source_mode": "LIVE_AGENT",
+      "status": "COMPLETE",
+      "research_run_id": "arena-native-web-batch05-20260924",
+      "research_tool": "Arena.ai Agent Mode native web_search + fetch_page; official-source-led manual research",
+      "queries": [
+        {
+          "query": "Neo4j official MCP server Aura MCP docs remote API authentication free plan pricing site:neo4j.com/docs OR site:neo4j.com/pricing",
+          "depth": "2",
+          "search_status": "SUCCESS",
+          "lead_only": true,
+          "note": "Search results were discovery leads only; snippets were not used as claim evidence."
+        },
+        {
+          "query": "site:neo4j.com/docs/mcp/current \"HTTP Authentication\" MCP for Aura authentication login OAuth access token",
+          "depth": "2",
+          "search_status": "SUCCESS",
+          "lead_only": true,
+          "note": "Search results were discovery leads only; snippets were not used as claim evidence."
+        },
+        {
+          "query": "site:neo4j.com/docs/query-api/current authentication basic credentials Aura API authentication Neo4j",
+          "depth": "2",
+          "search_status": "SUCCESS",
+          "lead_only": true,
+          "note": "Search results were discovery leads only; snippets were not used as claim evidence."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://neo4j.com/docs/mcp/current/mcp-for-aura/",
+          "title": "MCP for Aura - Neo4j MCP",
+          "source_type": "official_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Neo4j documents MCP for Aura as a hosted HTTP server with one URL per Aura instance, constructed from or copied using the instance ID. It is available for Free, Professional and Business Critical instances; VDC support was not yet available in the opened doc."
+        },
+        {
+          "url": "https://neo4j.com/docs/mcp/current/client-configuration/",
+          "title": "Client configuration - Neo4j MCP",
+          "source_type": "official_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "The first-party client guide configures Aura MCP over HTTP and local MCP over stdio. Local examples use a database URI, username/password, database name, and optional NEO4J_READ_ONLY setting."
+        },
+        {
+          "url": "https://neo4j.com/docs/mcp/current/tools/",
+          "title": "Tools - Neo4j MCP",
+          "source_type": "official_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "The Neo4j MCP tool reference lists schema inspection, read-only Cypher, write-Cypher and GDS procedure listing. Read-only mode hides write tools; write tools can alter data, so the docs advise care in production."
+        },
+        {
+          "url": "https://neo4j.com/docs/mcp/current/security/",
+          "title": "Security - Neo4j MCP",
+          "source_type": "official_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Neo4j recommends a restricted database user and reviewing LLM-generated Cypher before execution, especially against production databases."
+        },
+        {
+          "url": "https://neo4j.com/docs/query-api/current/",
+          "title": "Introduction - Query API",
+          "source_type": "official_api_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Neo4j Query API is an HTTP API for executing Cypher statements; it is enabled by default for current Neo4j and Aura versions and supersedes the deprecated HTTP API. Aura uses HTTPS; official drivers are recommended where available."
+        },
+        {
+          "url": "https://neo4j.com/docs/query-api/current/authentication-authorization/",
+          "title": "Authorize requests - Query API",
+          "source_type": "official_auth_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Query API requests require a valid user's login credentials unless server authentication is disabled. It supports Basic username/password and Bearer tokens generated through a configured SSO provider."
+        },
+        {
+          "url": "https://neo4j.com/pricing/",
+          "title": "Cloud & self-hosted graph database platform pricing | Neo4j",
+          "source_type": "official_pricing",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "AuraDB Free is $0 with no payment method required; Professional starts at $65/GB/month and Business Critical at $146/GB/month. The page lists the Aura API to provision/manage instances and Query API on Free, with features varying by tier."
+        }
+      ],
+      "attempts": [
+        {
+          "tool": "web_search",
+          "query": "Neo4j official MCP server Aura MCP docs remote API authentication free plan pricing site:neo4j.com/docs OR site:neo4j.com/pricing",
+          "depth": "2",
+          "status": "SUCCESS",
+          "note": "Discovery lead only; not claim evidence."
+        },
+        {
+          "tool": "web_search",
+          "query": "site:neo4j.com/docs/mcp/current \"HTTP Authentication\" MCP for Aura authentication login OAuth access token",
+          "depth": "2",
+          "status": "SUCCESS",
+          "note": "Discovery lead only; not claim evidence."
+        },
+        {
+          "tool": "web_search",
+          "query": "site:neo4j.com/docs/query-api/current authentication basic credentials Aura API authentication Neo4j",
+          "depth": "2",
+          "status": "SUCCESS",
+          "note": "Discovery lead only; not claim evidence."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://neo4j.com/docs/mcp/current/mcp-for-aura/",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://neo4j.com/docs/mcp/current/client-configuration/",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://neo4j.com/docs/mcp/current/tools/",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://neo4j.com/docs/mcp/current/security/",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://neo4j.com/docs/query-api/current/",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://neo4j.com/docs/query-api/current/authentication-authorization/",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://neo4j.com/pricing/",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://neo4j.com/docs/mcp/current/http-authentication/",
+          "chunk_index": 0,
+          "status": "HTTP_404",
+          "note": "The guessed HTTP Authentication route returned a 404; the current MCP client/security docs and Query API authentication page were opened instead."
+        }
+      ],
+      "trace_limitations": [
+        "This standalone trace enumerates the targeted searches and source captures retained for Batch05 IDs 62-70. Redundant navigation-only HTML captures are not reconstructed; material failed/redirected paths are retained as non-evidence attempts.",
+        "Search results/snippets are discovery leads only. Claim evidence cites opened first-party sources; fetch_page capture time is date-only because the tool does not expose a per-page clock time.",
+        "LIVE_AGENT denotes native web research only. No provider credentials, vendor account, tenant, API call, MCP execution, deployment, or human review is claimed.",
+        "This partial capture covers IDs 62-70 only and is not merged into the authoritative 100-row dataset. Full-population research, verification, human QA, analysis, tests, HTML regeneration and deployment gates remain unfinished."
+      ]
+    },
+    {
+      "app_id": 67,
+      "app": "Snowflake",
+      "source_mode": "LIVE_AGENT",
+      "status": "COMPLETE",
+      "research_run_id": "arena-native-web-batch05-20260924",
+      "research_tool": "Arena.ai Agent Mode native web_search + fetch_page; official-source-led manual research",
+      "queries": [
+        {
+          "query": "Snowflake official MCP server docs OAuth API auth pricing credits Cortex Analyst MCP site:docs.snowflake.com",
+          "depth": "2",
+          "search_status": "SUCCESS",
+          "lead_only": true,
+          "note": "Search results were discovery leads only; snippets were not used as claim evidence."
+        },
+        {
+          "query": "Snowflake official free trial account 30 days credits no credit card sign up usage consumption pricing site:snowflake.com OR site:docs.snowflake.com",
+          "depth": "2",
+          "search_status": "SUCCESS",
+          "lead_only": true,
+          "note": "Search results were discovery leads only; snippets were not used as claim evidence."
+        },
+        {
+          "query": "site:docs.snowflake.com/en/developer-guide/sql-api authentication OAuth JWT key pair API SQL API auth credentials",
+          "depth": "2",
+          "search_status": "SUCCESS",
+          "lead_only": true,
+          "note": "Search results were discovery leads only; snippets were not used as claim evidence."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp",
+          "title": "Snowflake-managed MCP server | Snowflake Documentation",
+          "source_type": "official_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Snowflake's managed MCP server is configured as a database/schema object and can expose Cortex Agents, Analyst, Search, SQL execution and generic tools. Snowflake OAuth is default, External OAuth is optional, and roles/permissions are managed separately for the server and each tool."
+        },
+        {
+          "url": "https://docs.snowflake.com/en/developer-guide/sql-api/intro",
+          "title": "Introduction to the SQL API | Snowflake Documentation",
+          "source_type": "official_api_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Snowflake SQL API is a REST API to submit SQL, check/cancel statement execution, fetch results and manage database/deployment resources. It supports standard queries and most DDL/DML, subject to documented limitations and account network policies."
+        },
+        {
+          "url": "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating",
+          "title": "Authenticating to the server | Snowflake Documentation",
+          "source_type": "official_auth_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Snowflake SQL API supports OAuth, key-pair JWT, and workload identity federation; requests use Bearer authorization. Public keys must be assigned to Snowflake users for key-pair auth. MCP defaults to Snowflake OAuth and can use External OAuth."
+        },
+        {
+          "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/pricing",
+          "title": "Snowflake AI pricing | Snowflake Documentation",
+          "source_type": "official_pricing",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Snowflake distinguishes Platform Credits from AI Credits; AI feature usage is consumption-based, with Cortex Agents, Cortex REST API and Search among metered services. Query/warehouse compute and AI service usage can add separate costs."
+        },
+        {
+          "url": "https://www.snowflake.com/en/snowflake-trial/",
+          "title": "Snowflake Trial: Build AI & Apps in Minutes",
+          "source_type": "official_pricing",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Snowflake advertises a 30-day AI Data Cloud trial with $400 in credits; a separate Cortex Code CLI trial is advertised. This capture does not infer payment-card requirements."
+        }
+      ],
+      "attempts": [
+        {
+          "tool": "web_search",
+          "query": "Snowflake official MCP server docs OAuth API auth pricing credits Cortex Analyst MCP site:docs.snowflake.com",
+          "depth": "2",
+          "status": "SUCCESS",
+          "note": "Discovery lead only; not claim evidence."
+        },
+        {
+          "tool": "web_search",
+          "query": "Snowflake official free trial account 30 days credits no credit card sign up usage consumption pricing site:snowflake.com OR site:docs.snowflake.com",
+          "depth": "2",
+          "status": "SUCCESS",
+          "note": "Discovery lead only; not claim evidence."
+        },
+        {
+          "tool": "web_search",
+          "query": "site:docs.snowflake.com/en/developer-guide/sql-api authentication OAuth JWT key pair API SQL API auth credentials",
+          "depth": "2",
+          "status": "SUCCESS",
+          "note": "Discovery lead only; not claim evidence."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://docs.snowflake.com/en/developer-guide/sql-api/intro",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/pricing",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://www.snowflake.com/en/snowflake-trial/",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        }
+      ],
+      "trace_limitations": [
+        "This standalone trace enumerates the targeted searches and source captures retained for Batch05 IDs 62-70. Redundant navigation-only HTML captures are not reconstructed; material failed/redirected paths are retained as non-evidence attempts.",
+        "Search results/snippets are discovery leads only. Claim evidence cites opened first-party sources; fetch_page capture time is date-only because the tool does not expose a per-page clock time.",
+        "LIVE_AGENT denotes native web research only. No provider credentials, vendor account, tenant, API call, MCP execution, deployment, or human review is claimed.",
+        "This partial capture covers IDs 62-70 only and is not merged into the authoritative 100-row dataset. Full-population research, verification, human QA, analysis, tests, HTML regeneration and deployment gates remain unfinished."
+      ]
+    },
+    {
+      "app_id": 68,
+      "app": "MongoDB Atlas",
+      "source_mode": "LIVE_AGENT",
+      "status": "COMPLETE",
+      "research_run_id": "arena-native-web-batch05-20260924",
+      "research_tool": "Arena.ai Agent Mode native web_search + fetch_page; official-source-led manual research",
+      "queries": [
+        {
+          "query": "MongoDB Atlas official MCP server docs remote API authentication free tier pricing site:mongodb.com/docs OR site:mongodb.com/pricing",
+          "depth": "2",
+          "search_status": "SUCCESS",
+          "lead_only": true,
+          "note": "Search results were discovery leads only; snippets were not used as claim evidence."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.mongodb.com/docs/mcp-server/overview/",
+          "title": "MongoDB MCP Server Overview - MongoDB MCP Server - MongoDB Docs",
+          "source_type": "official_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "MongoDB calls its MCP server an official implementation with local and Atlas-managed deployment types. Atlas Managed MCP is hosted by MongoDB, supports Atlas only, and offers user-delegated OAuth via Atlas App Connections plus admin controls, roles, IP restrictions and read-only enforcement for programmatic setups."
+        },
+        {
+          "url": "https://www.mongodb.com/docs/mcp-server/get-started/?ai-client=claude-code",
+          "title": "Get Started with the MongoDB MCP Server - MongoDB MCP Server - MongoDB Docs",
+          "source_type": "official_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "The setup guide says an organization owner must enable AI Clients for plugin access, then users authorize with Atlas OAuth. Programmatic setup uses Atlas CLI/API to create organization/project MCP configuration, assign roles/IP allowlists and generate one-time client secrets."
+        },
+        {
+          "url": "https://www.mongodb.com/docs/atlas/configure-api-access/?interface=atlas-ui&programmatic-access=service-account",
+          "title": "Get Started with the Atlas Administration API - Atlas - MongoDB Docs",
+          "source_type": "official_api_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Atlas Administration API is REST for management, not cluster data reads/writes. It supports OAuth service-account tokens and API keys using HTTP Digest; organization owners create service accounts/keys, project owners grant project access, and organization-created API keys may require IP access-list entries. Database reads/writes use separate database-user credentials."
+        },
+        {
+          "url": "https://www.mongodb.com/pricing",
+          "title": "Pricing | MongoDB",
+          "source_type": "official_pricing",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "MongoDB Atlas lists a free-forever $0/hour tier with 512 MB storage, plus Flex and Dedicated usage-priced tiers. Free-tier capabilities/resources are limited; the pricing page does not establish that every MCP tool or feature is available on M0."
+        }
+      ],
+      "attempts": [
+        {
+          "tool": "web_search",
+          "query": "MongoDB Atlas official MCP server docs remote API authentication free tier pricing site:mongodb.com/docs OR site:mongodb.com/pricing",
+          "depth": "2",
+          "status": "SUCCESS",
+          "note": "Discovery lead only; not claim evidence."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://www.mongodb.com/docs/mcp-server/overview/",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://www.mongodb.com/docs/mcp-server/get-started/?ai-client=claude-code",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://www.mongodb.com/docs/atlas/configure-api-access/?interface=atlas-ui&programmatic-access=service-account",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://www.mongodb.com/pricing",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        }
+      ],
+      "trace_limitations": [
+        "This standalone trace enumerates the targeted searches and source captures retained for Batch05 IDs 62-70. Redundant navigation-only HTML captures are not reconstructed; material failed/redirected paths are retained as non-evidence attempts.",
+        "Search results/snippets are discovery leads only. Claim evidence cites opened first-party sources; fetch_page capture time is date-only because the tool does not expose a per-page clock time.",
+        "LIVE_AGENT denotes native web research only. No provider credentials, vendor account, tenant, API call, MCP execution, deployment, or human review is claimed.",
+        "This partial capture covers IDs 62-70 only and is not merged into the authoritative 100-row dataset. Full-population research, verification, human QA, analysis, tests, HTML regeneration and deployment gates remain unfinished."
+      ]
+    },
+    {
+      "app_id": 69,
+      "app": "Datadog",
+      "source_mode": "LIVE_AGENT",
+      "status": "COMPLETE",
+      "research_run_id": "arena-native-web-batch05-20260924",
+      "research_tool": "Arena.ai Agent Mode native web_search + fetch_page; official-source-led manual research",
+      "queries": [
+        {
+          "query": "Datadog official MCP server docs remote OAuth API key application key plans pricing site:docs.datadoghq.com OR site:datadoghq.com/pricing",
+          "depth": "2",
+          "search_status": "SUCCESS",
+          "lead_only": true,
+          "note": "Search results were discovery leads only; snippets were not used as claim evidence."
+        },
+        {
+          "query": "Datadog official pricing free trial 14 days self serve account API app keys pricing plans site:datadoghq.com OR site:docs.datadoghq.com",
+          "depth": "2",
+          "search_status": "SUCCESS",
+          "lead_only": true,
+          "note": "Search results were discovery leads only; snippets were not used as claim evidence."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.datadoghq.com/mcp_server/setup.md",
+          "title": "Set Up the Datadog MCP Server",
+          "source_type": "official_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Datadog documents a hosted, site-specific MCP server with OAuth for ChatGPT, Claude, Claude Code and other clients, selectable product toolsets, and local binary setup. US-FED/US2-FED sites are marked unsupported in the opened guide."
+        },
+        {
+          "url": "https://docs.datadoghq.com/llm_observability/build_with_ai/mcp_server.md?tab=remoteauthentication",
+          "title": "Agent Observability MCP and Skills",
+          "source_type": "official_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "The Agent Observability toolset covers LLM traces, spans and experiment results. Its docs use OAuth 2.0 by default with API-key plus application-key headers as a fallback, require permission to the relevant data, and state site-specific endpoint selection; US-FED/US2-FED are unsupported."
+        },
+        {
+          "url": "https://docs.datadoghq.com/api/latest.md",
+          "title": "API Reference",
+          "source_type": "official_api_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Datadog exposes an HTTP REST API with JSON/resource-oriented URLs and client libraries. The reference uses DD-API-KEY and, for some endpoints, DD-APPLICATION-KEY; endpoint catalogs span telemetry, configuration and account resources."
+        },
+        {
+          "url": "https://docs.datadoghq.com/api/latest/using-the-api.md",
+          "title": "Using the API",
+          "source_type": "official_api_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "The API guide documents sending/reading metrics, events, logs, traces, synthetic results and integrations; creating dashboards, monitors, SLOs and security signals; and managing users, roles, organizations, keys and usage."
+        },
+        {
+          "url": "https://docs.datadoghq.com/getting_started/access_for_enterprises/credential_management.md",
+          "title": "Credential Management",
+          "source_type": "official_auth_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Datadog distinguishes org-wide ingestion API keys, user-scoped PATs, service-account SATs, legacy application keys, and RUM tokens. PATs/SATs are preferred for API access; credentials inherit user/service-account permissions and should be scoped/short-lived."
+        },
+        {
+          "url": "https://docs.datadoghq.com/account_management/api-app-keys.md",
+          "title": "API and Application Keys",
+          "source_type": "official_auth_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "API keys are organization-specific; application keys plus an API key authorize programmatic API access and inherit the creating user's permissions. Organization/user/service-account permissions govern key creation and scopes; secrets can be one-time-read for new organizations."
+        },
+        {
+          "url": "https://www.datadoghq.com/pricing/",
+          "title": "Pricing | Datadog",
+          "source_type": "official_pricing",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            3
+          ],
+          "excerpt_or_observation": "The opened pricing section includes product-specific free-trial calls and usage/seat/host/credit-based prices (for example AI Credits are a separate metered product). Datadog pricing varies by product and site; this is not a single universal API/MCP price."
+        }
+      ],
+      "attempts": [
+        {
+          "tool": "web_search",
+          "query": "Datadog official MCP server docs remote OAuth API key application key plans pricing site:docs.datadoghq.com OR site:datadoghq.com/pricing",
+          "depth": "2",
+          "status": "SUCCESS",
+          "note": "Discovery lead only; not claim evidence."
+        },
+        {
+          "tool": "web_search",
+          "query": "Datadog official pricing free trial 14 days self serve account API app keys pricing plans site:datadoghq.com OR site:docs.datadoghq.com",
+          "depth": "2",
+          "status": "SUCCESS",
+          "note": "Discovery lead only; not claim evidence."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://docs.datadoghq.com/mcp_server/setup.md",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://docs.datadoghq.com/llm_observability/build_with_ai/mcp_server.md?tab=remoteauthentication",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://docs.datadoghq.com/api/latest.md",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://docs.datadoghq.com/api/latest/using-the-api.md",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://docs.datadoghq.com/getting_started/access_for_enterprises/credential_management.md",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://docs.datadoghq.com/account_management/api-app-keys.md",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://www.datadoghq.com/pricing/",
+          "chunk_index": 3,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://www.datadoghq.com/pricing.md",
+          "chunk_index": 0,
+          "status": "HTTP_404",
+          "note": "The pricing Markdown guess returned a 404; the HTML pricing page was opened and its product section captured directly."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://www.datadoghq.com/free-trial/",
+          "chunk_index": 0,
+          "status": "HTTP_404",
+          "note": "The guessed free-trial route returned a 404; the official pricing page's Start Free Trial calls and product pricing were inspected instead."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://docs.datadoghq.com/llm_observability/pricing.md",
+          "chunk_index": 0,
+          "status": "HTTP_404",
+          "note": "No such LLM Observability pricing Markdown page was found; no plan price is inferred from this failed path."
+        }
+      ],
+      "trace_limitations": [
+        "This standalone trace enumerates the targeted searches and source captures retained for Batch05 IDs 62-70. Redundant navigation-only HTML captures are not reconstructed; material failed/redirected paths are retained as non-evidence attempts.",
+        "Search results/snippets are discovery leads only. Claim evidence cites opened first-party sources; fetch_page capture time is date-only because the tool does not expose a per-page clock time.",
+        "LIVE_AGENT denotes native web research only. No provider credentials, vendor account, tenant, API call, MCP execution, deployment, or human review is claimed.",
+        "This partial capture covers IDs 62-70 only and is not merged into the authoritative 100-row dataset. Full-population research, verification, human QA, analysis, tests, HTML regeneration and deployment gates remain unfinished."
+      ]
+    },
+    {
+      "app_id": 70,
+      "app": "Sentry",
+      "source_mode": "LIVE_AGENT",
+      "status": "COMPLETE",
+      "research_run_id": "arena-native-web-batch05-20260924",
+      "research_tool": "Arena.ai Agent Mode native web_search + fetch_page; official-source-led manual research",
+      "queries": [
+        {
+          "query": "Sentry official remote MCP docs OAuth API token plans pricing site:docs.sentry.io OR site:sentry.io/pricing",
+          "depth": "2",
+          "search_status": "SUCCESS",
+          "lead_only": true,
+          "note": "Search results were discovery leads only; snippets were not used as claim evidence."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://mcp.sentry.dev/",
+          "title": "Sentry MCP",
+          "source_type": "official_product",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Sentry's hosted MCP site advertises https://mcp.sentry.dev/mcp and connects the Sentry API to coding agents for issue, trace and debugging context; setup examples initiate an OAuth flow to the Sentry account."
+        },
+        {
+          "url": "https://docs.sentry.io/api/",
+          "title": "API Reference | Sentry Docs",
+          "source_type": "official_api_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Sentry's web API is version v0 and supports programmatic management of organization/team resources and data access/export. Public endpoints are generally stable; region-specific API domains may be used."
+        },
+        {
+          "url": "https://docs.sentry.io/api/auth/",
+          "title": "API Authentication | Sentry Docs",
+          "source_type": "official_auth_docs",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "Sentry API tokens use Bearer authorization; users can create scoped personal tokens, internal integrations can issue tokens, and third-party apps can use OAuth2 authorization-code/PKCE with org scoping."
+        },
+        {
+          "url": "https://sentry.io/pricing/",
+          "title": "Pricing: Free Developer Plan, Pay as You Grow | Sentry",
+          "source_type": "official_pricing",
+          "capture_method": "fetch_page",
+          "capture_status": "OPENED",
+          "retrieved_at": "2026-09-24",
+          "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+          "retrieved_chunk_indexes": [
+            0
+          ],
+          "excerpt_or_observation": "The Developer plan is $0, limited to one user, and includes MCP access. Team is listed at $26/month annually and includes API/third-party integrations; data quotas and paid features vary by plan."
+        }
+      ],
+      "attempts": [
+        {
+          "tool": "web_search",
+          "query": "Sentry official remote MCP docs OAuth API token plans pricing site:docs.sentry.io OR site:sentry.io/pricing",
+          "depth": "2",
+          "status": "SUCCESS",
+          "note": "Discovery lead only; not claim evidence."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://mcp.sentry.dev/",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://docs.sentry.io/api/",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://docs.sentry.io/api/auth/",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://sentry.io/pricing/",
+          "chunk_index": 0,
+          "status": "SUCCESS",
+          "note": "First-party source opened; claim-relevant observation retained in the source packet."
+        },
+        {
+          "tool": "fetch_page",
+          "url": "https://docs.sentry.io/product/sentry-mcp.md",
+          "chunk_index": 0,
+          "status": "HTTP_404",
+          "note": "The guessed Markdown route returned a page-not-found response. The official docs page redirected to the Sentry MCP product site, which was opened directly."
+        }
+      ],
+      "trace_limitations": [
+        "This standalone trace enumerates the targeted searches and source captures retained for Batch05 IDs 62-70. Redundant navigation-only HTML captures are not reconstructed; material failed/redirected paths are retained as non-evidence attempts.",
+        "Search results/snippets are discovery leads only. Claim evidence cites opened first-party sources; fetch_page capture time is date-only because the tool does not expose a per-page clock time.",
+        "LIVE_AGENT denotes native web research only. No provider credentials, vendor account, tenant, API call, MCP execution, deployment, or human review is claimed.",
+        "This partial capture covers IDs 62-70 only and is not merged into the authoritative 100-row dataset. Full-population research, verification, human QA, analysis, tests, HTML regeneration and deployment gates remain unfinished."
+      ]
+    }
+  ]
+}

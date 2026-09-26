@@ -1,0 +1,3175 @@
+{
+  "run_id": "final-prior-capture-20260924T174241Z",
+  "mode": "PRIOR_CAPTURE_ASSEMBLY_NO_PROVIDER_CREDENTIALS",
+  "run_started_at": "2026-09-24T17:42:41Z",
+  "run_completed_at": "2026-09-24T17:42:41Z",
+  "provider_credentials": {
+    "TAVILY_API_KEY": "MISSING",
+    "OPENAI_API_KEY": "MISSING"
+  },
+  "manifest_file": "apps/apps.json",
+  "baseline_batches": [
+    {
+      "results": "data/raw/pilot_results.json",
+      "attempts": "data/raw/pilot_attempts.json",
+      "capture": "data/evidence/pilot_capture.json"
+    },
+    {
+      "results": "data/raw/crm_batch_02_results.json",
+      "attempts": "data/raw/crm_batch_02_attempts.json",
+      "capture": "data/evidence/crm_batch_02_capture.json"
+    },
+    {
+      "results": "data/raw/support_batch_11_results.json",
+      "attempts": "data/raw/support_batch_11_attempts.json",
+      "capture": "data/evidence/support_batch_11_capture.json"
+    }
+  ],
+  "traces": [
+    {
+      "app_id": 1,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Salesforce REST API OAuth Developer Edition official docs",
+        "Salesforce official MCP server docs"
+      ],
+      "sources": [
+        {
+          "title": "Salesforce CRM",
+          "url": "https://www.salesforce.com/crm/",
+          "retrieval": "fetch_page",
+          "observation": "Product page lists CRM products including Sales, Service, Marketing and Commerce.",
+          "source_url": "https://www.salesforce.com/crm/",
+          "source_title": "Salesforce CRM",
+          "source_type": "official_product",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Connect REST API Quick Start",
+          "url": "https://developer.salesforce.com/docs/platform/connect-rest-api/guide/quickstart",
+          "retrieval": "fetch_page",
+          "observation": "OAuth client app setup and access token quickstart.",
+          "source_url": "https://developer.salesforce.com/docs/platform/connect-rest-api/guide/quickstart",
+          "source_title": "Connect REST API Quick Start",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Step One: Sign up for Salesforce Developer Edition",
+          "url": "https://developer.salesforce.com/docs/platform/connect-rest-api/guide/quickstart_dev_org.html",
+          "retrieval": "fetch_page",
+          "observation": "Developer Edition described as free for testing/development; API Enabled permission noted.",
+          "source_url": "https://developer.salesforce.com/docs/platform/connect-rest-api/guide/quickstart_dev_org.html",
+          "source_title": "Step One: Sign up for Salesforce Developer Edition",
+          "source_type": "official_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "About REST API",
+          "url": "https://developer.salesforce.com/docs/platform/api-rest/guide/intro-what-is-rest-api.html",
+          "retrieval": "fetch_page",
+          "observation": "REST API covers records, query results and metadata; related Bulk/Metadata/Connect APIs.",
+          "source_url": "https://developer.salesforce.com/docs/platform/api-rest/guide/intro-what-is-rest-api.html",
+          "source_title": "About REST API",
+          "source_type": "official_api_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "MCP Solutions for Developers",
+          "url": "https://developer.salesforce.com/docs/ai/agentforce/guide/mcp.html",
+          "retrieval": "fetch_page",
+          "observation": "First-party Salesforce DX MCP Server and Hosted MCP Servers listed.",
+          "source_url": "https://developer.salesforce.com/docs/ai/agentforce/guide/mcp.html",
+          "source_title": "MCP Solutions for Developers",
+          "source_type": "official_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "limitations": [
+        "A direct deep-link to a Salesforce OAuth article returned 404; navigation/current API guide used instead."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T15:34:58Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/pilot_results.json",
+        "attempts": "data/raw/pilot_attempts.json",
+        "capture": "data/evidence/pilot_capture.json"
+      }
+    },
+    {
+      "app_id": 2,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "HubSpot API official developer docs authentication OAuth private app access API limits free developer account MCP",
+        "site:developers.hubspot.com/docs/mcp HubSpot MCP official server OAuth CRM",
+        "HubSpot pricing free CRM API access private apps free tier official pricing api access developer app"
+      ],
+      "sources": [
+        {
+          "title": "Streamline Your Entire Business With a Free CRM | HubSpot",
+          "url": "https://www.hubspot.com/products/crm",
+          "retrieval": "fetch_page",
+          "observation": "Free CRM, contacts, deals, tasks, pipeline management and customer data.",
+          "source_url": "https://www.hubspot.com/products/crm",
+          "source_title": "Streamline Your Entire Business With a Free CRM | HubSpot",
+          "source_type": "official_product",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Legacy private apps - HubSpot docs",
+          "url": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview",
+          "retrieval": "fetch_page",
+          "observation": "Super-admin access, scoped private app, Bearer token, webhook subscriptions.",
+          "source_url": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview",
+          "source_title": "Legacy private apps - HubSpot docs",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "API usage guidelines and limits - HubSpot docs",
+          "url": "https://developers.hubspot.com/docs/developer-tooling/platform/usage-guidelines",
+          "retrieval": "fetch_page",
+          "observation": "OAuth/static-token distinction and subscription/app-specific rate limits.",
+          "source_url": "https://developers.hubspot.com/docs/developer-tooling/platform/usage-guidelines",
+          "source_title": "API usage guidelines and limits - HubSpot docs",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "HubSpot MCP Server",
+          "url": "https://developers.hubspot.com/ai-tools/mcp",
+          "retrieval": "fetch_page",
+          "observation": "First-party remote CRM and local developer MCP servers; OAuth/developer-platform setup.",
+          "source_url": "https://developers.hubspot.com/ai-tools/mcp",
+          "source_title": "HubSpot MCP Server",
+          "source_type": "official_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "limitations": [
+        "No portal/account was accessed; product access and API scopes were not tested."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T15:46:04Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/crm_batch_02_results.json",
+        "attempts": "data/raw/crm_batch_02_attempts.json",
+        "capture": "data/evidence/crm_batch_02_capture.json"
+      }
+    },
+    {
+      "app_id": 3,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Pipedrive API official developer docs authentication OAuth API token pricing sandbox MCP",
+        "site:developers.pipedrive.com OR site:pipedrive.readme.io official API token OAuth sandbox plan MCP",
+        "Pipedrive official API token creation developer sandbox account required API access plan self serve",
+        "site:developers.pipedrive.com MCP OR site:pipedrive.readme.io MCP"
+      ],
+      "sources": [
+        {
+          "title": "Sales CRM & Pipeline Management Software | Pipedrive",
+          "url": "https://www.pipedrive.com/",
+          "retrieval": "fetch_page",
+          "observation": "Official product page describes a sales CRM, leads, deals, sales pipeline and 14-day trial.",
+          "source_url": "https://www.pipedrive.com/",
+          "source_title": "Sales CRM & Pipeline Management Software | Pipedrive",
+          "source_type": "official_product",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Pipedrive API Reference and Documentation",
+          "url": "https://developers.pipedrive.com/docs/api/v1",
+          "retrieval": "fetch_page",
+          "observation": "REST JSON API, API token/OAuth, broad core resources, webhooks and official SDKs.",
+          "source_url": "https://developers.pipedrive.com/docs/api/v1",
+          "source_title": "Pipedrive API Reference and Documentation",
+          "source_type": "official_api_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "OAuth 2.0 overview",
+          "url": "https://pipedrive.readme.io/docs/marketplace-oauth-api",
+          "retrieval": "fetch_page",
+          "observation": "Marketplace app registration, developer sandbox, OAuth scopes and user consent.",
+          "source_url": "https://pipedrive.readme.io/docs/marketplace-oauth-api",
+          "source_title": "OAuth 2.0 overview",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "How to find the API token",
+          "url": "https://pipedrive.readme.io/docs/how-to-find-the-api-token",
+          "retrieval": "fetch_page",
+          "observation": "Company-specific token is retrieved from the Pipedrive app.",
+          "source_url": "https://pipedrive.readme.io/docs/how-to-find-the-api-token",
+          "source_title": "How to find the API token",
+          "source_type": "unclassified_or_discovery_only",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Enabling API for company users",
+          "url": "https://pipedrive.readme.io/docs/enabling-api-for-company-users",
+          "retrieval": "fetch_page",
+          "observation": "Company admin controls API permission sets and token visibility.",
+          "source_url": "https://pipedrive.readme.io/docs/enabling-api-for-company-users",
+          "source_title": "Enabling API for company users",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Developer sandbox account",
+          "url": "https://pipedrive.readme.io/docs/developer-sandbox-account",
+          "retrieval": "fetch_page",
+          "observation": "Sandbox access is requested through a form; separate development/testing environment.",
+          "source_url": "https://pipedrive.readme.io/docs/developer-sandbox-account",
+          "source_title": "Developer sandbox account",
+          "source_type": "official_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "limitations": [
+        "No production account or sandbox was created; plan-level production API eligibility remains unresolved.",
+        "Official MCP status remains UNKNOWN; the reviewed official docs do not prove absence."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T15:46:04Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/crm_batch_02_results.json",
+        "attempts": "data/raw/crm_batch_02_attempts.json",
+        "capture": "data/evidence/crm_batch_02_capture.json"
+      }
+    },
+    {
+      "app_id": 4,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Attio API official docs authentication API key OAuth MCP plan access",
+        "site:developers.attio.com OR site:docs.attio.com official REST API authentication OAuth MCP server",
+        "Attio pricing free plan API access official help generate API key OAuth app developer"
+      ],
+      "sources": [
+        {
+          "title": "Overview - Attio Docs",
+          "url": "https://docs.attio.com/docs/overview",
+          "retrieval": "fetch_page",
+          "observation": "Developer platform lists App SDK, REST API, webhooks, MCP and SQL.",
+          "source_url": "https://docs.attio.com/docs/overview",
+          "source_title": "Overview - Attio Docs",
+          "source_type": "official_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Authenticating requests - Attio Docs",
+          "url": "https://docs.attio.com/rest-api/guides/authentication",
+          "retrieval": "fetch_page",
+          "observation": "OAuth2 or workspace API key; Bearer token and scopes.",
+          "source_url": "https://docs.attio.com/rest-api/guides/authentication",
+          "source_title": "Authenticating requests - Attio Docs",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Generate an API key | Attio Help Center",
+          "url": "https://attio.com/help/reference/apps/generating-an-api-key",
+          "retrieval": "fetch_page",
+          "observation": "API keys are available on all plans; admins create/manage scoped tokens.",
+          "source_url": "https://attio.com/help/reference/apps/generating-an-api-key",
+          "source_title": "Generate an API key | Attio Help Center",
+          "source_type": "official_support",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Plans & Pricing | Attio",
+          "url": "https://attio.com/pricing",
+          "retrieval": "fetch_page",
+          "observation": "Free tier; API/webhook access and MCP listed in plan comparison.",
+          "source_url": "https://attio.com/pricing",
+          "source_title": "Plans & Pricing | Attio",
+          "source_type": "official_pricing",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Attio MCP - Attio Docs",
+          "url": "https://docs.attio.com/mcp/overview",
+          "retrieval": "fetch_page",
+          "observation": "First-party hosted MCP URL and OAuth-based workspace access/tools.",
+          "source_url": "https://docs.attio.com/mcp/overview",
+          "source_title": "Attio MCP - Attio Docs",
+          "source_type": "official_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "limitations": [
+        "No workspace API key or MCP connection was tested."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T15:46:04Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/crm_batch_02_results.json",
+        "attempts": "data/raw/crm_batch_02_attempts.json",
+        "capture": "data/evidence/crm_batch_02_capture.json"
+      }
+    },
+    {
+      "app_id": 5,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Twenty CRM official API docs authentication API key cloud access MCP",
+        "site:docs.twenty.com/developers API authentication REST GraphQL API key cloud pricing MCP official",
+        "Twenty pricing cloud API key create account official docs MCP first-party GitHub"
+      ],
+      "sources": [
+        {
+          "title": "Work Management Platform | Twenty CRM Pricing",
+          "url": "https://twenty.com/pricing",
+          "retrieval": "fetch_page",
+          "observation": "Managed cloud/self-hosting, cloud trial and paid plans; API/webhooks/MCP plan matrix.",
+          "source_url": "https://twenty.com/pricing",
+          "source_title": "Work Management Platform | Twenty CRM Pricing",
+          "source_type": "official_product",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "APIs - Twenty Documentation",
+          "url": "https://docs.twenty.com/developers/extend/api",
+          "retrieval": "fetch_page",
+          "observation": "REST/GraphQL Core and Metadata APIs; role-scoped API keys, webhooks and rate limits.",
+          "source_url": "https://docs.twenty.com/developers/extend/api",
+          "source_title": "APIs - Twenty Documentation",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "OAuth - Twenty Documentation",
+          "url": "https://docs.twenty.com/developers/extend/oauth",
+          "retrieval": "fetch_page",
+          "observation": "Dynamic OAuth client registration, auth-code/PKCE, client credentials and API-key distinction.",
+          "source_url": "https://docs.twenty.com/developers/extend/oauth",
+          "source_title": "OAuth - Twenty Documentation",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "limitations": [
+        "No cloud trial or self-hosted instance was provisioned; cloud MCP statement is based on official pricing documentation."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T15:46:04Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/crm_batch_02_results.json",
+        "attempts": "data/raw/crm_batch_02_attempts.json",
+        "capture": "data/evidence/crm_batch_02_capture.json"
+      }
+    },
+    {
+      "app_id": 6,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Podio API official developer docs OAuth credentials API access free plan MCP",
+        "site:developers.podio.com official API key OAuth auth rate limits developer API MCP",
+        "Podio developer API key free plan API official pricing sign up create app credentials"
+      ],
+      "sources": [
+        {
+          "title": "Work Management Platform | Streamline Collaboration & Workflows | Podio",
+          "url": "https://podio.com/",
+          "retrieval": "fetch_page",
+          "observation": "Progress Podio page describes customizable workspaces, workflows, automation, lead/project tracking and collaboration.",
+          "source_url": "https://podio.com/",
+          "source_title": "Work Management Platform | Streamline Collaboration & Workflows | Podio",
+          "source_type": "official_product",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Authentication - Podio API Documentation",
+          "url": "https://developers.podio.com/authentication",
+          "retrieval": "fetch_page",
+          "observation": "OAuth2 flows, client ID/secret, access and refresh tokens.",
+          "source_url": "https://developers.podio.com/authentication",
+          "source_title": "Authentication - Podio API Documentation",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Get API key - Podio API Documentation",
+          "url": "https://developers.podio.com/api-key",
+          "retrieval": "fetch_page",
+          "observation": "Sign in/sign up and create API keys in account settings.",
+          "source_url": "https://developers.podio.com/api-key",
+          "source_title": "Get API key - Podio API Documentation",
+          "source_type": "unclassified_or_discovery_only",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Frequently Asked Questions - Podio API Documentation",
+          "url": "https://developers.podio.com/index/faq",
+          "retrieval": "fetch_page",
+          "observation": "Free/paid base API access, API add-on, app-token/support limitations.",
+          "source_url": "https://developers.podio.com/index/faq",
+          "source_title": "Frequently Asked Questions - Podio API Documentation",
+          "source_type": "official_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Concepts and conventions: Rate limits - Podio API Documentation",
+          "url": "https://developers.podio.com/index/limits",
+          "retrieval": "fetch_page",
+          "observation": "250/1000 hourly call limits, higher limit add-on and support path.",
+          "source_url": "https://developers.podio.com/index/limits",
+          "source_title": "Concepts and conventions: Rate limits - Podio API Documentation",
+          "source_type": "official_api_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "limitations": [
+        "Official MCP status remains UNKNOWN; no exhaustive first-party repo/catalog audit was made."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T15:46:04Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/crm_batch_02_results.json",
+        "attempts": "data/raw/crm_batch_02_attempts.json",
+        "capture": "data/evidence/crm_batch_02_capture.json"
+      }
+    },
+    {
+      "app_id": 7,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Zoho CRM API official docs OAuth authentication API access edition limits developer MCP",
+        "site:zoho.com/crm/developer/docs OAuth API limits free developer edition official MCP",
+        "site:zoho.com/crm developer MCP server official",
+        "site:zoho.com/crm/developer/docs MCP"
+      ],
+      "sources": [
+        {
+          "title": "Zoho CRM | Built-in AI Agents",
+          "url": "https://www.zoho.com/en-us/crm/",
+          "retrieval": "fetch_page",
+          "observation": "Official CRM product page with sales/lead workflows and AI-agent positioning.",
+          "source_url": "https://www.zoho.com/en-us/crm/",
+          "source_title": "Zoho CRM | Built-in AI Agents",
+          "source_type": "official_product",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "OAuth 2.0 Authentication | Zoho CRM API | V8",
+          "url": "https://www.zoho.com/crm/developer/docs/api/v8/oauth-overview.html",
+          "retrieval": "fetch_page",
+          "observation": "Official OAuth2 client and token-authentication documentation.",
+          "source_url": "https://www.zoho.com/crm/developer/docs/api/v8/oauth-overview.html",
+          "source_title": "OAuth 2.0 Authentication | Zoho CRM API | V8",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Register Client with Zoho | Zoho CRM API | V8",
+          "url": "https://www.zoho.com/crm/developer/docs/api/v8/register-client.html",
+          "retrieval": "fetch_page",
+          "observation": "OAuth client-registration reference.",
+          "source_url": "https://www.zoho.com/crm/developer/docs/api/v8/register-client.html",
+          "source_title": "Register Client with Zoho | Zoho CRM API | V8",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Limits - API | Zoho CRM API | V8",
+          "url": "https://www.zoho.com/crm/developer/docs/api/v8/api-limits.html",
+          "retrieval": "fetch_page",
+          "observation": "Official Free Edition 5,000-credit/24-hour and concurrency table.",
+          "source_url": "https://www.zoho.com/crm/developer/docs/api/v8/api-limits.html",
+          "source_title": "Limits - API | Zoho CRM API | V8",
+          "source_type": "official_pricing",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Zoho CRM MCP - An Overview | Developer Tools",
+          "url": "https://www.zoho.com/crm/developer/docs/mcp/overview.html",
+          "retrieval": "fetch_page",
+          "observation": "First-party Data Insights, Data Operations, Module Customization, and Workflow MCP; OAuth and shared API credits.",
+          "source_url": "https://www.zoho.com/crm/developer/docs/mcp/overview.html",
+          "source_title": "Zoho CRM MCP - An Overview | Developer Tools",
+          "source_type": "official_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Zoho CRM V8 APIs",
+          "url": "https://www.zoho.com/crm/developer/docs/api/v8/index.html",
+          "retrieval": "fetch_page",
+          "observation": "V8 API references, OAS, module/metadata APIs, SDKs, and limits.",
+          "source_url": "https://www.zoho.com/crm/developer/docs/api/v8/index.html",
+          "source_title": "Zoho CRM V8 APIs",
+          "source_type": "official_api_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "limitations": [
+        "No Zoho organization, OAuth connection, API call, or MCP session was used."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T15:46:04Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/crm_batch_02_results.json",
+        "attempts": "data/raw/crm_batch_02_attempts.json",
+        "capture": "data/evidence/crm_batch_02_capture.json"
+      }
+    },
+    {
+      "app_id": 8,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Close CRM official developer docs authentication API key OAuth API access pricing MCP",
+        "site:developer.close.com MCP server official authentication API key OAuth plan trial",
+        "Close official MCP server remote OAuth DCR CRM API documentation"
+      ],
+      "sources": [
+        {
+          "title": "Close CRM",
+          "url": "https://close.com/",
+          "retrieval": "fetch_page",
+          "observation": "Official homepage describes CRM for leads, calling, SMS, email, automation, and AI.",
+          "source_url": "https://close.com/",
+          "source_title": "Close CRM",
+          "source_type": "official_product",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "API Overview | Close | Developer API Documentation",
+          "url": "https://developer.close.com/api/overview",
+          "retrieval": "fetch_page",
+          "observation": "REST resources, API key Basic auth/OAuth, webhooks, event log and OpenAPI spec.",
+          "source_url": "https://developer.close.com/api/overview",
+          "source_title": "API Overview | Close | Developer API Documentation",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Authentication with API keys | Close | Developer API Documentation",
+          "url": "https://developer.close.com/api/overview/api-key-authentication",
+          "retrieval": "fetch_page",
+          "observation": "Account settings API-key path; key is scoped to a user/organization and uses Basic auth.",
+          "source_url": "https://developer.close.com/api/overview/api-key-authentication",
+          "source_title": "Authentication with API keys | Close | Developer API Documentation",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Free CRM Trial",
+          "url": "https://close.com/crm-trial",
+          "retrieval": "fetch_page",
+          "observation": "14-day trial with no credit card required.",
+          "source_url": "https://close.com/crm-trial",
+          "source_title": "Free CRM Trial",
+          "source_type": "official_pricing",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Close MCP Server | Close | Developer API Documentation",
+          "url": "https://developer.close.com/mcp",
+          "retrieval": "fetch_page",
+          "observation": "First-party hosted MCP endpoint, Streamable HTTP, OAuth DCR and API-key scope options.",
+          "source_url": "https://developer.close.com/mcp",
+          "source_title": "Close MCP Server | Close | Developer API Documentation",
+          "source_type": "official_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Close MCP Tools | Close | Developer API Documentation",
+          "url": "https://developer.close.com/mcp/tools",
+          "retrieval": "fetch_page",
+          "observation": "Read, safe-write, and destructive scopes across Close CRM tools.",
+          "source_url": "https://developer.close.com/mcp/tools",
+          "source_title": "Close MCP Tools | Close | Developer API Documentation",
+          "source_type": "official_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "limitations": [
+        "No Close account, API key, OAuth app, or MCP session was used."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T15:46:04Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/crm_batch_02_results.json",
+        "attempts": "data/raw/crm_batch_02_attempts.json",
+        "capture": "data/evidence/crm_batch_02_capture.json"
+      }
+    },
+    {
+      "app_id": 9,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Copper CRM API official developer docs authentication API key OAuth API access MCP",
+        "site:developer.copper.com API keys OAuth API access official MCP server",
+        "site:copper.com CRM sales management Google Workspace official product",
+        "Copper API key plan gate official pricing MCP server"
+      ],
+      "sources": [
+        {
+          "title": "Manage client projects with Copper CRM",
+          "url": "https://www.copper.com/manage-projects",
+          "retrieval": "fetch_page",
+          "observation": "Official page describes Copper as Google Workspace CRM with sales pipelines and client project workflows.",
+          "source_url": "https://www.copper.com/manage-projects",
+          "source_title": "Manage client projects with Copper CRM",
+          "source_type": "official_product",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Getting started - Copper Developer API",
+          "url": "https://developer.copper.com/",
+          "retrieval": "fetch_page",
+          "observation": "RESTful JSON API for most Copper resources; Postman collection.",
+          "source_url": "https://developer.copper.com/",
+          "source_title": "Getting started - Copper Developer API",
+          "source_type": "official_api_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Overview - Copper Developer API",
+          "url": "https://developer.copper.com/introduction/authentication.html",
+          "retrieval": "fetch_page",
+          "observation": "API-key path for individual users, OAuth2 for partner integrations; admins manage keys.",
+          "source_url": "https://developer.copper.com/introduction/authentication.html",
+          "source_title": "Overview - Copper Developer API",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Requests - Copper Developer API",
+          "url": "https://developer.copper.com/introduction/requests.html",
+          "retrieval": "fetch_page",
+          "observation": "Required token/application/owner-email headers and rate limits.",
+          "source_url": "https://developer.copper.com/introduction/requests.html",
+          "source_title": "Requests - Copper Developer API",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Quickstart Guide - Copper Developer API",
+          "url": "https://developer.copper.com/introduction/oauth/quickstart.html",
+          "retrieval": "fetch_page",
+          "observation": "OAuth quickstart requires app registration and partner client ID/secret.",
+          "source_url": "https://developer.copper.com/introduction/oauth/quickstart.html",
+          "source_title": "Quickstart Guide - Copper Developer API",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Pricing | Copper CRM",
+          "url": "https://www.copper.com/pricing",
+          "retrieval": "fetch_page",
+          "observation": "Official page offers a no-card trial and lists API/Embedded SDK, but extracted text did not map API availability to a plan.",
+          "source_url": "https://www.copper.com/pricing",
+          "source_title": "Pricing | Copper CRM",
+          "source_type": "official_pricing",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "limitations": [
+        "No Copper account or API/OAuth test; plan-level API entitlement and official MCP status remain unresolved."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T15:46:04Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/crm_batch_02_results.json",
+        "attempts": "data/raw/crm_batch_02_attempts.json",
+        "capture": "data/evidence/crm_batch_02_capture.json"
+      }
+    },
+    {
+      "app_id": 10,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "DealCloud API official docs authentication API access OAuth developer credentials MCP licensing",
+        "site:api.docs.dealcloud.com/mcp DealCloud MCP OAuth licensing API official developer docs",
+        "site:api.docs.dealcloud.com/docs/data DealCloud API data records schema overview",
+        "site:api.docs.dealcloud.com OR site:intapp.com DealCloud CRM platform"
+      ],
+      "sources": [
+        {
+          "title": "The AI-powered deal and relationship intelligence platform",
+          "url": "https://www.intapp.com/dealcloud/",
+          "retrieval": "fetch_page",
+          "observation": "Official product page describes deal and relationship intelligence for professional firms and regulated markets.",
+          "source_url": "https://www.intapp.com/dealcloud/",
+          "source_title": "The AI-powered deal and relationship intelligence platform",
+          "source_type": "official_product",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Docs - DealCloud API Docs",
+          "url": "https://api.docs.dealcloud.com/docs",
+          "retrieval": "fetch_page",
+          "observation": "Official REST API index lists auth, user management, schema, data, backup, publication/event and relationship-intelligence areas.",
+          "source_url": "https://api.docs.dealcloud.com/docs",
+          "source_title": "Docs - DealCloud API Docs",
+          "source_type": "official_api_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Data APIs - DealCloud API Docs",
+          "url": "https://api.docs.dealcloud.com/docs/data",
+          "retrieval": "fetch_page",
+          "observation": "CRUD across deals/contacts/companies and structured rows/cells.",
+          "source_url": "https://api.docs.dealcloud.com/docs/data",
+          "source_title": "Data APIs - DealCloud API Docs",
+          "source_type": "unclassified_or_discovery_only",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Obtaining an API Key - DealCloud API Docs",
+          "url": "https://api.docs.dealcloud.com/docs/apikeys",
+          "retrieval": "fetch_page",
+          "observation": "API capability must be enabled for user group by admin; user enables/copies key in profile.",
+          "source_url": "https://api.docs.dealcloud.com/docs/apikeys",
+          "source_title": "Obtaining an API Key - DealCloud API Docs",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Requesting an OAuth2 Bearer Token - DealCloud API Docs",
+          "url": "https://api.docs.dealcloud.com/docs/token",
+          "retrieval": "fetch_page",
+          "observation": "Client-credentials OAuth2 token flow, scopes, 15-minute expiry.",
+          "source_url": "https://api.docs.dealcloud.com/docs/token",
+          "source_title": "Requesting an OAuth2 Bearer Token - DealCloud API Docs",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Getting Started with DealCloud MCP - DealCloud API Docs",
+          "url": "https://api.docs.dealcloud.com/mcp/getting-started",
+          "retrieval": "fetch_page",
+          "observation": "First-party tenant MCP requires Celeste license, admin Manage MCP Servers, and end-user MCP Access.",
+          "source_url": "https://api.docs.dealcloud.com/mcp/getting-started",
+          "source_title": "Getting Started with DealCloud MCP - DealCloud API Docs",
+          "source_type": "official_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "limitations": [
+        "No DealCloud tenant, API key, license, or MCP connection was available or tested."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T15:46:04Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/crm_batch_02_results.json",
+        "attempts": "data/raw/crm_batch_02_attempts.json",
+        "capture": "data/evidence/crm_batch_02_capture.json"
+      }
+    },
+    {
+      "app_id": 11,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Zendesk developer API authentication API token OAuth pricing free trial MCP server official docs",
+        "site:developer.zendesk.com MCP Zendesk official server AI MCP",
+        "site:developer.zendesk.com/api-reference rate limits Zendesk ticketing API product features"
+      ],
+      "search_results": [
+        {
+          "query": "site:developer.zendesk.com MCP Zendesk official server AI MCP",
+          "status": "OK",
+          "results": 0
+        }
+      ],
+      "sources": [
+        {
+          "title": "Security and authentication | Zendesk Developer Docs",
+          "url": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/",
+          "retrieval": "fetch_page",
+          "observation": "Verified-user requirement; OAuth Bearer token, global OAuth rule for public apps, deprecated Basic API tokens.",
+          "source_url": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/",
+          "source_title": "Security and authentication | Zendesk Developer Docs",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Ticketing | Zendesk Developer Docs",
+          "url": "https://developer.zendesk.com/api-reference/ticketing/introduction/",
+          "retrieval": "fetch_page",
+          "observation": "Support API covers tickets, users, organizations, custom objects, and ticket workflows.",
+          "source_url": "https://developer.zendesk.com/api-reference/ticketing/introduction/",
+          "source_title": "Ticketing | Zendesk Developer Docs",
+          "source_type": "official_api_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Zendesk Pricing Plans | Starting from $19/month",
+          "url": "https://www.zendesk.com/pricing/",
+          "retrieval": "fetch_page",
+          "observation": "Opened current Support/Suite pricing page; free-trial signup is listed but API plan entitlement is not mapped.",
+          "source_url": "https://www.zendesk.com/pricing/",
+          "source_title": "Zendesk Pricing Plans | Starting from $19/month",
+          "source_type": "official_pricing",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "limitations": [
+        "The MCP search was bounded to official developer-domain search plus the opened API/auth references; no complete Zendesk repository or Marketplace audit was made."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T16:13:14Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/support_batch_11_results.json",
+        "attempts": "data/raw/support_batch_11_attempts.json",
+        "capture": "data/evidence/support_batch_11_capture.json"
+      }
+    },
+    {
+      "app_id": 12,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Intercom developer API authentication OAuth access token pricing trial MCP server official documentation",
+        "site:developers.intercom.com/docs MCP server official Intercom pricing trial API access",
+        "site:developers.intercom.com/docs/guides/mcp Intercom MCP available regions tools"
+      ],
+      "sources": [
+        {
+          "title": "Authentication | Intercom and Fin Developer Platform",
+          "url": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication",
+          "retrieval": "fetch_page",
+          "observation": "Private workspace Access Tokens vs public OAuth; Bearer request format and Developer Hub app flow.",
+          "source_url": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication",
+          "source_title": "Authentication | Intercom and Fin Developer Platform",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Conversations | Intercom and Fin Developer Platform",
+          "url": "https://developers.intercom.com/docs/references/1.1/rest-api/conversations/conversations",
+          "retrieval": "fetch_page",
+          "observation": "Conversation operations; access is only for apps with a trial or active subscription.",
+          "source_url": "https://developers.intercom.com/docs/references/1.1/rest-api/conversations/conversations",
+          "source_title": "Conversations | Intercom and Fin Developer Platform",
+          "source_type": "official_api_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Model Context Protocol (MCP) | Intercom and Fin Developer Platform",
+          "url": "https://developers.intercom.com/docs/guides/mcp",
+          "retrieval": "fetch_page",
+          "observation": "First-party hosted US/EU endpoints, 14 tools, permission checks; AU not supported.",
+          "source_url": "https://developers.intercom.com/docs/guides/mcp",
+          "source_title": "Model Context Protocol (MCP) | Intercom and Fin Developer Platform",
+          "source_type": "official_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Intercom Pricing | Plans for every team size",
+          "url": "https://www.intercom.com/pricing",
+          "retrieval": "fetch_page",
+          "observation": "Self-serve trial and paid customer-service plans; pricing is seat plus usage based.",
+          "source_url": "https://www.intercom.com/pricing",
+          "source_title": "Intercom Pricing | Plans for every team size",
+          "source_type": "official_pricing",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "limitations": [
+        "No app, trial, API request, OAuth consent, or MCP session was executed; reference endpoint breadth beyond conversations was not exhaustively sampled."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T16:13:14Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/support_batch_11_results.json",
+        "attempts": "data/raw/support_batch_11_attempts.json",
+        "capture": "data/evidence/support_batch_11_capture.json"
+      }
+    },
+    {
+      "app_id": 13,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Freshdesk developer REST API authentication API key pricing free trial MCP official docs",
+        "site:developer.freshdesk.com/api authentication Freshdesk API key rate limits",
+        "site:support.freshdesk.com Freshdesk API key Profile Settings verified agent current plan"
+      ],
+      "sources": [
+        {
+          "title": "Freshdesk",
+          "url": "https://developer.freshdesk.com/api/",
+          "retrieval": "fetch_page",
+          "observation": "Opened the API reference index; ticket, conversation, contact, agent, field/form, and other resource groups; Basic auth uses API key.",
+          "source_url": "https://developer.freshdesk.com/api/",
+          "source_title": "Freshdesk",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Model Context Protocol (MCP) integration in Freshdesk : Freshdesk Support",
+          "url": "https://support.freshdesk.com/support/solutions/articles/50000012670-model-context-protocol-mcp-integration-in-freshdesk",
+          "retrieval": "fetch_page",
+          "observation": "Official MCP GA date, subdomain endpoint, API-key-only auth, supported plans, included actions/rate limits.",
+          "source_url": "https://support.freshdesk.com/support/solutions/articles/50000012670-model-context-protocol-mcp-integration-in-freshdesk",
+          "source_title": "Model Context Protocol (MCP) integration in Freshdesk : Freshdesk Support",
+          "source_type": "official_support",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "How To Find Your API Key : Freshdesk Support",
+          "url": "https://support.freshdesk.com/support/solutions/articles/215517-how-to-find-your-api-key",
+          "retrieval": "fetch_page",
+          "observation": "Current support instructions: Profile Settings, CAPTCHA, verified agent, role-based API actions.",
+          "source_url": "https://support.freshdesk.com/support/solutions/articles/215517-how-to-find-your-api-key",
+          "source_title": "How To Find Your API Key : Freshdesk Support",
+          "source_type": "official_support",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Where can I find my API key? : Freshdesk Support",
+          "url": "https://support.freshdesk.com/support/solutions/articles/225435-where-can-i-find-my-api-key-",
+          "retrieval": "fetch_page",
+          "observation": "Current-plan table marks API key unavailable on Free and available on Growth/Pro/Enterprise; legacy plan rows are separate.",
+          "source_url": "https://support.freshdesk.com/support/solutions/articles/225435-where-can-i-find-my-api-key-",
+          "source_title": "Where can I find my API key? : Freshdesk Support",
+          "source_type": "official_support",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Freshdesk Customer Support Software Pricing & Plans | Freshworks",
+          "url": "https://www.freshworks.com/freshdesk/pricing/",
+          "retrieval": "fetch_page",
+          "observation": "Opened Growth/Pro/Enterprise prices, self-serve trial links, and MCP action add-on pricing.",
+          "source_url": "https://www.freshworks.com/freshdesk/pricing/",
+          "source_title": "Freshdesk Customer Support Software Pricing & Plans | Freshworks",
+          "source_type": "official_pricing",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "limitations": [
+        "No account, API key, production plan, or MCP action was tested; one plan article includes historical plan names which are not treated as current."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T16:13:14Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/support_batch_11_results.json",
+        "attempts": "data/raw/support_batch_11_attempts.json",
+        "capture": "data/evidence/support_batch_11_capture.json"
+      }
+    },
+    {
+      "app_id": 14,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Front app API authentication API token OAuth pricing trial MCP official developer documentation",
+        "site:dev.frontapp.com/docs MCP Front API free trial pricing official",
+        "site:dev.frontapp.com/docs/authentication Front API public OAuth API tokens"
+      ],
+      "sources": [
+        {
+          "title": "Welcome",
+          "url": "https://dev.frontapp.com/docs/welcome",
+          "retrieval": "fetch_page",
+          "observation": "Free developer environment limited to three teammates; Core API CRUD/webhooks and related platform surfaces.",
+          "source_url": "https://dev.frontapp.com/docs/welcome",
+          "source_title": "Welcome",
+          "source_type": "official_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Authentication",
+          "url": "https://dev.frontapp.com/docs/authentication",
+          "retrieval": "fetch_page",
+          "observation": "Bearer tokens from API tokens or OAuth; OAuth required for public integrations unless exception.",
+          "source_url": "https://dev.frontapp.com/docs/authentication",
+          "source_title": "Authentication",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "MCP Server",
+          "url": "https://dev.frontapp.com/docs/mcp-server",
+          "retrieval": "fetch_page",
+          "observation": "First-party open-beta MCP endpoint, per-user OAuth, confidential client ID/secret, no DCR.",
+          "source_url": "https://dev.frontapp.com/docs/mcp-server",
+          "source_title": "MCP Server",
+          "source_type": "official_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Partnering With Front",
+          "url": "https://dev.frontapp.com/docs/partnering-with-front",
+          "retrieval": "fetch_page",
+          "observation": "Free developer-account path and separation between public partnerships and private/single-client use.",
+          "source_url": "https://dev.frontapp.com/docs/partnering-with-front",
+          "source_title": "Partnering With Front",
+          "source_type": "official_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "limitations": [
+        "No Front developer account, OAuth app, API token, or MCP client compatibility test was performed."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T16:13:14Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/support_batch_11_results.json",
+        "attempts": "data/raw/support_batch_11_attempts.json",
+        "capture": "data/evidence/support_batch_11_capture.json"
+      }
+    },
+    {
+      "app_id": 15,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Pylon customer support API developer docs authentication API key OAuth MCP plan access official",
+        "Pylon developer docs REST API authentication API tokens official docs Pylon pricing trial",
+        "Pylon pricing free trial API plan access official usepylon.com",
+        "site:docs.usepylon.com API authentication Pylon official"
+      ],
+      "sources": [
+        {
+          "title": "API | Pylon",
+          "url": "https://docs.usepylon.com/pylon-docs/developer/api",
+          "retrieval": "fetch_page",
+          "observation": "Official API page says Pylon API provides programmatic read/action access and only Admin users can create API tokens.",
+          "source_url": "https://docs.usepylon.com/pylon-docs/developer/api",
+          "source_title": "API | Pylon",
+          "source_type": "official_api_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Authentication | Pylon",
+          "url": "https://docs.usepylon.com/pylon-docs/developer/api/authentication",
+          "retrieval": "fetch_page",
+          "observation": "Bearer auth, US/EU API base URLs, /me check, token attribution.",
+          "source_url": "https://docs.usepylon.com/pylon-docs/developer/api/authentication",
+          "source_title": "Authentication | Pylon",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "API & Webhooks Integration | Pylon",
+          "url": "https://www.usepylon.com/integrations/api-webhooks",
+          "retrieval": "fetch_page",
+          "observation": "First-party API/webhook product page lists accounts, contacts, issues, messages, tasks/projects, knowledge base, custom objects, and event delivery.",
+          "source_url": "https://www.usepylon.com/integrations/api-webhooks",
+          "source_title": "API & Webhooks Integration | Pylon",
+          "source_type": "official_api_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "How do I create a Pylon API token? | Pylon Knowledge Base",
+          "url": "https://support.usepylon.com/articles/4735104435-how-do-i-create-an-api-token",
+          "retrieval": "fetch_page",
+          "observation": "Admin-only token creation, Settings path, one-time token visibility, role selection.",
+          "source_url": "https://support.usepylon.com/articles/4735104435-how-do-i-create-an-api-token",
+          "source_title": "How do I create a Pylon API token? | Pylon Knowledge Base",
+          "source_type": "official_support",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "How do I connect to the Pylon MCP Server? | Pylon Knowledge Base",
+          "url": "https://support.usepylon.com/articles/2407390554-connecting-to-the-pylon-mcp-server",
+          "retrieval": "fetch_page",
+          "observation": "OAuth-only MCP, Member/Admin seat, user-scoped issue/account/contact tools; no API-key/machine auth.",
+          "source_url": "https://support.usepylon.com/articles/2407390554-connecting-to-the-pylon-mcp-server",
+          "source_title": "How do I connect to the Pylon MCP Server? | Pylon Knowledge Base",
+          "source_type": "official_support",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "failures": [
+        {
+          "stage": "fetch_page",
+          "url": "https://www.usepylon.com/pricing",
+          "status": "REDIRECTED",
+          "final_url": "https://www.usepylon.com/schedule-demo",
+          "note": "Returned a required-field demo form rather than a pricing/plan table; no plan claim was taken from search snippets."
+        },
+        {
+          "stage": "fetch_page",
+          "url": "https://www.usepylon.com/pricing/",
+          "status": "REDIRECTED",
+          "final_url": "https://www.usepylon.com/schedule-demo",
+          "note": "Same pricing-page redirect; plan/trial entitlement remains unresolved."
+        },
+        {
+          "stage": "fetch_page",
+          "url": "https://usepylon.com/pricing",
+          "status": "REDIRECTED",
+          "final_url": "https://www.usepylon.com/schedule-demo",
+          "note": "Same demo-form destination; no plan/trial entitlement claim used."
+        }
+      ],
+      "limitations": [
+        "Public account signup, trial, API/MCP plan eligibility, and pricing were not established from opened pages."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [
+        {
+          "stage": "fetch_page",
+          "url": "https://www.usepylon.com/pricing",
+          "status": "REDIRECTED",
+          "final_url": "https://www.usepylon.com/schedule-demo",
+          "note": "Returned a required-field demo form rather than a pricing/plan table; no plan claim was taken from search snippets."
+        },
+        {
+          "stage": "fetch_page",
+          "url": "https://www.usepylon.com/pricing/",
+          "status": "REDIRECTED",
+          "final_url": "https://www.usepylon.com/schedule-demo",
+          "note": "Same pricing-page redirect; plan/trial entitlement remains unresolved."
+        },
+        {
+          "stage": "fetch_page",
+          "url": "https://usepylon.com/pricing",
+          "status": "REDIRECTED",
+          "final_url": "https://www.usepylon.com/schedule-demo",
+          "note": "Same demo-form destination; no plan/trial entitlement claim used."
+        }
+      ],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T16:13:14Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/support_batch_11_results.json",
+        "attempts": "data/raw/support_batch_11_attempts.json",
+        "capture": "data/evidence/support_batch_11_capture.json"
+      }
+    },
+    {
+      "app_id": 16,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "LiveAgent API authentication REST API key pricing trial MCP official documentation",
+        "site:support.liveagent.com API reference API token LiveAgent trial pricing MCP integration official docs",
+        "LiveAgent MCP server OAuth 2.1 bearer API official support documentation"
+      ],
+      "sources": [
+        {
+          "title": "MCP Integration for Agents",
+          "url": "https://support.liveagent.com/647358-MCP-Integration-for-Agents",
+          "retrieval": "fetch_page",
+          "observation": "Current first-party MCP endpoint/auth, per-agent identity/permissions, audit trail, and AI-credit budget.",
+          "source_url": "https://support.liveagent.com/647358-MCP-Integration-for-Agents",
+          "source_title": "MCP Integration for Agents",
+          "source_type": "official_support",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Complete API reference",
+          "url": "https://support.liveagent.com/840770-Complete-API-reference",
+          "retrieval": "fetch_page",
+          "observation": "Public REST v1 reference lists conversations/messages, customers, companies, KB, reports, tags, files, and agents.",
+          "source_url": "https://support.liveagent.com/840770-Complete-API-reference",
+          "source_title": "Complete API reference",
+          "source_type": "official_api_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Pricing | LiveAgent - Help Desk Software & Live Chat",
+          "url": "https://www.liveagent.com/pricing/",
+          "retrieval": "fetch_page",
+          "observation": "30-day no-card trial and paid per-agent tiers.",
+          "source_url": "https://www.liveagent.com/pricing/",
+          "source_title": "Pricing | LiveAgent - Help Desk Software & Live Chat",
+          "source_type": "official_pricing",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "limitations": [
+        "Current API v3 documentation is exposed within a customer account and was not inspected; opened public API v1 documentation is older."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T16:13:14Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/support_batch_11_results.json",
+        "attempts": "data/raw/support_batch_11_attempts.json",
+        "capture": "data/evidence/support_batch_11_capture.json"
+      }
+    },
+    {
+      "app_id": 17,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Plain customer support API official docs authentication OAuth API key pricing MCP server",
+        "Plain API docs Machine Users API key GraphQL pricing launch plans official Plain documentation",
+        "site:plain.com/docs GraphQL authentication machine users MCP server"
+      ],
+      "sources": [
+        {
+          "title": "Introduction - Plain Docs",
+          "url": "https://www.plain.com/docs/graphql/introduction",
+          "retrieval": "fetch_page",
+          "observation": "Official GraphQL endpoint/schema and customer query; product itself is built on the API.",
+          "source_url": "https://www.plain.com/docs/graphql/introduction",
+          "source_title": "Introduction - Plain Docs",
+          "source_type": "official_api_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Authentication - Plain Docs",
+          "url": "https://www.plain.com/docs/graphql/authentication",
+          "retrieval": "fetch_page",
+          "observation": "Machine users, multi-key rotation, fine-grained permissions, one-time copy.",
+          "source_url": "https://www.plain.com/docs/graphql/authentication",
+          "source_title": "Authentication - Plain Docs",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "MCP server - Plain Docs",
+          "url": "https://www.plain.com/docs/integrations/mcp-server",
+          "retrieval": "fetch_page",
+          "observation": "Official OAuth MCP endpoint, inherited permissions, required scopes, 30 tools.",
+          "source_url": "https://www.plain.com/docs/integrations/mcp-server",
+          "source_title": "MCP server - Plain Docs",
+          "source_type": "official_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Plain Pricing — Plans from $35/seat/month | 7-Day Free Trial",
+          "url": "https://www.plain.com/pricing",
+          "retrieval": "fetch_page",
+          "observation": "Seven-day no-card trial and self-serve Foundation; API feature matrix extraction lacks clear per-plan mapping.",
+          "source_url": "https://www.plain.com/pricing",
+          "source_title": "Plain Pricing — Plans from $35/seat/month | 7-Day Free Trial",
+          "source_type": "official_pricing",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "failures": [
+        {
+          "stage": "fetch_page",
+          "url": "https://www.plain.com/docs/api",
+          "status": "HTTP_404",
+          "note": "Noncanonical route returned Page Not Found; current GraphQL documentation was found through official search/docs index and opened."
+        }
+      ],
+      "limitations": [
+        "No Plain workspace/API token or MCP connection was used; API entitlement by plan is not fully legible in the opened pricing extraction."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [
+        {
+          "stage": "fetch_page",
+          "url": "https://www.plain.com/docs/api",
+          "status": "HTTP_404",
+          "note": "Noncanonical route returned Page Not Found; current GraphQL documentation was found through official search/docs index and opened."
+        }
+      ],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T16:13:14Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/support_batch_11_results.json",
+        "attempts": "data/raw/support_batch_11_attempts.json",
+        "capture": "data/evidence/support_batch_11_capture.json"
+      }
+    },
+    {
+      "app_id": 18,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Help Scout API authentication OAuth app key pricing trial MCP official developer docs",
+        "site:developer.helpscout.com MCP official Help Scout API docs OAuth pricing trial access",
+        "site:helpscout.com OR site:developer.helpscout.com MCP server Help Scout official"
+      ],
+      "sources": [
+        {
+          "title": "Inbox API 2.0 | Help Scout Developers",
+          "url": "https://developer.helpscout.com/mailbox-api/",
+          "retrieval": "fetch_page",
+          "observation": "HTTPS/JSON Inbox API v2 with OAuth2; links to resource endpoints and SDKs.",
+          "source_url": "https://developer.helpscout.com/mailbox-api/",
+          "source_title": "Inbox API 2.0 | Help Scout Developers",
+          "source_type": "official_api_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Authentication | Help Scout Developers",
+          "url": "https://developer.helpscout.com/mailbox-api/overview/authentication/",
+          "retrieval": "fetch_page",
+          "observation": "Authorization Code/Client Credentials, Bearer tokens, My Apps path, active invited user requirement.",
+          "source_url": "https://developer.helpscout.com/mailbox-api/overview/authentication/",
+          "source_title": "Authentication | Help Scout Developers",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Help Scout Pricing: Affordable Customer Support Software",
+          "url": "https://www.helpscout.com/pricing/",
+          "retrieval": "fetch_page",
+          "observation": "Free plan and paid Standard/Plus/Pro tiers with current seat pricing/features.",
+          "source_url": "https://www.helpscout.com/pricing/",
+          "source_title": "Help Scout Pricing: Affordable Customer Support Software",
+          "source_type": "official_pricing",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Connect your AI Agent to Help Scout via MCP - Help Scout Support",
+          "url": "https://docs.helpscout.com/article/1779-connect-your-ai-agent-with-help-scout-to-search-conversations-and-pull-reports",
+          "retrieval": "fetch_page",
+          "observation": "Official MCP endpoint, Standard/Plus/Pro API entitlement, read-only behavior, reports/docs constraints.",
+          "source_url": "https://docs.helpscout.com/article/1779-connect-your-ai-agent-with-help-scout-to-search-conversations-and-pull-reports",
+          "source_title": "Connect your AI Agent to Help Scout via MCP - Help Scout Support",
+          "source_type": "official_support",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "failures": [
+        {
+          "stage": "fetch_page",
+          "url": "https://www.helpscout.com/blog/introducing-help-scout-mcp/",
+          "status": "HTTP_404",
+          "note": "The marketing-blog URL returned 404; the official support setup guide directly confirmed MCP status and access conditions."
+        }
+      ],
+      "limitations": [
+        "No Help Scout API key, OAuth app, or MCP connection was created; new MCP connections are read-only."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [
+        {
+          "stage": "fetch_page",
+          "url": "https://www.helpscout.com/blog/introducing-help-scout-mcp/",
+          "status": "HTTP_404",
+          "note": "The marketing-blog URL returned 404; the official support setup guide directly confirmed MCP status and access conditions."
+        }
+      ],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T16:13:14Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/support_batch_11_results.json",
+        "attempts": "data/raw/support_batch_11_attempts.json",
+        "capture": "data/evidence/support_batch_11_capture.json"
+      }
+    },
+    {
+      "app_id": 19,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Gorgias REST API authentication API key OAuth pricing trial MCP official developer documentation",
+        "site:developers.gorgias.com MCP official docs OAuth API pricing Helpdesk all plans",
+        "site:gorgias.com/blog MCP Gorgias open beta mcp.gorgias.com"
+      ],
+      "sources": [
+        {
+          "title": "Authentication",
+          "url": "https://developers.gorgias.com/reference/authentication",
+          "retrieval": "fetch_page",
+          "observation": "Private app API key vs public OAuth2; OAuth2 mandatory for public apps.",
+          "source_url": "https://developers.gorgias.com/reference/authentication",
+          "source_title": "Authentication",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Introduction",
+          "url": "https://developers.gorgias.com/reference/introduction",
+          "retrieval": "fetch_page",
+          "observation": "Official REST/JSON API reference with resource-oriented URLs.",
+          "source_url": "https://developers.gorgias.com/reference/introduction",
+          "source_title": "Introduction",
+          "source_type": "official_api_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Access your Gorgias REST API credentials | Gorgias Help Center",
+          "url": "https://helpcenter.gorgias.com/en-US/rest-api-208286",
+          "retrieval": "fetch_page",
+          "observation": "Owner/admin-created per-user API key, HTTP Basic credentials, all Helpdesk plans, full account-data access.",
+          "source_url": "https://helpcenter.gorgias.com/en-US/rest-api-208286",
+          "source_title": "Access your Gorgias REST API credentials | Gorgias Help Center",
+          "source_type": "official_support",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Gorgias Pricing – Build the customer support suite that fits your needs",
+          "url": "https://www.gorgias.com/pricing",
+          "retrieval": "fetch_page",
+          "observation": "Paid plan tiers, free-trial signup, ticket and AI usage pricing.",
+          "source_url": "https://www.gorgias.com/pricing",
+          "source_title": "Gorgias Pricing – Build the customer support suite that fits your needs",
+          "source_type": "official_pricing",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "How to Connect Gorgias to Claude or ChatGPT (6 Workflows to Try Right Now)",
+          "url": "https://www.gorgias.com/blog/gorgias-mcp",
+          "retrieval": "fetch_page",
+          "observation": "First-party MCP endpoint mcp.gorgias.com/mcp?gorgias_subdomain=YOUR-SUBDOMAIN; OAuth; open beta for all paid plan customers; no extra cost within the Gorgias plan; an active AI-client subscription is separate.",
+          "source_url": "https://www.gorgias.com/blog/gorgias-mcp",
+          "source_title": "How to Connect Gorgias to Claude or ChatGPT (6 Workflows to Try Right Now)",
+          "source_type": "official_blog",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "failures": [
+        {
+          "stage": "fetch_page",
+          "url": "https://docs.gorgias.com/en-US/rest-api-208286",
+          "status": "REDIRECTED",
+          "final_url": "https://helpcenter.gorgias.com/en-US/rest-api-208286",
+          "note": "The direct Help Center path is on helpcenter.gorgias.com; final page was opened and read."
+        }
+      ],
+      "limitations": [
+        "No Gorgias account, API key, public OAuth app, API call, or MCP session was used; individual endpoint groups were not exhaustively enumerated."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [
+        {
+          "stage": "fetch_page",
+          "url": "https://docs.gorgias.com/en-US/rest-api-208286",
+          "status": "REDIRECTED",
+          "final_url": "https://helpcenter.gorgias.com/en-US/rest-api-208286",
+          "note": "The direct Help Center path is on helpcenter.gorgias.com; final page was opened and read."
+        }
+      ],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T16:13:14Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/support_batch_11_results.json",
+        "attempts": "data/raw/support_batch_11_attempts.json",
+        "capture": "data/evidence/support_batch_11_capture.json"
+      }
+    },
+    {
+      "app_id": 20,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Gladly API authentication developer docs REST API pricing MCP official support integration",
+        "site:developer.gladly.com MCP server Gladly API official docs pricing API access authentication",
+        "site:developer.gladly.com OR site:gladly.ai MCP server Gladly official developer docs",
+        "site:gladly.ai OR site:gladly.com API free trial MCP Gladly pricing access"
+      ],
+      "sources": [
+        {
+          "title": "Gladly API",
+          "url": "https://developer.gladly.com/rest/",
+          "retrieval": "fetch_page",
+          "observation": "Official REST API index enumerates customers, conversations, messages, agents, answers, reports, tasks, exports, and webhooks.",
+          "source_url": "https://developer.gladly.com/rest/",
+          "source_title": "Gladly API",
+          "source_type": "official_api_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Setup and Testing",
+          "url": "https://help.gladly.com/developer-tutorials/docs/setup-and-testing",
+          "retrieval": "fetch_page",
+          "observation": "API User permission, Basic API token flow, and sandbox purchasing/contact requirements.",
+          "source_url": "https://help.gladly.com/developer-tutorials/docs/setup-and-testing",
+          "source_title": "Setup and Testing",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Agentic commerce platform built for top brands | Gladly",
+          "url": "https://www.gladly.ai/",
+          "retrieval": "fetch_page",
+          "observation": "Current official homepage says Commerce AI and offers Get a Demo/Try it yourself; no API plan/pricing entitlement is described.",
+          "source_url": "https://www.gladly.ai/",
+          "source_title": "Agentic commerce platform built for top brands | Gladly",
+          "source_type": "official_product",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "What Freshdesk actually costs in 2026 | Gladly",
+          "url": "https://www.gladly.ai/blog/freshdesk-pricing/",
+          "retrieval": "fetch_page",
+          "observation": "First-party comparison describes Gladly pricing as custom/sales-led; not used to infer specific API entitlements.",
+          "source_url": "https://www.gladly.ai/blog/freshdesk-pricing/",
+          "source_title": "What Freshdesk actually costs in 2026 | Gladly",
+          "source_type": "official_blog",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "search_results": [
+        {
+          "query": "site:developer.gladly.com MCP server Gladly API official docs pricing API access authentication",
+          "status": "OK",
+          "results": 0
+        }
+      ],
+      "failures": [
+        {
+          "stage": "fetch_page",
+          "url": "https://www.gladly.ai/pricing",
+          "status": "REDIRECTED",
+          "final_url": "https://www.gladly.ai/",
+          "note": "No pricing matrix was returned; public pricing/API entitlement remains unresolved."
+        }
+      ],
+      "limitations": [
+        "No Gladly tenant, API token, sandbox, API request, or MCP connection was available; no exhaustive first-party repository/catalog audit was completed.",
+        "Current Gladly marketing copy and developer API description use different product positioning; their relationship was not established."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [
+        {
+          "stage": "fetch_page",
+          "url": "https://www.gladly.ai/pricing",
+          "status": "REDIRECTED",
+          "final_url": "https://www.gladly.ai/",
+          "note": "No pricing matrix was returned; public pricing/API entitlement remains unresolved."
+        }
+      ],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T16:13:14Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/support_batch_11_results.json",
+        "attempts": "data/raw/support_batch_11_attempts.json",
+        "capture": "data/evidence/support_batch_11_capture.json"
+      }
+    },
+    {
+      "app_id": 21,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 22,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Twilio API authentication Account SID API key Basic",
+        "Twilio free trial official API credentials restrictions",
+        "Twilio official MCP server docs"
+      ],
+      "sources": [
+        {
+          "title": "Twilio API requests",
+          "url": "https://www.twilio.com/docs/usage/requests-to-twilio",
+          "retrieval": "fetch_page",
+          "observation": "HTTP API/SDK/CLI, Basic authentication, API key SID/secret, Account SID/Auth Token alternative.",
+          "source_url": "https://www.twilio.com/docs/usage/requests-to-twilio",
+          "source_title": "Twilio API requests",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Get started with your Twilio free trial account",
+          "url": "https://www.twilio.com/docs/usage/tutorials/how-to-use-your-free-trial-account",
+          "retrieval": "fetch_page",
+          "observation": "Free trial without credit card after email/phone verification; credentials; 30-day trial and restrictions.",
+          "source_url": "https://www.twilio.com/docs/usage/tutorials/how-to-use-your-free-trial-account",
+          "source_title": "Get started with your Twilio free trial account",
+          "source_type": "official_support",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Twilio MCP server",
+          "url": "https://www.twilio.com/docs/ai/mcp",
+          "retrieval": "fetch_page",
+          "observation": "First-party hosted docs/spec MCP; no auth; read-only search/retrieve; no API execution.",
+          "source_url": "https://www.twilio.com/docs/ai/mcp",
+          "source_title": "Twilio MCP server",
+          "source_type": "official_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "limitations": [
+        "Trial controls not tested in an account."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T15:34:58Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/pilot_results.json",
+        "attempts": "data/raw/pilot_attempts.json",
+        "capture": "data/evidence/pilot_capture.json"
+      }
+    },
+    {
+      "app_id": 23,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 24,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 25,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 26,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 27,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 28,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 29,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 30,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 31,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 32,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 33,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 34,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 35,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 36,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 37,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 38,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 39,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 40,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 41,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 42,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 43,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 44,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 45,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 46,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 47,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 48,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 49,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Amazon Selling Partner API OAuth LWA developer registration roles official",
+        "Amazon SP-API public developer approval and production app registration",
+        "Amazon SP-API official MCP server search"
+      ],
+      "sources": [
+        {
+          "title": "Onboarding as a Developer",
+          "url": "https://developer-docs.amazon.com/sp-api/docs/onboarding-overview",
+          "retrieval": "fetch_page",
+          "observation": "REST-based APIs, public/private developer distinction, approval, OAuth2, roles, resource families and GraphQL Data Kiosk.",
+          "source_url": "https://developer-docs.amazon.com/sp-api/docs/onboarding-overview",
+          "source_title": "Onboarding as a Developer",
+          "source_type": "official_api_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Register as a Public SP-API Developer",
+          "url": "https://developer-docs.amazon.com/sp-api/docs/register-as-a-public-developer",
+          "retrieval": "fetch_page",
+          "observation": "Public developer profile review, role selection, Appstore listing and restricted-role security review.",
+          "source_url": "https://developer-docs.amazon.com/sp-api/docs/register-as-a-public-developer",
+          "source_title": "Register as a Public SP-API Developer",
+          "source_type": "official_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Step 7: Register Your Production Application",
+          "url": "https://developer-docs.amazon.com/sp-api/docs/onboarding-step-7-register-your-first-production-application",
+          "retrieval": "fetch_page",
+          "observation": "Approved developer profile/roles are prerequisites for a production app.",
+          "source_url": "https://developer-docs.amazon.com/sp-api/docs/onboarding-step-7-register-your-first-production-application",
+          "source_title": "Step 7: Register Your Production Application",
+          "source_type": "official_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Authorize Public Applications",
+          "url": "https://developer-docs.amazon.com/sp-api/docs/authorize-public-applications",
+          "retrieval": "fetch_page",
+          "observation": "LWA OAuth2 seller consent workflow.",
+          "source_url": "https://developer-docs.amazon.com/sp-api/docs/authorize-public-applications",
+          "source_title": "Authorize Public Applications",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "limitations": [
+        "Public developer portal and seller credentials not accessed."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T15:34:58Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/pilot_results.json",
+        "attempts": "data/raw/pilot_attempts.json",
+        "capture": "data/evidence/pilot_capture.json"
+      }
+    },
+    {
+      "app_id": 50,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 51,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 52,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 53,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 54,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 55,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 56,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 57,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 58,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 59,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 60,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 61,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "GitHub REST API authentication official docs PAT OAuth GitHub Apps",
+        "GitHub MCP server official GitHub repository"
+      ],
+      "sources": [
+        {
+          "title": "GitHub REST API documentation",
+          "url": "https://docs.github.com/en/rest",
+          "retrieval": "fetch_page",
+          "observation": "Official versioned REST API docs and many resource references.",
+          "source_url": "https://docs.github.com/en/rest",
+          "source_title": "GitHub REST API documentation",
+          "source_type": "official_api_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Authenticating to the REST API",
+          "url": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+          "retrieval": "fetch_page",
+          "observation": "PAT, GitHub App tokens and OAuth tokens; Bearer token header.",
+          "source_url": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+          "source_title": "Authenticating to the REST API",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Managing your personal access tokens",
+          "url": "https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens",
+          "retrieval": "fetch_page",
+          "observation": "PAT self-creation and user/org/permission limits.",
+          "source_url": "https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens",
+          "source_title": "Managing your personal access tokens",
+          "source_type": "official_auth_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "GitHub MCP Server",
+          "url": "https://github.com/github/github-mcp-server",
+          "retrieval": "fetch_page",
+          "observation": "Official first-party MCP repository and host setup guidance.",
+          "source_url": "https://github.com/github/github-mcp-server",
+          "source_title": "GitHub MCP Server",
+          "source_type": "official_github",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "limitations": [
+        "No token or organization account available."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T15:34:58Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/pilot_results.json",
+        "attempts": "data/raw/pilot_attempts.json",
+        "capture": "data/evidence/pilot_capture.json"
+      }
+    },
+    {
+      "app_id": 62,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 63,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 64,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 65,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 66,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 67,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 68,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 69,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 70,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 71,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 72,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 73,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 74,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 75,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 76,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 77,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 78,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 79,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 80,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 81,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 82,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 83,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 84,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 85,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 86,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 87,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 88,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 89,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 90,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 91,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 92,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Otter AI official MCP server OAuth URL tools",
+        "Otter public API enterprise API key bearer token official docs"
+      ],
+      "sources": [
+        {
+          "title": "Otter Meeting Agent - AI Notetaker, Transcription, Insights",
+          "url": "https://otter.ai/",
+          "retrieval": "fetch_page",
+          "observation": "Official product page describes meeting capture/transcription and searchable summaries/action items.",
+          "source_url": "https://otter.ai/",
+          "source_title": "Otter Meeting Agent - AI Notetaker, Transcription, Insights",
+          "source_type": "official_product",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Otter MCP Server",
+          "url": "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+          "retrieval": "fetch_page",
+          "observation": "First-party remote MCP URL, OAuth, search/fetch/user-info tools.",
+          "source_url": "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+          "source_title": "Otter MCP Server",
+          "source_type": "official_support",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        },
+        {
+          "title": "Otter.ai Public API",
+          "url": "https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+          "retrieval": "fetch_page",
+          "observation": "Enterprise API access, Bearer API keys, REST resource groups and webhooks.",
+          "source_url": "https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+          "source_title": "Otter.ai Public API",
+          "source_type": "official_api_docs",
+          "retrieved_at": null,
+          "retrieval_timestamp_status": "NOT_CAPTURED_IN_PRIOR_TRACE"
+        }
+      ],
+      "limitations": [
+        "No Otter account/Enterprise workspace used; plan availability for MCP is not stated."
+      ],
+      "source_mode": "PRIOR_CAPTURE",
+      "status": "PRIOR_CAPTURE",
+      "attempts": null,
+      "capture_failures": [],
+      "capture_date": "2026-09-24",
+      "batch_captured_at": "2026-09-24T15:34:58Z",
+      "source_retrieval_timestamp_status": "PER_SOURCE_TIMESTAMPS_NOT_PRESERVED_IN_PRIOR_CAPTURE",
+      "prior_capture_files": {
+        "results": "data/raw/pilot_results.json",
+        "attempts": "data/raw/pilot_attempts.json",
+        "capture": "data/evidence/pilot_capture.json"
+      }
+    },
+    {
+      "app_id": 93,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 94,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 95,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 96,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 97,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 98,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 99,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    },
+    {
+      "app_id": 100,
+      "source_mode": "NOT_RUN",
+      "status": "NOT_RUN",
+      "queries": [],
+      "sources": [],
+      "attempts": [],
+      "errors": [
+        {
+          "stage": "preflight",
+          "type": "missing_credentials",
+          "message": "NOT_RUN: no TAVILY_API_KEY and/or OPENAI_API_KEY was present; no live query or extraction was attempted."
+        }
+      ],
+      "retrieved_at": null
+    }
+  ]
+}

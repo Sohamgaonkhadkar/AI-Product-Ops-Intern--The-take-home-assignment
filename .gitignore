@@ -1,0 +1,52 @@
+# Local secrets, credentials, and environment files
+.env
+.env.*
+!.env.example
+.netrc
+.npmrc
+.netlify/
+.vercel/
+secrets/
+credentials/
+credentials.json
+token.json
+service-account*.json
+*.pem
+*.p12
+*.pfx
+*.key
+id_rsa*
+id_ed25519*
+
+# Python caches and environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.envrc
+.coverage
+coverage/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+
+# Generated build/dependency directories
+node_modules/
+build/
+dist/
+target/
+out/
+.next/
+.nuxt/
+.output/
+.parcel-cache/
+.turbo/
+.vite/
+.svelte-kit/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/

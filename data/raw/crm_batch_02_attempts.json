@@ -1,0 +1,419 @@
+{
+  "captured_at": "2026-09-24T15:46:04Z",
+  "mode": "capture_replay",
+  "traces": [
+    {
+      "app_id": 2,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "HubSpot API official developer docs authentication OAuth private app access API limits free developer account MCP",
+        "site:developers.hubspot.com/docs/mcp HubSpot MCP official server OAuth CRM",
+        "HubSpot pricing free CRM API access private apps free tier official pricing api access developer app"
+      ],
+      "sources": [
+        {
+          "title": "Streamline Your Entire Business With a Free CRM | HubSpot",
+          "url": "https://www.hubspot.com/products/crm",
+          "retrieval": "fetch_page",
+          "observation": "Free CRM, contacts, deals, tasks, pipeline management and customer data."
+        },
+        {
+          "title": "Legacy private apps - HubSpot docs",
+          "url": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview",
+          "retrieval": "fetch_page",
+          "observation": "Super-admin access, scoped private app, Bearer token, webhook subscriptions."
+        },
+        {
+          "title": "API usage guidelines and limits - HubSpot docs",
+          "url": "https://developers.hubspot.com/docs/developer-tooling/platform/usage-guidelines",
+          "retrieval": "fetch_page",
+          "observation": "OAuth/static-token distinction and subscription/app-specific rate limits."
+        },
+        {
+          "title": "HubSpot MCP Server",
+          "url": "https://developers.hubspot.com/ai-tools/mcp",
+          "retrieval": "fetch_page",
+          "observation": "First-party remote CRM and local developer MCP servers; OAuth/developer-platform setup."
+        }
+      ],
+      "limitations": [
+        "No portal/account was accessed; product access and API scopes were not tested."
+      ]
+    },
+    {
+      "app_id": 3,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Pipedrive API official developer docs authentication OAuth API token pricing sandbox MCP",
+        "site:developers.pipedrive.com OR site:pipedrive.readme.io official API token OAuth sandbox plan MCP",
+        "Pipedrive official API token creation developer sandbox account required API access plan self serve",
+        "site:developers.pipedrive.com MCP OR site:pipedrive.readme.io MCP"
+      ],
+      "sources": [
+        {
+          "title": "Sales CRM & Pipeline Management Software | Pipedrive",
+          "url": "https://www.pipedrive.com/",
+          "retrieval": "fetch_page",
+          "observation": "Official product page describes a sales CRM, leads, deals, sales pipeline and 14-day trial."
+        },
+        {
+          "title": "Pipedrive API Reference and Documentation",
+          "url": "https://developers.pipedrive.com/docs/api/v1",
+          "retrieval": "fetch_page",
+          "observation": "REST JSON API, API token/OAuth, broad core resources, webhooks and official SDKs."
+        },
+        {
+          "title": "OAuth 2.0 overview",
+          "url": "https://pipedrive.readme.io/docs/marketplace-oauth-api",
+          "retrieval": "fetch_page",
+          "observation": "Marketplace app registration, developer sandbox, OAuth scopes and user consent."
+        },
+        {
+          "title": "How to find the API token",
+          "url": "https://pipedrive.readme.io/docs/how-to-find-the-api-token",
+          "retrieval": "fetch_page",
+          "observation": "Company-specific token is retrieved from the Pipedrive app."
+        },
+        {
+          "title": "Enabling API for company users",
+          "url": "https://pipedrive.readme.io/docs/enabling-api-for-company-users",
+          "retrieval": "fetch_page",
+          "observation": "Company admin controls API permission sets and token visibility."
+        },
+        {
+          "title": "Developer sandbox account",
+          "url": "https://pipedrive.readme.io/docs/developer-sandbox-account",
+          "retrieval": "fetch_page",
+          "observation": "Sandbox access is requested through a form; separate development/testing environment."
+        }
+      ],
+      "limitations": [
+        "No production account or sandbox was created; plan-level production API eligibility remains unresolved.",
+        "Official MCP status remains UNKNOWN; the reviewed official docs do not prove absence."
+      ]
+    },
+    {
+      "app_id": 4,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Attio API official docs authentication API key OAuth MCP plan access",
+        "site:developers.attio.com OR site:docs.attio.com official REST API authentication OAuth MCP server",
+        "Attio pricing free plan API access official help generate API key OAuth app developer"
+      ],
+      "sources": [
+        {
+          "title": "Overview - Attio Docs",
+          "url": "https://docs.attio.com/docs/overview",
+          "retrieval": "fetch_page",
+          "observation": "Developer platform lists App SDK, REST API, webhooks, MCP and SQL."
+        },
+        {
+          "title": "Authenticating requests - Attio Docs",
+          "url": "https://docs.attio.com/rest-api/guides/authentication",
+          "retrieval": "fetch_page",
+          "observation": "OAuth2 or workspace API key; Bearer token and scopes."
+        },
+        {
+          "title": "Generate an API key | Attio Help Center",
+          "url": "https://attio.com/help/reference/apps/generating-an-api-key",
+          "retrieval": "fetch_page",
+          "observation": "API keys are available on all plans; admins create/manage scoped tokens."
+        },
+        {
+          "title": "Plans & Pricing | Attio",
+          "url": "https://attio.com/pricing",
+          "retrieval": "fetch_page",
+          "observation": "Free tier; API/webhook access and MCP listed in plan comparison."
+        },
+        {
+          "title": "Attio MCP - Attio Docs",
+          "url": "https://docs.attio.com/mcp/overview",
+          "retrieval": "fetch_page",
+          "observation": "First-party hosted MCP URL and OAuth-based workspace access/tools."
+        }
+      ],
+      "limitations": [
+        "No workspace API key or MCP connection was tested."
+      ]
+    },
+    {
+      "app_id": 5,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Twenty CRM official API docs authentication API key cloud access MCP",
+        "site:docs.twenty.com/developers API authentication REST GraphQL API key cloud pricing MCP official",
+        "Twenty pricing cloud API key create account official docs MCP first-party GitHub"
+      ],
+      "sources": [
+        {
+          "title": "Work Management Platform | Twenty CRM Pricing",
+          "url": "https://twenty.com/pricing",
+          "retrieval": "fetch_page",
+          "observation": "Managed cloud/self-hosting, cloud trial and paid plans; API/webhooks/MCP plan matrix."
+        },
+        {
+          "title": "APIs - Twenty Documentation",
+          "url": "https://docs.twenty.com/developers/extend/api",
+          "retrieval": "fetch_page",
+          "observation": "REST/GraphQL Core and Metadata APIs; role-scoped API keys, webhooks and rate limits."
+        },
+        {
+          "title": "OAuth - Twenty Documentation",
+          "url": "https://docs.twenty.com/developers/extend/oauth",
+          "retrieval": "fetch_page",
+          "observation": "Dynamic OAuth client registration, auth-code/PKCE, client credentials and API-key distinction."
+        }
+      ],
+      "limitations": [
+        "No cloud trial or self-hosted instance was provisioned; cloud MCP statement is based on official pricing documentation."
+      ]
+    },
+    {
+      "app_id": 6,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Podio API official developer docs OAuth credentials API access free plan MCP",
+        "site:developers.podio.com official API key OAuth auth rate limits developer API MCP",
+        "Podio developer API key free plan API official pricing sign up create app credentials"
+      ],
+      "sources": [
+        {
+          "title": "Work Management Platform | Streamline Collaboration & Workflows | Podio",
+          "url": "https://podio.com/",
+          "retrieval": "fetch_page",
+          "observation": "Progress Podio page describes customizable workspaces, workflows, automation, lead/project tracking and collaboration."
+        },
+        {
+          "title": "Authentication - Podio API Documentation",
+          "url": "https://developers.podio.com/authentication",
+          "retrieval": "fetch_page",
+          "observation": "OAuth2 flows, client ID/secret, access and refresh tokens."
+        },
+        {
+          "title": "Get API key - Podio API Documentation",
+          "url": "https://developers.podio.com/api-key",
+          "retrieval": "fetch_page",
+          "observation": "Sign in/sign up and create API keys in account settings."
+        },
+        {
+          "title": "Frequently Asked Questions - Podio API Documentation",
+          "url": "https://developers.podio.com/index/faq",
+          "retrieval": "fetch_page",
+          "observation": "Free/paid base API access, API add-on, app-token/support limitations."
+        },
+        {
+          "title": "Concepts and conventions: Rate limits - Podio API Documentation",
+          "url": "https://developers.podio.com/index/limits",
+          "retrieval": "fetch_page",
+          "observation": "250/1000 hourly call limits, higher limit add-on and support path."
+        }
+      ],
+      "limitations": [
+        "Official MCP status remains UNKNOWN; no exhaustive first-party repo/catalog audit was made."
+      ]
+    },
+    {
+      "app_id": 7,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Zoho CRM API official docs OAuth authentication API access edition limits developer MCP",
+        "site:zoho.com/crm/developer/docs OAuth API limits free developer edition official MCP",
+        "site:zoho.com/crm developer MCP server official",
+        "site:zoho.com/crm/developer/docs MCP"
+      ],
+      "sources": [
+        {
+          "title": "Zoho CRM | Built-in AI Agents",
+          "url": "https://www.zoho.com/en-us/crm/",
+          "retrieval": "fetch_page",
+          "observation": "Official CRM product page with sales/lead workflows and AI-agent positioning."
+        },
+        {
+          "title": "OAuth 2.0 Authentication | Zoho CRM API | V8",
+          "url": "https://www.zoho.com/crm/developer/docs/api/v8/oauth-overview.html",
+          "retrieval": "fetch_page",
+          "observation": "Official OAuth2 client and token-authentication documentation."
+        },
+        {
+          "title": "Register Client with Zoho | Zoho CRM API | V8",
+          "url": "https://www.zoho.com/crm/developer/docs/api/v8/register-client.html",
+          "retrieval": "fetch_page",
+          "observation": "OAuth client-registration reference."
+        },
+        {
+          "title": "Limits - API | Zoho CRM API | V8",
+          "url": "https://www.zoho.com/crm/developer/docs/api/v8/api-limits.html",
+          "retrieval": "fetch_page",
+          "observation": "Official Free Edition 5,000-credit/24-hour and concurrency table."
+        },
+        {
+          "title": "Zoho CRM MCP - An Overview | Developer Tools",
+          "url": "https://www.zoho.com/crm/developer/docs/mcp/overview.html",
+          "retrieval": "fetch_page",
+          "observation": "First-party Data Insights, Data Operations, Module Customization, and Workflow MCP; OAuth and shared API credits."
+        },
+        {
+          "title": "Zoho CRM V8 APIs",
+          "url": "https://www.zoho.com/crm/developer/docs/api/v8/index.html",
+          "retrieval": "fetch_page",
+          "observation": "V8 API references, OAS, module/metadata APIs, SDKs, and limits."
+        }
+      ],
+      "limitations": [
+        "No Zoho organization, OAuth connection, API call, or MCP session was used."
+      ]
+    },
+    {
+      "app_id": 8,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Close CRM official developer docs authentication API key OAuth API access pricing MCP",
+        "site:developer.close.com MCP server official authentication API key OAuth plan trial",
+        "Close official MCP server remote OAuth DCR CRM API documentation"
+      ],
+      "sources": [
+        {
+          "title": "Close CRM",
+          "url": "https://close.com/",
+          "retrieval": "fetch_page",
+          "observation": "Official homepage describes CRM for leads, calling, SMS, email, automation, and AI."
+        },
+        {
+          "title": "API Overview | Close | Developer API Documentation",
+          "url": "https://developer.close.com/api/overview",
+          "retrieval": "fetch_page",
+          "observation": "REST resources, API key Basic auth/OAuth, webhooks, event log and OpenAPI spec."
+        },
+        {
+          "title": "Authentication with API keys | Close | Developer API Documentation",
+          "url": "https://developer.close.com/api/overview/api-key-authentication",
+          "retrieval": "fetch_page",
+          "observation": "Account settings API-key path; key is scoped to a user/organization and uses Basic auth."
+        },
+        {
+          "title": "Free CRM Trial",
+          "url": "https://close.com/crm-trial",
+          "retrieval": "fetch_page",
+          "observation": "14-day trial with no credit card required."
+        },
+        {
+          "title": "Close MCP Server | Close | Developer API Documentation",
+          "url": "https://developer.close.com/mcp",
+          "retrieval": "fetch_page",
+          "observation": "First-party hosted MCP endpoint, Streamable HTTP, OAuth DCR and API-key scope options."
+        },
+        {
+          "title": "Close MCP Tools | Close | Developer API Documentation",
+          "url": "https://developer.close.com/mcp/tools",
+          "retrieval": "fetch_page",
+          "observation": "Read, safe-write, and destructive scopes across Close CRM tools."
+        }
+      ],
+      "limitations": [
+        "No Close account, API key, OAuth app, or MCP session was used."
+      ]
+    },
+    {
+      "app_id": 9,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Copper CRM API official developer docs authentication API key OAuth API access MCP",
+        "site:developer.copper.com API keys OAuth API access official MCP server",
+        "site:copper.com CRM sales management Google Workspace official product",
+        "Copper API key plan gate official pricing MCP server"
+      ],
+      "sources": [
+        {
+          "title": "Manage client projects with Copper CRM",
+          "url": "https://www.copper.com/manage-projects",
+          "retrieval": "fetch_page",
+          "observation": "Official page describes Copper as Google Workspace CRM with sales pipelines and client project workflows."
+        },
+        {
+          "title": "Getting started - Copper Developer API",
+          "url": "https://developer.copper.com/",
+          "retrieval": "fetch_page",
+          "observation": "RESTful JSON API for most Copper resources; Postman collection."
+        },
+        {
+          "title": "Overview - Copper Developer API",
+          "url": "https://developer.copper.com/introduction/authentication.html",
+          "retrieval": "fetch_page",
+          "observation": "API-key path for individual users, OAuth2 for partner integrations; admins manage keys."
+        },
+        {
+          "title": "Requests - Copper Developer API",
+          "url": "https://developer.copper.com/introduction/requests.html",
+          "retrieval": "fetch_page",
+          "observation": "Required token/application/owner-email headers and rate limits."
+        },
+        {
+          "title": "Quickstart Guide - Copper Developer API",
+          "url": "https://developer.copper.com/introduction/oauth/quickstart.html",
+          "retrieval": "fetch_page",
+          "observation": "OAuth quickstart requires app registration and partner client ID/secret."
+        },
+        {
+          "title": "Pricing | Copper CRM",
+          "url": "https://www.copper.com/pricing",
+          "retrieval": "fetch_page",
+          "observation": "Official page offers a no-card trial and lists API/Embedded SDK, but extracted text did not map API availability to a plan."
+        }
+      ],
+      "limitations": [
+        "No Copper account or API/OAuth test; plan-level API entitlement and official MCP status remain unresolved."
+      ]
+    },
+    {
+      "app_id": 10,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "DealCloud API official docs authentication API access OAuth developer credentials MCP licensing",
+        "site:api.docs.dealcloud.com/mcp DealCloud MCP OAuth licensing API official developer docs",
+        "site:api.docs.dealcloud.com/docs/data DealCloud API data records schema overview",
+        "site:api.docs.dealcloud.com OR site:intapp.com DealCloud CRM platform"
+      ],
+      "sources": [
+        {
+          "title": "The AI-powered deal and relationship intelligence platform",
+          "url": "https://www.intapp.com/dealcloud/",
+          "retrieval": "fetch_page",
+          "observation": "Official product page describes deal and relationship intelligence for professional firms and regulated markets."
+        },
+        {
+          "title": "Docs - DealCloud API Docs",
+          "url": "https://api.docs.dealcloud.com/docs",
+          "retrieval": "fetch_page",
+          "observation": "Official REST API index lists auth, user management, schema, data, backup, publication/event and relationship-intelligence areas."
+        },
+        {
+          "title": "Data APIs - DealCloud API Docs",
+          "url": "https://api.docs.dealcloud.com/docs/data",
+          "retrieval": "fetch_page",
+          "observation": "CRUD across deals/contacts/companies and structured rows/cells."
+        },
+        {
+          "title": "Obtaining an API Key - DealCloud API Docs",
+          "url": "https://api.docs.dealcloud.com/docs/apikeys",
+          "retrieval": "fetch_page",
+          "observation": "API capability must be enabled for user group by admin; user enables/copies key in profile."
+        },
+        {
+          "title": "Requesting an OAuth2 Bearer Token - DealCloud API Docs",
+          "url": "https://api.docs.dealcloud.com/docs/token",
+          "retrieval": "fetch_page",
+          "observation": "Client-credentials OAuth2 token flow, scopes, 15-minute expiry."
+        },
+        {
+          "title": "Getting Started with DealCloud MCP - DealCloud API Docs",
+          "url": "https://api.docs.dealcloud.com/mcp/getting-started",
+          "retrieval": "fetch_page",
+          "observation": "First-party tenant MCP requires Celeste license, admin Manage MCP Servers, and end-user MCP Access."
+        }
+      ],
+      "limitations": [
+        "No DealCloud tenant, API key, license, or MCP connection was available or tested."
+      ]
+    }
+  ]
+}

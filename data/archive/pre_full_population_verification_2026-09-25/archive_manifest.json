@@ -1,0 +1,100 @@
+{
+  "created_for": "Preserve provisional sample/verification/analysis/case study before full-population rerun",
+  "files": [
+    {
+      "original": "data/evidence/verification_sample_selection.json",
+      "archive": "data/archive/pre_full_population_verification_2026-09-25/data/evidence/verification_sample_selection.json",
+      "sha256": "23095d8eb6cd152b7462b29f9941177dedac778d8b55ff0b5c0e34c2ccb83531"
+    },
+    {
+      "original": "reports/verification_sample.md",
+      "archive": "data/archive/pre_full_population_verification_2026-09-25/reports/verification_sample.md",
+      "sha256": "f5db7ad732b6a99a0cfabee5e009a726d5c08a187b1a2ff9f1b9cbd3e7fbd9f8"
+    },
+    {
+      "original": "data/evidence/final_sample_source_captures.json",
+      "archive": "data/archive/pre_full_population_verification_2026-09-25/data/evidence/final_sample_source_captures.json",
+      "sha256": "a7ce0dba315eba442405e8cb01722f282351c0db951df7b7555feef8ef8e4d71"
+    },
+    {
+      "original": "data/evidence/final_verification_ledger_input.json",
+      "archive": "data/archive/pre_full_population_verification_2026-09-25/data/evidence/final_verification_ledger_input.json",
+      "sha256": "e3bf5f554ff3bc02d5c1a9aa88e8915403aac2c3729b178062f3fc57708089da"
+    },
+    {
+      "original": "data/evidence/final_post_recheck.json",
+      "archive": "data/archive/pre_full_population_verification_2026-09-25/data/evidence/final_post_recheck.json",
+      "sha256": "822c0eaab8664509c6649e87da2cca88bf213c47c59b421c452f27aa9f74b43c"
+    },
+    {
+      "original": "data/evidence/human_qa_template.csv",
+      "archive": "data/archive/pre_full_population_verification_2026-09-25/data/evidence/human_qa_template.csv",
+      "sha256": "c1a8a2b4c5b3891f1610aeb6939089c91e78db0d8d4296e516b82cb06db89ff8"
+    },
+    {
+      "original": "reports/human_qa.md",
+      "archive": "data/archive/pre_full_population_verification_2026-09-25/reports/human_qa.md",
+      "sha256": "9feaf1011a74fef9a282eb1f530a1e690c57a22521abddd7219f6d9a9019c2d5"
+    },
+    {
+      "original": "data/verified/final_dataset.json",
+      "archive": "data/archive/pre_full_population_verification_2026-09-25/data/verified/final_dataset.json",
+      "sha256": "451c7fda5c92fc03f4b6042ee0b2c26f019024f14a12875648fcf93573d590e1"
+    },
+    {
+      "original": "data/verified/final_dataset.csv",
+      "archive": "data/archive/pre_full_population_verification_2026-09-25/data/verified/final_dataset.csv",
+      "sha256": "3d16b93f38ddfae5cd881029bdd19d76c573f5ef7c75d8466fef2d4ef486fd30"
+    },
+    {
+      "original": "data/verified/final_verification_ledger.json",
+      "archive": "data/archive/pre_full_population_verification_2026-09-25/data/verified/final_verification_ledger.json",
+      "sha256": "4a53b29ec72d3900f41d51edb60a73c66bb0472c833740877a15a2ec1cec0558"
+    },
+    {
+      "original": "data/verified/final_quality_report.json",
+      "archive": "data/archive/pre_full_population_verification_2026-09-25/data/verified/final_quality_report.json",
+      "sha256": "49ec0f5078c10566014530c11d4f4be9cad5480478b64e817f14712a14cf2967"
+    },
+    {
+      "original": "reports/final_verification_report.md",
+      "archive": "data/archive/pre_full_population_verification_2026-09-25/reports/final_verification_report.md",
+      "sha256": "06e2a9defa8cc4f85b2f16fd694b6155016905fc8a8f6b1122a8a6d9c4e91ab2"
+    },
+    {
+      "original": "data/analysis/final_analysis.json",
+      "archive": "data/archive/pre_full_population_verification_2026-09-25/data/analysis/final_analysis.json",
+      "sha256": "240dc0dc3d2af75acd9789635c5380ec25f0752cd96f794ce812c27ddb081d74"
+    },
+    {
+      "original": "data/analysis/category_summary.csv",
+      "archive": "data/archive/pre_full_population_verification_2026-09-25/data/analysis/category_summary.csv",
+      "sha256": "0b9c7714bac0d092f9eb219adb2c9a237689ac3486722b5e30b983e09afbc317"
+    },
+    {
+      "original": "data/analysis/verified_sample_triage.csv",
+      "archive": "data/archive/pre_full_population_verification_2026-09-25/data/analysis/verified_sample_triage.csv",
+      "sha256": "f56eb16eedb56e3fdca095e555f765baaa608bc51d9a85573366c2cd825e29aa"
+    },
+    {
+      "original": "reports/final_analysis.md",
+      "archive": "data/archive/pre_full_population_verification_2026-09-25/reports/final_analysis.md",
+      "sha256": "d15f701ee1758213f502120bf44d526e615fabe467a15070d0fedffe835b6b88"
+    },
+    {
+      "original": "reports/final_error_analysis.md",
+      "archive": "data/archive/pre_full_population_verification_2026-09-25/reports/final_error_analysis.md",
+      "sha256": "ce5e7f1ca2cb6f8d845b73cf6c3c90f84a55890c395b92d0941209f77d1232f8"
+    },
+    {
+      "original": "case-study/index.html",
+      "archive": "data/archive/pre_full_population_verification_2026-09-25/case-study/index.html",
+      "sha256": "2d2c436df6d14793a1324f6bfbba5b2e832423e53fe9b2597d787003f135c1fb"
+    },
+    {
+      "original": "docs/final_run_audit.md",
+      "archive": "data/archive/pre_full_population_verification_2026-09-25/docs/final_run_audit.md",
+      "sha256": "9794ee96f6cb9b1f13d4466ad9171c01f58c2831aec0522693f7a71d8cc7d2e0"
+    }
+  ]
+}

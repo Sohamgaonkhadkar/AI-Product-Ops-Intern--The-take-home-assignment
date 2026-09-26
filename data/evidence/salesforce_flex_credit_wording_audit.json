@@ -1,0 +1,57 @@
+{
+  "audit_id": "salesforce-flex-credit-wording-correction-2026-09-24",
+  "amended_at": "2026-09-24T16:10:14Z",
+  "app_id": 1,
+  "app": "Salesforce",
+  "raw_first_pass_comparison": {
+    "data_path": "data/raw/pilot_results.json",
+    "mcp.details": "First-party Salesforce DX MCP Server (beta) and Salesforce Hosted MCP Servers are listed in Salesforce developer documentation. These connect agents to an org/platform; this is distinct from a generic MCP wrapper.",
+    "buildability.blocker": "Org-scoped OAuth/client-app setup and API permission; production access depends on the target org and plan.",
+    "finding": "Neither unchanged raw first-pass field mentioned Flex Credits or claimed Flex Credits were required."
+  },
+  "fresh_official_source": {
+    "url": "https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide",
+    "title": "Salesforce Hosted MCP Servers",
+    "accessed_at": "2026-09-24",
+    "direct_text": "Salesforce Hosted MCP Servers are intended only for customers with Flex Credits and you may be billed for server usage.",
+    "setup_context": "The same guide says to set up a Salesforce org and connect an MCP client; hosted use is per-user OAuth.",
+    "interpretation": "“Intended only” is preserved as intended-audience language, and possible billing is preserved as billing guidance. The guide does not state Flex Credits as a separate technical or credential requirement."
+  },
+  "issue_found": {
+    "field_path": "buildability.verdict post-recheck supporting source observation",
+    "prior_observation": "Hosted MCP requires org setup and Flex Credits; usage may be billed.",
+    "why_corrected": "It joined the explicit org-setup requirement with Flex Credits wording in a way that falsely read as a combined hard requirement."
+  },
+  "corrections": [
+    {
+      "file": "data/evidence/verification_ledger_input.json",
+      "fields": [
+        "mcp.status source observation/reason",
+        "mcp.details verified_value/reason/evidence",
+        "buildability.verdict source observation/reason",
+        "buildability.blocker verified_value/reason/evidence"
+      ]
+    },
+    {
+      "file": "data/evidence/pilot_post_recheck.json",
+      "fields": [
+        "Salesforce mcp.status and buildability.verdict supporting-source observations",
+        "amendment history"
+      ]
+    },
+    {
+      "file": "data/verified/pilot_final_dataset.json",
+      "fields": [
+        "regenerated from corrected ledger; raw first-pass remains unchanged"
+      ]
+    }
+  ],
+  "metrics_effect": {
+    "raw_first_pass_changed": false,
+    "critical_field_accuracy_changed": false,
+    "supplemental_correction_count_changed": false,
+    "post_recheck_observed_values_changed": false,
+    "post_recheck_source_wording_amended": true,
+    "human_verification_performed": false
+  }
+}

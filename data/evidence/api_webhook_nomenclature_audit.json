@@ -1,0 +1,91 @@
+{
+  "created_on": "2026-09-25",
+  "scope": "Targeted terminology check outside the 20-app accuracy sample; does not change sample denominators or correction metrics.",
+  "findings": [
+    {
+      "app_id": 13,
+      "app": "Freshdesk",
+      "api_types_in_raw_first_pass": [
+        "REST"
+      ],
+      "verified_dataset_api_types_after_correction": [
+        "REST"
+      ],
+      "official_sources": [
+        {
+          "source_url": "https://support.freshdesk.com/support/solutions/articles/132589-using-webhooks-in-automation-rules",
+          "source_title": "Using webhooks in automation rules that run on ticket updates : Freshdesk Support",
+          "source_type": "official_support",
+          "observation": "The directly inspected Freshdesk article documents outbound Trigger Webhook actions and Trigger API actions in ticket automation rules, including callback URLs, HTTP methods and API-key authentication; this supports webhook-enabled automation, not a dedicated Webhooks API.",
+          "source_capture_key": "freshdesk_webhook",
+          "retrieved_on": "2026-09-25",
+          "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+        },
+        {
+          "source_url": "https://support.freshdesk.com/support/solutions/articles/50000009511-automation-examples-using-webhooks",
+          "source_title": "Examples for Automations using Webhooks : Freshdesk Support",
+          "source_type": "official_support",
+          "observation": "Freshdesk's official examples configure outbound webhook automation using POST/PUT requests and Freshdesk API-key authentication; this is an automation action, not a standalone Webhooks API.",
+          "source_capture_key": "freshdesk_webhook_examples",
+          "retrieved_on": "2026-09-25",
+          "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+        },
+        {
+          "source_url": "https://developer.freshdesk.com/api/",
+          "source_title": "Freshdesk API reference",
+          "source_type": "official_api_docs",
+          "observation": "The REST v2 reference documents tickets, conversations, contacts, companies, agents, ticket fields/forms and other resources; its authentication section identifies personal API keys with Basic auth and agent-role permissions.",
+          "source_capture_key": "freshdesk_api",
+          "retrieved_on": "2026-09-25",
+          "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+        }
+      ],
+      "conclusion": "Freshdesk exposes a REST API and outbound webhook automation to external URLs. The inspected docs do not establish a dedicated standalone Webhooks API; do not add Webhooks to api.types on this basis."
+    },
+    {
+      "app_id": 19,
+      "app": "Gorgias",
+      "api_types_in_raw_first_pass": [
+        "REST"
+      ],
+      "official_sources": [
+        {
+          "source_url": "https://developers.gorgias.com/docs/receive-and-respond-to-tickets-from-a-third-party-app.md",
+          "source_title": "Integrate with a new channel - Gorgias Developers",
+          "source_type": "official_docs",
+          "observation": "Gorgias says HTTP integrations send requests to external endpoints when tickets/messages are created or updated; this is outbound HTTP/webhook capability, not a dedicated Webhooks API.",
+          "source_capture_key": "gorgias_http",
+          "retrieved_on": "2026-09-25",
+          "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+        },
+        {
+          "source_url": "https://developers.gorgias.com/docs/sync-gorgias-data-with-a-database.md",
+          "source_title": "Sync Gorgias data with a database - Gorgias Developers",
+          "source_type": "official_docs",
+          "observation": "Gorgias's first-party tutorial demonstrates outbound HTTP integrations/webhook actions to third-party endpoints, not a standalone Webhooks API.",
+          "source_capture_key": "gorgias_sync",
+          "retrieved_on": "2026-09-25",
+          "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+        }
+      ],
+      "conclusion": "Gorgias first-party docs describe outbound HTTP integrations and webhook actions for ticket/message events. This is not a dedicated Webhooks API; the retained interface classification remains REST, with webhook capability described narratively."
+    },
+    {
+      "app_id": 9,
+      "app": "Copper",
+      "official_sources": [
+        {
+          "source_url": "https://developer.copper.com/webhooks/overview.html",
+          "source_title": "Overview - Copper Developer API",
+          "source_type": "official_api_docs",
+          "observation": "Copper documents webhook subscriptions for near-real-time create/update/delete events on CRM entities, HTTPS notification URLs, a 100-subscription limit and notification limits. This is a documented webhook interface, not a claim of a general REST Webhooks API.",
+          "source_capture_key": "copper_webhooks",
+          "retrieved_on": "2026-09-25",
+          "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+        }
+      ],
+      "conclusion": "Copper's docs explicitly define subscriptions and event callbacks for a webhook subsystem. The analysis records a Webhooks interface, but does not claim a general REST Webhooks API."
+    }
+  ],
+  "guardrail": "A webhook interface, dedicated webhook-management API, and outbound automation action are distinct. Freshdesk and Gorgias are not represented as dedicated Webhooks APIs."
+}

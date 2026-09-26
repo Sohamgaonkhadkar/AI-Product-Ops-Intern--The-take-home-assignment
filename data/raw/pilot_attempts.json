@@ -1,0 +1,187 @@
+{
+  "captured_at": "2026-09-24T15:34:58Z",
+  "mode": "capture_replay",
+  "traces": [
+    {
+      "app_id": 1,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Salesforce REST API OAuth Developer Edition official docs",
+        "Salesforce official MCP server docs"
+      ],
+      "sources": [
+        {
+          "title": "Salesforce CRM",
+          "url": "https://www.salesforce.com/crm/",
+          "retrieval": "fetch_page",
+          "observation": "Product page lists CRM products including Sales, Service, Marketing and Commerce."
+        },
+        {
+          "title": "Connect REST API Quick Start",
+          "url": "https://developer.salesforce.com/docs/platform/connect-rest-api/guide/quickstart",
+          "retrieval": "fetch_page",
+          "observation": "OAuth client app setup and access token quickstart."
+        },
+        {
+          "title": "Step One: Sign up for Salesforce Developer Edition",
+          "url": "https://developer.salesforce.com/docs/platform/connect-rest-api/guide/quickstart_dev_org.html",
+          "retrieval": "fetch_page",
+          "observation": "Developer Edition described as free for testing/development; API Enabled permission noted."
+        },
+        {
+          "title": "About REST API",
+          "url": "https://developer.salesforce.com/docs/platform/api-rest/guide/intro-what-is-rest-api.html",
+          "retrieval": "fetch_page",
+          "observation": "REST API covers records, query results and metadata; related Bulk/Metadata/Connect APIs."
+        },
+        {
+          "title": "MCP Solutions for Developers",
+          "url": "https://developer.salesforce.com/docs/ai/agentforce/guide/mcp.html",
+          "retrieval": "fetch_page",
+          "observation": "First-party Salesforce DX MCP Server and Hosted MCP Servers listed."
+        }
+      ],
+      "limitations": [
+        "A direct deep-link to a Salesforce OAuth article returned 404; navigation/current API guide used instead."
+      ]
+    },
+    {
+      "app_id": 22,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Twilio API authentication Account SID API key Basic",
+        "Twilio free trial official API credentials restrictions",
+        "Twilio official MCP server docs"
+      ],
+      "sources": [
+        {
+          "title": "Twilio API requests",
+          "url": "https://www.twilio.com/docs/usage/requests-to-twilio",
+          "retrieval": "fetch_page",
+          "observation": "HTTP API/SDK/CLI, Basic authentication, API key SID/secret, Account SID/Auth Token alternative."
+        },
+        {
+          "title": "Get started with your Twilio free trial account",
+          "url": "https://www.twilio.com/docs/usage/tutorials/how-to-use-your-free-trial-account",
+          "retrieval": "fetch_page",
+          "observation": "Free trial without credit card after email/phone verification; credentials; 30-day trial and restrictions."
+        },
+        {
+          "title": "Twilio MCP server",
+          "url": "https://www.twilio.com/docs/ai/mcp",
+          "retrieval": "fetch_page",
+          "observation": "First-party hosted docs/spec MCP; no auth; read-only search/retrieve; no API execution."
+        }
+      ],
+      "limitations": [
+        "Trial controls not tested in an account."
+      ]
+    },
+    {
+      "app_id": 49,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Amazon Selling Partner API OAuth LWA developer registration roles official",
+        "Amazon SP-API public developer approval and production app registration",
+        "Amazon SP-API official MCP server search"
+      ],
+      "sources": [
+        {
+          "title": "Onboarding as a Developer",
+          "url": "https://developer-docs.amazon.com/sp-api/docs/onboarding-overview",
+          "retrieval": "fetch_page",
+          "observation": "REST-based APIs, public/private developer distinction, approval, OAuth2, roles, resource families and GraphQL Data Kiosk."
+        },
+        {
+          "title": "Register as a Public SP-API Developer",
+          "url": "https://developer-docs.amazon.com/sp-api/docs/register-as-a-public-developer",
+          "retrieval": "fetch_page",
+          "observation": "Public developer profile review, role selection, Appstore listing and restricted-role security review."
+        },
+        {
+          "title": "Step 7: Register Your Production Application",
+          "url": "https://developer-docs.amazon.com/sp-api/docs/onboarding-step-7-register-your-first-production-application",
+          "retrieval": "fetch_page",
+          "observation": "Approved developer profile/roles are prerequisites for a production app."
+        },
+        {
+          "title": "Authorize Public Applications",
+          "url": "https://developer-docs.amazon.com/sp-api/docs/authorize-public-applications",
+          "retrieval": "fetch_page",
+          "observation": "LWA OAuth2 seller consent workflow."
+        }
+      ],
+      "limitations": [
+        "Public developer portal and seller credentials not accessed."
+      ]
+    },
+    {
+      "app_id": 61,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "GitHub REST API authentication official docs PAT OAuth GitHub Apps",
+        "GitHub MCP server official GitHub repository"
+      ],
+      "sources": [
+        {
+          "title": "GitHub REST API documentation",
+          "url": "https://docs.github.com/en/rest",
+          "retrieval": "fetch_page",
+          "observation": "Official versioned REST API docs and many resource references."
+        },
+        {
+          "title": "Authenticating to the REST API",
+          "url": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+          "retrieval": "fetch_page",
+          "observation": "PAT, GitHub App tokens and OAuth tokens; Bearer token header."
+        },
+        {
+          "title": "Managing your personal access tokens",
+          "url": "https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens",
+          "retrieval": "fetch_page",
+          "observation": "PAT self-creation and user/org/permission limits."
+        },
+        {
+          "title": "GitHub MCP Server",
+          "url": "https://github.com/github/github-mcp-server",
+          "retrieval": "fetch_page",
+          "observation": "Official first-party MCP repository and host setup guidance."
+        }
+      ],
+      "limitations": [
+        "No token or organization account available."
+      ]
+    },
+    {
+      "app_id": 92,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Otter AI official MCP server OAuth URL tools",
+        "Otter public API enterprise API key bearer token official docs"
+      ],
+      "sources": [
+        {
+          "title": "Otter Meeting Agent - AI Notetaker, Transcription, Insights",
+          "url": "https://otter.ai/",
+          "retrieval": "fetch_page",
+          "observation": "Official product page describes meeting capture/transcription and searchable summaries/action items."
+        },
+        {
+          "title": "Otter MCP Server",
+          "url": "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+          "retrieval": "fetch_page",
+          "observation": "First-party remote MCP URL, OAuth, search/fetch/user-info tools."
+        },
+        {
+          "title": "Otter.ai Public API",
+          "url": "https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+          "retrieval": "fetch_page",
+          "observation": "Enterprise API access, Bearer API keys, REST resource groups and webhooks."
+        }
+      ],
+      "limitations": [
+        "No Otter account/Enterprise workspace used; plan availability for MCP is not stated."
+      ]
+    }
+  ]
+}

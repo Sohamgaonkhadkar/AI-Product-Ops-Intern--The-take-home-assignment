@@ -1,0 +1,828 @@
+{
+  "audit_id": "final-post-correction-audit-20260924",
+  "created_on": "2026-09-24",
+  "created_at_precision": "DATE_ONLY",
+  "verification_capture_mode": "LIVE_AGENT_WEB_REINSPECTION",
+  "capture_source_file": "data/evidence/final_sample_source_captures.json",
+  "checks": [
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 49,
+      "app": "Amazon Selling Partner",
+      "field_path": "mcp.status",
+      "status": "CONFIRMED",
+      "value": "AVAILABLE",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://github.com/amzn/selling-partner-api-samples/pull/369",
+        "source_title": "Rebrand SP-API Dev MCP to Local MCP for SP-API · Pull Request #369 · amzn/selling-partner-api-samples",
+        "source_type": "official_github",
+        "observation": "The merged PR records the rename from SP-API Dev MCP to Local MCP for SP-API. GitHub page extraction was partial and showed loading errors; the README is the primary evidence.",
+        "source_capture_key": "amazon_mcp_pr",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [
+        {
+          "source_url": "https://github.com/amzn/selling-partner-api-samples/blob/main/use-cases/sp-api-dev-mcp/README.md",
+          "source_title": "selling-partner-api-samples/use-cases/sp-api-dev-mcp/README.md at main · amzn/selling-partner-api-samples",
+          "source_type": "official_github",
+          "observation": "The Amazon-owned README calls this a Local MCP for SP-API, describes it as an educational example rather than a supported product, and distinguishes local documentation/workflow tools from live SP-API execution requiring credentials.",
+          "source_capture_key": "amazon_mcp",
+          "retrieved_on": "2026-09-24",
+          "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+        }
+      ],
+      "independence_level": "MULTI_SOURCE",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The PR page's visible merged rename to Local MCP for SP-API is concordant with the README classification; the PR page was only partially extracted, so the README remains primary evidence."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 4,
+      "app": "Attio",
+      "field_path": "auth_methods",
+      "status": "CONFIRMED",
+      "value": [
+        "OAuth 2.0",
+        "API key",
+        "Bearer/token",
+        "Basic"
+      ],
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://docs.attio.com/rest-api/guides/authentication",
+        "source_title": "Authenticating requests - Attio Docs",
+        "source_type": "official_auth_docs",
+        "observation": "Attio documents OAuth 2.0 and workspace API-key token paths, Bearer authorization, and HTTP Basic with the token as username and an empty password.",
+        "source_capture_key": "attio_auth",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [],
+      "independence_level": "FRESH_REINSPECTION",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The separately recorded follow-up source inspection supports the corrected value for auth_methods; see source capture attempts and page limitations."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 4,
+      "app": "Attio",
+      "field_path": "self_serve_status",
+      "status": "CONFIRMED",
+      "value": "SELF_SERVE_WITH_RESTRICTIONS",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://docs.attio.com/mcp/overview",
+        "source_title": "Attio MCP - Attio Docs",
+        "source_type": "official_docs",
+        "observation": "Attio documents its hosted MCP endpoint https://mcp.attio.com/mcp, user OAuth, read/search/create/update operations, and confirmation for writes.",
+        "source_capture_key": "attio_mcp",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [
+        {
+          "source_url": "https://attio.com/help/reference/apps/generating-an-api-key",
+          "source_title": "Generate an API key | Attio Help Center",
+          "source_type": "official_support",
+          "observation": "The help page says workspace API-key creation is available on all plans but requires an admin and allows scoped token management.",
+          "source_capture_key": "attio_admin_key",
+          "retrieved_on": "2026-09-24",
+          "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+        },
+        {
+          "source_url": "https://attio.com/pricing",
+          "source_title": "Plans & Pricing | Attio",
+          "source_type": "official_pricing",
+          "observation": "Attio lists API and webhook access and an MCP server on Free and paid tiers; the page also advertises starting without a credit card.",
+          "source_capture_key": "attio_pricing",
+          "retrieved_on": "2026-09-24",
+          "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+        }
+      ],
+      "independence_level": "MULTI_SOURCE",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "Attio's separately reopened MCP OAuth guide and admin-key help page, read alongside the official Free-tier pricing matrix, confirm a Free/user-OAuth route with a remaining admin-only API-key path."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 3,
+      "app": "Pipedrive",
+      "field_path": "mcp.status",
+      "status": "CONFIRMED",
+      "value": "AVAILABLE",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://support.pipedrive.com/en/article/mcp-chatgpt",
+        "source_title": "Pipedrive MCP for ChatGPT - Knowledge Base | Pipedrive",
+        "source_type": "official_support",
+        "observation": "Pipedrive's first-party article, last updated 2026-09-22, gives https://mcp.pipedrive.ai/mcp, app-install/authorization steps, inherited Pipedrive role/visibility, and a Pro/Business/Enterprise/Edu ChatGPT-plan requirement.",
+        "source_capture_key": "pipedrive_mcp",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [],
+      "independence_level": "FRESH_REINSPECTION",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "A separate direct reinspection of Pipedrive's first-party setup article confirms the hosted endpoint, install flow, inherited Pipedrive permissions, and external ChatGPT plan requirement."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 1,
+      "app": "Salesforce",
+      "field_path": "api.types",
+      "status": "CONFIRMED",
+      "value": [
+        "REST",
+        "SOAP"
+      ],
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://developer.salesforce.com/docs/platform/api-rest/guide/intro-what-is-rest-api.html",
+        "source_title": "About REST API - Salesforce Developers",
+        "source_type": "official_api_docs",
+        "observation": "The REST overview documents REST and distinguishes Salesforce SOAP API as another programmatic interface.",
+        "source_capture_key": "salesforce_rest_overview",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [],
+      "independence_level": "ALTERNATIVE_SOURCE",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The separately recorded follow-up source inspection supports the corrected value for api.types; see source capture attempts and page limitations."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 1,
+      "app": "Salesforce",
+      "field_path": "api.details",
+      "status": "CONFIRMED",
+      "value": "Official REST API supports create/manipulate/search of Salesforce records and access to query results, metadata, and other resources; Bulk, Metadata, and Connect REST APIs cover additional jobs. Salesforce also documents SOAP API for supported org editions; no endpoint count is estimated.",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://developer.salesforce.com/docs/platform/api-rest/guide/intro-what-is-rest-api.html",
+        "source_title": "About REST API - Salesforce Developers",
+        "source_type": "official_api_docs",
+        "observation": "The REST overview documents REST and distinguishes Salesforce SOAP API as another programmatic interface.",
+        "source_capture_key": "salesforce_rest_overview",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [],
+      "independence_level": "ALTERNATIVE_SOURCE",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The separately recorded follow-up source inspection supports the corrected value for api.details; see source capture attempts and page limitations."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 9,
+      "app": "Copper",
+      "field_path": "api.types",
+      "status": "CONFIRMED",
+      "value": [
+        "REST",
+        "Webhooks"
+      ],
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://developer.copper.com/webhooks/overview.html",
+        "source_title": "Overview - Copper Developer API",
+        "source_type": "official_api_docs",
+        "observation": "Copper documents near-real-time webhook notifications for create/update/delete events on CRM entities, with subscription, rate-limit, and delivery details.",
+        "source_capture_key": "copper_webhooks",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [],
+      "independence_level": "FRESH_REINSPECTION",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The separately recorded follow-up source inspection supports the corrected value for api.types; see source capture attempts and page limitations."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 9,
+      "app": "Copper",
+      "field_path": "api.details",
+      "status": "CONFIRMED",
+      "value": "Copper's Developer API is a RESTful JSON interface for most Copper resources. Official docs also describe webhooks for near-real-time create/update/delete notifications on supported CRM entities, with subscription and delivery limits.",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://developer.copper.com/webhooks/overview.html",
+        "source_title": "Overview - Copper Developer API",
+        "source_type": "official_api_docs",
+        "observation": "Copper documents near-real-time webhook notifications for create/update/delete events on CRM entities, with subscription, rate-limit, and delivery details.",
+        "source_capture_key": "copper_webhooks",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [],
+      "independence_level": "FRESH_REINSPECTION",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The separately recorded follow-up source inspection supports the corrected value for api.details; see source capture attempts and page limitations."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 11,
+      "app": "Zendesk",
+      "field_path": "api.types",
+      "status": "CONFIRMED",
+      "value": [
+        "REST",
+        "Webhooks"
+      ],
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://developer.zendesk.com/api-reference/webhooks/webhooks-api/webhooks/",
+        "source_title": "Webhooks API | Zendesk Developer Docs",
+        "source_type": "official_api_docs",
+        "observation": "The API reference documents GET/POST/PUT/DELETE-style webhook management and event subscriptions; page extraction continued across multiple chunks.",
+        "source_capture_key": "zendesk_webhooks_api",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [],
+      "independence_level": "ALTERNATIVE_SOURCE",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The separately recorded follow-up source inspection supports the corrected value for api.types; see source capture attempts and page limitations."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 11,
+      "app": "Zendesk",
+      "field_path": "api.details",
+      "status": "CONFIRMED",
+      "value": "The official Support/Ticketing REST API covers tickets, users, organizations, custom objects, and ticket workflows. Zendesk also documents a Webhooks API for event-triggered HTTP delivery to external systems; rate limits and some advanced entitlements remain account/endpoint dependent.",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://developer.zendesk.com/api-reference/webhooks/webhooks-api/webhooks/",
+        "source_title": "Webhooks API | Zendesk Developer Docs",
+        "source_type": "official_api_docs",
+        "observation": "The API reference documents GET/POST/PUT/DELETE-style webhook management and event subscriptions; page extraction continued across multiple chunks.",
+        "source_capture_key": "zendesk_webhooks_api",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [],
+      "independence_level": "ALTERNATIVE_SOURCE",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The separately recorded follow-up source inspection supports the corrected value for api.details; see source capture attempts and page limitations."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 12,
+      "app": "Intercom",
+      "field_path": "api.types",
+      "status": "CONFIRMED",
+      "value": [
+        "REST",
+        "Webhooks"
+      ],
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://developers.intercom.com/docs/webhooks/setting-up-webhooks.md",
+        "source_title": "Set up Webhooks - Intercom Developer Docs",
+        "source_type": "official_api_docs",
+        "observation": "Intercom's setup guide documents HTTPS endpoint configuration, event topics, app permissions, and notifications across installed workspaces.",
+        "source_capture_key": "intercom_webhooks_setup",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [],
+      "independence_level": "ALTERNATIVE_SOURCE",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The separately recorded follow-up source inspection supports the corrected value for api.types; see source capture attempts and page limitations."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 12,
+      "app": "Intercom",
+      "field_path": "api.details",
+      "status": "CONFIRMED",
+      "value": "Intercom's REST APIs include workspace and conversation operations. Intercom also supports app-level webhook subscriptions for real-time events, configured through Developer Hub; plan, usage, OAuth scopes, and workspace region still constrain access.",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://developers.intercom.com/docs/webhooks/setting-up-webhooks.md",
+        "source_title": "Set up Webhooks - Intercom Developer Docs",
+        "source_type": "official_api_docs",
+        "observation": "Intercom's setup guide documents HTTPS endpoint configuration, event topics, app permissions, and notifications across installed workspaces.",
+        "source_capture_key": "intercom_webhooks_setup",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [],
+      "independence_level": "ALTERNATIVE_SOURCE",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The separately recorded follow-up source inspection supports the corrected value for api.details; see source capture attempts and page limitations."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 61,
+      "app": "GitHub",
+      "field_path": "api.types",
+      "status": "CONFIRMED",
+      "value": [
+        "REST",
+        "Webhooks"
+      ],
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://docs.github.com/en/webhooks/using-webhooks/creating-webhooks",
+        "source_title": "Creating webhooks - GitHub Docs",
+        "source_type": "official_docs",
+        "observation": "The guide documents repository, organization, marketplace, and GitHub App webhook setup and the corresponding ownership/permission requirements.",
+        "source_capture_key": "github_webhooks_guide",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [],
+      "independence_level": "ALTERNATIVE_SOURCE",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The separately recorded follow-up source inspection supports the corrected value for api.types; see source capture attempts and page limitations."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 61,
+      "app": "GitHub",
+      "field_path": "api.details",
+      "status": "CONFIRMED",
+      "value": "GitHub publishes a versioned REST API across broad resource families. It also exposes repository/organization webhook configuration and REST endpoints for event delivery; endpoint permissions, repository ownership, and organization policy apply.",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://docs.github.com/en/webhooks/using-webhooks/creating-webhooks",
+        "source_title": "Creating webhooks - GitHub Docs",
+        "source_type": "official_docs",
+        "observation": "The guide documents repository, organization, marketplace, and GitHub App webhook setup and the corresponding ownership/permission requirements.",
+        "source_capture_key": "github_webhooks_guide",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [],
+      "independence_level": "ALTERNATIVE_SOURCE",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The separately recorded follow-up source inspection supports the corrected value for api.details; see source capture attempts and page limitations."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 4,
+      "app": "Attio",
+      "field_path": "self_serve_details",
+      "status": "CONFIRMED",
+      "value": "Attio offers a Free plan (up to three seats; the pricing page says no credit card is required) and lists API/webhook access and MCP across plan tiers. Users can connect to the hosted MCP through OAuth under their own workspace permissions; workspace API-key creation remains admin-only and scoped.",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://docs.attio.com/mcp/overview",
+        "source_title": "Attio MCP - Attio Docs",
+        "source_type": "official_docs",
+        "observation": "Attio documents its hosted MCP endpoint https://mcp.attio.com/mcp, user OAuth, read/search/create/update operations, and confirmation for writes.",
+        "source_capture_key": "attio_mcp",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [
+        {
+          "source_url": "https://attio.com/help/reference/apps/generating-an-api-key",
+          "source_title": "Generate an API key | Attio Help Center",
+          "source_type": "official_support",
+          "observation": "The help page says workspace API-key creation is available on all plans but requires an admin and allows scoped token management.",
+          "source_capture_key": "attio_admin_key",
+          "retrieved_on": "2026-09-24",
+          "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+        },
+        {
+          "source_url": "https://attio.com/pricing",
+          "source_title": "Plans & Pricing | Attio",
+          "source_type": "official_pricing",
+          "observation": "Attio lists API and webhook access and an MCP server on Free and paid tiers; the page also advertises starting without a credit card.",
+          "source_capture_key": "attio_pricing",
+          "retrieved_on": "2026-09-24",
+          "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+        }
+      ],
+      "independence_level": "MULTI_SOURCE",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The separately recorded follow-up source inspection supports the corrected value for self_serve_details; see source capture attempts and page limitations."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 4,
+      "app": "Attio",
+      "field_path": "buildability.blocker",
+      "status": "CONFIRMED",
+      "value": "For REST API keys, a workspace admin must issue a scoped token; OAuth/MCP operations remain limited to the authorizing user's workspace permissions/scopes, and MCP writes require confirmation.",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://attio.com/help/reference/apps/generating-an-api-key",
+        "source_title": "Generate an API key | Attio Help Center",
+        "source_type": "official_support",
+        "observation": "The help page says workspace API-key creation is available on all plans but requires an admin and allows scoped token management.",
+        "source_capture_key": "attio_admin_key",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [
+        {
+          "source_url": "https://docs.attio.com/mcp/overview",
+          "source_title": "Attio MCP - Attio Docs",
+          "source_type": "official_docs",
+          "observation": "Attio documents its hosted MCP endpoint https://mcp.attio.com/mcp, user OAuth, read/search/create/update operations, and confirmation for writes.",
+          "source_capture_key": "attio_mcp",
+          "retrieved_on": "2026-09-24",
+          "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+        }
+      ],
+      "independence_level": "MULTI_SOURCE",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The separately recorded follow-up source inspection supports the corrected value for buildability.blocker; see source capture attempts and page limitations."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 49,
+      "app": "Amazon Selling Partner",
+      "field_path": "mcp.details",
+      "status": "CONFIRMED",
+      "value": "Amazon's selling-partner-api-samples repository contains a first-party Local MCP for SP-API educational example. It is not a supported hosted Amazon MCP product. Several local developer-assistance tools work without SP-API credentials; execution of live SP-API requests/workflows requires SP-API credentials.",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://github.com/amzn/selling-partner-api-samples/pull/369",
+        "source_title": "Rebrand SP-API Dev MCP to Local MCP for SP-API · Pull Request #369 · amzn/selling-partner-api-samples",
+        "source_type": "official_github",
+        "observation": "The merged PR records the rename from SP-API Dev MCP to Local MCP for SP-API. GitHub page extraction was partial and showed loading errors; the README is the primary evidence.",
+        "source_capture_key": "amazon_mcp_pr",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [
+        {
+          "source_url": "https://github.com/amzn/selling-partner-api-samples/blob/main/use-cases/sp-api-dev-mcp/README.md",
+          "source_title": "selling-partner-api-samples/use-cases/sp-api-dev-mcp/README.md at main · amzn/selling-partner-api-samples",
+          "source_type": "official_github",
+          "observation": "The Amazon-owned README calls this a Local MCP for SP-API, describes it as an educational example rather than a supported product, and distinguishes local documentation/workflow tools from live SP-API execution requiring credentials.",
+          "source_capture_key": "amazon_mcp",
+          "retrieved_on": "2026-09-24",
+          "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+        }
+      ],
+      "independence_level": "MULTI_SOURCE",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The PR page's visible merged rename to Local MCP for SP-API is concordant with the README classification; the PR page was only partially extracted, so the README remains primary evidence."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 49,
+      "app": "Amazon Selling Partner",
+      "field_path": "mcp.search_scope",
+      "status": "CONFIRMED",
+      "value": "Opened Amazon's first-party selling-partner-api-samples Local MCP for SP-API README and inspected PR #369, which records the rename. This establishes a local educational sample, not a supported hosted service; the PR page was only partially extracted.",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://github.com/amzn/selling-partner-api-samples/pull/369",
+        "source_title": "Rebrand SP-API Dev MCP to Local MCP for SP-API · Pull Request #369 · amzn/selling-partner-api-samples",
+        "source_type": "official_github",
+        "observation": "The merged PR records the rename from SP-API Dev MCP to Local MCP for SP-API. GitHub page extraction was partial and showed loading errors; the README is the primary evidence.",
+        "source_capture_key": "amazon_mcp_pr",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [
+        {
+          "source_url": "https://github.com/amzn/selling-partner-api-samples/blob/main/use-cases/sp-api-dev-mcp/README.md",
+          "source_title": "selling-partner-api-samples/use-cases/sp-api-dev-mcp/README.md at main · amzn/selling-partner-api-samples",
+          "source_type": "official_github",
+          "observation": "The Amazon-owned README calls this a Local MCP for SP-API, describes it as an educational example rather than a supported product, and distinguishes local documentation/workflow tools from live SP-API execution requiring credentials.",
+          "source_capture_key": "amazon_mcp",
+          "retrieved_on": "2026-09-24",
+          "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+        }
+      ],
+      "independence_level": "MULTI_SOURCE",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The PR page's visible merged rename to Local MCP for SP-API is concordant with the README classification; the PR page was only partially extracted, so the README remains primary evidence."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 3,
+      "app": "Pipedrive",
+      "field_path": "mcp.details",
+      "status": "CONFIRMED",
+      "value": "Pipedrive's first-party support article documents a Pipedrive MCP server at https://mcp.pipedrive.ai/mcp and setup in ChatGPT developer mode. The connected user retains existing Pipedrive role/visibility permissions. Connection requires permission to install apps in Pipedrive and a Pro, Business, Enterprise, or Edu ChatGPT plan; the ChatGPT subscription requirement is not a Pipedrive plan requirement.",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://support.pipedrive.com/en/article/mcp-chatgpt",
+        "source_title": "Pipedrive MCP for ChatGPT - Knowledge Base | Pipedrive",
+        "source_type": "official_support",
+        "observation": "Pipedrive's first-party article, last updated 2026-09-22, gives https://mcp.pipedrive.ai/mcp, app-install/authorization steps, inherited Pipedrive role/visibility, and a Pro/Business/Enterprise/Edu ChatGPT-plan requirement.",
+        "source_capture_key": "pipedrive_mcp",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [],
+      "independence_level": "FRESH_REINSPECTION",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The separately recorded follow-up source inspection supports the corrected value for mcp.details; see source capture attempts and page limitations."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 3,
+      "app": "Pipedrive",
+      "field_path": "mcp.search_scope",
+      "status": "CONFIRMED",
+      "value": "Opened the first-party Pipedrive MCP for ChatGPT support article, last updated 2026-09-22. It gives the hosted endpoint and install/authorization steps. This verifies a ChatGPT connection path but does not assert all MCP clients or Pipedrive plan entitlements.",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://support.pipedrive.com/en/article/mcp-chatgpt",
+        "source_title": "Pipedrive MCP for ChatGPT - Knowledge Base | Pipedrive",
+        "source_type": "official_support",
+        "observation": "Pipedrive's first-party article, last updated 2026-09-22, gives https://mcp.pipedrive.ai/mcp, app-install/authorization steps, inherited Pipedrive role/visibility, and a Pro/Business/Enterprise/Edu ChatGPT-plan requirement.",
+        "source_capture_key": "pipedrive_mcp",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [],
+      "independence_level": "FRESH_REINSPECTION",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The separately recorded follow-up source inspection supports the corrected value for mcp.search_scope; see source capture attempts and page limitations."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 3,
+      "app": "Pipedrive",
+      "field_path": "buildability.blocker",
+      "status": "CONFIRMED",
+      "value": "The user's Pipedrive account must permit app installation and the user's Pipedrive role/visibility governs access; this documented ChatGPT connection also requires a Pro, Business, Enterprise, or Edu ChatGPT plan (a separate provider-plan gate). Public Marketplace apps require registered OAuth and user authorization.",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://support.pipedrive.com/en/article/mcp-chatgpt",
+        "source_title": "Pipedrive MCP for ChatGPT - Knowledge Base | Pipedrive",
+        "source_type": "official_support",
+        "observation": "Pipedrive's first-party article, last updated 2026-09-22, gives https://mcp.pipedrive.ai/mcp, app-install/authorization steps, inherited Pipedrive role/visibility, and a Pro/Business/Enterprise/Edu ChatGPT-plan requirement.",
+        "source_capture_key": "pipedrive_mcp",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [],
+      "independence_level": "FRESH_REINSPECTION",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The separately recorded follow-up source inspection supports the corrected value for buildability.blocker; see source capture attempts and page limitations."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 9,
+      "app": "Copper",
+      "field_path": "mcp.search_scope",
+      "status": "CONFIRMED",
+      "value": "Targeted official Copper developer-site/MCP search and opened the official developer landing page and webhook overview; these documents establish REST/webhook surfaces, not MCP ownership or absence. Search was bounded, so status remains UNKNOWN.",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://developer.copper.com/",
+        "source_title": "Getting started - Copper Developer API",
+        "source_type": "official_docs",
+        "observation": "Copper's developer landing page documents a RESTful JSON API and links to API resources; it does not establish first-party MCP availability or absence.",
+        "source_capture_key": "copper_dev",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [],
+      "independence_level": "FRESH_REINSPECTION",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The separately recorded follow-up source inspection supports the corrected value for mcp.search_scope; see source capture attempts and page limitations."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 6,
+      "app": "Podio",
+      "field_path": "mcp.search_scope",
+      "status": "CONFIRMED",
+      "value": "Targeted official Podio developer-site/MCP search and opened the official API developer index; its API/SDK/webhook content does not establish MCP ownership or absence. Search was bounded, so status remains UNKNOWN.",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://developers.podio.com/",
+        "source_title": "Developers - Podio API Documentation",
+        "source_type": "official_docs",
+        "observation": "Podio's official developer index describes the API, SDKs, and webhooks; the bounded inspection did not establish an official MCP server, so absence remains unresolved.",
+        "source_capture_key": "podio_dev",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [],
+      "independence_level": "FRESH_REINSPECTION",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The separately recorded follow-up source inspection supports the corrected value for mcp.search_scope; see source capture attempts and page limitations."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 11,
+      "app": "Zendesk",
+      "field_path": "mcp.details",
+      "status": "CONFIRMED",
+      "value": "Zendesk's May 2026 newsroom announcement described a first-party Zendesk MCP Server and mapped its availability footnote to 'Early access this summer.' The current opened support documentation and September 2026 update establish Zendesk as an MCP client connecting to external servers (the client is GA), not a first-party server endpoint/setup. First-party server availability therefore remains unresolved rather than NOT_FOUND.",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://support.zendesk.com/hc/en-us/articles/10497779528730-Connecting-to-MCP-servers-and-using-MCP-tools-in-action-flows",
+        "source_title": "Connecting to MCP servers and using MCP tools in action flows – Zendesk help",
+        "source_type": "official_support",
+        "observation": "The current article explicitly describes Zendesk as an MCP client connecting to external servers; it notes server role in other scenarios but gives no first-party server endpoint or setup steps. MCP client setup is admin-managed and OAuth-only.",
+        "source_capture_key": "zendesk_mcp_client",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [
+        {
+          "source_url": "https://support.zendesk.com/hc/en-us/articles/11180657600026-What-s-new-in-Zendesk-September-2026",
+          "source_title": "What's new in Zendesk: September 2026 – Zendesk help",
+          "source_type": "official_support",
+          "observation": "The September 2026 update says Zendesk's MCP client is generally available. This is client availability, not evidence that Zendesk's own MCP server launched.",
+          "source_capture_key": "zendesk_sep_news",
+          "retrieved_on": "2026-09-24",
+          "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+        }
+      ],
+      "independence_level": "MULTI_SOURCE",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The current Zendesk client setup/update pages remain client-focused and do not expose a Zendesk-owned MCP server endpoint; this context update does not change UNKNOWN status."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 11,
+      "app": "Zendesk",
+      "field_path": "mcp.search_scope",
+      "status": "CONFIRMED",
+      "value": "Opened Zendesk's May 19, 2026 server/client announcement (server footnote: early access this summer), current MCP-client setup article edited Sep 16, 2026, and Sep 2026 product update stating the MCP client is GA. The opened current pages do not provide a first-party Zendesk MCP server endpoint or setup flow; bounded search is not proof of absence.",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://support.zendesk.com/hc/en-us/articles/11180657600026-What-s-new-in-Zendesk-September-2026",
+        "source_title": "What's new in Zendesk: September 2026 – Zendesk help",
+        "source_type": "official_support",
+        "observation": "The September 2026 update says Zendesk's MCP client is generally available. This is client availability, not evidence that Zendesk's own MCP server launched.",
+        "source_capture_key": "zendesk_sep_news",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [
+        {
+          "source_url": "https://support.zendesk.com/hc/en-us/articles/10497779528730-Connecting-to-MCP-servers-and-using-MCP-tools-in-action-flows",
+          "source_title": "Connecting to MCP servers and using MCP tools in action flows – Zendesk help",
+          "source_type": "official_support",
+          "observation": "The current article explicitly describes Zendesk as an MCP client connecting to external servers; it notes server role in other scenarios but gives no first-party server endpoint or setup steps. MCP client setup is admin-managed and OAuth-only.",
+          "source_capture_key": "zendesk_mcp_client",
+          "retrieved_on": "2026-09-24",
+          "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+        }
+      ],
+      "independence_level": "MULTI_SOURCE",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The current Zendesk client setup/update pages remain client-focused and do not expose a Zendesk-owned MCP server endpoint; this context update does not change UNKNOWN status."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 13,
+      "app": "Freshdesk",
+      "field_path": "api.details",
+      "status": "CONFIRMED",
+      "value": "The official REST v2 reference documents ticket CRUD, conversations/replies, contacts, companies, agents, ticket fields/forms, and other helpdesk resources. API quotas are plan-based. The separate official MCP surface is an API-key-authenticated agent interface, not a separate REST API type. Freshdesk automation rules also support outbound webhook actions on ticket creation/update; this is webhook-enabled automation, not a separately documented Webhooks API.",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://support.freshdesk.com/support/solutions/articles/50000009511-automation-examples-using-webhooks",
+        "source_title": "Automation Examples: Using Webhooks : Freshdesk Support",
+        "source_type": "official_support",
+        "observation": "Freshdesk examples configure outbound webhook actions using POST/PUT to API endpoints and API-key authentication; plan marks show current eligible tiers.",
+        "source_capture_key": "freshdesk_webhook_examples",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [],
+      "independence_level": "ALTERNATIVE_SOURCE",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The separately recorded follow-up source inspection supports the corrected value for api.details; see source capture attempts and page limitations."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 19,
+      "app": "Gorgias",
+      "field_path": "api.details",
+      "status": "CONFIRMED",
+      "value": "Gorgias has an official REST/JSON API for helpdesk data. The API surface remains conservatively MODERATE; this batch did not exhaustively enumerate every endpoint family. First-party developer tutorials also document HTTP integrations/outbound webhook actions for ticket and message events; this is webhook-capable event-driven HTTP integration, not a separately documented dedicated Webhooks API.",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://developers.gorgias.com/docs/sync-gorgias-data-with-a-database.md",
+        "source_title": "Sync Gorgias data with a database - Gorgias Developers",
+        "source_type": "official_docs",
+        "observation": "The tutorial documents automated HTTP integrations that send ticket data and macro-action webhooks to external endpoints.",
+        "source_capture_key": "gorgias_webhook_sync",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [],
+      "independence_level": "ALTERNATIVE_SOURCE",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The separately recorded follow-up source inspection supports the corrected value for api.details; see source capture attempts and page limitations."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 9,
+      "app": "Copper",
+      "field_path": "mcp.details",
+      "status": "CONFIRMED",
+      "value": "No opened first-party Copper MCP setup/endpoint was captured in this bounded check. That is not proof of absence; status remains UNKNOWN.",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://developer.copper.com/",
+        "source_title": "Getting started - Copper Developer API",
+        "source_type": "official_docs",
+        "observation": "Copper's developer landing page documents a RESTful JSON API and links to API resources; it does not establish first-party MCP availability or absence.",
+        "source_capture_key": "copper_dev",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [],
+      "independence_level": "FRESH_REINSPECTION",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The separately recorded follow-up source inspection supports the corrected value for mcp.details; see source capture attempts and page limitations."
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260924",
+      "app_id": 6,
+      "app": "Podio",
+      "field_path": "mcp.details",
+      "status": "CONFIRMED",
+      "value": "No opened first-party Podio MCP setup/endpoint was captured in this bounded check. That is not proof of absence; status remains UNKNOWN.",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-adjudication direct inspection of the listed first-party page(s); values are entered from this second check, not copied by the verification runner.",
+      "source": {
+        "source_url": "https://developers.podio.com/",
+        "source_title": "Developers - Podio API Documentation",
+        "source_type": "official_docs",
+        "observation": "Podio's official developer index describes the API, SDKs, and webhooks; the bounded inspection did not establish an official MCP server, so absence remains unresolved.",
+        "source_capture_key": "podio_dev",
+        "retrieved_on": "2026-09-24",
+        "retrieval_timestamp_precision": "DATE_ONLY; web tools do not expose per-request timestamps"
+      },
+      "supporting_sources": [],
+      "independence_level": "FRESH_REINSPECTION",
+      "checked_on": "2026-09-24",
+      "timestamp_precision": "DATE_ONLY; exact fetch timestamp unavailable",
+      "reason": "The separately recorded follow-up source inspection supports the corrected value for mcp.details; see source capture attempts and page limitations."
+    }
+  ],
+  "notes": [
+    "Only values changed in adjudication receive a separate post-correction recheck; unchanged critical rows are explicitly not rechecked in this second pass.",
+    "Post-recheck values are separately recorded from direct source follow-ups. The verification runner does not infer or copy them from verified_value.",
+    "No human review or authenticated tenant test was performed."
+  ]
+}

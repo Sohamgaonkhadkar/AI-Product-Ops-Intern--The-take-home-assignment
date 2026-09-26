@@ -1,0 +1,525 @@
+{
+  "audit_id": "final-post-correction-audit-20260925",
+  "created_on": "2026-09-25",
+  "created_at_precision": "DATE_ONLY; exact per-request times are not exposed",
+  "verification_capture_mode": "LIVE_AGENT_WEB_REINSPECTION_AFTER_CORRECTION",
+  "checks": [
+    {
+      "app_id": 49,
+      "app": "Amazon Selling Partner",
+      "field_path": "mcp.status",
+      "value": "AVAILABLE",
+      "source_key": "amazon_local_mcp",
+      "supporting_keys": [],
+      "observation": "The reopened Amazon repository README labels this a Local MCP for SP-API and explicitly says it is an educational example, not a supported product. It lists local developer tools and states SP-API credentials are needed for live sp_api_execute/workflow calls.",
+      "source": {
+        "source_url": "https://github.com/amzn/selling-partner-api-samples/blob/main/use-cases/sp-api-dev-mcp/README.md",
+        "source_title": "selling-partner-api-samples/use-cases/sp-api-dev-mcp/README.md · amzn/selling-partner-api-samples",
+        "source_type": "official_github",
+        "observation": "The reopened Amazon repository README labels this a Local MCP for SP-API and explicitly says it is an educational example, not a supported product. It lists local developer tools and states SP-API credentials are needed for live sp_api_execute/workflow calls.",
+        "source_capture_key": "amazon_local_mcp",
+        "retrieved_on": "2026-09-25",
+        "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+      },
+      "supporting_sources": [],
+      "status": "CONFIRMED",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-correction direct source reinspection performed on 2026-09-25 after data/verified/final_dataset.json had been generated. The named official page was reopened with Arena.ai fetch_page and the value below was transcribed from the newly displayed page, not copied from verified_value. This was public-page review only: no account, API, MCP, credential, signup, or human operation was performed. Exact per-request time was not exposed.",
+      "independence_level": "FRESH_REINSPECTION",
+      "audit_id": "final-post-correction-audit-20260925",
+      "rechecked_after_corrected_dataset": true,
+      "verified_at": "2026-09-25",
+      "verified_at_precision": "DATE_ONLY; exact page fetch timestamp unavailable",
+      "corrected_dataset_value_checked_against": "mcp.status"
+    },
+    {
+      "app_id": 4,
+      "app": "Attio",
+      "field_path": "auth_methods",
+      "value": [
+        "OAuth 2.0",
+        "API key",
+        "Bearer/token",
+        "Basic"
+      ],
+      "source_key": "attio_auth",
+      "supporting_keys": [],
+      "observation": "The reopened Attio authentication guide directly lists OAuth 2.0 and workspace API keys, Authorization: Bearer, and HTTP Basic with the token as username and a blank password.",
+      "source": {
+        "source_url": "https://docs.attio.com/rest-api/guides/authentication",
+        "source_title": "Authenticating requests - Attio Docs",
+        "source_type": "official_auth_docs",
+        "observation": "The reopened Attio authentication guide directly lists OAuth 2.0 and workspace API keys, Authorization: Bearer, and HTTP Basic with the token as username and a blank password.",
+        "source_capture_key": "attio_auth",
+        "retrieved_on": "2026-09-25",
+        "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+      },
+      "supporting_sources": [],
+      "status": "CONFIRMED",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-correction direct source reinspection performed on 2026-09-25 after data/verified/final_dataset.json had been generated. The named official page was reopened with Arena.ai fetch_page and the value below was transcribed from the newly displayed page, not copied from verified_value. This was public-page review only: no account, API, MCP, credential, signup, or human operation was performed. Exact per-request time was not exposed.",
+      "independence_level": "FRESH_REINSPECTION",
+      "audit_id": "final-post-correction-audit-20260925",
+      "rechecked_after_corrected_dataset": true,
+      "verified_at": "2026-09-25",
+      "verified_at_precision": "DATE_ONLY; exact page fetch timestamp unavailable",
+      "corrected_dataset_value_checked_against": "auth_methods"
+    },
+    {
+      "app_id": 4,
+      "app": "Attio",
+      "field_path": "self_serve_status",
+      "value": "SELF_SERVE_WITH_RESTRICTIONS",
+      "source_key": "attio_pricing",
+      "supporting_keys": [
+        "attio_mcp",
+        "attio_admin_key"
+      ],
+      "observation": "The reopened pricing page says start today/no credit card, links a Free signup route, and lists API/webhook access and MCP server in the plan matrix. The reopened MCP page describes self-serve OAuth user connection with no API key; the help page says keys are available on all plans but only workspace admins create/manage them.",
+      "source": {
+        "source_url": "https://attio.com/pricing",
+        "source_title": "Plans & Pricing | Attio",
+        "source_type": "official_pricing",
+        "observation": "The reopened pricing page says start today/no credit card, links a Free signup route, and lists API/webhook access and MCP server in the plan matrix. The reopened MCP page describes self-serve OAuth user connection with no API key; the help page says keys are available on all plans but only workspace admins create/manage them.",
+        "source_capture_key": "attio_pricing",
+        "retrieved_on": "2026-09-25",
+        "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+      },
+      "supporting_sources": [
+        {
+          "source_url": "https://docs.attio.com/mcp/overview",
+          "source_title": "Attio MCP - Attio Docs",
+          "source_type": "official_docs",
+          "observation": "Attio documents the hosted MCP endpoint https://mcp.attio.com/mcp, user OAuth, workspace-scoped read/search/create/update tools, and confirmation for writes.",
+          "source_capture_key": "attio_mcp",
+          "retrieved_on": "2026-09-25",
+          "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+        },
+        {
+          "source_url": "https://attio.com/help/reference/apps/generating-an-api-key",
+          "source_title": "Generate an API key | Attio Help Center",
+          "source_type": "official_support",
+          "observation": "Attio says workspace API keys are available on all plans, but only workspace admins can create/manage them; keys can be scoped.",
+          "source_capture_key": "attio_admin_key",
+          "retrieved_on": "2026-09-25",
+          "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+        }
+      ],
+      "status": "CONFIRMED",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-correction direct source reinspection performed on 2026-09-25 after data/verified/final_dataset.json had been generated. The named official page was reopened with Arena.ai fetch_page and the value below was transcribed from the newly displayed page, not copied from verified_value. This was public-page review only: no account, API, MCP, credential, signup, or human operation was performed. Exact per-request time was not exposed.",
+      "independence_level": "FRESH_REINSPECTION",
+      "audit_id": "final-post-correction-audit-20260925",
+      "rechecked_after_corrected_dataset": true,
+      "verified_at": "2026-09-25",
+      "verified_at_precision": "DATE_ONLY; exact page fetch timestamp unavailable",
+      "corrected_dataset_value_checked_against": "self_serve_status"
+    },
+    {
+      "app_id": 1,
+      "app": "Salesforce",
+      "field_path": "api.types",
+      "value": [
+        "REST",
+        "SOAP"
+      ],
+      "source_key": "salesforce_soap",
+      "supporting_keys": [
+        "salesforce_rest"
+      ],
+      "observation": "The reopened Salesforce SOAP guide directly describes SOAP API availability. The separately reopened REST guide directly describes REST API, confirming the distinct REST and SOAP interfaces.",
+      "source": {
+        "source_url": "https://developer.salesforce.com/docs/platform/api/guide/sforce-api-quickstart-intro.html",
+        "source_title": "About SOAP API | SOAP API Developer Guide | Salesforce Developers",
+        "source_type": "official_api_docs",
+        "observation": "The reopened Salesforce SOAP guide directly describes SOAP API availability. The separately reopened REST guide directly describes REST API, confirming the distinct REST and SOAP interfaces.",
+        "source_capture_key": "salesforce_soap",
+        "retrieved_on": "2026-09-25",
+        "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+      },
+      "supporting_sources": [
+        {
+          "source_url": "https://developer.salesforce.com/docs/platform/api-rest/guide/intro-what-is-rest-api.html",
+          "source_title": "About REST API - Salesforce Developers",
+          "source_type": "official_api_docs",
+          "observation": "Salesforce documents REST API resources and distinguishes other interfaces including SOAP.",
+          "source_capture_key": "salesforce_rest",
+          "retrieved_on": "2026-09-25",
+          "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+        }
+      ],
+      "status": "CONFIRMED",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-correction direct source reinspection performed on 2026-09-25 after data/verified/final_dataset.json had been generated. The named official page was reopened with Arena.ai fetch_page and the value below was transcribed from the newly displayed page, not copied from verified_value. This was public-page review only: no account, API, MCP, credential, signup, or human operation was performed. Exact per-request time was not exposed.",
+      "independence_level": "FRESH_REINSPECTION",
+      "audit_id": "final-post-correction-audit-20260925",
+      "rechecked_after_corrected_dataset": true,
+      "verified_at": "2026-09-25",
+      "verified_at_precision": "DATE_ONLY; exact page fetch timestamp unavailable",
+      "corrected_dataset_value_checked_against": "api.types"
+    },
+    {
+      "app_id": 1,
+      "app": "Salesforce",
+      "field_path": "api.details",
+      "value": "Salesforce REST API supports records, query results, metadata and additional resources; the SOAP API is separately documented for Enterprise, Performance, Unlimited and Developer editions, subject to API Enabled permission. No endpoint count is estimated.",
+      "source_key": "salesforce_soap",
+      "supporting_keys": [
+        "salesforce_rest"
+      ],
+      "observation": "Both REST and SOAP first-party guides were reopened after correction. The REST page states that REST creates/manipulates/searches records and accesses query results/metadata; the SOAP page specifies supported editions, API Enabled permission, and a free Developer Edition test path.",
+      "source": {
+        "source_url": "https://developer.salesforce.com/docs/platform/api/guide/sforce-api-quickstart-intro.html",
+        "source_title": "About SOAP API | SOAP API Developer Guide | Salesforce Developers",
+        "source_type": "official_api_docs",
+        "observation": "Both REST and SOAP first-party guides were reopened after correction. The REST page states that REST creates/manipulates/searches records and accesses query results/metadata; the SOAP page specifies supported editions, API Enabled permission, and a free Developer Edition test path.",
+        "source_capture_key": "salesforce_soap",
+        "retrieved_on": "2026-09-25",
+        "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+      },
+      "supporting_sources": [
+        {
+          "source_url": "https://developer.salesforce.com/docs/platform/api-rest/guide/intro-what-is-rest-api.html",
+          "source_title": "About REST API - Salesforce Developers",
+          "source_type": "official_api_docs",
+          "observation": "Salesforce documents REST API resources and distinguishes other interfaces including SOAP.",
+          "source_capture_key": "salesforce_rest",
+          "retrieved_on": "2026-09-25",
+          "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+        }
+      ],
+      "status": "CONFIRMED",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-correction direct source reinspection performed on 2026-09-25 after data/verified/final_dataset.json had been generated. The named official page was reopened with Arena.ai fetch_page and the value below was transcribed from the newly displayed page, not copied from verified_value. This was public-page review only: no account, API, MCP, credential, signup, or human operation was performed. Exact per-request time was not exposed.",
+      "independence_level": "FRESH_REINSPECTION",
+      "audit_id": "final-post-correction-audit-20260925",
+      "rechecked_after_corrected_dataset": true,
+      "verified_at": "2026-09-25",
+      "verified_at_precision": "DATE_ONLY; exact page fetch timestamp unavailable",
+      "corrected_dataset_value_checked_against": "api.details"
+    },
+    {
+      "app_id": 9,
+      "app": "Copper",
+      "field_path": "api.types",
+      "value": [
+        "REST",
+        "Webhooks"
+      ],
+      "source_key": "copper_webhooks",
+      "supporting_keys": [
+        "copper_api"
+      ],
+      "observation": "The reopened Copper developer guide describes its RESTful JSON Dev API. The separately reopened Webhooks guide describes event subscriptions and HTTPS notifications, confirming both documented interfaces while keeping webhook subscriptions distinct from a general REST Webhooks API.",
+      "source": {
+        "source_url": "https://developer.copper.com/webhooks/overview.html",
+        "source_title": "Overview - Copper Developer API",
+        "source_type": "official_api_docs",
+        "observation": "The reopened Copper developer guide describes its RESTful JSON Dev API. The separately reopened Webhooks guide describes event subscriptions and HTTPS notifications, confirming both documented interfaces while keeping webhook subscriptions distinct from a general REST Webhooks API.",
+        "source_capture_key": "copper_webhooks",
+        "retrieved_on": "2026-09-25",
+        "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+      },
+      "supporting_sources": [
+        {
+          "source_url": "https://developer.copper.com/",
+          "source_title": "Getting started - Copper Developer API",
+          "source_type": "official_api_docs",
+          "observation": "Copper describes a RESTful JSON Developer API for most Copper resources.",
+          "source_capture_key": "copper_api",
+          "retrieved_on": "2026-09-25",
+          "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+        }
+      ],
+      "status": "CONFIRMED",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-correction direct source reinspection performed on 2026-09-25 after data/verified/final_dataset.json had been generated. The named official page was reopened with Arena.ai fetch_page and the value below was transcribed from the newly displayed page, not copied from verified_value. This was public-page review only: no account, API, MCP, credential, signup, or human operation was performed. Exact per-request time was not exposed.",
+      "independence_level": "FRESH_REINSPECTION",
+      "audit_id": "final-post-correction-audit-20260925",
+      "rechecked_after_corrected_dataset": true,
+      "verified_at": "2026-09-25",
+      "verified_at_precision": "DATE_ONLY; exact page fetch timestamp unavailable",
+      "corrected_dataset_value_checked_against": "api.types"
+    },
+    {
+      "app_id": 9,
+      "app": "Copper",
+      "field_path": "api.details",
+      "value": "Copper's Developer API is a RESTful JSON interface for most CRM resources. The separate documented Webhooks interface supports subscriptions for near-real-time create/update/delete notifications on supported entities, HTTPS endpoints, up to 100 active subscriptions and stated delivery limits; this is not described as a general REST Webhooks API.",
+      "source_key": "copper_webhooks",
+      "supporting_keys": [
+        "copper_api"
+      ],
+      "observation": "The reopened webhook overview lists create/update/delete event types, supported CRM entities, HTTPS-only callback URLs, up to 100 active subscriptions, notification limits, and at-most-once delivery/no retries. The reopened developer landing page describes a RESTful JSON interface for most Copper resources.",
+      "source": {
+        "source_url": "https://developer.copper.com/webhooks/overview.html",
+        "source_title": "Overview - Copper Developer API",
+        "source_type": "official_api_docs",
+        "observation": "The reopened webhook overview lists create/update/delete event types, supported CRM entities, HTTPS-only callback URLs, up to 100 active subscriptions, notification limits, and at-most-once delivery/no retries. The reopened developer landing page describes a RESTful JSON interface for most Copper resources.",
+        "source_capture_key": "copper_webhooks",
+        "retrieved_on": "2026-09-25",
+        "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+      },
+      "supporting_sources": [
+        {
+          "source_url": "https://developer.copper.com/",
+          "source_title": "Getting started - Copper Developer API",
+          "source_type": "official_api_docs",
+          "observation": "Copper describes a RESTful JSON Developer API for most Copper resources.",
+          "source_capture_key": "copper_api",
+          "retrieved_on": "2026-09-25",
+          "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+        }
+      ],
+      "status": "CONFIRMED",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-correction direct source reinspection performed on 2026-09-25 after data/verified/final_dataset.json had been generated. The named official page was reopened with Arena.ai fetch_page and the value below was transcribed from the newly displayed page, not copied from verified_value. This was public-page review only: no account, API, MCP, credential, signup, or human operation was performed. Exact per-request time was not exposed.",
+      "independence_level": "FRESH_REINSPECTION",
+      "audit_id": "final-post-correction-audit-20260925",
+      "rechecked_after_corrected_dataset": true,
+      "verified_at": "2026-09-25",
+      "verified_at_precision": "DATE_ONLY; exact page fetch timestamp unavailable",
+      "corrected_dataset_value_checked_against": "api.details"
+    },
+    {
+      "app_id": 13,
+      "app": "Freshdesk",
+      "field_path": "api.details",
+      "value": "The official REST v2 reference documents ticket CRUD, conversations/replies, contacts, companies, agents, ticket fields/forms and other helpdesk resources; quotas are plan-based. Freshdesk automation rules also support outbound webhook actions to external URLs for ticket events. This is webhook-enabled automation, not a separately documented Webhooks API, so api.types remains REST.",
+      "source_key": "freshdesk_webhook",
+      "supporting_keys": [
+        "freshdesk_api"
+      ],
+      "observation": "The reopened Freshdesk REST reference exposes the REST v2 resource index. The reopened first-party automation guide distinguishes Trigger Webhook from Trigger API and describes external callback URLs, request methods, API-key authentication, and plan applicability; it documents an outbound automation action, not a standalone Webhooks API.",
+      "source": {
+        "source_url": "https://support.freshdesk.com/support/solutions/articles/132589-using-webhooks-in-automation-rules",
+        "source_title": "Using webhooks in automation rules that run on ticket updates : Freshdesk Support",
+        "source_type": "official_support",
+        "observation": "The reopened Freshdesk REST reference exposes the REST v2 resource index. The reopened first-party automation guide distinguishes Trigger Webhook from Trigger API and describes external callback URLs, request methods, API-key authentication, and plan applicability; it documents an outbound automation action, not a standalone Webhooks API.",
+        "source_capture_key": "freshdesk_webhook",
+        "retrieved_on": "2026-09-25",
+        "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+      },
+      "supporting_sources": [
+        {
+          "source_url": "https://developer.freshdesk.com/api/",
+          "source_title": "Freshdesk API reference",
+          "source_type": "official_api_docs",
+          "observation": "The REST v2 reference documents tickets, conversations, contacts, companies, agents, ticket fields/forms and other resources; its authentication section identifies personal API keys with Basic auth and agent-role permissions.",
+          "source_capture_key": "freshdesk_api",
+          "retrieved_on": "2026-09-25",
+          "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+        }
+      ],
+      "status": "CONFIRMED",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-correction direct source reinspection performed on 2026-09-25 after data/verified/final_dataset.json had been generated. The named official page was reopened with Arena.ai fetch_page and the value below was transcribed from the newly displayed page, not copied from verified_value. This was public-page review only: no account, API, MCP, credential, signup, or human operation was performed. Exact per-request time was not exposed.",
+      "independence_level": "FRESH_REINSPECTION",
+      "audit_id": "final-post-correction-audit-20260925",
+      "rechecked_after_corrected_dataset": true,
+      "verified_at": "2026-09-25",
+      "verified_at_precision": "DATE_ONLY; exact page fetch timestamp unavailable",
+      "corrected_dataset_value_checked_against": "api.details"
+    },
+    {
+      "app_id": 49,
+      "app": "Amazon Selling Partner",
+      "field_path": "mcp.details",
+      "value": "Amazon's selling-partner-api-samples repository contains a first-party Local MCP for SP-API educational example. It is explicitly not a supported product in its own right and is not a hosted Amazon MCP service. Most local developer-assistance tools work without SP-API credentials; tools that execute live SP-API requests or workflows require SP-API credentials.",
+      "source_key": "amazon_local_mcp",
+      "supporting_keys": [],
+      "observation": "The reopened README says the sample MCPs are not supported products, lists documentation/catalog/code tools, and separates them from sp_api_execute and live workflow calls that require SP-API credentials.",
+      "source": {
+        "source_url": "https://github.com/amzn/selling-partner-api-samples/blob/main/use-cases/sp-api-dev-mcp/README.md",
+        "source_title": "selling-partner-api-samples/use-cases/sp-api-dev-mcp/README.md · amzn/selling-partner-api-samples",
+        "source_type": "official_github",
+        "observation": "The reopened README says the sample MCPs are not supported products, lists documentation/catalog/code tools, and separates them from sp_api_execute and live workflow calls that require SP-API credentials.",
+        "source_capture_key": "amazon_local_mcp",
+        "retrieved_on": "2026-09-25",
+        "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+      },
+      "supporting_sources": [],
+      "status": "CONFIRMED",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-correction direct source reinspection performed on 2026-09-25 after data/verified/final_dataset.json had been generated. The named official page was reopened with Arena.ai fetch_page and the value below was transcribed from the newly displayed page, not copied from verified_value. This was public-page review only: no account, API, MCP, credential, signup, or human operation was performed. Exact per-request time was not exposed.",
+      "independence_level": "FRESH_REINSPECTION",
+      "audit_id": "final-post-correction-audit-20260925",
+      "rechecked_after_corrected_dataset": true,
+      "verified_at": "2026-09-25",
+      "verified_at_precision": "DATE_ONLY; exact page fetch timestamp unavailable",
+      "corrected_dataset_value_checked_against": "mcp.details"
+    },
+    {
+      "app_id": 49,
+      "app": "Amazon Selling Partner",
+      "field_path": "mcp.search_scope",
+      "value": "Opened Amazon's first-party Local MCP for SP-API README. It documents installation/client setup and states the repository example is educational and unsupported as a product; some developer tools are local while live SP-API calls require credentials. No Amazon-hosted MCP service is inferred.",
+      "source_key": "amazon_local_mcp",
+      "supporting_keys": [],
+      "observation": "The same freshly reopened README exposes installation, client configuration, support-status caveat, included tools, and credential requirements; it does not establish a hosted Amazon MCP service.",
+      "source": {
+        "source_url": "https://github.com/amzn/selling-partner-api-samples/blob/main/use-cases/sp-api-dev-mcp/README.md",
+        "source_title": "selling-partner-api-samples/use-cases/sp-api-dev-mcp/README.md · amzn/selling-partner-api-samples",
+        "source_type": "official_github",
+        "observation": "The same freshly reopened README exposes installation, client configuration, support-status caveat, included tools, and credential requirements; it does not establish a hosted Amazon MCP service.",
+        "source_capture_key": "amazon_local_mcp",
+        "retrieved_on": "2026-09-25",
+        "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+      },
+      "supporting_sources": [],
+      "status": "CONFIRMED",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-correction direct source reinspection performed on 2026-09-25 after data/verified/final_dataset.json had been generated. The named official page was reopened with Arena.ai fetch_page and the value below was transcribed from the newly displayed page, not copied from verified_value. This was public-page review only: no account, API, MCP, credential, signup, or human operation was performed. Exact per-request time was not exposed.",
+      "independence_level": "FRESH_REINSPECTION",
+      "audit_id": "final-post-correction-audit-20260925",
+      "rechecked_after_corrected_dataset": true,
+      "verified_at": "2026-09-25",
+      "verified_at_precision": "DATE_ONLY; exact page fetch timestamp unavailable",
+      "corrected_dataset_value_checked_against": "mcp.search_scope"
+    },
+    {
+      "app_id": 9,
+      "app": "Copper",
+      "field_path": "mcp.search_scope",
+      "value": "Opened Copper's official Developer API landing page, authentication/OAuth material and webhook overview, and ran a targeted official-domain MCP search. The opened pages establish REST, OAuth/API-key and webhook surfaces but do not establish MCP ownership or absence. Search was bounded; status remains UNKNOWN.",
+      "source_key": "copper_api",
+      "supporting_keys": [
+        "copper_webhooks",
+        "copper_oauth"
+      ],
+      "observation": "After correction, a new targeted site:developer.copper.com MCP/Model Context Protocol search was run. Its results were discovery only and did not surface a first-party MCP guide; the Copper REST landing page, OAuth quickstart and webhook overview were reopened directly. This bounded review still cannot establish availability or absence.",
+      "source": {
+        "source_url": "https://developer.copper.com/",
+        "source_title": "Getting started - Copper Developer API",
+        "source_type": "official_api_docs",
+        "observation": "After correction, a new targeted site:developer.copper.com MCP/Model Context Protocol search was run. Its results were discovery only and did not surface a first-party MCP guide; the Copper REST landing page, OAuth quickstart and webhook overview were reopened directly. This bounded review still cannot establish availability or absence.",
+        "source_capture_key": "copper_api",
+        "retrieved_on": "2026-09-25",
+        "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+      },
+      "supporting_sources": [
+        {
+          "source_url": "https://developer.copper.com/webhooks/overview.html",
+          "source_title": "Overview - Copper Developer API",
+          "source_type": "official_api_docs",
+          "observation": "Copper documents webhook subscriptions for near-real-time create/update/delete events on CRM entities, HTTPS notification URLs, a 100-subscription limit and notification limits. This is a documented webhook interface, not a claim of a general REST Webhooks API.",
+          "source_capture_key": "copper_webhooks",
+          "retrieved_on": "2026-09-25",
+          "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+        },
+        {
+          "source_url": "https://developer.copper.com/introduction/oauth/quickstart.html",
+          "source_title": "OAuth2.0 Quickstart Guide - Copper Developer API",
+          "source_type": "official_auth_docs",
+          "observation": "Copper's OAuth quickstart requires app registration and client credentials obtained via its partners contact; the user consents and the API uses a Bearer access token.",
+          "source_capture_key": "copper_oauth",
+          "retrieved_on": "2026-09-25",
+          "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+        }
+      ],
+      "status": "CONFIRMED",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-correction direct source reinspection performed on 2026-09-25 after data/verified/final_dataset.json had been generated. The named official page was reopened with Arena.ai fetch_page and the value below was transcribed from the newly displayed page, not copied from verified_value. This was public-page review only: no account, API, MCP, credential, signup, or human operation was performed. Exact per-request time was not exposed.",
+      "independence_level": "FRESH_REINSPECTION",
+      "audit_id": "final-post-correction-audit-20260925",
+      "rechecked_after_corrected_dataset": true,
+      "verified_at": "2026-09-25",
+      "verified_at_precision": "DATE_ONLY; exact page fetch timestamp unavailable",
+      "corrected_dataset_value_checked_against": "mcp.search_scope"
+    },
+    {
+      "app_id": 91,
+      "app": "NotebookLM",
+      "field_path": "mcp.search_scope",
+      "value": "Opened Google Cloud NotebookLM Enterprise API, setup and licensing documentation and ran a targeted first-party Google Cloud search for NotebookLM MCP/Model Context Protocol. Search results included generic Google Cloud MCP references but no NotebookLM Enterprise-specific endpoint/setup; generic services are not attributed to NotebookLM. Status remains UNKNOWN, not NO.",
+      "source_key": "notebooklm_api",
+      "supporting_keys": [
+        "notebooklm_setup",
+        "notebooklm_licensing"
+      ],
+      "observation": "After correction, a new targeted Google Cloud/NotebookLM Enterprise MCP search returned generic Google Cloud MCP documentation as discovery leads, not a NotebookLM-specific setup. The NotebookLM API, setup and licensing guides were reopened directly; they confirm the enterprise API and prerequisites but do not establish product-specific MCP availability or absence.",
+      "source": {
+        "source_url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+        "source_title": "Create and manage notebooks (API) | Gemini Notebook Enterprise | Google Cloud Documentation",
+        "source_type": "official_api_docs",
+        "observation": "After correction, a new targeted Google Cloud/NotebookLM Enterprise MCP search returned generic Google Cloud MCP documentation as discovery leads, not a NotebookLM-specific setup. The NotebookLM API, setup and licensing guides were reopened directly; they confirm the enterprise API and prerequisites but do not establish product-specific MCP availability or absence.",
+        "source_capture_key": "notebooklm_api",
+        "retrieved_on": "2026-09-25",
+        "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+      },
+      "supporting_sources": [
+        {
+          "source_url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/set-up-notebooklm",
+          "source_title": "Set up Gemini Notebook Enterprise | Google Cloud Documentation",
+          "source_type": "official_docs",
+          "observation": "Setup requires organizational identity configuration, a Cloud project/API, and assigned administrative/user roles; NotebookLM Enterprise is distinct from consumer NotebookLM.",
+          "source_capture_key": "notebooklm_setup",
+          "retrieved_on": "2026-09-25",
+          "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+        },
+        {
+          "source_url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/set-up-licensing",
+          "source_title": "Gemini Notebook Enterprise licensing | Google Cloud Documentation",
+          "source_type": "official_docs",
+          "observation": "Google's licensing guide describes enterprise licensing and a minimum 15-license subscription, with a 14-day trial tier.",
+          "source_capture_key": "notebooklm_licensing",
+          "retrieved_on": "2026-09-25",
+          "retrieval_timestamp_precision": "DATE_ONLY; fetch_page does not expose a per-request timestamp"
+        }
+      ],
+      "status": "CONFIRMED",
+      "verifier_type": "automated_independent",
+      "method": "Separate post-correction direct source reinspection performed on 2026-09-25 after data/verified/final_dataset.json had been generated. The named official page was reopened with Arena.ai fetch_page and the value below was transcribed from the newly displayed page, not copied from verified_value. This was public-page review only: no account, API, MCP, credential, signup, or human operation was performed. Exact per-request time was not exposed.",
+      "independence_level": "FRESH_REINSPECTION",
+      "audit_id": "final-post-correction-audit-20260925",
+      "rechecked_after_corrected_dataset": true,
+      "verified_at": "2026-09-25",
+      "verified_at_precision": "DATE_ONLY; exact page fetch timestamp unavailable",
+      "corrected_dataset_value_checked_against": "mcp.search_scope"
+    }
+  ],
+  "search_events": [
+    {
+      "audit_id": "final-post-correction-audit-20260925",
+      "stage": "POST_CORRECTION_RECHECK",
+      "query": "site:developer.copper.com \"MCP\" OR \"Model Context Protocol\" Copper",
+      "tool": "web_search",
+      "status": "SUCCESS",
+      "retrieved_on": "2026-09-25",
+      "timestamp_precision": "DATE_ONLY",
+      "used_as_evidence": false,
+      "purpose": "Repeat a bounded official-domain MCP discovery search after correction; not evidence that Copper MCP does not exist.",
+      "follow_up": "Directly reopened Copper REST API landing page, OAuth quickstart, and webhook overview. Search result snippets were discovery leads only; MCP status remains UNKNOWN.",
+      "follow_up_source_keys": [
+        "copper_api",
+        "copper_oauth",
+        "copper_webhooks"
+      ]
+    },
+    {
+      "audit_id": "final-post-correction-audit-20260925",
+      "stage": "POST_CORRECTION_RECHECK",
+      "query": "site:cloud.google.com OR site:docs.cloud.google.com \"NotebookLM Enterprise\" MCP \"Model Context Protocol\"",
+      "tool": "web_search",
+      "status": "SUCCESS",
+      "retrieved_on": "2026-09-25",
+      "timestamp_precision": "DATE_ONLY",
+      "used_as_evidence": false,
+      "purpose": "Repeat a bounded first-party Google Cloud search for a NotebookLM Enterprise-specific MCP after correction; not evidence of absence.",
+      "follow_up": "Directly reopened the NotebookLM Enterprise API, setup and licensing documentation. Generic Google Cloud MCP results were not attributed to NotebookLM; status remains UNKNOWN.",
+      "follow_up_source_keys": [
+        "notebooklm_api",
+        "notebooklm_setup",
+        "notebooklm_licensing"
+      ]
+    }
+  ],
+  "status": "SEPARATE_POST_CORRECTION_RECHECK_CAPTURED",
+  "notes": [
+    "The corrected dataset was generated before this separate second-pass capture.",
+    "All 12 changed ledger rows were reopened and checked (3 critical + 9 supplemental); no unchanged critical rows were rechecked.",
+    "Values in this file were transcribed from the direct post-correction page inspections. Corrected dataset reads in this script are validation only; they do not populate observed values.",
+    "MCP search-scope rechecks use bounded searches plus directly opened pages. Copper and NotebookLM remain UNKNOWN; search-result snippets are not treated as proof of absence.",
+    "No human review, account/API/MCP call, package test, or tenant operation occurred."
+  ]
+}

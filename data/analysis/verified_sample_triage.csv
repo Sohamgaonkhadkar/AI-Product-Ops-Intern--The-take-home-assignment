@@ -1,0 +1,101 @@
+app_id,app,category,source_mode,research_status,verification_status,triage,reason
+1,Salesforce,CRM and Sales,PRIOR_CAPTURE,COMPLETE,AUTO_VERIFIED,CONSTRAINED,"known access, plan, permission, scope, or buildability constraints prevent the easy-win rule"
+2,HubSpot,CRM and Sales,PRIOR_CAPTURE,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+3,Pipedrive,CRM and Sales,PRIOR_CAPTURE,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+4,Attio,CRM and Sales,PRIOR_CAPTURE,COMPLETE,AUTO_VERIFIED,CONSTRAINED,"known access, plan, permission, scope, or buildability constraints prevent the easy-win rule"
+5,Twenty,CRM and Sales,PRIOR_CAPTURE,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+6,Podio,CRM and Sales,PRIOR_CAPTURE,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+7,Zoho CRM,CRM and Sales,PRIOR_CAPTURE,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+8,Close,CRM and Sales,PRIOR_CAPTURE,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+9,Copper,CRM and Sales,PRIOR_CAPTURE,COMPLETE,MIXED,NEEDS_REVIEW,critical verification is MIXED; unknown/unchecked values are not auto-classified
+10,DealCloud,CRM and Sales,PRIOR_CAPTURE,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+11,Zendesk,Support and Helpdesk,PRIOR_CAPTURE,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+12,Intercom,Support and Helpdesk,PRIOR_CAPTURE,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+13,Freshdesk,Support and Helpdesk,PRIOR_CAPTURE,COMPLETE,AUTO_VERIFIED,OUTREACH,"verified partner/sales, enterprise, material paid-plan, or OUTREACH_REQUIRED gate"
+14,Front,Support and Helpdesk,PRIOR_CAPTURE,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+15,Pylon,Support and Helpdesk,PRIOR_CAPTURE,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+16,LiveAgent,Support and Helpdesk,PRIOR_CAPTURE,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+17,Plain,Support and Helpdesk,PRIOR_CAPTURE,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+18,Help Scout,Support and Helpdesk,PRIOR_CAPTURE,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+19,Gorgias,Support and Helpdesk,PRIOR_CAPTURE,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+20,Gladly,Support and Helpdesk,PRIOR_CAPTURE,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+21,Slack,Communications and Messaging,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+22,Twilio,Communications and Messaging,PRIOR_CAPTURE,COMPLETE,AUTO_VERIFIED,CONSTRAINED,"known access, plan, permission, scope, or buildability constraints prevent the easy-win rule"
+23,Zoho Cliq,Communications and Messaging,LIVE_AGENT,COMPLETE,MIXED,NEEDS_REVIEW,critical verification is MIXED; unknown/unchecked values are not auto-classified
+24,Lark (Larksuite),Communications and Messaging,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+25,Pumble,Communications and Messaging,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+26,Discord,Communications and Messaging,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+27,Telegram,Communications and Messaging,LIVE_AGENT,PARTIAL,MIXED,NEEDS_REVIEW,critical verification is MIXED; unknown/unchecked values are not auto-classified
+28,WhatsApp Business,Communications and Messaging,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+29,Aircall,Communications and Messaging,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+30,Vonage,Communications and Messaging,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+31,Google Ads,"Marketing, Ads, Email and Social",LIVE_AGENT,COMPLETE,AUTO_VERIFIED,CONSTRAINED,"known access, plan, permission, scope, or buildability constraints prevent the easy-win rule"
+32,Meta Ads,"Marketing, Ads, Email and Social",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+33,LinkedIn Ads,"Marketing, Ads, Email and Social",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+34,GoHighLevel,"Marketing, Ads, Email and Social",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+35,Mailchimp,"Marketing, Ads, Email and Social",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+36,Klaviyo,"Marketing, Ads, Email and Social",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+37,systeme.io,"Marketing, Ads, Email and Social",LIVE_AGENT,PARTIAL,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+38,Pinterest,"Marketing, Ads, Email and Social",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+39,Threads (Meta),"Marketing, Ads, Email and Social",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+40,SendGrid,"Marketing, Ads, Email and Social",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+41,Shopify,Ecommerce,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+42,WooCommerce,Ecommerce,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+43,BigCommerce,Ecommerce,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+44,Salesforce Commerce Cloud,Ecommerce,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+45,Magento (Adobe Commerce),Ecommerce,LIVE_AGENT,COMPLETE,AUTO_VERIFIED,CONSTRAINED,"known access, plan, permission, scope, or buildability constraints prevent the easy-win rule"
+46,Squarespace,Ecommerce,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+47,Ecwid,Ecommerce,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+48,Gumroad,Ecommerce,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+49,Amazon Selling Partner,Ecommerce,PRIOR_CAPTURE,PARTIAL,AUTO_VERIFIED,OUTREACH,"verified partner/sales, enterprise, material paid-plan, or OUTREACH_REQUIRED gate"
+50,fanbasis,Ecommerce,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+51,DataForSEO,"Data, SEO and Scraping",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+52,SE Ranking,"Data, SEO and Scraping",LIVE_AGENT,COMPLETE,AUTO_VERIFIED,CONSTRAINED,"known access, plan, permission, scope, or buildability constraints prevent the easy-win rule"
+53,Ahrefs,"Data, SEO and Scraping",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+54,MrScraper,"Data, SEO and Scraping",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+55,Apify,"Data, SEO and Scraping",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+56,Firecrawl,"Data, SEO and Scraping",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+57,Bright Data,"Data, SEO and Scraping",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+58,Sherlock,"Data, SEO and Scraping",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+59,Waterfall.io,"Data, SEO and Scraping",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+60,Clay,"Data, SEO and Scraping",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+61,GitHub,"Developer, Infra and Data platforms",PRIOR_CAPTURE,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+62,Vercel,"Developer, Infra and Data platforms",LIVE_AGENT,COMPLETE,AUTO_VERIFIED,CONSTRAINED,"known access, plan, permission, scope, or buildability constraints prevent the easy-win rule"
+63,Netlify,"Developer, Infra and Data platforms",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+64,Cloudflare,"Developer, Infra and Data platforms",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+65,Supabase,"Developer, Infra and Data platforms",LIVE_AGENT,COMPLETE,AUTO_VERIFIED,CONSTRAINED,"known access, plan, permission, scope, or buildability constraints prevent the easy-win rule"
+66,Neo4j,"Developer, Infra and Data platforms",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+67,Snowflake,"Developer, Infra and Data platforms",LIVE_AGENT,COMPLETE,AUTO_VERIFIED,CONSTRAINED,"known access, plan, permission, scope, or buildability constraints prevent the easy-win rule"
+68,MongoDB Atlas,"Developer, Infra and Data platforms",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+69,Datadog,"Developer, Infra and Data platforms",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+70,Sentry,"Developer, Infra and Data platforms",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+71,Notion,Productivity and Project Management,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+72,Airtable,Productivity and Project Management,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+73,Linear,Productivity and Project Management,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+74,Jira,Productivity and Project Management,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+75,Asana,Productivity and Project Management,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+76,Monday.com,Productivity and Project Management,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+77,ClickUp,Productivity and Project Management,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+78,Coda,Productivity and Project Management,LIVE_AGENT,COMPLETE,AUTO_VERIFIED,CONSTRAINED,"known access, plan, permission, scope, or buildability constraints prevent the easy-win rule"
+79,Smartsheet,Productivity and Project Management,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+80,Harvest,Productivity and Project Management,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+81,Stripe,Finance and Fintech,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+82,Plaid,Finance and Fintech,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+83,Binance,Finance and Fintech,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+84,Paygent Connect,Finance and Fintech,LIVE_AGENT,COMPLETE,MIXED,NEEDS_REVIEW,critical verification is MIXED; unknown/unchecked values are not auto-classified
+85,iPayX,Finance and Fintech,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+86,QuickBooks,Finance and Fintech,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+87,Xero,Finance and Fintech,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+88,Brex,Finance and Fintech,LIVE_AGENT,COMPLETE,AUTO_VERIFIED,CONSTRAINED,"known access, plan, permission, scope, or buildability constraints prevent the easy-win rule"
+89,Ramp,Finance and Fintech,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+90,PitchBook,Finance and Fintech,LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+91,NotebookLM,"AI, Research and Media-native",LIVE_AGENT,COMPLETE,MIXED,NEEDS_REVIEW,critical verification is MIXED; unknown/unchecked values are not auto-classified
+92,Otter AI,"AI, Research and Media-native",PRIOR_CAPTURE,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+93,Fathom,"AI, Research and Media-native",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+94,Consensus,"AI, Research and Media-native",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+95,Reducto,"AI, Research and Media-native",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+96,Devin,"AI, Research and Media-native",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+97,higgsfield,"AI, Research and Media-native",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+98,Mermaid CLI,"AI, Research and Media-native",LIVE_AGENT,COMPLETE,AUTO_VERIFIED,CONSTRAINED,"known access, plan, permission, scope, or buildability constraints prevent the easy-win rule"
+99,YouTube Transcript,"AI, Research and Media-native",LIVE_AGENT,COMPLETE,NOT_CHECKED,NEEDS_REVIEW,critical verification is NOT_CHECKED; unknown/unchecked values are not auto-classified
+100,Grain,"AI, Research and Media-native",LIVE_AGENT,COMPLETE,AUTO_VERIFIED,CONSTRAINED,"known access, plan, permission, scope, or buildability constraints prevent the easy-win rule"

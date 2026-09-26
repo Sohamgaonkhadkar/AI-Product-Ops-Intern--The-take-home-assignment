@@ -1,0 +1,878 @@
+[
+  {
+    "schema_version": "1.0",
+    "app_id": 1,
+    "app": "Salesforce",
+    "category": "CRM and Sales",
+    "website_hint": "http://salesforce.com/",
+    "description": "Cloud CRM and business platform with sales, service, marketing, commerce, and data products.",
+    "auth_status": "CONFIRMED",
+    "auth_methods": [
+      "OAuth 2.0",
+      "Bearer/token"
+    ],
+    "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+    "self_serve_details": "Developer Edition is free for testing/development; API access is enabled by default in Enterprise, Performance, Unlimited and Developer editions. Professional Edition requires an API add-on; the user also needs API Enabled permission.",
+    "credential_access": {
+      "status": "RESTRICTED",
+      "path": "Create/use an API-enabled Salesforce org and configure an External Client App with OAuth in that org; existing Connected Apps may remain usable, but new Connected App creation is restricted as of Spring 2026.",
+      "plan_or_gate": "Free Developer Edition is available for test/development; production org edition, user permissions, and org setup still govern access."
+    },
+    "api": {
+      "available": "YES",
+      "types": [
+        "REST",
+        "SOAP"
+      ],
+      "breadth": "BROAD",
+      "details": "Official REST API supports create/manipulate/search of Salesforce records and access to query results, metadata, and other resources; Bulk, Metadata, and Connect REST APIs cover additional jobs. No endpoint count estimated."
+    },
+    "mcp": {
+      "status": "AVAILABLE",
+      "details": "First-party Salesforce DX MCP Server (beta) and Hosted MCP Servers are documented. Hosted MCP supports org data/actions through per-user OAuth and must be set up in a Salesforce org. Salesforce says the hosted servers are intended only for customers with Flex Credits and that server usage may be billed; this is intended-audience/billing language, not proof of a separate technical or credential requirement.",
+      "search_scope": "Official Salesforce developer MCP-solutions page and linked first-party server references inspected."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "Org-specific External Client App/OAuth configuration and API Enabled permissions; API availability varies by edition. Salesforce Hosted MCP is org-configured and uses per-user OAuth. Salesforce says the hosted servers are intended only for customers with Flex Credits and server usage may be billed; this records intended audience and possible billing, not a proven technical or credential gate.",
+      "rationale": "A documented REST API, OAuth flow, free test/developer org path, and official MCP options make an integration technically feasible. Org-specific credentials/permissions and production edition access prevent treating it as universally frictionless."
+    },
+    "evidence": [
+      {
+        "claim": "Salesforce positions the product as a CRM suite with Sales Cloud, Service Cloud, Marketing Cloud and Commerce Cloud.",
+        "field": "description",
+        "source_url": "https://www.salesforce.com/crm/",
+        "source_title": "Salesforce CRM",
+        "source_type": "official_product",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Official CRM page lists Sales Cloud, Service Cloud, Marketing Cloud and Commerce Cloud products."
+      },
+      {
+        "claim": "Salesforce Connect REST quick start instructs developers to create an external client app, enable OAuth and connect with OAuth to obtain an access token.",
+        "field": "auth",
+        "source_url": "https://developer.salesforce.com/docs/platform/connect-rest-api/guide/quickstart",
+        "source_title": "Connect REST API Quick Start",
+        "source_type": "official_auth_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Page outlines OAuth setup and obtaining/passing an access token."
+      },
+      {
+        "claim": "REST API requests operate with access tokens; REST API is an HTTP interface for records, queries and metadata.",
+        "field": "auth",
+        "source_url": "https://developer.salesforce.com/docs/platform/api-rest/guide/intro-what-is-rest-api.html",
+        "source_title": "About REST API",
+        "source_type": "official_api_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "REST API docs describe Salesforce access through HTTP requests to resources; quick-start documents OAuth token flow."
+      },
+      {
+        "claim": "Developer Edition is free for testing/development; user profile needs API Enabled permission.",
+        "field": "self_serve",
+        "source_url": "https://developer.salesforce.com/docs/platform/connect-rest-api/guide/quickstart_dev_org.html",
+        "source_title": "Step One: Sign up for Salesforce Developer Edition",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "The page calls Developer Edition a free testing/development solution and notes the API Enabled user permission."
+      },
+      {
+        "claim": "API access requires an org/user permission and an org-configured client app, so a free test org is not proof of free production access.",
+        "field": "credential_access",
+        "source_url": "https://developer.salesforce.com/docs/platform/connect-rest-api/guide/quickstart_dev_org.html",
+        "source_title": "Step One: Sign up for Salesforce Developer Edition",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Developer Edition instructions require API Enabled permission; authorization setup is configured in a Salesforce org."
+      },
+      {
+        "claim": "Salesforce REST API supports data create/manipulation/search and access to records, query results and metadata; additional APIs support other functions.",
+        "field": "api",
+        "source_url": "https://developer.salesforce.com/docs/platform/api-rest/guide/intro-what-is-rest-api.html",
+        "source_title": "About REST API",
+        "source_type": "official_api_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "The official overview describes REST resources, records, query results, metadata, and related Bulk/Metadata/Connect APIs."
+      },
+      {
+        "claim": "Salesforce officially lists Salesforce DX MCP Server and Hosted MCP Servers.",
+        "field": "mcp",
+        "source_url": "https://developer.salesforce.com/docs/ai/agentforce/guide/mcp.html",
+        "source_title": "MCP Solutions for Developers",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "First-party Salesforce MCP solutions table includes Salesforce DX MCP Server (beta) and Salesforce Hosted MCP Servers."
+      },
+      {
+        "claim": "OAuth/API setup and org permissions are material build constraints despite a documented test org and first-party MCP offerings.",
+        "field": "buildability",
+        "source_url": "https://developer.salesforce.com/docs/platform/connect-rest-api/guide/quickstart_dev_org.html",
+        "source_title": "Step One: Sign up for Salesforce Developer Edition",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Free Developer Edition is for testing/development and requires API Enabled permission; combine with org-scoped OAuth setup."
+      },
+      {
+        "claim": "Free developer/test org exists; API availability is edition- and permission-dependent.",
+        "field": "self_serve",
+        "source_url": "https://developer.salesforce.com/docs/platform/api-rest/guide/intro-rest-compatible-editions.html",
+        "source_title": "Supported Editions and Required Permissions",
+        "source_type": "official_api_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "The official edition matrix says Developer Edition is API-enabled by default, Professional needs an add-on, and users need API Enabled."
+      },
+      {
+        "claim": "Salesforce Hosted MCP is org-configured and uses per-user OAuth; Salesforce says the service is intended only for customers with Flex Credits and that usage may be billed. The guide does not establish Flex Credits as a technical or credential requirement.",
+        "field": "mcp",
+        "source_url": "https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide",
+        "source_title": "Salesforce Hosted MCP Servers",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "The official guide states Hosted MCP is “intended only for customers with Flex Credits” and “you may be billed for server usage.” Its setup flow separately requires org setup and per-user OAuth; no separate technical or credential gate for Flex Credits is stated."
+      },
+      {
+        "claim": "Salesforce documents both REST API and SOAP API.",
+        "field": "api",
+        "source_url": "https://developer.salesforce.com/docs/platform/api-rest/guide/intro-what-is-rest-api.html",
+        "source_title": "About REST API",
+        "source_type": "official_api_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "The guide describes REST API and explicitly compares it with SOAP API."
+      },
+      {
+        "claim": "Salesforce API access is edition- and permission-dependent; Professional requires add-on, and API Enabled is required.",
+        "field": "self_serve",
+        "source_url": "https://developer.salesforce.com/docs/platform/api-rest/guide/intro-rest-compatible-editions.html",
+        "source_title": "Supported Editions and Required Permissions",
+        "source_type": "official_api_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Official edition/permission matrix."
+      },
+      {
+        "claim": "External Client Apps are the recommended path; Salesforce docs say new Connected App creation is restricted as of Spring 2026.",
+        "field": "credential_access",
+        "source_url": "https://developer.salesforce.com/docs/platform/api-rest/guide/intro-oauth-and-connected-apps.html",
+        "source_title": "Authorization Through External Client Apps or Connected Apps and OAuth 2.0",
+        "source_type": "official_auth_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Current guide recommends External Client Apps; new Connected App creation is restricted."
+      },
+      {
+        "claim": "Salesforce Hosted MCP is org-configured and uses per-user OAuth; Salesforce says the service is intended only for customers with Flex Credits and that usage may be billed. The guide does not establish Flex Credits as a technical or credential requirement.",
+        "field": "buildability",
+        "source_url": "https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide",
+        "source_title": "Salesforce Hosted MCP Servers",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "The official guide states Hosted MCP is “intended only for customers with Flex Credits” and “you may be billed for server usage.” Its setup flow separately requires org setup and per-user OAuth; no separate technical or credential gate for Flex Credits is stated."
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T15:12:08Z",
+    "research_status": "COMPLETE",
+    "verification_status": "AUTO_VERIFIED",
+    "source_conflicts": [],
+    "limitations": [
+      "A direct Salesforce OAuth deep-link tried during source discovery returned 404; the current Quick Start and REST API guide were used instead.",
+      "This is a public-documentation assessment; no Salesforce org was created or tested."
+    ],
+    "researcher_notes": "Pilot sample selected to test OAuth, free developer org vs customer-org access, and first-party MCP discovery."
+  },
+  {
+    "schema_version": "1.0",
+    "app_id": 22,
+    "app": "Twilio",
+    "category": "Communications and Messaging",
+    "website_hint": "http://twilio.com/",
+    "description": "Cloud communications platform with APIs for messaging, voice, and email.",
+    "auth_status": "CONFIRMED",
+    "auth_methods": [
+      "API key",
+      "Basic"
+    ],
+    "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+    "self_serve_details": "Twilio documents free-trial signup without a credit card after email and phone verification. Trial includes limited product units, a 30-day expiry, and account-status restrictions; paid upgrade is needed to remove trial limits.",
+    "credential_access": {
+      "status": "RESTRICTED",
+      "path": "Create a Twilio account, verify email and phone, then view Account SID/Auth Token in Console or create API keys.",
+      "plan_or_gate": "Free trial credentials are available; trial usage and recipient/geographic/content restrictions apply, with paid upgrade to remove restrictions."
+    },
+    "api": {
+      "available": "YES",
+      "types": [
+        "REST",
+        "SDK",
+        "Webhooks",
+        "CLI"
+      ],
+      "breadth": "BROAD",
+      "details": "Multi-product HTTP APIs and SDK/CLI support; official Twilio documentation describes a hosted docs MCP indexing public API specifications across products. API breadth is broad across communications products; no endpoint count is used in this record."
+    },
+    "mcp": {
+      "status": "AVAILABLE",
+      "details": "First-party hosted Twilio MCP at https://mcp.twilio.com/docs; Public Beta; unauthenticated search/retrieval of public API specs and docs only, read-only and does not execute API calls.",
+      "search_scope": "Official Twilio AI/MCP documentation inspected, including features, indexed material, auth and limitations."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "Trial unit, recipient, geographic, template, and expiry restrictions; production sending requires paid account/upgrade.",
+      "rationale": "A documented HTTP API, API-key/Basic auth, and self-serve free trial make integration feasible. Trial limits are material for a live communications agent, and the first-party MCP is documentation-only rather than an execution server."
+    },
+    "evidence": [
+      {
+        "claim": "Twilio presents itself as APIs for SMS, email and voice.",
+        "field": "description",
+        "source_url": "https://www.twilio.com/en-us",
+        "source_title": "Conversational AI and APIs for SMS, Email, Voice | Twilio",
+        "source_type": "official_product",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Official product page title and landing content describe APIs for SMS, Email and Voice."
+      },
+      {
+        "claim": "Twilio REST API requests use HTTP Basic authentication with an API key SID/secret; Account SID/Auth Token are a documented alternative for specified APIs.",
+        "field": "auth",
+        "source_url": "https://www.twilio.com/docs/usage/requests-to-twilio",
+        "source_title": "Twilio API requests",
+        "source_type": "official_auth_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "The authentication section says API key SID and secret are used as Basic auth credentials; account SID/Auth Token are also documented."
+      },
+      {
+        "claim": "A free trial can be created without a credit card; trial credentials appear in Console; trial expires after 30 days and has product-specific restrictions.",
+        "field": "self_serve",
+        "source_url": "https://www.twilio.com/docs/usage/tutorials/how-to-use-your-free-trial-account",
+        "source_title": "Get started with your Twilio free trial account",
+        "source_type": "official_support",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Page documents no-card signup, email/phone verification, trial credentials, free units and 30-day expiration."
+      },
+      {
+        "claim": "Console exposes Account SID/Auth Token and supports API-key management after self-serve signup.",
+        "field": "credential_access",
+        "source_url": "https://www.twilio.com/docs/usage/tutorials/how-to-use-your-free-trial-account",
+        "source_title": "Get started with your Twilio free trial account",
+        "source_type": "official_support",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "The trial guide says credentials can be viewed in Console; trial restrictions are enforced by account status."
+      },
+      {
+        "claim": "Twilio supports raw HTTP requests, SDKs and CLI; APIs are documented and multi-product.",
+        "field": "api",
+        "source_url": "https://www.twilio.com/docs/usage/requests-to-twilio",
+        "source_title": "Twilio API requests",
+        "source_type": "official_api_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "The docs describe HTTP requests, Twilio SDKs, CLI, and webhooks in the API request guide."
+      },
+      {
+        "claim": "Twilio official docs MCP indexes public API specs and docs; it is read-only search/retrieval and does not execute API calls.",
+        "field": "api",
+        "source_url": "https://www.twilio.com/docs/ai/mcp",
+        "source_title": "Twilio MCP server",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "The documentation lists the public specs indexed and explicitly says the server is read-only and does not execute API calls."
+      },
+      {
+        "claim": "Twilio publicly documents a first-party hosted MCP endpoint with no account/auth required.",
+        "field": "mcp",
+        "source_url": "https://www.twilio.com/docs/ai/mcp",
+        "source_title": "Twilio MCP server",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Hosted URL mcp.twilio.com/docs; no authentication; two tools search and retrieve API docs/schemas."
+      },
+      {
+        "claim": "Self-serve trial credentials support development, but trial limits block unrestricted production messaging; docs MCP is not an execution interface.",
+        "field": "buildability",
+        "source_url": "https://www.twilio.com/docs/usage/tutorials/how-to-use-your-free-trial-account",
+        "source_title": "Get started with your Twilio free trial account",
+        "source_type": "official_support",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "The trial page lists usage/recipient/geo/content restrictions and paid upgrade path; combine with API docs."
+      },
+      {
+        "claim": "The first-party MCP is a docs/schema retrieval tool and not an API execution server.",
+        "field": "buildability",
+        "source_url": "https://www.twilio.com/docs/ai/mcp",
+        "source_title": "Twilio MCP server",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Official limitations state read-only and public specs only."
+      },
+      {
+        "claim": "Twilio MCP is a Public Beta and read-only documentation/schema retrieval service.",
+        "field": "mcp",
+        "source_url": "https://www.twilio.com/docs/ai/mcp",
+        "source_title": "Twilio MCP server",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Official page labels Public Beta and says it does not execute API calls."
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T15:12:08Z",
+    "research_status": "COMPLETE",
+    "verification_status": "AUTO_VERIFIED",
+    "source_conflicts": [],
+    "limitations": [
+      "No Twilio account was created; signup and trial controls were verified from public docs only.",
+      "MCP availability is documented as Public Beta and may change."
+    ],
+    "researcher_notes": "Pilot tests API key + Basic combination and distinguishes Twilio docs MCP from an action-capable MCP."
+  },
+  {
+    "schema_version": "1.0",
+    "app_id": 49,
+    "app": "Amazon Selling Partner",
+    "category": "Ecommerce",
+    "website_hint": "http://developer-docs.amazon.com/sp-api",
+    "description": "REST-based seller/vendor APIs for catalog, listings, pricing, orders, fulfillment, inventory, reporting and related selling operations.",
+    "auth_status": "CONFIRMED",
+    "auth_methods": [
+      "OAuth 2.0",
+      "Bearer/token"
+    ],
+    "self_serve_status": "PARTNER_OR_CONTACT_SALES",
+    "self_serve_details": "For a public app serving multiple sellers/vendors, official onboarding requires a developer profile review, approved roles and Amazon approval/listing for Selling Partner Appstore distribution. A private app for one organization follows a less public path; this distinction is material.",
+    "credential_access": {
+      "status": "GATED",
+      "path": "Public developer registers through Solution Provider Portal, submits a developer profile/use case/security details, receives approval for roles, then registers a production app; each selling partner authorizes via LWA/OAuth.",
+      "plan_or_gate": "Amazon review/approval and role qualification for public integration; seller/vendor authorization is required. Private internal applications have a separate route."
+    },
+    "api": {
+      "available": "YES",
+      "types": [
+        "REST",
+        "GraphQL"
+      ],
+      "breadth": "BROAD",
+      "details": "Official docs describe REST-based APIs across catalog/listings/pricing/orders/fulfillment/inventory, notifications and bulk operations; Data Kiosk supports GraphQL queries. Roles and access vary by operation."
+    },
+    "mcp": {
+      "status": "AVAILABLE",
+      "details": "Amazon publishes two local SP-API MCP example servers in its first-party samples repository: sp-api-dev-assistant-mcp-server (documentation/reference, catalog exploration, code generation, execution, migration, optimization) and sp-api-workflow-mcp-server (workflow authoring/execution). Most assistant tools work locally without credentials; live SP-API execution requires SP-API credentials. The README explicitly says these are educational examples, not supported products in their own right.",
+      "search_scope": "Inspected the official SP-API Welcome page and Models catalogue, a targeted official-domain MCP/Model Context Protocol search plus the exact GitHub query site:github.com/amzn/selling-partner-api-samples \"Local MCP for SP-API\" \"@amazon-sp-api-release/sp-api-dev-mcp\", and the Amazon-owned selling-partner-api-samples repository at use-cases/sp-api-dev-mcp (README); cross-checked its May 2026 maintainer announcement. These first-party materials confirm local example MCP servers. Only chunk 0 of 26 in the SP-API llms.txt docs index was inspected; this incompleteness no longer supports NOT_FOUND because the separate first-party samples repository establishes AVAILABLE. No third-party/server support claim or package execution is made."
+    },
+    "buildability": {
+      "verdict": "OUTREACH_REQUIRED",
+      "blocker": "Public developer profile/role approval and Amazon approval for public Appstore distribution; selling partners must separately authorize.",
+      "rationale": "SP-API is broad and technically buildable, but a reusable public toolkit needs the approved public-developer/app route and role access. A private developer route is documented for one organization and does not remove the public distribution gate."
+    },
+    "evidence": [
+      {
+        "claim": "SP-API is a REST-based API collection for seller/vendor operations such as orders, shipment tracking and payments.",
+        "field": "description",
+        "source_url": "https://developer-docs.amazon.com/sp-api/docs/onboarding-overview",
+        "source_title": "Onboarding as a Developer",
+        "source_type": "official_api_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Official overview describes REST-based API and examples of seller/vendor workflows."
+      },
+      {
+        "claim": "Public-app authorization uses Login with Amazon OAuth 2.0; LWA access tokens are sent with SP-API requests.",
+        "field": "auth",
+        "source_url": "https://developer-docs.amazon.com/sp-api/docs/authorize-public-applications",
+        "source_title": "Authorize Public Applications",
+        "source_type": "official_auth_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "The guide identifies LWA as OAuth 2.0 and documents code-to-refresh-token workflow; SP-API requests use access tokens."
+      },
+      {
+        "claim": "Public developers must complete profile review, request roles, and list the app in the Selling Partner Appstore with Amazon approval; private app path is distinct.",
+        "field": "self_serve",
+        "source_url": "https://developer-docs.amazon.com/sp-api/docs/register-as-a-public-developer",
+        "source_title": "Register as a Public SP-API Developer",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "The public developer guide lists approval/review requirements and describes a private-developer alternative."
+      },
+      {
+        "claim": "Production app registration requires an approved developer profile and only Amazon-approved roles can be selected.",
+        "field": "credential_access",
+        "source_url": "https://developer-docs.amazon.com/sp-api/docs/onboarding-step-7-register-your-first-production-application",
+        "source_title": "Step 7: Register Your Production Application",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Official onboarding step requires an approved profile and role approvals before production application registration."
+      },
+      {
+        "claim": "The API surface includes many seller resource families, individual/batch/bulk operations, notifications, and a GraphQL Data Kiosk use case.",
+        "field": "api",
+        "source_url": "https://developer-docs.amazon.com/sp-api/docs/onboarding-overview",
+        "source_title": "Onboarding as a Developer",
+        "source_type": "official_api_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Official docs enumerate resource workflow families, API access methods and Data Kiosk GraphQL."
+      },
+      {
+        "claim": "Public app access is approval/role-gated and seller authorization is required, while internal private apps follow a separate route.",
+        "field": "buildability",
+        "source_url": "https://developer-docs.amazon.com/sp-api/docs/onboarding-overview",
+        "source_title": "Onboarding as a Developer",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Overview explains public vs private apps, Appstore approval, OAuth seller authorization and roles."
+      },
+      {
+        "claim": "Public developer registration requires external review and published app listing; restricted roles involve additional security review.",
+        "field": "buildability",
+        "source_url": "https://developer-docs.amazon.com/sp-api/docs/register-as-a-public-developer",
+        "source_title": "Register as a Public SP-API Developer",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Official guide documents profile evaluation and review, including an architecture/security assessment for restricted roles."
+      },
+      {
+        "claim": "Amazon publishes first-party local SP-API MCP example servers in its selling-partner-api-samples repository; the README explicitly says these are educational examples, not supported products in their own right.",
+        "field": "mcp",
+        "source_url": "https://github.com/amzn/selling-partner-api-samples/blob/main/use-cases/sp-api-dev-mcp/README.md",
+        "source_title": "Local MCP for SP-API — Amazon SP-API Samples README",
+        "source_type": "official_github",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Amazon-owned amzn/selling-partner-api-samples README says the Local MCP servers are example MCPs, not supported products in their own right; documents sp-api-dev-assistant-mcp-server and sp-api-workflow-mcp-server; most assistant tools work locally without credentials, while live SP-API execution/workflows require SP-API credentials."
+      },
+      {
+        "claim": "Amazon Selling Partner Developer Services announced Local MCP for SP-API as a consolidated npm package with two local MCP servers for SP-API development and workflow tools.",
+        "field": "mcp",
+        "source_url": "https://github.com/amzn/selling-partner-api-samples/discussions/382",
+        "source_title": "Now Available: Local MCP for SP-API — AI-powered Selling Partner API development",
+        "source_type": "official_github",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Amazon Selling Partner Developer Services Solutions Architect Tong S. (repository maintainer) announces the package @amazon-sp-api-release/sp-api-dev-mcp, lists both MCP servers and tools, and links the first-party samples repository."
+      },
+      {
+        "claim": "The scoped npm package @amazon-sp-api-release/sp-api-dev-mcp is publicly listed as Local MCP for SP-API and documents the example servers, install/configuration path, and credential boundary.",
+        "field": "mcp",
+        "source_url": "https://www.npmjs.com/package/@amazon-sp-api-release/sp-api-dev-mcp",
+        "source_title": "@amazon-sp-api-release/sp-api-dev-mcp — npm",
+        "source_type": "official_product",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "The package page identifies Local MCP for SP-API, shows public package version 1.0.5, repeats the warning that the servers are educational examples rather than supported products, and lists the two servers and credential requirements."
+      },
+      {
+        "claim": "The Amazon-owned SP-API samples repo contains the Local MCP for SP-API README and separate assistant/workflow MCP server directories.",
+        "field": "mcp",
+        "source_url": "https://github.com/amzn/selling-partner-api-samples/tree/main/use-cases/sp-api-dev-mcp",
+        "source_title": "selling-partner-api-samples/use-cases/sp-api-dev-mcp",
+        "source_type": "official_github",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Repository directory lists sp-api-dev-assistant-mcp-server, sp-api-workflow-mcp and README; latest commits include maintainer updates."
+      }
+    ],
+    "confidence": "MEDIUM",
+    "research_timestamp": "2026-09-24T15:12:08Z",
+    "research_status": "PARTIAL",
+    "verification_status": "AUTO_VERIFIED",
+    "source_conflicts": [],
+    "limitations": [
+      "MCP status was not searched in the first-pass pilot; remains UNKNOWN rather than NOT_FOUND.",
+      "No Solution Provider Portal account or seller account was used; review and credential paths are documentary.",
+      "The assignment hint points to developer docs; no precise fee/pricing claim was researched."
+    ],
+    "researcher_notes": "A public multi-tenant integration and a private single-organization integration have different onboarding rules; keep the scope explicit."
+  },
+  {
+    "schema_version": "1.0",
+    "app_id": 61,
+    "app": "GitHub",
+    "category": "Developer, Infra and Data platforms",
+    "website_hint": "http://docs.github.com/rest",
+    "description": "Developer platform for building, scaling, and delivering software with code hosting and collaboration workflows.",
+    "auth_status": "CONFIRMED",
+    "auth_methods": [
+      "OAuth 2.0",
+      "Bearer/token"
+    ],
+    "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+    "self_serve_details": "Users can create personal access tokens themselves; GitHub recommends GitHub Apps for organization/on-behalf-of-user integrations. Token permissions, repository ownership, org policy, and SAML SSO can limit access or require approval.",
+    "credential_access": {
+      "status": "RESTRICTED",
+      "path": "Create a PAT for personal API use or register/install a GitHub App/OAuth app for delegated integrations; send the token in Authorization Bearer header.",
+      "plan_or_gate": "Credential creation is self-serve for personal usage; organization policy, SAML SSO, app installation and endpoint permission requirements can restrict access."
+    },
+    "api": {
+      "available": "YES",
+      "types": [
+        "REST",
+        "GraphQL",
+        "Webhooks"
+      ],
+      "breadth": "BROAD",
+      "details": "Official integration interfaces include the REST and GraphQL APIs plus webhook event delivery. REST spans many resource families; GraphQL supports precise queries and mutations; webhooks provide near-real-time event notifications and complement polling. Endpoint-specific token/permission requirements apply; no endpoint count used."
+    },
+    "mcp": {
+      "status": "AVAILABLE",
+      "details": "GitHub maintains the first-party github/github-mcp-server repository and hosted remote MCP server. It supports repository/code, issues/PRs and workflow tools, with PAT/OAuth/host-specific setup requirements.",
+      "search_scope": "Official GitHub Docs and github/github-mcp-server first-party repository inspected."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "Least-privilege token scopes/permissions, organization policy/approval, SAML SSO and app installation can limit access.",
+      "rationale": "The documented REST API and official MCP server make an integration feasible now. Access is identity- and permission-bound; org-owned resources may require admin approval or installation and the MCP host/auth path varies."
+    },
+    "evidence": [
+      {
+        "claim": "GitHub describes itself as a developer platform to build, scale and deliver software.",
+        "field": "description",
+        "source_url": "https://github.com/about",
+        "source_title": "About GitHub",
+        "source_type": "official_product",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Official GitHub about page describes a complete developer platform."
+      },
+      {
+        "claim": "REST API requests can use personal access tokens, GitHub App tokens, OAuth tokens, and the Authorization Bearer header; methods are token-based.",
+        "field": "auth",
+        "source_url": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+        "source_title": "Authenticating to the REST API",
+        "source_type": "official_auth_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Official auth page describes PAT, GitHub App and OAuth tokens and Authorization header."
+      },
+      {
+        "claim": "PATs can be created by the user; tokens inherit the user's access and can require organization-owner approval/policy.",
+        "field": "self_serve",
+        "source_url": "https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens",
+        "source_title": "Managing your personal access tokens",
+        "source_type": "official_auth_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Docs explain token creation and limits; organization owners may require approval for fine-grained PATs."
+      },
+      {
+        "claim": "Personal tokens are available for personal API use; org or long-lived integration should use GitHub Apps, with owner policy and permissions controlling access.",
+        "field": "credential_access",
+        "source_url": "https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens",
+        "source_title": "Managing your personal access tokens",
+        "source_type": "official_auth_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Page distinguishes personal token use from org app use and documents permission/policy limits."
+      },
+      {
+        "claim": "GitHub publishes a versioned REST API docs site and broad resource documentation.",
+        "field": "api",
+        "source_url": "https://docs.github.com/en/rest",
+        "source_title": "GitHub REST API documentation",
+        "source_type": "official_api_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Official REST API documentation organizes many resource references and describes integrations, data retrieval and automation."
+      },
+      {
+        "claim": "First-party GitHub MCP server is maintained under github/github-mcp-server.",
+        "field": "mcp",
+        "source_url": "https://github.com/github/github-mcp-server",
+        "source_title": "GitHub MCP Server",
+        "source_type": "official_github",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "The repository is owned by github and identifies itself as GitHub official MCP Server."
+      },
+      {
+        "claim": "MCP setup uses a PAT or OAuth depending on host; tool access is limited by token permissions and org resources.",
+        "field": "buildability",
+        "source_url": "https://github.com/github/github-mcp-server",
+        "source_title": "GitHub MCP Server",
+        "source_type": "official_github",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "First-party installation docs show PAT/OAuth options and token configuration."
+      },
+      {
+        "claim": "GitHub PATs are limited by user rights, scopes/permissions and organization policy; SAML SSO can require authorization.",
+        "field": "buildability",
+        "source_url": "https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens",
+        "source_title": "Managing your personal access tokens",
+        "source_type": "official_auth_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Docs describe token permission limits, org approval policies and SAML SSO requirements."
+      },
+      {
+        "claim": "GitHub documents a GraphQL API for integrations, data retrieval and workflow automation.",
+        "field": "api",
+        "source_url": "https://docs.github.com/en/graphql",
+        "source_title": "GitHub GraphQL API documentation",
+        "source_type": "official_api_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Official GraphQL API documentation states it is used to create integrations, retrieve data and automate workflows, and provides queries/mutations and schema references."
+      },
+      {
+        "claim": "GitHub webhooks deliver event notifications to external servers and complement REST polling.",
+        "field": "api",
+        "source_url": "https://docs.github.com/en/webhooks/about-webhooks",
+        "source_title": "About webhooks",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Official guide explains event deliveries to an external server and recommends webhooks rather than API polling for event-driven updates."
+      },
+      {
+        "claim": "GraphQL supports precise queries and mutations for GitHub data and integrations.",
+        "field": "api",
+        "source_url": "https://docs.github.com/en/graphql",
+        "source_title": "GitHub GraphQL API documentation",
+        "source_type": "official_api_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Official GitHub GraphQL API page documents integrations, data retrieval, automation, queries and mutations."
+      },
+      {
+        "claim": "GitHub webhooks provide event-driven delivery to external servers rather than API polling.",
+        "field": "api",
+        "source_url": "https://docs.github.com/en/webhooks/about-webhooks",
+        "source_title": "About webhooks",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Official webhook guide describes near-real-time event delivery and comparison with polling the REST API."
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T15:12:08Z",
+    "research_status": "COMPLETE",
+    "verification_status": "AUTO_VERIFIED",
+    "source_conflicts": [],
+    "limitations": [
+      "No GitHub token or organization was used; organization-policy outcomes are documented, not account-tested.",
+      "The official MCP repository and current host support can change; the repo is a current snapshot."
+    ],
+    "researcher_notes": "Pilot tests the distinction between self-serve personal credentials and access to an organization’s resources."
+  },
+  {
+    "schema_version": "1.0",
+    "app_id": 92,
+    "app": "Otter AI",
+    "category": "AI, Research and Media-native",
+    "website_hint": "http://help.otter.ai/",
+    "description": "AI meeting notetaker that transcribes meetings and turns conversations into searchable summaries, insights and action items.",
+    "auth_status": "CONFIRMED",
+    "auth_methods": [
+      "API key",
+      "Bearer/token",
+      "OAuth 2.0"
+    ],
+    "self_serve_status": "ENTERPRISE_ONLY",
+    "self_serve_details": "Public API is Enterprise-workspace only and may require account-manager enablement. Some workspace-wide APIs are available only to Super Admins after workspace enablement; MCP uses a separate OAuth flow and host/plan availability is not fully stated.",
+    "credential_access": {
+      "status": "GATED",
+      "path": "For the public API, Enterprise workspace users create a key under Integrations → Developer and send it as a Bearer token. For the first-party MCP, a supported AI host connects using OAuth/user authorization.",
+      "plan_or_gate": "Public API requires an Enterprise workspace and may require account-manager enablement; workspace-wide Super Admin endpoints additionally require Super Admin access/enablement. The separate MCP uses OAuth. For custom MCP setup, Otter says it does not currently offer a public API key and directs users to Support; this does not describe the separate Enterprise Public API, which uses Bearer API keys."
+    },
+    "api": {
+      "available": "YES",
+      "types": [
+        "REST",
+        "Webhooks"
+      ],
+      "breadth": "MODERATE",
+      "details": "REST endpoint groups include channels, conversations, transcripts/audio, action items, insights, outlines and workspace data; workspace-wide endpoints may require Super Admin enablement. Webhooks are documented for exports. Surface is confined to meetings/workspaces."
+    },
+    "mcp": {
+      "status": "AVAILABLE",
+      "details": "Official remote Otter MCP at https://mcp.otter.ai/mcp uses OAuth. Current Help Center setup guides cover Claude, ChatGPT, Cursor, and Perplexity; connection to other AI tools depends on platform support and may require Otter Support. Otter says it has no public API key for custom MCP setup; documented ChatGPT tools include search, fetch, and user-info.",
+      "search_scope": "Official Otter Help Center MCP Server page inspected, including OAuth, endpoint and tool table."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "Enterprise-only Public API and account-manager enablement; Super Admin gate for workspace-wide endpoints; MCP tools are limited and custom host setup/plan entitlement may require support or remain unclear.",
+      "rationale": "A first-party OAuth MCP path and documented public API exist, so some agent-callable functionality is feasible. Broad API access requires Enterprise workspace availability; MCP tool coverage and host support limit scope."
+    },
+    "evidence": [
+      {
+        "claim": "Otter describes itself as an AI notetaker that transcribes meetings into searchable knowledge and summaries/action items.",
+        "field": "description",
+        "source_url": "https://otter.ai/",
+        "source_title": "Otter Meeting Agent - AI Notetaker, Transcription, Insights",
+        "source_type": "official_product",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Official product page describes meeting transcription, searchable knowledge, summaries, insights and action items."
+      },
+      {
+        "claim": "Public API calls use a Bearer token with an API key; MCP access uses OAuth authorization.",
+        "field": "auth",
+        "source_url": "https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+        "source_title": "Otter.ai Public API",
+        "source_type": "official_api_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Public API guide says all requests use Bearer token and provides API-key creation; MCP guide separately describes OAuth."
+      },
+      {
+        "claim": "The public API is available for Enterprise workspaces and may require account-manager enablement.",
+        "field": "self_serve",
+        "source_url": "https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+        "source_title": "Otter.ai Public API",
+        "source_type": "official_support",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "The getting-started section states Enterprise availability and account-manager contact if unavailable."
+      },
+      {
+        "claim": "Enterprise workspace users create API keys in Integrations → Developer; API key is limited to two keys per user.",
+        "field": "credential_access",
+        "source_url": "https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+        "source_title": "Otter.ai Public API",
+        "source_type": "official_support",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "The API guide gives the credential-generation path and Enterprise plan restriction."
+      },
+      {
+        "claim": "Public API documents REST endpoints for channels/conversations and data such as transcripts, audio, action items and insights; workspace webhooks are documented separately.",
+        "field": "api",
+        "source_url": "https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+        "source_title": "Otter.ai Public API",
+        "source_type": "official_api_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Official API article describes REST endpoint groups and webhook integration."
+      },
+      {
+        "claim": "Otter documents a first-party MCP server at mcp.otter.ai/mcp with OAuth and search/fetch/user-info tools.",
+        "field": "mcp",
+        "source_url": "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+        "source_title": "Otter MCP Server",
+        "source_type": "official_support",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Official help article supplies the remote MCP URL, OAuth-authenticated access and supported tool list."
+      },
+      {
+        "claim": "MCP supports bounded read/search functions while API access is Enterprise-gated, so implementation is possible but scope/access are constrained.",
+        "field": "buildability",
+        "source_url": "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+        "source_title": "Otter MCP Server",
+        "source_type": "official_support",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "MCP help page lists search, fetch and user info; public API page sets Enterprise requirement."
+      },
+      {
+        "claim": "Some workspace-level endpoints require Super Admin status and workspace enablement; account-manager discussion is documented.",
+        "field": "credential_access",
+        "source_url": "https://help.otter.ai/hc/en-us/articles/39661865499799-Super-Admin-APIs",
+        "source_title": "Super Admin APIs",
+        "source_type": "official_support",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "The article states Super Admin-only endpoints and directs users to account manager to discuss enabling Super Admin."
+      },
+      {
+        "claim": "Workspace API endpoints are explicitly restricted to Super Admins.",
+        "field": "api",
+        "source_url": "https://help.otter.ai/hc/en-us/articles/39661865499799-Super-Admin-APIs",
+        "source_title": "Super Admin APIs",
+        "source_type": "official_support",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "GET /workspace and workspace conversation endpoints are described as Super Admin-only."
+      },
+      {
+        "claim": "Public API is available to Enterprise workspaces and uses Bearer API keys; account-manager enablement may be required.",
+        "field": "credential_access",
+        "source_url": "https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+        "source_title": "Otter.ai Public API",
+        "source_type": "official_api_docs",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "The Public API documentation identifies Enterprise-workspace availability and Bearer API-key authentication; workspace/account eligibility may need account-manager enablement."
+      },
+      {
+        "claim": "Workspace-wide Super Admin API access is restricted to Super Admins and requires workspace/account-manager enablement.",
+        "field": "credential_access",
+        "source_url": "https://help.otter.ai/hc/en-us/articles/39661865499799-Super-Admin-APIs",
+        "source_title": "Super Admin APIs",
+        "source_type": "official_support",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "The article limits workspace endpoints to Super Admins and describes account-manager enablement."
+      },
+      {
+        "claim": "The no-public-API-key statement applies to custom MCP setup; it does not negate the separate Enterprise Public API key.",
+        "field": "credential_access",
+        "source_url": "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+        "source_title": "Otter MCP Server",
+        "source_type": "official_support",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "The MCP FAQ says no public API key is currently offered for custom MCP setup and directs users to contact Support; this is distinct from the Public API docs, which specify Bearer API keys."
+      },
+      {
+        "claim": "Otter MCP uses OAuth at the hosted server and supports documented setup for named AI clients; other host support may vary and custom integrations may require Otter Support; no public API key is offered.",
+        "field": "mcp",
+        "source_url": "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+        "source_title": "Otter MCP Server",
+        "source_type": "official_support",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Help Center documents OAuth; setup pages for Claude, ChatGPT, Cursor and Perplexity; for other platforms support depends on the platform; no public API key at this time, contact support for custom setup."
+      },
+      {
+        "claim": "Enterprise API and Super Admin endpoint access require account-manager or admin enablement; custom MCP setup may require support.",
+        "field": "buildability",
+        "source_url": "https://help.otter.ai/hc/en-us/articles/39661865499799-Super-Admin-APIs",
+        "source_title": "Super Admin APIs",
+        "source_type": "official_support",
+        "accessed_at": "2026-09-24",
+        "support": "supports",
+        "excerpt_or_observation": "Super Admin API guide documents role gate and account-manager enablement."
+      }
+    ],
+    "confidence": "MEDIUM",
+    "research_timestamp": "2026-09-24T15:12:08Z",
+    "research_status": "COMPLETE",
+    "verification_status": "AUTO_VERIFIED",
+    "source_conflicts": [
+      {
+        "field": "self_serve_status",
+        "summary": "The Public API guide says Enterprise-only, while the MCP guide documents OAuth connection for supported AI apps without stating a plan gate.",
+        "resolution": "Classify the public API credential route as ENTERPRISE_ONLY; preserve that MCP plan eligibility is not specified instead of extending the API gate to MCP."
+      }
+    ],
+    "limitations": [
+      "No Otter account or enterprise workspace was available to test API-key creation or MCP OAuth.",
+      "The API page is labeled beta in related references, and the MCP plan/host eligibility matrix is not explicit."
+    ],
+    "researcher_notes": "Pilot intentionally includes separate API-key and OAuth MCP paths; do not collapse them into one credential requirement."
+  }
+]

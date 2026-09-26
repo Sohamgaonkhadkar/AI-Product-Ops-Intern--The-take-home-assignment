@@ -1,0 +1,4 @@
+# Static site configuration for the generated offline case study.
+# The case-study directory must be regenerated and packaged before publishing.
+[build]
+  publish = "case-study"

@@ -1,0 +1,779 @@
+#!/usr/bin/env python3
+"""Assemble the third manually researched native-web evidence batch.
+
+This writes a standalone auditable capture for manifest apps 42-48 and 50-51.
+It never edits the raw dataset. Search-result snippets are discovery leads only;
+claim-linked evidence cites opened official vendor/developer pages.
+"""
+from __future__ import annotations
+
+import copy
+import hashlib
+import json
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from src.utils.quality import validate_record_quality
+from src.utils.validation import validate_record
+
+DATE = "2026-09-24"
+RUN_ID = "arena-native-web-batch03-20260924"
+IDS = [42, 43, 44, 45, 46, 47, 48, 50, 51]
+TOOL = "Arena.ai Agent Mode native web_search + fetch_page; official-source-led manual research"
+
+
+def source(url: str, title: str, source_type: str, observation: str, chunks=(0,)) -> dict:
+    return {
+        "url": url,
+        "title": title,
+        "source_type": source_type,
+        "capture_method": "fetch_page",
+        "capture_status": "OPENED",
+        "retrieved_at": DATE,
+        "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+        "retrieved_chunk_indexes": list(chunks),
+        "excerpt_or_observation": observation,
+    }
+
+
+SOURCES = {
+    # 42 WooCommerce
+    "woo_rest": source(
+        "https://developer.woocommerce.com/docs/apis/rest-api/",
+        "WooCommerce REST API | WooCommerce developer docs",
+        "official_api_docs",
+        "The current WordPress REST integration is WooCommerce API v3 and supports JSON CRUD over standard HTTP verbs. Requirements include WooCommerce 3.5+, WordPress 4.4+, and non-Plain permalinks. The page documents consumer-key/consumer-secret credentials, Basic Auth, and official REST libraries. It also lists paginated REST resources and v1-v3 history.",
+        (0, 1),
+    ),
+    "woo_support": source(
+        "https://woocommerce.com/document/woocommerce-rest-api/",
+        "WooCommerce REST API Documentation - WooCommerce",
+        "official_support",
+        "The merchant-facing guide describes the REST API as an integration surface and shows keys generated in WooCommerce > Settings > Advanced > REST API, linked to a WordPress user and assigned Read, Write, or Read/Write permissions. The secret is displayed once. It identifies this documentation as for the free core WooCommerce plugin.",
+        (0,),
+    ),
+    "woo_mcp": source(
+        "https://developer.woocommerce.com/docs/features/mcp/",
+        "Model Context Protocol (MCP) Integration | WooCommerce developer docs",
+        "official_docs",
+        "The official guide labels WooCommerce native MCP a Developer Preview. Purpose-built abilities cover product query/create/update/delete and order query/status/note operations through the WordPress Abilities API and MCP Adapter. Remote HTTP uses a WordPress Application Password and a least-privilege user; local STDIO uses WP-CLI. The legacy /wp-json/woocommerce/mcp endpoint is deprecated; the current default adapter endpoint is /wp-json/mcp/mcp-adapter-default-server.",
+        (0, 1),
+    ),
+
+    # 43 BigCommerce
+    "big_accounts": source(
+        "https://docs.bigcommerce.com/developer/docs/overview/api-fundamentals/api-accounts",
+        "API Accounts | BigCommerce Docs",
+        "official_api_docs",
+        "BigCommerce documents REST and GraphQL APIs and store-, app-, and account-level API accounts with OAuth scopes and access tokens. Store owners or authorized users can create store-level credentials; app-level credentials use a merchant installation/grant flow; account-level tokens can span a merchant's stores. New stores are no longer issued legacy API accounts; current V3 APIs use OAuth.",
+        (0, 1),
+    ),
+    "big_oauth": source(
+        "https://docs.bigcommerce.com/developer/docs/integrations/apps/guide/auth",
+        "Implementing OAuth | BigCommerce Docs",
+        "official_auth_docs",
+        "The official app guide documents OAuth 2.0 authorization-code grant. During installation the merchant approves the app's full requested scope set, after which the app exchanges the grant code for a store-specific access token. Publicly distributed apps can obtain installation tokens on the merchant's behalf after approval.",
+        (0,),
+    ),
+    "big_mcp": source(
+        "https://docs.bigcommerce.com/developer/api-reference/mcp/overview",
+        "MCP Server Overview | BigCommerce Docs",
+        "official_docs",
+        "BigCommerce's merchant-action MCP exposes purpose-built storefront tools: B2C catalog/cart/checkout and B2B buyer-portal workflows. The page marks both B2C and B2B tool sets Beta. A store owner must enable the integration in Settings > Early access and accept terms; each storefront gets its own URL. B2B tools additionally require B2B Edition and the relevant buyer permissions/session.",
+        (0,),
+    ),
+    "big_docs_mcp": source(
+        "https://docs.bigcommerce.com/developer/docs/ai-agent-setup",
+        "AI Agent Setup | BigCommerce Docs",
+        "official_docs",
+        "This is a separate docs-only MCP endpoint at https://docs.bigcommerce.com/_mcp/server, with setup steps for AI coding/documentation clients. It searches BigCommerce documentation and is not evidence of merchant storefront action tools; the distinct action MCP is described in the MCP Server Overview.",
+        (0,),
+    ),
+    "big_rate": source(
+        "https://docs.bigcommerce.com/developer/docs/overview/api-fundamentals/rate-limits",
+        "Rate Limits | BigCommerce Docs",
+        "official_api_docs",
+        "OAuth API quotas are shared across apps accessing a store and vary by plan/resource. The page lists Standard/Plus at 20,000 requests/hour (150 per 30 seconds), Pro at 60,000/hour (450 per 30 seconds), and Enterprise limits by plan/resource, with an unlimited rate plan for some Enterprise clients.",
+        (0,),
+    ),
+
+    # 44 Salesforce B2C Commerce
+    "sf_scapi": source(
+        "https://developer.salesforce.com/docs/commerce/commerce-api/guide/scapi-get-started.html",
+        "SCAPI | B2C Commerce API | Salesforce Developers",
+        "official_api_docs",
+        "Salesforce describes SCAPI as RESTful APIs for storefronts, merchant tools, and integrations, available to B2C Commerce customers at no extra API cost. Shopper APIs use SLAS OAuth 2.1; Admin APIs use Account Manager tokens. Shopper APIs primarily support customer-facing browsing/cart/checkout, while Admin APIs support merchant read/write operations. The page links to official SDKs and rate/timeout limits.",
+        (0,),
+    ),
+    "sf_admin_auth": source(
+        "https://developer.salesforce.com/docs/commerce/commerce-api/guide/authorization-for-admin-apis.html",
+        "Authorization for SCAPI Admin APIs | SCAPI | B2C Commerce API | Salesforce Developers",
+        "official_auth_docs",
+        "SCAPI Admin access requires an Account Manager API client created by an administrator or authorized user, with the Salesforce Commerce API role, assigned organization(s), instance(s), and requested OAuth scopes. The client credentials are used to request a token.",
+        (0,),
+    ),
+    "sf_toolkit": source(
+        "https://developer.salesforce.com/docs/commerce/b2c-commerce/guide/b2c-developer-tooling.html",
+        "Agentic B2C Developer Toolkit | B2C Commerce | B2C Commerce | Salesforce Developers",
+        "official_docs",
+        "Salesforce documents a B2C developer toolkit for building, debugging, deploying, and managing B2C Commerce. The B2C MCP offers official docs, developer/operations tools, and live SCAPI Admin operations, with actions controlled by the configured B2C instance, Account Manager role, scopes, and Safety Mode.",
+        (0,),
+    ),
+    "sf_mcp": source(
+        "https://salesforcecommercecloud.github.io/b2c-developer-tooling/mcp/",
+        "MCP (Model Context Protocol) | Agentic B2C Developer Toolkit",
+        "official_github",
+        "Salesforce Commerce Cloud's first-party B2C DX MCP page provides local install instructions for Claude, Codex, VS Code/Copilot, Cursor, OpenCode, Gemini, and other clients. It describes documentation search, developer/debug/deploy workflows, administrator/merchant tasks, and nearly 600 SCAPI Admin operations. Connected tasks use the user's existing B2C configuration and permissions; the tool can be placed in Safety Mode.",
+        (0, 1),
+    ),
+    "sf_shopper_mcp": source(
+        "https://developer.salesforce.com/docs/commerce/b2c-commerce/guide/agentic-mcp-shopper-tools-quick-start.html",
+        "Agentic MCP Shopper Tools Quick Start (Pilot) | B2C Commerce | Salesforce Developers",
+        "official_docs",
+        "This is a separate hosted shopper MCP service explicitly labeled Pilot. Participation requires SLAS/SCAPI onboarding and contacting a Salesforce account executive; calls use a SLAS Bearer token with the sfcc.shopper-mcpagent scope. The documented shopper tools search/get products and create/update/remove baskets/start checkout; the pilot is not a generic exposure of all SCAPI operations.",
+        (0, 1),
+    ),
+
+    # 45 Magento (Adobe Commerce)
+    "adobe_api": source(
+        "https://developer.adobe.com/commerce/webapi/get-started/",
+        "Getting Started with Adobe Commerce Web APIs",
+        "official_api_docs",
+        "Adobe Commerce and Magento Open Source Web APIs support REST, GraphQL, and SOAP with resource-level authorization. The PaaS guide describes third-party OAuth 1.0a, token-based mobile access, and administrator/customer credentials; integrations are registered in Admin with selected resources. This is a broad CRUD/search framework; webhooks are not part of this legacy in-process API framework.",
+        (0,),
+    ),
+    "adobe_paas_auth": source(
+        "https://developer.adobe.com/commerce/webapi/get-started/authentication/",
+        "Authentication",
+        "official_auth_docs",
+        "The page is explicitly PaaS-only. Admin or integration users have resource permissions configured in Admin/ACL; merchants authorize integrations. Third-party apps use OAuth-based authentication, while token-based credentials are available for applicable clients. SaaS customers are directed to the separate IMS OAuth guide.",
+        (0,),
+    ),
+    "adobe_saas_auth": source(
+        "https://developer.adobe.com/commerce/webapi/rest/authentication/",
+        "Authentication in Adobe Commerce as a Cloud Service",
+        "official_auth_docs",
+        "This page is explicitly SaaS-only: Adobe IMS OAuth 2 is used for server-to-server or user authentication, legacy Admin/integration tokens are unsupported, and API calls use a Bearer access token. Prerequisites include an Adobe Commerce as a Cloud Service license, Adobe Developer Console access, and project/environment setup.",
+        (0,),
+    ),
+    "adobe_mcp_overview": source(
+        "https://developer.adobe.com/commerce/extensibility/developer-agent/tools-overview",
+        "AI developer tools for Commerce extensibility",
+        "official_docs",
+        "Adobe documents Commerce development MCPs for App Builder/extensibility workflows and a separate dropins MCP for storefronts using the AEM Boilerplate Commerce starter kit. The page scopes these as developer/IDE tooling, documentation-aware assistance, and storefront development context, not a general merchant-operation server.",
+        (0,),
+    ),
+    "adobe_mcp_setup": source(
+        "https://developer.adobe.com/commerce/extensibility/developer-agent/coding-tools",
+        "Commerce development MCPs and skills",
+        "official_docs",
+        "The setup guide installs Commerce/App Builder MCPs through Adobe I/O CLI/project tooling and a starter kit, with Node.js and a coding agent prerequisite. It describes code generation/debugging and development/deployment workflows rather than an MCP for arbitrary live store operations.",
+        (0,),
+    ),
+
+    # 46 Squarespace
+    "sq_overview": source(
+        "https://developers.squarespace.com/commerce-apis/overview",
+        "Squarespace Developer Platform: APIs, Apps, and Docs",
+        "official_api_docs",
+        "Squarespace Commerce APIs use REST principles over HTTPS and cover analytics, contacts, discounts, inventory, orders, products, profiles, transactions, and webhook subscriptions. The guide documents read/write operations for products, inventory, orders, contacts, and discounts; Profiles is in maintenance mode and new integrations should use Contacts.",
+        (0,),
+    ),
+    "sq_auth": source(
+        "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+        "Squarespace Developer Platform: APIs, Apps, and Docs",
+        "official_auth_docs",
+        "Requests use an API key or OAuth access token with per-API read/read-write permissions. Site owners can generate custom-app API keys under Settings > Advanced > Developer API Keys, but custom applications require Commerce Advanced. Squarespace Extensions can serve customers on any plan but use OAuth.",
+        (0,),
+    ),
+    "sq_oauth": source(
+        "https://developers.squarespace.com/commerce-apis/oauth",
+        "Squarespace Developer Platform: APIs, Apps, and Docs",
+        "official_auth_docs",
+        "Third-party OAuth clients must register with Squarespace; Squarespace reviews the registration and returns client credentials. Each merchant authorizes requested scopes. Access tokens last 30 minutes; refresh tokens last seven days and rotate. OAuth requests use Basic client authentication at the token endpoint and Bearer access tokens for API calls.",
+        (0, 1),
+    ),
+    "sq_home": source(
+        "https://developers.squarespace.com/",
+        "Squarespace Developer Platform: APIs, Apps, and Docs",
+        "official_product",
+        "The developer homepage says Squarespace API documentation can be integrated directly into Claude or ChatGPT. It describes Commerce APIs and app development but does not provide a verified merchant-action MCP endpoint or setup guide; documentation compatibility alone is not counted as an operational MCP connector.",
+        (0,),
+    ),
+
+    # 47 Ecwid
+    "ecwid_api": source(
+        "https://docs.ecwid.com/api-reference",
+        "REST API overview | REST API Reference | Ecwid Documentation",
+        "official_api_docs",
+        "Ecwid's REST API manages store data, payment/shipping methods, and storefront settings. The opened reference lists store profile, orders, products, customers, categories, and discounts, and documents OAuth 2 authorization and a limit of 600 requests per minute per token.",
+        (0,),
+    ),
+    "ecwid_dev": source(
+        "https://docs.ecwid.com/get-started/set-up-your-dev-environment-in-ecwid",
+        "Set up your dev environment in Ecwid | Ecwid Documentation",
+        "official_docs",
+        "Ecwid states that only stores on paid plans can access the API. A custom app is created through the store admin and gets store-specific access tokens; qualifying store customization, safe test-store, public-app, and theme-development work can request a free paid-plan upgrade for a test store.",
+        (0,),
+    ),
+    "ecwid_apps": source(
+        "https://docs.ecwid.com/launch-apps/native-and-external-apps",
+        "Native and external apps | Ecwid Documentation",
+        "official_docs",
+        "Ecwid distinguishes single-store custom/native apps from public external apps. Public apps use an OAuth authorization-code installation flow and exchange a short-lived code for a store ID and access token; app settings and self-hosted endpoints are required for some distribution/workflows.",
+        (0,),
+    ),
+    "ecwid_settings": source(
+        "https://docs.ecwid.com/develop-apps/app-settings",
+        "App settings | Ecwid Documentation",
+        "official_auth_docs",
+        "Custom apps receive non-expiring secret/public access tokens and permission scopes; the secret token is limited by scopes and must not be exposed publicly. The page lists store profile, catalog, orders, customers, discounts, subscriptions, and other granular read/write scopes.",
+        (0, 1),
+    ),
+
+    # 48 Gumroad
+    "gumroad_api": source(
+        "https://gumroad.com/api",
+        "API",
+        "official_api_docs",
+        "Gumroad's OAuth API is REST/JSON. Developers register an OAuth application and generate an access token; account and narrower scopes govern endpoints. The opened API reference covers products, sales, subscriptions, licenses, offer codes, files, workflows, user/profile, payouts and related seller data, with access_token-based request examples. The CLI is described as AI-agent-friendly, but it is not evidence of MCP.",
+        (0, 1),
+    ),
+    "gumroad_pricing": source(
+        "https://gumroad.com/pricing",
+        "Gumroad pricing: 10% + 50¢ direct, 30% via Discover",
+        "official_pricing",
+        "Gumroad says there is no monthly fee; it charges 10% plus $0.50 for profile/direct sales and 30% for Discover marketplace sales. The page describes creators selling digital products, courses, tutorials, memberships, and subscriptions.",
+        (0,),
+    ),
+
+    # 50 FanBasis / Commas
+    "commas_api": source(
+        "https://commasdocs.com/api-reference",
+        "Commas API Reference",
+        "official_api_docs",
+        "The Commas API quick-start documents live and sandbox environments, seller REST API routes under /public-api, API-key creation, and webhook workflows. The API authentication section uses an x-api-key header and scopes routes for products/checkout, transactions/payments, customers/subscribers, subscriptions, invoices, refunds, discounts, and webhook-subscription resources.",
+        (0, 2),
+    ),
+    "commas_mcp": source(
+        "https://commasdocs.com/mcp",
+        "Commas API Reference",
+        "official_docs",
+        "The detailed MCP connector guide documents 44 account-scoped tools and explicit setup for Claude Desktop and Cursor. Tools can read and write seller data; charges, refunds, cancellations, upgrades, and deletes generally require confirmation, but subscription extension and API-key creation run immediately. Client-specific ChatGPT/Grok setup sections say coming soon, despite broader marketing copy.",
+        (0, 48, 49),
+    ),
+    "commas_terms": source(
+        "https://commas.com/terms",
+        "Terms & conditions | Commas",
+        "official_docs",
+        "Commas describes the platform for approved sellers of digital products, subscriptions, courses, memberships, communities and related offerings. Seller features require onboarding, identity/KYC/AML verification and payment-partner approval; access to payment/disbursement functions can be suspended or restricted after review. Section 2.5 also broadly restricts automated scripts/bots used to access, monitor, extract, or alter platform content/systems, while separate official API/MCP docs describe programmatic integrations; applicability is unresolved and retained as a source conflict.",
+        (0, 1),
+    ),
+    "commas_home": source(
+        "https://commas.com/",
+        "Commas | Where you make money on the internet",
+        "official_product",
+        "The current Commas homepage describes a digital-commerce/payment platform and explicitly labels its AI-assistant MCP offering Beta. This supports the product-stage caveat, not a claim that all MCP clients are fully enabled.",
+        (0, 1),
+    ),
+
+    # 51 DataForSEO
+    "dataforseo_auth": source(
+        "https://docs.dataforseo.com/v3/auth/",
+        "Authentication – DataForSEO API v.3",
+        "official_auth_docs",
+        "DataForSEO says users can create a free account, then retrieve an API login and automatically generated API password from the account's API Access tab. Basic Authentication is the only API auth method, sent as a Base64-encoded login:password in the Authorization header; no separate auth call is required.",
+        (0,),
+    ),
+    "dataforseo_pricing": source(
+        "https://dataforseo.com/pricing",
+        "DataForSEO API v3 Pricing – Transparent Pay-As-You-Go Pricing Model",
+        "official_pricing",
+        "DataForSEO uses pay-as-you-go pricing and states a $50 minimum payment. It links to API pricing for SERP, keyword, backlink, domain analytics, on-page, Labs, merchant, app-data, content-analysis and AI optimization services; its account panel includes cost controls.",
+        (0,),
+    ),
+    "dataforseo_labs": source(
+        "https://docs.dataforseo.com/v3/dataforseo_labs/overview/",
+        "dataforseo_labs/overview – DataForSEO API v.3",
+        "official_api_docs",
+        "DataForSEO Labs covers keyword, SERP, competitor, ranking and domain data across Google, Amazon, Google Play and App Store. The page documents live retrieval, free sandbox testing, up to 2,000 calls/minute and a 30-request concurrency limit; live request costs are billed per service.",
+        (0,),
+    ),
+    "dataforseo_pricing_list": source(
+        "https://dataforseo.com/pricing-list",
+        "DataForSEO product pricing – DataForSEO",
+        "official_pricing",
+        "The product pricing index lists DataForSEO product families across search/generative SEO, keyword data, backlinks, on-page health, domain analytics, ecommerce, app data and content analysis. This substantiates broad API coverage rather than one isolated Labs endpoint.",
+        (0,),
+    ),
+}
+
+# Exact follow-up searches preserved in this artifact. Some earlier exploratory
+# Batch03 searches occurred before session compaction; their exact text was not
+# preserved and is not reconstructed or counted here.
+QUERIES = {
+    42: [
+        ("site:developer.woocommerce.com/docs/features/mcp WooCommerce MCP developer preview version release features 2026", "2"),
+        ('site:developer.woocommerce.com/docs "WooCommerce MCP" Developer Preview MCP Adapter abilities REST API authentication', "2"),
+    ],
+    43: [
+        ("site:docs.bigcommerce.com/developer/api-reference/mcp BigCommerce B2C B2B Storefront MCP Beta store owner enable API accounts OAuth", "2"),
+    ],
+    44: [
+        ("site:developer.salesforce.com/docs/commerce/commerce-api/references/about-commerce-api/about.html B2C DX MCP developer preview general availability", "2"),
+        ("site:salesforcecommercecloud.github.io/b2c-developer-tooling/mcp Salesforce Commerce B2C MCP SCAPI admin tools developer preview", "2"),
+    ],
+    45: [
+        ("site:developer.adobe.com/commerce MCP developer agent tools Commerce OAuth SaaS PaaS REST GraphQL SOAP", "2"),
+    ],
+    46: [
+        ('site:developers.squarespace.com "Model Context Protocol" Squarespace commerce API MCP OAuth key plan', "2"),
+    ],
+    47: [
+        ("site:docs.ecwid.com Ecwid API paid store OAuth REST MCP server official", "2"),
+    ],
+    48: [
+        ("site:gumroad.com/api Gumroad API OAuth access token endpoint products sales MCP server", "2"),
+    ],
+    50: [
+        ("site:fanbasis.com OR site:commasdocs.com FanBasis Commas API app account key API access pricing developer docs MCP", "2"),
+        ("site:commasdocs.com Commas MCP API key 44 tools seller approval API REST current docs", "2"),
+    ],
+    51: [
+        ("site:docs.dataforseo.com DataForSEO v3 API auth Basic sandbox $50 minimum payment pricing Labs MCP server official", "2"),
+    ],
+}
+
+# Retained official pages and the chunks opened for this capture packet.
+FETCH_COUNTS = {
+    42: {"woo_rest": [0, 1], "woo_support": [0], "woo_mcp": [0, 1]},
+    43: {"big_accounts": [0, 1], "big_oauth": [0], "big_mcp": [0], "big_docs_mcp": [0], "big_rate": [0]},
+    44: {"sf_scapi": [0], "sf_admin_auth": [0], "sf_toolkit": [0], "sf_mcp": [0, 1], "sf_shopper_mcp": [0, 1]},
+    45: {"adobe_api": [0], "adobe_paas_auth": [0], "adobe_saas_auth": [0], "adobe_mcp_overview": [0], "adobe_mcp_setup": [0]},
+    46: {"sq_overview": [0], "sq_auth": [0], "sq_oauth": [0, 1], "sq_home": [0]},
+    47: {"ecwid_api": [0], "ecwid_dev": [0], "ecwid_apps": [0], "ecwid_settings": [0, 1]},
+    48: {"gumroad_api": [0, 1], "gumroad_pricing": [0]},
+    50: {"commas_api": [0, 2], "commas_mcp": [0, 48, 49], "commas_terms": [0, 1], "commas_home": [0, 1]},
+    51: {"dataforseo_auth": [0], "dataforseo_pricing": [0], "dataforseo_labs": [0], "dataforseo_pricing_list": [0]},
+}
+
+# Successful exploratory pages not retained as claim sources, and known failed
+# or redirected URLs, are kept in the attempt trace rather than promoted to evidence.
+NON_EVIDENCE_FETCHES = {
+    44: [
+        {"url": "https://developer.salesforce.com/docs/commerce/commerce-api/references/about-commerce-api/about.html", "chunk_index": 0, "status": "SUCCESS_NOT_USED", "note": "Opened B2C Commerce API release-notes navigation as an exploratory cross-check; the captured chunks did not establish a relevant MCP release-stage claim, so they are not used as evidence."},
+        {"url": "https://developer.salesforce.com/docs/commerce/commerce-api/references/about-commerce-api/about.html", "chunk_index": 1, "status": "SUCCESS_NOT_USED", "note": "Continued exploratory release-notes navigation; no MCP stage claim was extracted from these chunks. The direct B2C toolkit and shopper-pilot guides are the retained MCP evidence."},
+    ],
+}
+
+FAILED_FETCHES = {
+    44: [
+        {"url": "https://developer.salesforce.com/docs/commerce/pwa-kit-managed-runtime/guide/mcp-server-intro.html", "chunk_index": 0, "status": "HTTP_404", "note": "Stale Salesforce PWA Kit MCP URL returned 404; current official B2C toolkit MCP page was opened and used instead."},
+    ],
+    50: [
+        {"url": "https://www.fanbasis.com/", "chunk_index": 0, "status": "REDIRECTED_TO_CANONICAL_COMMAS_HOMEPAGE", "note": "Legacy FanBasis homepage resolves to the current Commas homepage; the canonical Commas product page is retained as a source."},
+        {"url": "https://www.fanbasis.com/mcp", "chunk_index": 0, "status": "REDIRECTED_TO_CANONICAL_COMMAS_HOMEPAGE", "note": "The legacy-host /mcp URL resolved to the product homepage rather than a distinct MCP setup page; it is not used to claim a hosted ChatGPT endpoint is live. Detailed client-specific setup status comes from the opened Commas MCP docs."},
+    ],
+}
+
+
+def ev(field: str, claim: str, source_key: str, observation: str | None = None, support: str = "supports") -> dict:
+    s = SOURCES[source_key]
+    return {
+        "claim": claim,
+        "field": field,
+        "source_url": s["url"],
+        "source_title": s["title"],
+        "source_type": s["source_type"],
+        "accessed_at": DATE,
+        "support": support,
+        "excerpt_or_observation": observation or s["excerpt_or_observation"],
+    }
+
+
+RECORDS = {
+    42: {
+        "description": "WooCommerce is the free core ecommerce plugin for WordPress; its store API supports external integrations and merchant-managed products, orders, and related resources.",
+        "auth_status": "CONFIRMED",
+        "auth_methods": ["API key", "Basic"],
+        "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+        "self_serve_details": "A store administrator can generate permission-scoped REST keys in the WordPress/WooCommerce dashboard. The store must have compatible WordPress/WooCommerce versions and non-Plain permalinks; the WooCommerce core plugin itself is free, while site hosting/setup is the merchant's responsibility.",
+        "credential_access": {"status": "RESTRICTED", "path": "A WordPress/WooCommerce user with appropriate store permissions generates a consumer key and secret under WooCommerce > Settings > Advanced > REST API and chooses Read, Write, or Read/Write. Remote MCP instead uses a WordPress Application Password for a least-privilege user; local MCP uses WP-CLI.", "plan_or_gate": "Requires a live WordPress/WooCommerce site, a user with the needed resource permissions, compatible versions, and non-Plain permalinks. REST secret is shown once. MCP is in Developer Preview and should not be treated as a stable GA connector."},
+        "api": {"available": "YES", "types": ["REST"], "breadth": "BROAD", "details": "WooCommerce REST API v3 is a broad JSON CRUD interface for store resources over standard HTTP verbs, including merchant store data such as products and orders. Official libraries are available for JavaScript, PHP, Python, and Ruby."},
+        "mcp": {"status": "AVAILABLE", "details": "Native WooCommerce MCP is documented in Developer Preview through WordPress Abilities API and the MCP Adapter. Purpose-built tools cover product query/create/update/delete and order query/status/notes. Remote connections use a WordPress Application Password; local STDIO uses WP-CLI. The older /wp-json/woocommerce/mcp endpoint is deprecated; the default WordPress MCP Adapter endpoint is the supported path in the opened guide.", "search_scope": "Opened the official WooCommerce MCP feature/setup guide and REST API/authentication documentation; the MCP feature is explicitly documented as Developer Preview."},
+        "buildability": {"verdict": "BUILDABLE_WITH_CONSTRAINTS", "blocker": "Requires a WordPress/WooCommerce store with compatible versions, a capable WordPress user, working permalinks, and correctly scoped credentials; native MCP remains Developer Preview.", "rationale": "The broad REST API and official MCP adapter provide concrete implementation paths. Merchant hosting/site configuration and user capabilities are required, and MCP stability/compatibility should be validated before production use."},
+        "confidence": "HIGH",
+        "research_status": "COMPLETE",
+        "source_conflicts": [],
+        "limitations": ["No WordPress site, WooCommerce account, API key, Application Password, or MCP client was created or tested."],
+        "researcher_notes": "LIVE_AGENT denotes fresh native web research only; no app account, tenant, credentials, API call, or MCP action was exercised.",
+        "evidence": [
+            ev("description", "WooCommerce's merchant guide identifies the REST API as an integration surface for its free core WordPress plugin.", "woo_support"),
+            ev("auth", "The REST API uses merchant-generated consumer key/secret credentials; the official request guide demonstrates Basic Auth.", "woo_rest"),
+            ev("self_serve", "Store administrators generate API credentials in the WooCommerce dashboard and assign Read, Write, or Read/Write permissions; no paid WooCommerce API plan is stated for the free core plugin.", "woo_support"),
+            ev("credential_access", "Keys are linked to a WordPress user, explicitly permission-scoped, and the consumer secret is displayed only once.", "woo_support"),
+            ev("api", "The official developer guide documents WooCommerce REST API v3, CRUD over JSON/HTTP, compatibility requirements, and multiple resource endpoints.", "woo_rest"),
+            ev("mcp", "The official MCP guide labels the integration Developer Preview and lists product/order abilities with WordPress permission enforcement.", "woo_mcp"),
+            ev("buildability", "REST use requires a compatible WooCommerce/WordPress installation and pretty permalinks; MCP additionally has preview status and WordPress user/adapter setup requirements.", "woo_rest"),
+        ],
+    },
+    43: {
+        "description": "BigCommerce is an ecommerce platform with REST and GraphQL APIs for store administration, storefront experiences, and app integrations.",
+        "auth_status": "CONFIRMED",
+        "auth_methods": ["OAuth 2.0", "Bearer/token"],
+        "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+        "self_serve_details": "A store owner or authorized user can create store-level API accounts; app integrations use OAuth with merchant consent to the requested scopes. API quotas depend on store plan. The merchant-action storefront MCP is Beta and must be enabled by the store owner through Early Access.",
+        "credential_access": {"status": "RESTRICTED", "path": "Create a store-level API account in the store control panel or register an app in the Developer Portal. For app-level access, the merchant installs/authorizes the app, then the app exchanges the OAuth grant code for a store-specific access token and stores it securely.", "plan_or_gate": "Store credentials require store-owner or authorized-user access; OAuth installations require merchant acceptance of all requested scopes. Account-level credentials span the merchant's stores, and rate limits vary by plan/resource. Storefront MCP requires owner opt-in to Beta/Early Access; B2B tools require B2B Edition and buyer permissions."},
+        "api": {"available": "YES", "types": ["REST", "GraphQL"], "breadth": "BROAD", "details": "BigCommerce documents REST Store Management and Storefront APIs, GraphQL Admin/Storefront/Account APIs, and OAuth scopes for store/app/account-level integrations across catalog, orders, customers, storefront, payments, and platform resources."},
+        "mcp": {"status": "AVAILABLE", "details": "BigCommerce has a merchant-action storefront MCP in Beta: B2C guest shopping tools search products, build carts, and hand off checkout; B2B buyer-portal tools are also Beta and require B2B Edition plus buyer permissions/session context. A separate official docs-only MCP searches developer documentation; it is not the same as storefront actions. Store owners enable the per-storefront endpoint in Early Access.", "search_scope": "Opened the official MCP Server Overview, B2B/B2C scope description, docs-only MCP setup, OAuth/API-account guide, and plan-based rate-limit documentation."},
+        "buildability": {"verdict": "BUILDABLE_WITH_CONSTRAINTS", "blocker": "Merchant-specific API accounts/scopes and consent are required; storefront MCP is Beta and owner-enabled, while B2B tools depend on B2B Edition and buyer permissions. Rate quotas are plan/resource-specific.", "rationale": "Official REST/GraphQL APIs and OAuth installation flows support broad integrations. Access is tied to a specific merchant/store/account; action MCP remains Beta and distinct from the freely configurable documentation MCP."},
+        "confidence": "HIGH",
+        "research_status": "COMPLETE",
+        "source_conflicts": [
+            {"field": "mcp", "summary": "Earlier discovery material suggested differing readiness for B2B MCP, while the directly opened current MCP Overview lists both B2C and B2B Storefront tool sets as Beta and documents B2B Edition/buyer-permission gates.", "resolution": "Use the opened MCP Overview for classification: B2B Storefront MCP is Beta, conditional on B2B Edition and buyer permissions; the separate docs MCP is documentation search only."}
+        ],
+        "limitations": ["No BigCommerce store, API account, app installation, merchant consent, MCP endpoint, or live API/MCP call was tested."],
+        "researcher_notes": "Search-result snippets were treated as discovery leads only; current action-MCP claims are based on the opened vendor MCP overview.",
+        "evidence": [
+            ev("description", "BigCommerce describes its API suite as enabling store-data management, customer sign-in, storefront queries, and third-party app integrations.", "big_accounts"),
+            ev("auth", "BigCommerce OAuth app installation uses the authorization-code grant and returns a store-specific access token after merchant scope approval.", "big_oauth"),
+            ev("self_serve", "Store owners/authorized users create API accounts; public app installations require merchant OAuth consent, and plan-level rate limits vary.", "big_oauth"),
+            ev("credential_access", "The API-account guide documents store-, app-, and account-level OAuth credentials and merchant/admin creation paths.", "big_accounts"),
+            ev("api", "The official API-account reference lists REST and GraphQL API families and authenticated account types across management, storefront, and account resources.", "big_accounts"),
+            ev("mcp", "BigCommerce's direct storefront MCP is marked Beta, requires store-owner Early Access enablement, and scopes B2B tools to B2B Edition and buyer permissions.", "big_mcp"),
+            ev("mcp", "BigCommerce separately offers a docs-only MCP at docs.bigcommerce.com/_mcp/server; it searches documentation rather than performing store operations.", "big_docs_mcp"),
+            ev("buildability", "The official action-MCP guide documents owner enablement and per-storefront endpoints, while API quotas vary across Standard/Plus, Pro, and Enterprise plans.", "big_rate"),
+        ],
+    },
+    44: {
+        "description": "Salesforce B2C Commerce is an enterprise ecommerce platform with storefront, merchant-admin, and developer tooling capabilities.",
+        "auth_status": "CONFIRMED",
+        "auth_methods": ["OAuth 2.0", "Bearer/token"],
+        "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+        "self_serve_details": "SCAPI is available to existing B2C Commerce customers at no additional API charge. Use requires access to a licensed B2C Commerce organization/instance and appropriately provisioned Account Manager or SLAS client credentials, roles, scopes, and permissions.",
+        "credential_access": {"status": "RESTRICTED", "path": "For SCAPI Admin APIs, an administrator creates an Account Manager API client, assigns the Salesforce Commerce API role, organization/instance access and scopes, then uses its credentials to request a token. Shopper APIs use a SLAS client and OAuth 2.1 tokens.", "plan_or_gate": "Requires an existing B2C Commerce customer organization/instance and administrator-provisioned client/roles/scopes. The hosted Shopper MCP is a separate Pilot requiring SLAS/SCAPI onboarding and Salesforce account-executive contact."},
+        "api": {"available": "YES", "types": ["REST"], "breadth": "BROAD", "details": "SCAPI is a broad REST API family split between customer-facing Shopper APIs and merchant-facing Admin APIs. Shopper endpoints cover browsing, baskets, and checkout; Admin APIs support merchant read/write operations such as product, order, inventory, and configuration workflows. The researched evidence focuses on SCAPI; the separate legacy OCAPI surface is not used to expand this record's interface-type claim."},
+        "mcp": {"status": "AVAILABLE", "details": "The local B2C DX MCP/Agentic Developer Toolkit is documented for development, debugging, deployment, operations, and live SCAPI Admin requests (nearly 600 operations), with access determined by the user's configured instance and permissions. This is distinct from Salesforce's hosted Shopper MCP Service, which is explicitly Pilot-only, requires SLAS/SCAPI onboarding and account-executive contact, and exposes a limited shopper tool set rather than the full SCAPI suite.", "search_scope": "Opened the official SCAPI, Account Manager auth, B2C DX MCP/setup, toolkit, and hosted Shopper MCP Pilot documentation; the two MCP products are recorded separately."},
+        "buildability": {"verdict": "BUILDABLE_WITH_CONSTRAINTS", "blocker": "A licensed B2C Commerce organization/instance, Account Manager role/scope provisioning, and configured credentials are required for merchant-side operations; hosted shopper MCP remains a restricted Pilot.", "rationale": "SCAPI and first-party developer MCP provide concrete integration paths. Permissions and product/instance access are customer-specific; the hosted shopper MCP's Pilot is not a substitute for general Admin API access."},
+        "confidence": "HIGH",
+        "research_status": "COMPLETE",
+        "source_conflicts": [
+            {"field": "mcp", "summary": "The official materials describe two distinct B2C Commerce MCP offerings: the local B2C developer/admin toolkit and a hosted shopper-oriented service explicitly labeled Pilot.", "resolution": "Report the local DX MCP as documented/available with customer-configured Admin permissions, and separately flag the hosted shopper service as Pilot with SLAS and account-executive gates; do not merge their scope or availability."}
+        ],
+        "limitations": ["No Salesforce organization, B2C Commerce instance, Account Manager client, SLAS token, MCP client, or live API/MCP action was used or tested. Hosted Shopper MCP participation was not requested."],
+        "researcher_notes": "The 'no extra cost' statement applies to SCAPI for existing B2C Commerce customers; it does not establish that a B2C Commerce product license is free.",
+        "evidence": [
+            ev("description", "Salesforce describes its toolkit as supporting storefront developers, integration developers, and administrators managing B2C Commerce.", "sf_toolkit"),
+            ev("auth", "SCAPI Shopper APIs use SLAS OAuth 2.1 and Admin APIs use Account Manager tokens; the page distinguishes customer and merchant API families.", "sf_scapi"),
+            ev("self_serve", "Salesforce states SCAPI is available to B2C Commerce customers at no extra API cost, while setup still requires a B2C Commerce instance and configured access.", "sf_scapi"),
+            ev("credential_access", "SCAPI Admin clients require Account Manager setup with Salesforce Commerce API role, organization/instance assignments, and allowed scopes.", "sf_admin_auth"),
+            ev("api", "The official getting-started guide identifies SCAPI as RESTful and separates broad Shopper and Admin API families for storefront and merchant operations.", "sf_scapi"),
+            ev("mcp", "The official B2C DX MCP guide documents local client setup and live Admin API tools using the user's configured Commerce permissions.", "sf_mcp"),
+            ev("mcp", "The separate hosted Shopper MCP guide labels the service Pilot and documents its SLAS scope, account-executive onboarding, and limited shopper tools.", "sf_shopper_mcp"),
+            ev("buildability", "The toolkit uses customer-configured Account Manager roles/scopes for SCAPI Admin calls; the separate hosted shopper service requires pilot onboarding.", "sf_toolkit"),
+        ],
+    },
+    45: {
+        "description": "Magento (Adobe Commerce) is an ecommerce platform whose product-family Web APIs support integrations, storefronts, and administrative workflows.",
+        "auth_status": "CONFIRMED",
+        "auth_methods": ["OAuth 2.0", "Bearer/token", "Other"],
+        "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+        "self_serve_details": "API setup is available to merchants/developers with an existing Magento Open Source or Adobe Commerce deployment, subject to Admin integration registration and ACL setup. Adobe Commerce as a Cloud Service uses a distinct SaaS path that requires a license and Adobe Developer Console access.",
+        "credential_access": {"status": "RESTRICTED", "path": "For PaaS, an administrator registers an integration in Admin and assigns only the required ACL resources; third-party OAuth 1.0a or applicable token-based flows are documented. For SaaS, configure an Adobe Developer Console project and obtain IMS OAuth 2 tokens used as Bearer tokens.", "plan_or_gate": "PaaS credentials depend on access to the deployment's Admin and resource roles. SaaS API access requires an Adobe Commerce as a Cloud Service license, Developer Console access, and environment/project configuration. These paths must not be conflated."},
+        "api": {"available": "YES", "types": ["REST", "GraphQL", "SOAP"], "breadth": "BROAD", "details": "The Adobe Commerce/Magento PaaS Web API framework supports REST, GraphQL, and SOAP across resource-level CRUD/search services. SaaS Cloud Service has its own REST/GraphQL surface and IMS authentication requirements; scope and features vary by deployment/version."},
+        "mcp": {"status": "AVAILABLE", "details": "Adobe documents Commerce development MCPs for App Builder/extensibility tasks and a separate dropins MCP for storefronts built on the AEM Boilerplate Commerce starter kit. These are development/IDE/documentation and project workflows, not a general merchant operations MCP for arbitrary live store data.", "search_scope": "Opened Adobe Commerce Web API PaaS/SaaS authentication sources and official Commerce developer-agent MCP overview/setup pages; no general merchant-action MCP is asserted."},
+        "buildability": {"verdict": "BUILDABLE_WITH_CONSTRAINTS", "blocker": "The integration path depends on whether the deployment is Magento Open Source/Adobe Commerce PaaS or Commerce as a Cloud Service, available Admin roles/licenses, and version-specific API/auth configuration.", "rationale": "Adobe documents broad Web APIs and first-party developer MCP tooling. Credential provisioning is deployment-specific; the developer MCP helps build App Builder/storefront code but is not evidence of live merchant action tools."},
+        "confidence": "HIGH",
+        "research_status": "COMPLETE",
+        "source_conflicts": [
+            {"field": "auth", "summary": "Official PaaS documentation describes OAuth 1.0a and token/admin-user methods, while the separate SaaS-only guide requires Adobe IMS OAuth 2 and states legacy Admin/integration tokens are unsupported.", "resolution": "Keep PaaS and SaaS authentication separate in the record; do not treat either page as the universal Adobe Commerce credential flow."}
+        ],
+        "limitations": ["No Adobe Commerce deployment, SaaS license, Developer Console project, Admin integration, credential, or MCP client was created or tested."],
+        "researcher_notes": "MCP availability refers only to documented Adobe developer/extensibility tooling, not a general-purpose merchant-data/action server.",
+        "evidence": [
+            ev("description", "Adobe identifies the Magento Open Source and Adobe Commerce Web API framework as the integration surface for communicating with the commerce application.", "adobe_api"),
+            ev("auth", "Adobe documents PaaS OAuth 1.0a/token flows and a separate SaaS OAuth 2 IMS flow with Bearer access tokens.", "adobe_saas_auth"),
+            ev("self_serve", "SaaS REST access requires an Adobe Commerce as a Cloud Service license and Developer Console access; PaaS integration setup requires Admin privileges.", "adobe_saas_auth"),
+            ev("credential_access", "PaaS integration credentials require Admin registration and ACL resources; SaaS credentials require a configured Adobe Developer Console project.", "adobe_paas_auth"),
+            ev("api", "Adobe's official Web API guide lists REST, GraphQL, and SOAP and describes resource-scoped CRUD/search integration services.", "adobe_api"),
+            ev("mcp", "Adobe documents Commerce developer MCP and dropins MCP servers for App Builder/extensibility and AEM Boilerplate storefront development.", "adobe_mcp_overview"),
+            ev("buildability", "Adobe's MCP setup requires an agent, Node.js, Adobe I/O CLI/project setup, and Commerce starter-kit/tool configuration.", "adobe_mcp_setup"),
+        ],
+    },
+    46: {
+        "description": "Squarespace is a hosted website and commerce platform with APIs for managing a merchant site's catalog, orders, inventory, contacts, discounts, and transactions.",
+        "auth_status": "CONFIRMED",
+        "auth_methods": ["API key", "OAuth 2.0", "Bearer/token"],
+        "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+        "self_serve_details": "A site owner can generate a custom-app API key if the site has Commerce Advanced. Commercial Extensions can serve customers on any plan but require a registered OAuth client; Squarespace reviews the OAuth registration and merchants approve requested site scopes.",
+        "credential_access": {"status": "RESTRICTED", "path": "For a single site, the owner generates a permission-scoped API key under Settings > Advanced > Developer API Keys. For a multi-merchant Extension, register an OAuth 2 client, pass Squarespace review, then obtain site-owner consent and exchange tokens.", "plan_or_gate": "Custom API keys require Commerce Advanced. OAuth client registration is reviewed by Squarespace; access is limited to the site whose owner authorizes the scopes. OAuth access tokens last 30 minutes and rotating refresh tokens expire after seven days."},
+        "api": {"available": "YES", "types": ["REST"], "breadth": "BROAD", "details": "Squarespace Commerce APIs are REST-style HTTPS interfaces for analytics, contacts, discounts, inventory, orders, products, profiles, transactions, and webhook subscriptions. Products, orders, inventory, contacts, and discounts include documented read/write operations; Profiles is in maintenance mode."},
+        "mcp": {"status": "UNKNOWN", "details": "Squarespace's developer homepage says API documentation can be integrated into Claude or ChatGPT, but the opened sources did not verify a first-party MCP endpoint or merchant-action server. Keep MCP UNKNOWN rather than treating documentation compatibility as a connected commerce tool or claiming absence.", "search_scope": "Targeted official Squarespace developer searches for MCP/Model Context Protocol and opened the developer homepage plus Commerce API overview, authentication, and OAuth registration guides; no operational first-party merchant-action MCP was verified."},
+        "buildability": {"verdict": "BUILDABLE_WITH_CONSTRAINTS", "blocker": "Single-site custom API keys require Commerce Advanced; cross-merchant Extensions require OAuth registration review, merchant scope consent, and token-refresh handling.", "rationale": "The REST API breadth is concrete and keys/OAuth are documented. Plan and OAuth-review gates materially affect credential acquisition; token rotation and site-specific scopes must be implemented."},
+        "confidence": "HIGH",
+        "research_status": "COMPLETE",
+        "source_conflicts": [],
+        "limitations": ["No Squarespace site, Advanced-plan subscription, OAuth app registration, merchant consent, token, MCP endpoint, or API call was tested."],
+        "researcher_notes": "Official documentation compatibility with Claude/ChatGPT is not counted as a verified MCP action integration; MCP remains UNKNOWN.",
+        "evidence": [
+            ev("description", "Squarespace describes its Commerce APIs as applications for managing a Squarespace merchant site's commerce features.", "sq_overview"),
+            ev("auth", "Commerce API requests use either a generated API key or OAuth 2 access token; OAuth API calls use Bearer tokens.", "sq_auth"),
+            ev("self_serve", "Squarespace permits custom API-key apps only on Commerce Advanced; Extensions support any plan but require reviewed OAuth-client registration.", "sq_auth"),
+            ev("credential_access", "OAuth clients are reviewed by Squarespace and then separately authorized by the merchant for requested site scopes; custom keys are generated by the site owner.", "sq_oauth"),
+            ev("api", "The Commerce API overview lists REST-style HTTPS surfaces for products, orders, inventory, contacts, discounts, transactions, analytics, and webhook subscriptions.", "sq_overview"),
+            ev("buildability", "The OAuth guide documents client review, per-site consent, 30-minute access tokens, seven-day rotating refresh tokens, and the need to reauthorize revoked/expired access.", "sq_oauth"),
+        ],
+    },
+    47: {
+        "description": "Ecwid provides ecommerce stores with a REST API for managing store data, payment and shipping methods, and storefront settings.",
+        "auth_status": "CONFIRMED",
+        "auth_methods": ["OAuth 2.0", "Bearer/token"],
+        "self_serve_status": "PAID_PLAN_REQUIRED",
+        "self_serve_details": "Ecwid says only stores on paid plans can access its API. Store owners can create custom apps and use store-specific tokens; developers working on qualifying store customizations, public apps, safe test stores, or themes can request a free paid-plan upgrade for test development.",
+        "credential_access": {"status": "GATED", "path": "Create a custom app in the Ecwid admin/developer dashboard; single-store custom apps receive scoped access tokens. Public apps use OAuth authorization-code installation and exchange the installation code for a store ID and access token.", "plan_or_gate": "A paid Ecwid store is required for API access. Ecwid offers a conditional free paid-plan upgrade for qualifying development/public-app scenarios; it is not an automatic unrestricted free API tier. App permissions are scope-based, and public apps need their own install/auth flow."},
+        "api": {"available": "YES", "types": ["REST"], "breadth": "BROAD", "details": "Ecwid REST API covers store profile/settings, products/catalog, orders/carts, customers, categories, discounts, payments/shipping, and storefront features. It uses OAuth 2.0 or store-specific custom-app tokens and documents 600 requests/minute per token."},
+        "mcp": {"status": "UNKNOWN", "details": "Targeted official Ecwid searches and opened API/app documentation verified REST/OAuth app pathways but did not verify an official MCP action connector. This is UNKNOWN, not proof that no third-party or future connector exists.", "search_scope": "Targeted official Ecwid developer searches for MCP/Model Context Protocol and opened REST API, paid-store developer setup, app-settings, and native/external app guides; no official merchant-action MCP setup was verified."},
+        "buildability": {"verdict": "BUILDABLE_WITH_CONSTRAINTS", "blocker": "API access requires a paid Ecwid store; a free development upgrade is conditional on qualifying work/request. Public distribution requires a distinct OAuth install flow and supporting app infrastructure.", "rationale": "The API is broad and the token/authentication model is documented. Paid-store access is a material gate, with a conditional test-plan exception; merchant/store authorization and public-app hosting must be addressed."},
+        "confidence": "HIGH",
+        "research_status": "COMPLETE",
+        "source_conflicts": [],
+        "limitations": ["No Ecwid store, paid plan, developer upgrade, custom/public app, token, MCP connector, or API call was created or tested."],
+        "researcher_notes": "Paid-plan requirement is recorded separately from the conditional developer upgrade; neither is treated as an automatic free API entitlement.",
+        "evidence": [
+            ev("description", "Ecwid describes its REST API as access to store data, payment/shipping methods, and storefront settings.", "ecwid_api"),
+            ev("auth", "Ecwid public apps use OAuth 2.0 authorization-code flow and obtain bearer access tokens; custom single-store apps use store-specific access tokens.", "ecwid_apps"),
+            ev("self_serve", "Ecwid explicitly says only paid-plan stores can access the API and documents a conditional request-based free upgrade for qualifying development work.", "ecwid_dev"),
+            ev("credential_access", "Ecwid app settings document store-specific scoped custom-app tokens, and the app guide documents the public-app code exchange for a store-specific access token.", "ecwid_settings"),
+            ev("credential_access", "Public Ecwid apps exchange a one-time installation code for a store ID and OAuth access token; custom apps are limited to the store where created.", "ecwid_apps"),
+            ev("api", "The official REST reference covers store settings, orders, products, customers, categories, discounts, and other store resources and documents 600 requests/minute per token.", "ecwid_api"),
+            ev("buildability", "Ecwid requires a paid store for API access but documents a conditional free upgrade for eligible development/test scenarios.", "ecwid_dev"),
+        ],
+    },
+    48: {
+        "description": "Gumroad is a creator-commerce platform for selling digital products, courses, tutorials, memberships, and subscriptions.",
+        "auth_status": "CONFIRMED",
+        "auth_methods": ["OAuth 2.0"],
+        "self_serve_status": "SELF_SERVE",
+        "self_serve_details": "Gumroad offers seller account signup without a monthly platform fee; its published platform fees are transaction-based. No separate paid API plan or API access gate is stated in the opened pages; OAuth app creation and seller consent are documented as credential steps.",
+        "credential_access": {"status": "SELF_SERVE", "path": "Create an OAuth application from the Gumroad account's advanced settings, obtain the application ID/secret, generate an access token, and request only the seller scopes needed. Seller authorization governs access to products, sales, and other account data.", "plan_or_gate": "No API-specific paid plan or monthly subscription gate was found in the opened official pages. Gumroad charges transaction fees; sensitive API operations require the corresponding OAuth scopes and account authorization."},
+        "api": {"available": "YES", "types": ["REST"], "breadth": "MODERATE", "details": "Gumroad OAuth API v2 is REST/JSON for seller products, sales, subscriptions, licenses, offer codes, files, workflows, payouts, user/profile and related resources. OAuth scopes distinguish read-only from product/sales/write privileges."},
+        "mcp": {"status": "UNKNOWN", "details": "The official API page documents REST endpoints and a command-line client described as AI-agent-friendly, but the opened sources/searches did not verify a Gumroad MCP server or action protocol. MCP remains UNKNOWN rather than NOT_FOUND.", "search_scope": "Targeted official Gumroad API/MCP search and opened Gumroad API/authentication/scopes and pricing pages; API and CLI docs were inspected, but no first-party MCP action setup was verified."},
+        "buildability": {"verdict": "BUILDABLE_WITH_CONSTRAINTS", "blocker": "A Gumroad account, registered OAuth app, seller authorization, and endpoint-specific scopes are required; transaction fees apply. No official MCP action server was verified.", "rationale": "The seller REST API and token/scopes are documented and self-service. A conventional integration is technically feasible; account consent and least-privilege scopes constrain accessible data/actions, and CLI support is not treated as MCP."},
+        "confidence": "HIGH",
+        "research_status": "COMPLETE",
+        "source_conflicts": [],
+        "limitations": ["No Gumroad seller account, OAuth app, access token, API call, or MCP connector was created or tested."],
+        "researcher_notes": "Gumroad's AI-agent-oriented CLI is not used as evidence that a Model Context Protocol server exists.",
+        "evidence": [
+            ev("description", "Gumroad's pricing page describes a creator platform for digital products, courses, tutorials, memberships, and subscriptions.", "gumroad_pricing"),
+            ev("auth", "The official API guide identifies Gumroad OAuth API as REST and documents application registration, access tokens, and OAuth scopes.", "gumroad_api"),
+            ev("self_serve", "Gumroad's official pricing states there is no monthly platform fee and that platform fees are transaction-based; no paid API plan is stated.", "gumroad_pricing"),
+            ev("credential_access", "The API guide links to account settings for OAuth app registration and access-token generation; scopes determine data/action access.", "gumroad_api"),
+            ev("api", "The OAuth API reference lists REST/JSON v2 seller endpoints across products, sales, subscriptions, licenses, offer codes, files, and related resources.", "gumroad_api"),
+            ev("buildability", "Gumroad describes its pay model as no monthly fee with 10% + $0.50 direct/profile sales and 30% Discover marketplace sales.", "gumroad_pricing"),
+        ],
+    },
+    50: {
+        "description": "FanBasis, now branded as Commas, is a digital-commerce platform for approved sellers of products, subscriptions, courses, memberships, and communities.",
+        "auth_status": "CONFIRMED",
+        "auth_methods": ["API key"],
+        "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+        "self_serve_details": "The seller product is available through account onboarding, but seller/payment functionality is subject to Commas and payment-partner approval, identity/KYC/AML verification, and ongoing risk review. API keys are created in the dashboard after account access is available.",
+        "credential_access": {"status": "RESTRICTED", "path": "An approved Commas seller retrieves live or sandbox API keys under Account > API Keys and sends the key in the x-api-key header. Keys are scope-based; narrow scopes for read-only or limited operations and use a separate sandbox key for testing.", "plan_or_gate": "Seller onboarding, identity verification, payment acceptance, and payout eligibility are subject to Commas/payment-partner approval and continued compliance review. The API has seller-account scopes and live/sandbox environments; key scopes gate individual routes."},
+        "api": {"available": "YES", "types": ["REST"], "breadth": "BROAD", "details": "Commas/FanBasis provides a seller REST API under /public-api with x-api-key authentication for products/checkout sessions, payments/transactions, customers/subscribers, subscriptions, invoices, discounts/refunds, and webhook-subscription resources. The docs preserve the existing FanBasis API base and keys after rebranding."},
+        "mcp": {"status": "AVAILABLE", "details": "Commas labels its AI-assistant MCP Beta. The detailed connector guide documents 44 account-scoped tools and setup for Claude Desktop and Cursor, including read and write operations. Most charges/refunds/cancellations/upgrades/deletes require explicit confirmation; subscription extension and API-key creation are documented immediate-action exceptions. The detailed ChatGPT/Grok setup sections still say coming soon, so support is not generalized to every client.", "search_scope": "Opened Commas API/authentication and MCP setup pages, the current Commas homepage, and current seller terms. The home page labels MCP Beta; client-specific setup instructions and actions were inspected directly."},
+        "buildability": {"verdict": "BUILDABLE_WITH_CONSTRAINTS", "blocker": "Requires an approved seller account, verified onboarding/payment-partner status, scoped API key, and client-specific Beta MCP setup. Commas Terms broadly restrict some bot/script activity while official docs describe API/MCP use; contractual applicability requires clarification. Two documented MCP actions (subscription extension and adding an API key) execute without confirmation.", "rationale": "The REST API and current MCP connector expose broad account-specific commerce tools, but seller/compliance approval, Beta/client readiness, and the unresolved Terms-versus-API/MCP scope are material constraints. Do not assume the Terms clause is waived or that it overrides documented integration paths; confirm before production automation. Write-action confirmation behavior also requires review."},
+        "confidence": "HIGH",
+        "research_status": "COMPLETE",
+        "source_conflicts": [
+            {"field": "mcp", "summary": "Generic Commas API/MCP copy references Claude, ChatGPT, and Grok, while detailed client-specific setup sections explicitly provide Claude Desktop and Cursor instructions and label ChatGPT/Grok setup as coming soon.", "resolution": "Classify the connector as AVAILABLE/Beta for the documented Claude Desktop and Cursor paths; do not assert that ChatGPT/Grok end-user setup is currently ready."},
+            {"field": "credential_access", "summary": "The API quick start presents dashboard API-key creation as a short self-service step, while seller Terms condition payment features and seller eligibility on onboarding, KYC/AML checks, and payment-partner approval.", "resolution": "Keep API-key location self-service for an eligible seller account, but record seller account/payment access as restricted and subject to approval; no account eligibility was tested."},
+            {"field": "buildability", "summary": "Commas Terms Section 2.5 broadly restricts automated scripts/bots used to access, monitor, extract, or alter platform content/systems, while official API/MCP docs describe programmatic API, CLI, and AI-agent use.", "resolution": "Do not silently assume the clause either prohibits or waives documented API/MCP integrations. Keep technical buildability conditional and require clarification of contractual scope with Commas before production automation; no account/legal review was performed."}
+        ],
+        "limitations": ["No Commas/FanBasis seller account, KYC review, API key, sandbox/live request, MCP installation, or account action was tested. The broad Terms restriction on scripts/bots was not reconciled with the documented API/MCP and requires vendor/legal clarification before production automation. Marketing copy and detailed client-specific setup are preserved separately."],
+        "researcher_notes": "The app manifest label 'fanbasis' is preserved. Current official terms identify FanBasis, Inc. as doing business under both FanBasis and Commas; the documented API/key continuity does not establish access for an unapproved seller.",
+        "evidence": [
+            ev("description", "Commas Terms identify the platform as digital-commerce software for approved sellers of products, subscriptions, memberships, courses, and communities.", "commas_terms"),
+            ev("auth", "The Commas API reference requires an x-api-key header and states that API requests do not use usernames/passwords.", "commas_api"),
+            ev("self_serve", "Seller onboarding and payment/payout features require identity verification and payment-partner approval, with ongoing review and possible restrictions.", "commas_terms"),
+            ev("credential_access", "The API guide directs sellers to Account > API Keys for live/sandbox keys and documents scoped access to API routes.", "commas_api"),
+            ev("api", "The API reference documents REST endpoints under /public-api and scoped seller resources for products, transactions, customers, subscriptions, refunds, invoices, discounts, and webhooks.", "commas_api"),
+            ev("mcp", "The official Commas homepage labels its AI-assistant MCP Beta and the detailed guide provides Claude Desktop and Cursor setup plus 44 read/write tools.", "commas_home"),
+            ev("mcp", "Commas documents write-action confirmation rules and immediate-action exceptions; detailed ChatGPT/Grok subsections still say setup coming soon.", "commas_mcp"),
+            ev("buildability", "Commas seller access and payment features depend on onboarding, identity verification, and payment-partner approval, which can be suspended or restricted.", "commas_terms"),
+        ],
+    },
+    51: {
+        "description": "DataForSEO is an API-first SEO and search-data provider covering SERP, keyword, backlink, domain, on-page, ecommerce, app-data, and content-analysis products.",
+        "auth_status": "CONFIRMED",
+        "auth_methods": ["Basic"],
+        "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+        "self_serve_details": "Users can register a free account, obtain API login/password in the account dashboard, and test through the sandbox. Live requests are pay-as-you-go and the official pricing page states a $50 minimum payment.",
+        "credential_access": {"status": "RESTRICTED", "path": "Create a DataForSEO account, then retrieve the API login and automatically generated API password from the API Access dashboard tab. Send the Base64-encoded credentials using the Authorization: Basic header; do not place credentials in URL parameters.", "plan_or_gate": "A free account and sandbox are documented, but live API use is pay-as-you-go with a $50 minimum payment. Request costs and per-endpoint pricing vary; Labs docs specify a 2,000-calls/minute ceiling and 30 simultaneous-request limit."},
+        "api": {"available": "YES", "types": ["REST"], "breadth": "BROAD", "details": "DataForSEO API v3 exposes broad REST services for real-time SERP, keyword/Labs, competitor/domain, backlink, content analysis, on-page, ecommerce/merchant, app-store, and AI optimization data. Labs supports live requests and free sandbox testing; rates and concurrency are documented per API family."},
+        "mcp": {"status": "UNKNOWN", "details": "The opened vendor sources document REST APIs, an official web documentation assistant, and a free sandbox, but no first-party MCP action-server endpoint/setup was verified in targeted official searches. Keep MCP UNKNOWN rather than treating the docs assistant or lack of a result as proof of absence.", "search_scope": "Targeted official DataForSEO documentation searches for MCP and inspected official authentication, pricing, Labs API overview, and product-pricing pages; no operational first-party MCP server was verified."},
+        "buildability": {"verdict": "BUILDABLE_WITH_CONSTRAINTS", "blocker": "Live data use requires an account API login/password and a $50 minimum payment, with pay-per-request costs, a 30-request concurrency cap, and API-specific rate limits.", "rationale": "The REST API, Basic authentication, endpoint breadth, and sandbox are documented. A production integration is technically feasible, but costs and rate/concurrency controls must be budgeted and MCP status remains unknown."},
+        "confidence": "HIGH",
+        "research_status": "COMPLETE",
+        "source_conflicts": [],
+        "limitations": ["No DataForSEO account, API credentials, payment, sandbox/live API call, or MCP connector was created or tested."],
+        "researcher_notes": "Free account registration and sandbox testing do not remove the documented $50 minimum payment for paid live usage.",
+        "evidence": [
+            ev("description", "DataForSEO's Labs and pricing catalog describe keyword/SERP/domain research and a broad suite of SEO, merchant, app, content, and AI data APIs.", "dataforseo_pricing_list"),
+            ev("auth", "DataForSEO states Basic Authentication is the only API authentication method and requires a dashboard API login/password in the Authorization header.", "dataforseo_auth"),
+            ev("self_serve", "DataForSEO allows free account registration and sandbox testing but states a $50 minimum payment for pay-as-you-go live API usage.", "dataforseo_pricing"),
+            ev("credential_access", "API login and automatically generated API password are retrieved from the account's API Access tab after creating an account.", "dataforseo_auth"),
+            ev("api", "The official product index lists multiple REST API families and Labs documentation covers keyword, SERP, competitor, ranking, and domain data.", "dataforseo_labs"),
+            ev("buildability", "The Labs guide documents free sandbox testing, request-based cost, up to 2,000 calls/minute, and a 30-request concurrency limit; the pricing page lists a $50 minimum payment.", "dataforseo_labs"),
+        ],
+    },
+}
+
+
+def _file_hash(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def build_batch() -> dict:
+    manifest = json.loads((ROOT / "apps/apps.json").read_text(encoding="utf-8"))
+    placeholders = json.loads((ROOT / "data/raw/final_full_research.json").read_text(encoding="utf-8"))
+    base_by_id = {r["app_id"]: r for r in placeholders}
+    manifest_by_id = {r["app_id"]: r for r in manifest}
+    raw_path = ROOT / "data/raw/final_full_research.json"
+    raw_hash_before = _file_hash(raw_path)
+    records_out = []
+    traces_out = []
+    now = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+    for app_id in IDS:
+        if app_id not in base_by_id or app_id not in manifest_by_id:
+            raise ValueError(f"app_id={app_id} missing from current manifest/baseline")
+        data = copy.deepcopy(RECORDS[app_id])
+        rec = copy.deepcopy(base_by_id[app_id])
+        rec.update({k: copy.deepcopy(v) for k, v in data.items() if k != "evidence"})
+        rec["evidence"] = copy.deepcopy(data["evidence"])
+        rec["source_mode"] = "LIVE_AGENT"
+        rec["research_tool"] = TOOL
+        rec["research_timestamp"] = now
+        rec["verification_status"] = "NOT_CHECKED"
+        rec["research_run_id"] = RUN_ID
+        rec["failure_reason"] = None
+        rec["quality_gate"] = {}
+
+        query_rows = [
+            {"query": query, "depth": depth, "search_status": "SUCCESS", "lead_only": True,
+             "note": "Search results were used only to discover/check candidate sources; snippets were not used as claim evidence."}
+            for query, depth in QUERIES[app_id]
+        ]
+        app_sources = [copy.deepcopy(SOURCES[key]) for key in FETCH_COUNTS[app_id]]
+        fetch_attempts = []
+        for key, chunk_indexes in FETCH_COUNTS[app_id].items():
+            s = SOURCES[key]
+            for chunk_index in chunk_indexes:
+                fetch_attempts.append({
+                    "tool": "fetch_page", "url": s["url"], "chunk_index": chunk_index,
+                    "status": "SUCCESS", "note": "Official page opened; claim-relevant observation is retained in the source packet."
+                })
+        for row in NON_EVIDENCE_FETCHES.get(app_id, []):
+            fetch_attempts.append({"tool": "fetch_page", **copy.deepcopy(row)})
+        for row in FAILED_FETCHES.get(app_id, []):
+            fetch_attempts.append({"tool": "fetch_page", **copy.deepcopy(row)})
+
+        query_attempts = [
+            {"tool": "web_search", "query": q["query"], "depth": q["depth"], "status": "SUCCESS",
+             "note": "Search invocation succeeded; results were discovery leads only and not claim evidence."}
+            for q in query_rows
+        ]
+        attempts = query_attempts + fetch_attempts
+        rec["query_count"] = len(query_rows)
+        rec["source_count"] = len(app_sources)
+        rec["attempt_count"] = len(attempts)
+        rec["trace_limitations"] = [
+            "This packet enumerates exact follow-up web_search invocations preserved after session compaction. Earlier exploratory Batch03 search invocations occurred in a prior tool turn, but their exact query text was not preserved and is not reconstructed or counted.",
+            "Search results/snippets are discovery leads only; every known claim is linked to an opened official source. Source capture times are date-only because fetch_page does not expose a per-page clock time.",
+            "LIVE_AGENT here denotes fresh native web research, not provider credentials, a Composio connection, tenant/account access, API calls, or MCP execution. No account-specific tests or human review were performed.",
+            "Standalone scope is IDs 42-48 and 50-51 only. ID 49 (Amazon Selling Partner) is excluded and untouched. This batch is not merged into the 100-row raw dataset.",
+        ]
+
+        source_urls = {s["url"] for s in app_sources}
+        rec["quality_gate"] = validate_record_quality(rec, source_urls=source_urls)
+        records_out.append(rec)
+        traces_out.append({
+            "app_id": app_id,
+            "app": rec["app"],
+            "source_mode": "LIVE_AGENT",
+            "status": rec["research_status"],
+            "research_run_id": RUN_ID,
+            "research_tool": TOOL,
+            "queries": query_rows,
+            "sources": app_sources,
+            "attempts": attempts,
+            "trace_limitations": copy.deepcopy(rec["trace_limitations"]),
+        })
+
+    if _file_hash(raw_path) != raw_hash_before:
+        raise RuntimeError("raw dataset changed while assembling the standalone batch")
+
+    return {
+        "schema_version": "1.0",
+        "run_id": RUN_ID,
+        "run_started_at": now,
+        "run_completed_at": now,
+        "source_mode": "LIVE_AGENT",
+        "tool": TOOL,
+        "provider_credentials": {"TAVILY_API_KEY": "NOT_USED_BY_NATIVE_WEB_TOOL", "OPENAI_API_KEY": "NOT_USED_BY_NATIVE_WEB_TOOL"},
+        "scope": "Apps 42-48 and 50-51 only. App records in this standalone capture are not merged into data/raw/final_full_research.json; app 49 is excluded and untouched. This is not the completed 100-app dataset.",
+        "search_result_policy": "Search-result snippets are discovery leads only and are excluded from claim evidence. Evidence cites opened official vendor/developer pages.",
+        "records": records_out,
+        "traces": traces_out,
+    }
+
+
+def main() -> int:
+    payload = build_batch()
+    manifest = json.loads((ROOT / "apps/apps.json").read_text(encoding="utf-8"))
+    manifest_by_id = {r["app_id"]: r for r in manifest}
+    errors = []
+    if [r["app_id"] for r in payload["records"]] != IDS:
+        errors.append(("batch", ["record IDs/order do not exactly match the Batch03 scope"]))
+    if len(payload["traces"]) != len(IDS):
+        errors.append(("batch", ["trace count does not match the Batch03 scope"]))
+
+    for record in payload["records"]:
+        errs = validate_record(record)
+        if errs:
+            errors.append((record["app_id"], errs))
+        if record["quality_gate"]["status"] != "PASS":
+            errors.append((record["app_id"], record["quality_gate"]))
+        trace = next(t for t in payload["traces"] if t["app_id"] == record["app_id"])
+        if record["query_count"] != len(trace["queries"]):
+            errors.append((record["app_id"], ["query count mismatch"]))
+        if record["source_count"] != len(trace["sources"]):
+            errors.append((record["app_id"], ["source count mismatch"]))
+        if record["attempt_count"] != len(trace["attempts"]):
+            errors.append((record["app_id"], ["attempt count mismatch"]))
+        identity = manifest_by_id.get(record["app_id"])
+        if not identity or record["app"] != identity["app"] or record["category"] != identity["category"]:
+            errors.append((record["app_id"], ["manifest identity/category mismatch"]))
+
+    if errors:
+        print(json.dumps(errors, indent=2, ensure_ascii=False))
+        return 1
+
+    out = ROOT / "data/evidence/native_web_capture_batch03_2026-09-24.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"wrote {out.relative_to(ROOT)} with {len(payload['records'])} rows and {len(payload['traces'])} traces")
+    print("record quality:", {s: sum(r['quality_gate']['status'] == s for r in payload['records']) for s in ['PASS', 'WARN', 'FAIL']})
+    for r in payload["records"]:
+        print(r["app_id"], r["app"], r["research_status"], r["quality_gate"]["status"], r["query_count"], r["source_count"], r["attempt_count"])
+        for warning in r["quality_gate"]["warnings"]:
+            print("  WARN:", warning)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

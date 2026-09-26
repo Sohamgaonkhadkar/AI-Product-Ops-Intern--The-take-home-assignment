@@ -1,0 +1,20 @@
+{
+  "status": "WARN",
+  "errors": [],
+  "warnings": [
+    "app_id=3 quality warning: evidence URL reused 4 times; review for over-broad source reuse: https://support.pipedrive.com/en/article/mcp-chatgpt",
+    "app_id=4 quality warning: evidence URL reused 4 times; review for over-broad source reuse: https://attio.com/help/reference/apps/generating-an-api-key",
+    "app_id=5 quality warning: evidence URL reused 4 times; review for over-broad source reuse: https://twenty.com/pricing",
+    "app_id=6 quality warning: evidence URL reused 4 times; review for over-broad source reuse: https://developers.podio.com/",
+    "app_id=9 quality warning: evidence URL reused 5 times; review for over-broad source reuse: https://developer.copper.com/",
+    "app_id=16 quality warning: evidence URL reused 4 times; review for over-broad source reuse: https://support.liveagent.com/647358-mcp-integration-for-agents",
+    "app_id=20 quality warning: evidence URL reused 4 times; review for over-broad source reuse: https://help.gladly.com/developer-tutorials/docs/setup-and-testing",
+    "app_id=92 quality warning: evidence URL reused 4 times; review for over-broad source reuse: https://help.otter.ai/hc/en-us/articles/36130822688279-otter-ai-public-api"
+  ],
+  "record_quality_counts": {
+    "PASS": 92,
+    "WARN": 8,
+    "FAIL": 0
+  },
+  "traces": 100
+}

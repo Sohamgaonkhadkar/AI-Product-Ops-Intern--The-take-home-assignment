@@ -1,0 +1,466 @@
+{
+  "captured_at": "2026-09-24T16:13:14Z",
+  "mode": "capture_replay",
+  "traces": [
+    {
+      "app_id": 11,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Zendesk developer API authentication API token OAuth pricing free trial MCP server official docs",
+        "site:developer.zendesk.com MCP Zendesk official server AI MCP",
+        "site:developer.zendesk.com/api-reference rate limits Zendesk ticketing API product features"
+      ],
+      "search_results": [
+        {
+          "query": "site:developer.zendesk.com MCP Zendesk official server AI MCP",
+          "status": "OK",
+          "results": 0
+        }
+      ],
+      "sources": [
+        {
+          "title": "Security and authentication | Zendesk Developer Docs",
+          "url": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/",
+          "retrieval": "fetch_page",
+          "observation": "Verified-user requirement; OAuth Bearer token, global OAuth rule for public apps, deprecated Basic API tokens."
+        },
+        {
+          "title": "Ticketing | Zendesk Developer Docs",
+          "url": "https://developer.zendesk.com/api-reference/ticketing/introduction/",
+          "retrieval": "fetch_page",
+          "observation": "Support API covers tickets, users, organizations, custom objects, and ticket workflows."
+        },
+        {
+          "title": "Zendesk Pricing Plans | Starting from $19/month",
+          "url": "https://www.zendesk.com/pricing/",
+          "retrieval": "fetch_page",
+          "observation": "Opened current Support/Suite pricing page; free-trial signup is listed but API plan entitlement is not mapped."
+        }
+      ],
+      "limitations": [
+        "The MCP search was bounded to official developer-domain search plus the opened API/auth references; no complete Zendesk repository or Marketplace audit was made."
+      ]
+    },
+    {
+      "app_id": 12,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Intercom developer API authentication OAuth access token pricing trial MCP server official documentation",
+        "site:developers.intercom.com/docs MCP server official Intercom pricing trial API access",
+        "site:developers.intercom.com/docs/guides/mcp Intercom MCP available regions tools"
+      ],
+      "sources": [
+        {
+          "title": "Authentication | Intercom and Fin Developer Platform",
+          "url": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication",
+          "retrieval": "fetch_page",
+          "observation": "Private workspace Access Tokens vs public OAuth; Bearer request format and Developer Hub app flow."
+        },
+        {
+          "title": "Conversations | Intercom and Fin Developer Platform",
+          "url": "https://developers.intercom.com/docs/references/1.1/rest-api/conversations/conversations",
+          "retrieval": "fetch_page",
+          "observation": "Conversation operations; access is only for apps with a trial or active subscription."
+        },
+        {
+          "title": "Model Context Protocol (MCP) | Intercom and Fin Developer Platform",
+          "url": "https://developers.intercom.com/docs/guides/mcp",
+          "retrieval": "fetch_page",
+          "observation": "First-party hosted US/EU endpoints, 14 tools, permission checks; AU not supported."
+        },
+        {
+          "title": "Intercom Pricing | Plans for every team size",
+          "url": "https://www.intercom.com/pricing",
+          "retrieval": "fetch_page",
+          "observation": "Self-serve trial and paid customer-service plans; pricing is seat plus usage based."
+        }
+      ],
+      "limitations": [
+        "No app, trial, API request, OAuth consent, or MCP session was executed; reference endpoint breadth beyond conversations was not exhaustively sampled."
+      ]
+    },
+    {
+      "app_id": 13,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Freshdesk developer REST API authentication API key pricing free trial MCP official docs",
+        "site:developer.freshdesk.com/api authentication Freshdesk API key rate limits",
+        "site:support.freshdesk.com Freshdesk API key Profile Settings verified agent current plan"
+      ],
+      "sources": [
+        {
+          "title": "Freshdesk",
+          "url": "https://developer.freshdesk.com/api/",
+          "retrieval": "fetch_page",
+          "observation": "Opened the API reference index; ticket, conversation, contact, agent, field/form, and other resource groups; Basic auth uses API key."
+        },
+        {
+          "title": "Model Context Protocol (MCP) integration in Freshdesk : Freshdesk Support",
+          "url": "https://support.freshdesk.com/support/solutions/articles/50000012670-model-context-protocol-mcp-integration-in-freshdesk",
+          "retrieval": "fetch_page",
+          "observation": "Official MCP GA date, subdomain endpoint, API-key-only auth, supported plans, included actions/rate limits."
+        },
+        {
+          "title": "How To Find Your API Key : Freshdesk Support",
+          "url": "https://support.freshdesk.com/support/solutions/articles/215517-how-to-find-your-api-key",
+          "retrieval": "fetch_page",
+          "observation": "Current support instructions: Profile Settings, CAPTCHA, verified agent, role-based API actions."
+        },
+        {
+          "title": "Where can I find my API key? : Freshdesk Support",
+          "url": "https://support.freshdesk.com/support/solutions/articles/225435-where-can-i-find-my-api-key-",
+          "retrieval": "fetch_page",
+          "observation": "Current-plan table marks API key unavailable on Free and available on Growth/Pro/Enterprise; legacy plan rows are separate."
+        },
+        {
+          "title": "Freshdesk Customer Support Software Pricing & Plans | Freshworks",
+          "url": "https://www.freshworks.com/freshdesk/pricing/",
+          "retrieval": "fetch_page",
+          "observation": "Opened Growth/Pro/Enterprise prices, self-serve trial links, and MCP action add-on pricing."
+        }
+      ],
+      "limitations": [
+        "No account, API key, production plan, or MCP action was tested; one plan article includes historical plan names which are not treated as current."
+      ]
+    },
+    {
+      "app_id": 14,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Front app API authentication API token OAuth pricing trial MCP official developer documentation",
+        "site:dev.frontapp.com/docs MCP Front API free trial pricing official",
+        "site:dev.frontapp.com/docs/authentication Front API public OAuth API tokens"
+      ],
+      "sources": [
+        {
+          "title": "Welcome",
+          "url": "https://dev.frontapp.com/docs/welcome",
+          "retrieval": "fetch_page",
+          "observation": "Free developer environment limited to three teammates; Core API CRUD/webhooks and related platform surfaces."
+        },
+        {
+          "title": "Authentication",
+          "url": "https://dev.frontapp.com/docs/authentication",
+          "retrieval": "fetch_page",
+          "observation": "Bearer tokens from API tokens or OAuth; OAuth required for public integrations unless exception."
+        },
+        {
+          "title": "MCP Server",
+          "url": "https://dev.frontapp.com/docs/mcp-server",
+          "retrieval": "fetch_page",
+          "observation": "First-party open-beta MCP endpoint, per-user OAuth, confidential client ID/secret, no DCR."
+        },
+        {
+          "title": "Partnering With Front",
+          "url": "https://dev.frontapp.com/docs/partnering-with-front",
+          "retrieval": "fetch_page",
+          "observation": "Free developer-account path and separation between public partnerships and private/single-client use."
+        }
+      ],
+      "limitations": [
+        "No Front developer account, OAuth app, API token, or MCP client compatibility test was performed."
+      ]
+    },
+    {
+      "app_id": 15,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Pylon customer support API developer docs authentication API key OAuth MCP plan access official",
+        "Pylon developer docs REST API authentication API tokens official docs Pylon pricing trial",
+        "Pylon pricing free trial API plan access official usepylon.com",
+        "site:docs.usepylon.com API authentication Pylon official"
+      ],
+      "sources": [
+        {
+          "title": "API | Pylon",
+          "url": "https://docs.usepylon.com/pylon-docs/developer/api",
+          "retrieval": "fetch_page",
+          "observation": "Official API page says Pylon API provides programmatic read/action access and only Admin users can create API tokens."
+        },
+        {
+          "title": "Authentication | Pylon",
+          "url": "https://docs.usepylon.com/pylon-docs/developer/api/authentication",
+          "retrieval": "fetch_page",
+          "observation": "Bearer auth, US/EU API base URLs, /me check, token attribution."
+        },
+        {
+          "title": "API & Webhooks Integration | Pylon",
+          "url": "https://www.usepylon.com/integrations/api-webhooks",
+          "retrieval": "fetch_page",
+          "observation": "First-party API/webhook product page lists accounts, contacts, issues, messages, tasks/projects, knowledge base, custom objects, and event delivery."
+        },
+        {
+          "title": "How do I create a Pylon API token? | Pylon Knowledge Base",
+          "url": "https://support.usepylon.com/articles/4735104435-how-do-i-create-an-api-token",
+          "retrieval": "fetch_page",
+          "observation": "Admin-only token creation, Settings path, one-time token visibility, role selection."
+        },
+        {
+          "title": "How do I connect to the Pylon MCP Server? | Pylon Knowledge Base",
+          "url": "https://support.usepylon.com/articles/2407390554-connecting-to-the-pylon-mcp-server",
+          "retrieval": "fetch_page",
+          "observation": "OAuth-only MCP, Member/Admin seat, user-scoped issue/account/contact tools; no API-key/machine auth."
+        }
+      ],
+      "failures": [
+        {
+          "stage": "fetch_page",
+          "url": "https://www.usepylon.com/pricing",
+          "status": "REDIRECTED",
+          "final_url": "https://www.usepylon.com/schedule-demo",
+          "note": "Returned a required-field demo form rather than a pricing/plan table; no plan claim was taken from search snippets."
+        },
+        {
+          "stage": "fetch_page",
+          "url": "https://www.usepylon.com/pricing/",
+          "status": "REDIRECTED",
+          "final_url": "https://www.usepylon.com/schedule-demo",
+          "note": "Same pricing-page redirect; plan/trial entitlement remains unresolved."
+        },
+        {
+          "stage": "fetch_page",
+          "url": "https://usepylon.com/pricing",
+          "status": "REDIRECTED",
+          "final_url": "https://www.usepylon.com/schedule-demo",
+          "note": "Same demo-form destination; no plan/trial entitlement claim used."
+        }
+      ],
+      "limitations": [
+        "Public account signup, trial, API/MCP plan eligibility, and pricing were not established from opened pages."
+      ]
+    },
+    {
+      "app_id": 16,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "LiveAgent API authentication REST API key pricing trial MCP official documentation",
+        "site:support.liveagent.com API reference API token LiveAgent trial pricing MCP integration official docs",
+        "LiveAgent MCP server OAuth 2.1 bearer API official support documentation"
+      ],
+      "sources": [
+        {
+          "title": "MCP Integration for Agents",
+          "url": "https://support.liveagent.com/647358-MCP-Integration-for-Agents",
+          "retrieval": "fetch_page",
+          "observation": "Current first-party MCP endpoint/auth, per-agent identity/permissions, audit trail, and AI-credit budget."
+        },
+        {
+          "title": "Complete API reference",
+          "url": "https://support.liveagent.com/840770-Complete-API-reference",
+          "retrieval": "fetch_page",
+          "observation": "Public REST v1 reference lists conversations/messages, customers, companies, KB, reports, tags, files, and agents."
+        },
+        {
+          "title": "Pricing | LiveAgent - Help Desk Software & Live Chat",
+          "url": "https://www.liveagent.com/pricing/",
+          "retrieval": "fetch_page",
+          "observation": "30-day no-card trial and paid per-agent tiers."
+        }
+      ],
+      "limitations": [
+        "Current API v3 documentation is exposed within a customer account and was not inspected; opened public API v1 documentation is older."
+      ]
+    },
+    {
+      "app_id": 17,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Plain customer support API official docs authentication OAuth API key pricing MCP server",
+        "Plain API docs Machine Users API key GraphQL pricing launch plans official Plain documentation",
+        "site:plain.com/docs GraphQL authentication machine users MCP server"
+      ],
+      "sources": [
+        {
+          "title": "Introduction - Plain Docs",
+          "url": "https://www.plain.com/docs/graphql/introduction",
+          "retrieval": "fetch_page",
+          "observation": "Official GraphQL endpoint/schema and customer query; product itself is built on the API."
+        },
+        {
+          "title": "Authentication - Plain Docs",
+          "url": "https://www.plain.com/docs/graphql/authentication",
+          "retrieval": "fetch_page",
+          "observation": "Machine users, multi-key rotation, fine-grained permissions, one-time copy."
+        },
+        {
+          "title": "MCP server - Plain Docs",
+          "url": "https://www.plain.com/docs/integrations/mcp-server",
+          "retrieval": "fetch_page",
+          "observation": "Official OAuth MCP endpoint, inherited permissions, required scopes, 30 tools."
+        },
+        {
+          "title": "Plain Pricing — Plans from $35/seat/month | 7-Day Free Trial",
+          "url": "https://www.plain.com/pricing",
+          "retrieval": "fetch_page",
+          "observation": "Seven-day no-card trial and self-serve Foundation; API feature matrix extraction lacks clear per-plan mapping."
+        }
+      ],
+      "failures": [
+        {
+          "stage": "fetch_page",
+          "url": "https://www.plain.com/docs/api",
+          "status": "HTTP_404",
+          "note": "Noncanonical route returned Page Not Found; current GraphQL documentation was found through official search/docs index and opened."
+        }
+      ],
+      "limitations": [
+        "No Plain workspace/API token or MCP connection was used; API entitlement by plan is not fully legible in the opened pricing extraction."
+      ]
+    },
+    {
+      "app_id": 18,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Help Scout API authentication OAuth app key pricing trial MCP official developer docs",
+        "site:developer.helpscout.com MCP official Help Scout API docs OAuth pricing trial access",
+        "site:helpscout.com OR site:developer.helpscout.com MCP server Help Scout official"
+      ],
+      "sources": [
+        {
+          "title": "Inbox API 2.0 | Help Scout Developers",
+          "url": "https://developer.helpscout.com/mailbox-api/",
+          "retrieval": "fetch_page",
+          "observation": "HTTPS/JSON Inbox API v2 with OAuth2; links to resource endpoints and SDKs."
+        },
+        {
+          "title": "Authentication | Help Scout Developers",
+          "url": "https://developer.helpscout.com/mailbox-api/overview/authentication/",
+          "retrieval": "fetch_page",
+          "observation": "Authorization Code/Client Credentials, Bearer tokens, My Apps path, active invited user requirement."
+        },
+        {
+          "title": "Help Scout Pricing: Affordable Customer Support Software",
+          "url": "https://www.helpscout.com/pricing/",
+          "retrieval": "fetch_page",
+          "observation": "Free plan and paid Standard/Plus/Pro tiers with current seat pricing/features."
+        },
+        {
+          "title": "Connect your AI Agent to Help Scout via MCP - Help Scout Support",
+          "url": "https://docs.helpscout.com/article/1779-connect-your-ai-agent-with-help-scout-to-search-conversations-and-pull-reports",
+          "retrieval": "fetch_page",
+          "observation": "Official MCP endpoint, Standard/Plus/Pro API entitlement, read-only behavior, reports/docs constraints."
+        }
+      ],
+      "failures": [
+        {
+          "stage": "fetch_page",
+          "url": "https://www.helpscout.com/blog/introducing-help-scout-mcp/",
+          "status": "HTTP_404",
+          "note": "The marketing-blog URL returned 404; the official support setup guide directly confirmed MCP status and access conditions."
+        }
+      ],
+      "limitations": [
+        "No Help Scout API key, OAuth app, or MCP connection was created; new MCP connections are read-only."
+      ]
+    },
+    {
+      "app_id": 19,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Gorgias REST API authentication API key OAuth pricing trial MCP official developer documentation",
+        "site:developers.gorgias.com MCP official docs OAuth API pricing Helpdesk all plans",
+        "site:gorgias.com/blog MCP Gorgias open beta mcp.gorgias.com"
+      ],
+      "sources": [
+        {
+          "title": "Authentication",
+          "url": "https://developers.gorgias.com/reference/authentication",
+          "retrieval": "fetch_page",
+          "observation": "Private app API key vs public OAuth2; OAuth2 mandatory for public apps."
+        },
+        {
+          "title": "Introduction",
+          "url": "https://developers.gorgias.com/reference/introduction",
+          "retrieval": "fetch_page",
+          "observation": "Official REST/JSON API reference with resource-oriented URLs."
+        },
+        {
+          "title": "Access your Gorgias REST API credentials | Gorgias Help Center",
+          "url": "https://helpcenter.gorgias.com/en-US/rest-api-208286",
+          "retrieval": "fetch_page",
+          "observation": "Owner/admin-created per-user API key, HTTP Basic credentials, all Helpdesk plans, full account-data access."
+        },
+        {
+          "title": "Gorgias Pricing – Build the customer support suite that fits your needs",
+          "url": "https://www.gorgias.com/pricing",
+          "retrieval": "fetch_page",
+          "observation": "Paid plan tiers, free-trial signup, ticket and AI usage pricing."
+        },
+        {
+          "title": "How to Connect Gorgias to Claude or ChatGPT (6 Workflows to Try Right Now)",
+          "url": "https://www.gorgias.com/blog/gorgias-mcp",
+          "retrieval": "fetch_page",
+          "observation": "First-party MCP endpoint mcp.gorgias.com/mcp?gorgias_subdomain=YOUR-SUBDOMAIN; OAuth; open beta for all paid plan customers; no extra cost within the Gorgias plan; an active AI-client subscription is separate."
+        }
+      ],
+      "failures": [
+        {
+          "stage": "fetch_page",
+          "url": "https://docs.gorgias.com/en-US/rest-api-208286",
+          "status": "REDIRECTED",
+          "final_url": "https://helpcenter.gorgias.com/en-US/rest-api-208286",
+          "note": "The direct Help Center path is on helpcenter.gorgias.com; final page was opened and read."
+        }
+      ],
+      "limitations": [
+        "No Gorgias account, API key, public OAuth app, API call, or MCP session was used; individual endpoint groups were not exhaustively enumerated."
+      ]
+    },
+    {
+      "app_id": 20,
+      "research_tool": "Arena web_search + fetch_page",
+      "queries": [
+        "Gladly API authentication developer docs REST API pricing MCP official support integration",
+        "site:developer.gladly.com MCP server Gladly API official docs pricing API access authentication",
+        "site:developer.gladly.com OR site:gladly.ai MCP server Gladly official developer docs",
+        "site:gladly.ai OR site:gladly.com API free trial MCP Gladly pricing access"
+      ],
+      "sources": [
+        {
+          "title": "Gladly API",
+          "url": "https://developer.gladly.com/rest/",
+          "retrieval": "fetch_page",
+          "observation": "Official REST API index enumerates customers, conversations, messages, agents, answers, reports, tasks, exports, and webhooks."
+        },
+        {
+          "title": "Setup and Testing",
+          "url": "https://help.gladly.com/developer-tutorials/docs/setup-and-testing",
+          "retrieval": "fetch_page",
+          "observation": "API User permission, Basic API token flow, and sandbox purchasing/contact requirements."
+        },
+        {
+          "title": "Agentic commerce platform built for top brands | Gladly",
+          "url": "https://www.gladly.ai/",
+          "retrieval": "fetch_page",
+          "observation": "Current official homepage says Commerce AI and offers Get a Demo/Try it yourself; no API plan/pricing entitlement is described."
+        },
+        {
+          "title": "What Freshdesk actually costs in 2026 | Gladly",
+          "url": "https://www.gladly.ai/blog/freshdesk-pricing/",
+          "retrieval": "fetch_page",
+          "observation": "First-party comparison describes Gladly pricing as custom/sales-led; not used to infer specific API entitlements."
+        }
+      ],
+      "search_results": [
+        {
+          "query": "site:developer.gladly.com MCP server Gladly API official docs pricing API access authentication",
+          "status": "OK",
+          "results": 0
+        }
+      ],
+      "failures": [
+        {
+          "stage": "fetch_page",
+          "url": "https://www.gladly.ai/pricing",
+          "status": "REDIRECTED",
+          "final_url": "https://www.gladly.ai/",
+          "note": "No pricing matrix was returned; public pricing/API entitlement remains unresolved."
+        }
+      ],
+      "limitations": [
+        "No Gladly tenant, API token, sandbox, API request, or MCP connection was available; no exhaustive first-party repository/catalog audit was completed.",
+        "Current Gladly marketing copy and developer API description use different product positioning; their relationship was not established."
+      ]
+    }
+  ]
+}

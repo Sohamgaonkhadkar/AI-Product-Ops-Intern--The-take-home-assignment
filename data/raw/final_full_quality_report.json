@@ -1,0 +1,41 @@
+{
+  "status": "WARN",
+  "errors": [],
+  "warnings": [
+    "app_id=3 quality warning: claim evidence URL is absent from the recorded source trace: https://developers.pipedrive.com/docs/api/v1/Oauth",
+    "app_id=4 quality warning: claim evidence URL is absent from the recorded source trace: https://docs.attio.com/rest-api/overview",
+    "app_id=5 quality warning: evidence URL reused 4 times; review for over-broad source reuse: https://twenty.com/pricing",
+    "app_id=6 quality warning: claim evidence URL is absent from the recorded source trace: https://developers.podio.com/",
+    "app_id=9 quality warning: generic homepage is the only supporting source for specific api claim",
+    "app_id=15 quality warning: claim evidence URL is absent from the recorded source trace: https://www.usepylon.com/schedule-demo",
+    "app_id=16 quality warning: evidence URL reused 4 times; review for over-broad source reuse: https://support.liveagent.com/647358-mcp-integration-for-agents",
+    "app_id=20 quality warning: evidence URL reused 4 times; review for over-broad source reuse: https://help.gladly.com/developer-tutorials/docs/setup-and-testing",
+    "app_id=22 quality warning: claim evidence URL is absent from the recorded source trace: https://www.twilio.com/en-us",
+    "app_id=61 quality warning: claim evidence URL is absent from the recorded source trace: https://github.com/about",
+    "app_id=80 quality warning: evidence URL reused 5 times; review for over-broad source reuse: https://support.getharvest.com/hc/en-us/articles/46293697226381-harvest-mcp",
+    "app_id=81 quality warning: evidence URL reused 6 times; review for over-broad source reuse: https://docs.stripe.com/mcp",
+    "app_id=82 quality warning: evidence URL reused 6 times; review for over-broad source reuse: https://plaid.com/docs/resources/mcp",
+    "app_id=83 quality warning: evidence URL reused 6 times; review for over-broad source reuse: https://developers.binance.com/en/docs/agent-native/mcp-server/agentic",
+    "app_id=84 quality warning: COMPLETE record has LOW confidence; review completion classification",
+    "app_id=85 quality warning: evidence URL reused 5 times; review for over-broad source reuse: https://www.ipayx.ai/developers",
+    "app_id=86 quality warning: evidence URL reused 6 times; review for over-broad source reuse: https://github.com/intuit/quickbooks-online-mcp-server/blob/main/readme.md",
+    "app_id=87 quality warning: evidence URL reused 5 times; review for over-broad source reuse: https://github.com/xeroapi/xero-mcp-server/blob/main/readme.md",
+    "app_id=88 quality warning: evidence URL reused 6 times; review for over-broad source reuse: https://developer.brex.com/docs/mcp",
+    "app_id=89 quality warning: evidence URL reused 6 times; review for over-broad source reuse: https://docs.ramp.com/developer-api/v1/ramp-mcp",
+    "app_id=90 quality warning: evidence URL reused 4 times; review for over-broad source reuse: https://pitchbook.com/help/pitchbook-api",
+    "app_id=91 quality warning: evidence URL reused 4 times; review for over-broad source reuse: https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/set-up-notebooklm",
+    "app_id=92 quality warning: evidence URL reused 4 times; review for over-broad source reuse: https://help.otter.ai/hc/en-us/articles/36130822688279-otter-ai-public-api",
+    "app_id=94 quality warning: evidence URL reused 4 times; review for over-broad source reuse: https://docs.consensus.app/api-plans-and-access",
+    "app_id=95 quality warning: evidence URL reused 5 times; review for over-broad source reuse: https://docs.reducto.ai/mcp-server",
+    "app_id=98 quality warning: evidence URL reused 7 times; review for over-broad source reuse: https://github.com/mermaid-js/mermaid-cli",
+    "app_id=99 quality warning: generic homepage is the only supporting source for specific self_serve claim",
+    "app_id=99 quality warning: evidence URL reused 5 times; review for over-broad source reuse: https://transcriptapi.com/docs/mcp",
+    "app_id=100 quality warning: evidence URL reused 5 times; review for over-broad source reuse: https://support.grain.com/en/articles/15507288-grain-api"
+  ],
+  "record_quality_counts": {
+    "PASS": 72,
+    "WARN": 28,
+    "FAIL": 0
+  },
+  "traces": 100
+}

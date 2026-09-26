@@ -1,0 +1,911 @@
+#!/usr/bin/env python3
+"""Assemble the fourth standalone native-web evidence batch.
+
+Scope: manifest app IDs 52-60. This builder never edits the authoritative raw
+research JSON/CSV; it writes an auditable, independently checkable capture only.
+Search snippets are discovery leads, not claim evidence.
+"""
+from __future__ import annotations
+
+import copy
+import hashlib
+import json
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from src.utils.quality import validate_record_quality
+from src.utils.validation import validate_record
+
+DATE = "2026-09-24"
+RUN_ID = "arena-native-web-batch04-20260924"
+IDS = list(range(52, 61))
+TOOL = "Arena.ai Agent Mode native web_search + fetch_page; official-source-led manual research"
+
+
+def source(url: str, title: str, source_type: str, observation: str, chunks=(0,)) -> dict:
+    return {
+        "url": url,
+        "title": title,
+        "source_type": source_type,
+        "capture_method": "fetch_page",
+        "capture_status": "OPENED",
+        "retrieved_at": DATE,
+        "retrieval_precision": "DATE_ONLY; fetch_page does not expose a per-page clock time",
+        "retrieved_chunk_indexes": list(chunks),
+        "excerpt_or_observation": observation,
+    }
+
+
+SOURCES = {
+    # 52 SE Ranking
+    "se_data": source(
+        "https://seranking.com/api/data/",
+        "Data API - SE Ranking API Documentation",
+        "official_api_docs",
+        "The official Data API hub describes SEO/AEO datasets and links to getting-started, account/system, rate-limit, and endpoint-cost references. It lists keyword, domain, backlink, AI search, SERP, audit, and project-management use cases and structured data/credits.",
+    ),
+    "se_api_product": source(
+        "https://seranking.com/api.html",
+        "SEO API by SE Ranking: SEO & AEO Data at Scale",
+        "official_product",
+        "The product overview presents direct REST API and MCP paths for SEO/AEO automation, structured JSON, up to 10 requests/second, keyword research, backlinks, domain analysis, website audit, AI search, and project management. Its marketing copy says API access is included in every SE Ranking plan, which is not fully aligned with detailed support/pricing pages; standalone and wallet options are also advertised.",
+        (0, 1, 2),
+    ),
+    "se_pricing": source(
+        "https://seranking.com/api-pricing.html",
+        "SE Ranking API Pricing: Free Trial, Wallet, Annual Plans",
+        "official_pricing",
+        "The current API pricing page lists a 14-day no-card trial with 100,000 credits and MCP; a $50 Wallet/250,000-credit option; a standalone API tier; an API add-on for eligible Core/Growth/Enterprise subscriptions; and Enterprise custom plans. It specifies differing Data API versus Project API entitlements by path.",
+        (0,),
+    ),
+    "se_getting_started": source(
+        "https://help.seranking.com/hc/en-us/articles/22447958135068-Getting-Started-with-SE-Ranking-s-API",
+        "Getting Started with SE Ranking's API – Knowledge Base",
+        "official_support",
+        "The support article says the API package is available standalone without an active web-app subscription; a 14-day trial includes 100,000 credits. A single API key covers Data and Project APIs and is created in the API Dashboard; if the button is unavailable, API add-on activation may be needed. Shared-workspace subaccounts currently need the master account's key. Legacy v1-v6 Essential/Pro plans need the API add-on. It documents a 10-request/second default limit.",
+    ),
+    "se_help_pricing": source(
+        "https://help.seranking.com/hc/en-us/articles/21487397355420-API-pricing",
+        "API pricing – Knowledge Base",
+        "official_support",
+        "The detailed calculator page lists endpoint/record credit costs, credits and overage behavior, and states that API access can stop at the credit limit unless overage is enabled. Its current plan summary covers a standalone API trial and API credit tiers; plan generations and add-on activation affect access.",
+    ),
+    "se_mcp": source(
+        "https://seranking.com/api/integrations/mcp/",
+        "MCP Server - SE Ranking API Documentation",
+        "official_docs",
+        "The official MCP guide documents a centrally hosted Streamable HTTP server at https://api.seranking.com/mcp, OAuth 2.1 with dynamic client registration, API-key fallback for headless clients/subaccounts, and 160+ SEO/AI-search/project tools. API access belongs to the master account for shared workspaces. The separately opened MCP marketing page advertises 180+ tools.",
+        (0, 1),
+    ),
+    "se_mcp_marketing": source(
+        "https://seranking.com/mcp.html",
+        "SEO MCP Server: Live SE Ranking Data in Any AI Assistant",
+        "official_product",
+        "The official MCP product page advertises 180+ SEO/GEO tools and a hosted connector for AI clients, promoting a free trial with 100,000 credits and no card. The technical API documentation lists 160+ tools; tool counts conflict across first-party pages.",
+        (0,),
+    ),
+
+    # 53 Ahrefs
+    "ahrefs_api": source(
+        "https://docs.ahrefs.com/en/api/docs/introduction",
+        "Introduction | Ahrefs for Developers",
+        "official_api_docs",
+        "Ahrefs API v3 supports Site Explorer, Keywords Explorer, SERP Overview, Rank Tracker, Site Audit, Brand Radar, Social Media Management, Content Helper, and project/list management. Eligible paid plans include API-unit allowances; otherwise only limited test queries are available. The default rate limit is 60 requests/minute.",
+    ),
+    "ahrefs_keys": source(
+        "https://docs.ahrefs.com/en/api/docs/api-keys-creation-and-management",
+        "API keys creation and management | Ahrefs for Developers",
+        "official_auth_docs",
+        "API v3 uses an Authorization: Bearer API key. Only workspace owners/admins create and manage keys; keys expire after one year, are invalidated if their creator leaves the workspace, and can have monthly API-unit usage caps.",
+    ),
+    "ahrefs_mcp": source(
+        "https://docs.ahrefs.com/en/mcp/docs/introduction",
+        "What is Ahrefs MCP | Ahrefs for Developers",
+        "official_docs",
+        "Ahrefs documents a hosted Streamable HTTP MCP endpoint at https://api.ahrefs.com/mcp/mcp for Lite-or-higher paid plans. OAuth consent creates a dedicated MCP-scoped key; monthly API units and per-request row limits apply. The official terms explicitly say using the external MCP endpoint through custom scripts, bridges, or standalone HTTP/JSON-RPC clients is unsupported and not permitted; custom programmatic integrations should use the public API.",
+    ),
+    "ahrefs_pricing": source(
+        "https://ahrefs.com/pricing",
+        "Plans & Pricing - Ahrefs",
+        "official_pricing",
+        "The current pricing page shows API and MCP access on paid Lite, Standard and Advanced tiers, with plan-specific row limits and monthly API integration units (for example, Lite lists 1,000 API credits per user). The opened pricing chunk does not settle every enterprise/custom-plan detail.",
+        (0,),
+    ),
+
+    # 54 MrScraper
+    "mrscraper_overview": source(
+        "https://docs.mrscraper.com/docs/getting-started/overview",
+        "Overview | MrScraper Documentation",
+        "official_docs",
+        "The official documentation describes a web-data platform with AI/general/listing/map agents, manual workflows, marketplace scrapers, API access, web unblocker, scheduled/bulk scraping, storage and integrations, plus CLI, SDKs, and MCP.",
+    ),
+    "mrscraper_api_product": source(
+        "https://mrscraper.com/web-scraper-api",
+        "Web Scraper API for Developers | MrScraper",
+        "official_product",
+        "The product page describes a REST scraper API that activates saved/manual or AI scrapers, supports marketplace endpoints, JSON extraction, pagination, streaming, retrying, SDKs and CLI. Its introductory feature section says 200,000 tokens included without clear plan context; the FAQ says a standard post-trial plan is $19/month with 20,000 tokens, while the separate pricing page lists a $199/month Pro tier with 200,000 tokens.",
+        (0, 1),
+    ),
+    "mrscraper_quickstart": source(
+        "https://docs.mrscraper.com/docs/getting-started/quickstart",
+        "Quickstart | MrScraper Documentation",
+        "official_api_docs",
+        "The quickstart requires a MrScraper account/API key and demonstrates a general scraper endpoint using an x-api-token header (and token query parameter), plus a predefined marketplace endpoint using Authorization: Bearer. The examples are different routes, so use the authentication prescribed for each endpoint.",
+    ),
+    "mrscraper_pricing": source(
+        "https://mrscraper.com/pricing",
+        "MrScraper Pricing | MrScraper",
+        "official_pricing",
+        "The pricing page advertises a free plan with 1,000 monthly tokens and no card, and a Pro plan at $199/month with 200,000 tokens. It also states custom plans require a call. These figures conflict with other official MrScraper product/support copy and are not silently selected as definitive.",
+    ),
+    "mrscraper_billing": source(
+        "https://docs.mrscraper.com/docs/getting-started/billing",
+        "Billing | MrScraper Documentation",
+        "official_support",
+        "The billing table lists 1,000 Free-plan tokens and 200,000 Pro tokens, but the same page's Free Plan Limitations paragraph says 100 tokens per month. It confirms token resets and no rollover. Exact free allowance is therefore unresolved.",
+    ),
+    "mrscraper_mcp": source(
+        "https://docs.mrscraper.com/docs/getting-started/mcp-server",
+        "MCP Server | MrScraper Documentation",
+        "official_docs",
+        "The official guide documents seven hosted MCP tools (fetch, scrape, serp, status, rerun, results, result), a Streamable HTTP endpoint at https://mcp.mrscraper.com/mcp, OAuth 2.1/scoped access, API-key fallback, and local stdio/HTTP deployment. API keys carry full account authority. The guide spans web unblocker, Google SERP, saved scrapers, usage and stored results.",
+        (0, 1, 2, 3, 4, 5),
+    ),
+
+    # 55 Apify
+    "apify_api": source(
+        "https://docs.apify.com/api/v2",
+        "Apify API | Apify Documentation",
+        "official_api_docs",
+        "Apify API v2 is a RESTful JSON API for the platform. The docs describe running Actors/tasks, polling runs, reading datasets and key-value stores, and an OpenAPI schema. Requests can use an Authorization: Bearer API token or a less-secure token query parameter.",
+    ),
+    "apify_onboarding": source(
+        "https://docs.apify.com/get-started/agent-onboarding",
+        "Apify for AI agents | Platform | Apify Documentation",
+        "official_docs",
+        "Apify describes Actors for scraping/crawling/automation, structured datasets and a REST API, with SDKs, CLI and MCP. The free plan includes monthly platform usage credits without a card; API tokens are available in Console > Settings > Integrations. MCP discovery/documentation tools can be used without authentication, while Actor execution and result access require account authorization.",
+    ),
+    "apify_pricing": source(
+        "https://apify.com/pricing",
+        "Apify pricing - flexible plan + pay as you go · Apify",
+        "official_pricing",
+        "Apify lists a $0 Free plan with $5 monthly usage to spend on Actors/platform use and no credit card, followed by paid usage plans and per-compute-unit/Actor costs. Usage can incur variable charges; plan and Actor pricing need to be checked for the selected workload.",
+    ),
+    "apify_mcp": source(
+        "https://docs.apify.com/integrations/mcp",
+        "Apify MCP server | Platform | Apify Documentation",
+        "official_docs",
+        "The hosted MCP server at https://mcp.apify.com uses OAuth or a Bearer API token; local stdio is also documented. Tools discover/run Actors and access storage/results/docs; Actor discovery/details/docs can be anonymous, but running Actors and reading account storage require authentication. Full-permission and rental Actors are excluded from MCP discovery/execution; the service documents a 30 requests/second per-user limit.",
+        (0, 2),
+    ),
+
+    # 56 Firecrawl
+    "firecrawl_api": source(
+        "https://docs.firecrawl.dev/api-reference/v2-introduction",
+        "Introduction - Firecrawl Docs",
+        "official_api_docs",
+        "Firecrawl API v2 is a REST API at https://api.firecrawl.dev using Bearer API-key authentication. The reference includes Search, Scrape, Interact, Parse, Monitor, Crawl, Map, and Agent endpoints, with plan-based rate/concurrency limits.",
+    ),
+    "firecrawl_mcp": source(
+        "https://docs.firecrawl.dev/mcp-server",
+        "Firecrawl MCP: Get Started",
+        "official_docs",
+        "Firecrawl documents a hosted MCP server with browser OAuth at https://mcp.firecrawl.dev/v2/mcp-oauth, API-key access at /v2/mcp, and keyless access. OAuth/key access provides the full plan-governed tool surface; keyless gives a limited set without account credentials.",
+    ),
+    "firecrawl_keyless": source(
+        "https://docs.firecrawl.dev/mcp-server/keyless",
+        "For Agents",
+        "official_docs",
+        "Keyless hosted MCP setup requires no API key/account and provides Search, Scrape, and Parse within daily limits. A free API key can be created from the dashboard to unlock higher limits/full plan-based tools; API-key MCP sends a Bearer token.",
+    ),
+    "firecrawl_tools": source(
+        "https://docs.firecrawl.dev/mcp-server/tools",
+        "Firecrawl MCP tools - Firecrawl Docs",
+        "official_docs",
+        "The MCP tool reference distinguishes OAuth, API-key, keyless, local-cloud, and self-hosted modes. Tool groups include scraping/structured extraction, search, map, parse, crawl, agent research, live browser interaction, monitoring and developer/research search; keyless is limited to Search, Scrape and Parse.",
+    ),
+    "firecrawl_pricing": source(
+        "https://www.firecrawl.dev/pricing",
+        "Pricing | Firecrawl",
+        "official_pricing",
+        "The official pricing page states 1,000 free monthly credits with no card and describes self-serve paid plans/usage limits. Costs vary by operation (for example pages, search results and browser minutes); account/plan limits apply.",
+        (0,),
+    ),
+    "firecrawl_limits": source(
+        "https://docs.firecrawl.dev/rate-limits",
+        "Rate Limits | Firecrawl",
+        "official_docs",
+        "Rate and concurrency limits are plan/team scoped. Keyless hosted MCP is limited to Search, Scrape and Parse with per-IP daily request/credit caps; a free API key raises limits. The page lists plan-level rate and concurrent-browser limits.",
+    ),
+
+    # 57 Bright Data
+    "brightdata_auth": source(
+        "https://docs.brightdata.com/api-reference/authentication",
+        "Authentication - Bright Data Docs",
+        "official_auth_docs",
+        "Bright Data API requests use a Bearer API token. A default key is created with an account; admins manage/add keys and can scope permissions/expiry. The official guide also documents the CLI, Python SDK and JavaScript SDK using the same account key.",
+    ),
+    "brightdata_serp": source(
+        "https://docs.brightdata.com/api-reference/rest-api/serp/serp-api",
+        "SERP API - Bright Data Docs",
+        "official_api_docs",
+        "The official SERP API reference shows a REST POST to https://api.brightdata.com/request with Bearer authentication, a configured zone and a target search URL, returning structured SERP data.",
+    ),
+    "brightdata_mcp": source(
+        "https://docs.brightdata.com/products/mcp-server/overview",
+        "MCP server overview - Bright Data Docs",
+        "official_docs",
+        "Bright Data's hosted or self-hosted MCP gives agents real-time access to public web data, running on Web Unlocker. The vendor documents Rapid/free and Pro modes plus tool groups; each new account has a 5,000-request monthly allowance shared with other Bright Data products/users on the account.",
+    ),
+    "brightdata_mcp_tools": source(
+        "https://docs.brightdata.com/products/mcp-server/tools",
+        "Bright Data MCP tools - Bright Data Docs",
+        "official_docs",
+        "The tool reference describes Rapid (Free) web search/page scraping and Pro/11 domain tool groups for advanced scraping, browser automation, ecommerce, social, business, finance, research, travel and other data.",
+    ),
+    "brightdata_mcp_quickstart": source(
+        "https://docs.brightdata.com/products/mcp-server/remote/quickstart",
+        "How to get started with remote MCP server - Bright Data Docs",
+        "official_docs",
+        "Remote MCP uses https://mcp.brightdata.com/sse or /mcp with the account API token; no proxy username is needed. The guide points to new-account 5,000 free monthly requests and gives remote-client setup steps.",
+    ),
+    "brightdata_free": source(
+        "https://docs.brightdata.com/general/account/billing-and-pricing/free-tier",
+        "Free tier - Bright Data Docs",
+        "official_pricing",
+        "Every new account receives 5,000 monthly credits in a shared pool across Web Unlocker, SERP API, Web Scraper API, Scraper Studio, Browser API, and MCP. The allowance resets monthly; the page describes prepaid billing and the consequences of exhausting free credits.",
+    ),
+
+    # 58 Sherlock
+    "sherlock_repo": source(
+        "https://github.com/sherlock-project/sherlock",
+        "GitHub - sherlock-project/sherlock: Hunt down social media accounts by username across social networks",
+        "official_github",
+        "The first-party repository describes Sherlock as a username-search project across social networks and shows its package, docs, tests and local Python application structure. The repository is actively maintained; the opened root is not evidence of a hosted product API or MCP server.",
+    ),
+    "sherlock_readme": source(
+        "https://github.com/sherlock-project/sherlock/blob/master/docs/README.md",
+        "sherlock/docs/README.md at master · sherlock-project/sherlock · GitHub",
+        "official_github",
+        "The project README describes searching one or more usernames across 400+ social networks and saving results to text/CSV/XLSX outputs. The exposed interface is the Sherlock command-line program.",
+        (0,),
+    ),
+    "sherlock_install": source(
+        "https://sherlockproject.xyz/installation",
+        "Installation - Sherlock Project",
+        "official_docs",
+        "The official installation guide supports pipx/pip and an official Docker image; it gives local commands and does not describe a Sherlock account or vendor API token. The project license is MIT in its repository license file.",
+    ),
+    "sherlock_usage": source(
+        "https://sherlockproject.xyz/usage",
+        "Usage - Sherlock Project",
+        "official_docs",
+        "The official usage guide documents `sherlock username` and multiple usernames, stdout/file outputs, site filtering, JSON input, proxy/Tor flags, and optional browsing. It does not document a hosted HTTP API or MCP endpoint.",
+    ),
+    "sherlock_license": source(
+        "https://github.com/sherlock-project/sherlock/blob/master/LICENSE",
+        "sherlock/LICENSE at master · sherlock-project/sherlock · GitHub",
+        "official_github",
+        "The official repository identifies the project as MIT licensed, permitting commercial use, modification, distribution and private use subject to preserving license/copyright notices.",
+    ),
+    "sherlock_docs_index": source(
+        "https://sherlockproject.xyz/llms.txt",
+        "Sherlock Project documentation index",
+        "official_docs",
+        "The official documentation index lists Installation, Usage, supported sites (400+), Contribution, and Adding Sites. It points to a local CLI/documentation surface rather than a hosted API or MCP setup guide.",
+    ),
+    "sherlock_sites": source(
+        "https://sherlockproject.xyz/sites",
+        "Sherlock Project - List of supported sites",
+        "official_docs",
+        "The official supported-sites page lists the social networks and websites that the CLI checks; the documentation index says the list covers 400+ sites.",
+    ),
+
+    # 59 Waterfall.io
+    "waterfall_api": source(
+        "https://docs.waterfall.io/v1/introduction",
+        "Introduction - Waterfall.io API Documentation",
+        "official_api_docs",
+        "The API reference at api.waterfall.io documents REST operations for prospecting, contact/company search and enrichment, phone enrichment, job-change detection, email verification, webhook signature-key retrieval, account reporting, and API-key management.",
+    ),
+    "waterfall_auth": source(
+        "https://docs.waterfall.io/v1/authentication",
+        "Authentication - Waterfall.io API Documentation",
+        "official_auth_docs",
+        "The official API authentication guide says all requests use an x-api-key header and gives the v1 base URL. It differs from some first-party marketing-site API snippets that show x-waterfall-api-key.",
+    ),
+    "waterfall_keys": source(
+        "https://docs.waterfall.io/v1/api-keys-overview",
+        "API Keys Management - Waterfall.io API Documentation",
+        "official_auth_docs",
+        "API key management is labeled an enterprise feature; users are told to contact their account manager. Once enabled, an issued master key manages account sub-keys and key limits.",
+    ),
+    "waterfall_home": source(
+        "https://www.waterfall.io/",
+        "Waterfall | One B2B data solution to connect them all",
+        "official_product",
+        "The product homepage describes contact discovery, verified emails, mobile numbers, job changes, and B2B data enrichment. Its API examples use x-waterfall-api-key in use-case snippets and x-api-key in a later quick-start code sample, creating an unresolved first-party header conflict. The site directs prospective customers to book an intro call; it does not provide a public self-serve key-creation workflow in the opened content.",
+        (0, 1),
+    ),
+    "waterfall_sales": source(
+        "https://www.waterfall.io/book-a-call",
+        "Book a demo | Waterfall",
+        "official_product",
+        "Waterfall describes prepaid usage/top-ups with no regular commitments and monthly invoicing for large-volume customers. Its FAQ says product/platform partnerships are selective; no public rate card or exact API credential signup steps are listed.",
+    ),
+    "waterfall_skills": source(
+        "https://docs.waterfall.io/v1/skills-overview",
+        "Agent Skills - Waterfall.io API Documentation",
+        "official_docs",
+        "Waterfall directs coding agents to first-party Agent Skills and separate direct-API/integration skills. It calls the live API documentation/OpenAPI the source of truth; these skills are not described as an MCP server.",
+    ),
+
+    # 60 Clay
+    "clay_overview": source(
+        "https://developers.clay.com/",
+        "Overview - Clay docs",
+        "official_docs",
+        "The developer platform supports searches over Clay's GTM data, reusable functions/workflows, Audiences and signal events, and table reads on Enterprise plans. It is positioned for agents, terminals, backend services, internal tools and applications.",
+    ),
+    "clay_quickstart": source(
+        "https://developers.clay.com/quickstart",
+        "Quickstart - Clay docs",
+        "official_docs",
+        "The Public API is for backend apps/jobs and authenticates with a Clay API key in the clay-api-key header; users can create a key in Clay settings. The separate Agent Plugin installs Clay skills/CLI for Claude Code, Codex or Cursor and uses sign-in rather than the Public API key.",
+    ),
+    "clay_auth": source(
+        "https://developers.clay.com/public-api/authentication",
+        "Authentication - Clay docs",
+        "official_auth_docs",
+        "Every Public API request uses a personal Clay API key in the clay-api-key header. Keys are created from Settings > Account > API keys (beta), tied to a Clay user/workspace, and must be kept server-side.",
+    ),
+    "clay_searches": source(
+        "https://developers.clay.com/searches",
+        "Searches - Clay docs",
+        "official_api_docs",
+        "The Public API can search people and companies with cross-entity filters and nested Boolean logic. Results scale by plan: free/trial limits are lower, paid/Enterprise limits are higher; a documented search result endpoint uses REST.",
+    ),
+    "clay_routines": source(
+        "https://developers.clay.com/routines",
+        "Routines overview - Clay docs",
+        "official_api_docs",
+        "The developer API supports Clay-managed functions, custom functions and workflows/routines for enrichment, research, scoring, routing and repeatable GTM logic. Workflows are marked Alpha; routines can be called through API, CLI, MCP or plugin.",
+    ),
+    "clay_tables": source(
+        "https://developers.clay.com/tables",
+        "Tables (Enterprise) - Clay docs",
+        "official_api_docs",
+        "Tables are Enterprise-only, read existing known tables, and do not expose a list-tables endpoint. Structured querying is read-only; basic reads and more advanced joins/ranges/paging depend on plan/API table-sync access.",
+    ),
+    "clay_api_cli": source(
+        "https://university.clay.com/docs/clay-api-cli",
+        "Installing Clay Plugin (API & CLI) - Clay Docs",
+        "official_docs",
+        "Clay says the developer platform is available on all plans, including free and trial, with plan-based search limits (Free: 50 results/request and 100/month; Trial: 50/request and 10,000 per 14 days; paid self-serve: 500/request and 1M/year; Enterprise: 500/request and 10M/year). The Agent Plugin/CLI is separate from MCP for Reps; Public API calls use their own key. Tables are read-only and structured queries beyond basic reads need Enterprise table sync.",
+        (0, 1, 2),
+    ),
+    "clay_mcp_settings": source(
+        "https://university.clay.com/docs/mcp-settings",
+        "MCP in Clay - Clay Docs",
+        "official_docs",
+        "Clay MCP connects workspace data/tools to Claude, ChatGPT, Copilot and Glean. Workspace admins invite Sales Rep users, control credit limits and enable approved Functions; raw tables are not generally exposed. Credit controls and MCP-enabled Functions require modern paid/eligible plans; Audiences controls are Enterprise-only.",
+        (0,),
+    ),
+    "clay_mcp_connect": source(
+        "https://university.clay.com/docs/connect-to-clay-mcp",
+        "Connect your platform to Clay MCP - Clay Docs",
+        "official_auth_docs",
+        "Clay documents a hosted MCP resource at https://api.clay.com/v3/mcp with OAuth 2.0 authorization-code/PKCE, dynamic client registration, workspace selection and user consent. Public client registration is self-service; the only public scope is mcp. Access tokens last one hour and refresh tokens rotate.",
+    ),
+    "clay_mcp_vs_plugin": source(
+        "https://university.clay.com/docs/mcp-for-reps-vs-agent-plugin",
+        "Clay MCP for Reps vs. Agent Plugin - Clay Docs",
+        "official_docs",
+        "The first-party comparison distinguishes MCP for Reps (admin-invited sellers who run approved search/enrichment/Functions in AI tools) from the Agent Plugin/CLI (builders) and the Public API (backend jobs). Audiences is Enterprise-only; the Plugin does not itself include the rep MCP toolset. The CLI cannot write to Audiences or launch/pause campaigns.",
+    ),
+}
+
+# Exact targeted discovery queries executed for Batch04. Search-result snippets are
+# retained as leads only; all claim-linked evidence below points to opened pages.
+QUERIES = {
+    52: [
+        ("SE Ranking official API pricing free trial 100000 credits MCP endpoint tool count API add-on site:seranking.com OR site:help.seranking.com", "2"),
+    ],
+    53: [
+        ("Ahrefs official public API v3 MCP Lite paid plans API units custom endpoint unsupported site:docs.ahrefs.com OR site:ahrefs.com/pricing", "2"),
+    ],
+    54: [
+        ("MrScraper official pricing free tokens 100 1000 API token MCP server OAuth site:mrscraper.com OR site:docs.mrscraper.com", "2"),
+    ],
+    55: [
+        ("Apify official API v2 REST MCP anonymous access pricing free plan $5 site:docs.apify.com OR site:apify.com/pricing", "2"),
+    ],
+    56: [
+        ("Firecrawl official API v2 MCP keyless OAuth free credits pricing site:docs.firecrawl.dev OR site:firecrawl.dev/pricing", "2"),
+    ],
+    57: [
+        ("Bright Data official API docs authentication REST MCP shared free tier 5000 requests site:docs.brightdata.com", "2"),
+        ("site:docs.brightdata.com \"SERP API\" API request REST Bright Data developer", "2"),
+    ],
+    58: [
+        ("Sherlock Project official username search API MCP installation CLI MIT site:sherlockproject.xyz OR site:github.com/sherlock-project/sherlock", "2"),
+    ],
+    59: [
+        ("Waterfall.io official API header x-waterfall-api-key x-api-key product page", "2"),
+        ("Waterfall.io official MCP server Model Context Protocol hosted MCP developer documentation", "2"),
+    ],
+    60: [
+        ("Clay official Public API MCP Reps API key free plan Enterprise tables OAuth site:developers.clay.com OR site:university.clay.com", "2"),
+    ],
+}
+
+# Retained official pages and the chunks opened for this evidence packet.
+FETCH_COUNTS = {
+    52: {"se_data": [0], "se_api_product": [0, 1, 2], "se_pricing": [0], "se_getting_started": [0], "se_help_pricing": [0], "se_mcp": [0, 1], "se_mcp_marketing": [0]},
+    53: {"ahrefs_api": [0], "ahrefs_keys": [0], "ahrefs_mcp": [0], "ahrefs_pricing": [0]},
+    54: {"mrscraper_overview": [0], "mrscraper_api_product": [0, 1], "mrscraper_quickstart": [0], "mrscraper_pricing": [0], "mrscraper_billing": [0], "mrscraper_mcp": [0, 1, 2, 3, 4, 5]},
+    55: {"apify_api": [0], "apify_onboarding": [0], "apify_pricing": [0], "apify_mcp": [0, 2]},
+    56: {"firecrawl_api": [0], "firecrawl_mcp": [0], "firecrawl_keyless": [0], "firecrawl_tools": [0], "firecrawl_pricing": [0], "firecrawl_limits": [0]},
+    57: {"brightdata_auth": [0], "brightdata_serp": [0], "brightdata_mcp": [0], "brightdata_mcp_tools": [0], "brightdata_mcp_quickstart": [0], "brightdata_free": [0]},
+    58: {"sherlock_repo": [0], "sherlock_readme": [0], "sherlock_install": [0], "sherlock_usage": [0], "sherlock_license": [0], "sherlock_docs_index": [0], "sherlock_sites": [0]},
+    59: {"waterfall_api": [0], "waterfall_auth": [0], "waterfall_keys": [0], "waterfall_home": [0, 1], "waterfall_sales": [0], "waterfall_skills": [0]},
+    60: {"clay_overview": [0], "clay_quickstart": [0], "clay_auth": [0], "clay_searches": [0], "clay_routines": [0], "clay_tables": [0], "clay_api_cli": [0, 1, 2], "clay_mcp_settings": [0], "clay_mcp_connect": [0], "clay_mcp_vs_plugin": [0]},
+}
+
+# A few exploratory attempts are retained explicitly but are not promoted to
+# evidence. The correct first-party page was opened when an attempted URL failed.
+NON_EVIDENCE_FETCHES = {
+    54: [
+        {"url": "https://mrscraper.com/mcp", "chunk_index": 0, "status": "HTTP_404", "note": "The product-site /mcp route returned 404; the official documentation MCP guide at /docs/getting-started/mcp-server was opened and used instead."},
+    ],
+    55: [
+        {"url": "https://docs.apify.com/pricing", "chunk_index": 0, "status": "HTTP_404", "note": "The guessed documentation-domain pricing path returned 404; the canonical official pricing page at https://apify.com/pricing was opened and used."},
+    ],
+    57: [
+        {"url": "https://docs.brightdata.com/products/serp-api/overview", "chunk_index": 0, "status": "HTTP_404", "note": "The guessed product path returned 404; the current API reference at /api-reference/rest-api/serp/serp-api was opened and used."},
+    ],
+    60: [
+        {"url": "https://developers.clay.com/authentication", "chunk_index": 0, "status": "HTTP_404", "note": "The legacy/guessed auth URL returned 404; the current first-party Public API auth page at /public-api/authentication was opened and used."},
+        {"url": "https://developers.clay.com/api-reference", "chunk_index": 0, "status": "SUCCESS_NOT_USED", "note": "The generic API-reference route resolved to an individual workspace-credit endpoint; the developer overview, quickstart, searches, routines and tables docs were retained for scoped claims."},
+    ],
+}
+
+
+def ev(field: str, claim: str, source_key: str, observation: str | None = None, support: str = "supports") -> dict:
+    s = SOURCES[source_key]
+    return {
+        "claim": claim,
+        "field": field,
+        "source_url": s["url"],
+        "source_title": s["title"],
+        "source_type": s["source_type"],
+        "accessed_at": DATE,
+        "support": support,
+        "excerpt_or_observation": observation or s["excerpt_or_observation"],
+    }
+
+
+RECORDS = {
+    52: {
+        "description": "SE Ranking provides SEO and AEO data and project workflows through Data API and Project API surfaces, including keyword, backlink, domain, audit, SERP, AI-search and rank-tracking data.",
+        "auth_status": "CONFIRMED",
+        "auth_methods": ["API key"],
+        "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+        "self_serve_details": "A 14-day, no-card API trial is listed with 100,000 credits; current purchase paths include a Wallet top-up, standalone API plans and an API add-on for eligible existing subscriptions. Credits, plan generation, and Data-versus-Project API entitlement matter; legacy v1-v6 Essential/Pro plans need an add-on. Do not assume every legacy/current subscription has identical API access.",
+        "credential_access": {"status": "RESTRICTED", "path": "Create the API key from the SE Ranking API Dashboard; one key covers Data API and Project API. Shared-workspace subaccounts currently must obtain the master account's key; if key creation is unavailable, activate the API add-on or confirm the account plan.", "plan_or_gate": "A 14-day trial/standalone API path exists, but entitlement depends on plan generation/add-on and the master-account/subaccount relationship. Default limit is 10 requests/second; credits and overage apply."},
+        "api": {"available": "YES", "types": ["REST"], "breadth": "BROAD", "details": "The official Data API and Project API expose structured SEO/AEO research and project management: keyword research, backlinks, domain research, SERP, audits, AI search visibility, rank tracking, competitors and project workflows. Requests return structured data and use credit/rate controls."},
+        "mcp": {"status": "AVAILABLE", "details": "First-party hosted Streamable HTTP MCP at https://api.seranking.com/mcp with OAuth 2.1/dynamic client registration and API-key fallback for headless/subaccount use. It covers SEO/AI-search research and project tools. The technical guide says 160+ tools; product marketing says 180+, so the exact count is not treated as stable. MCP usage is tied to API credits and account entitlement.", "search_scope": "Opened SE Ranking's current API/Data API hub, API pricing and support articles, the API key onboarding guide, and the official hosted MCP setup guide including its client/authentication FAQ."},
+        "buildability": {"verdict": "BUILDABLE_WITH_CONSTRAINTS", "blocker": "Account/plan and credit entitlements vary; subaccounts rely on the master account for API access; the default rate is 10 requests/second and API keys may require add-on activation.", "rationale": "Official REST APIs and hosted MCP provide concrete integration paths, including a no-card trial. A production design must confirm the exact current plan, key access, Data/Project API scope, credit budget and rate needs; tool-count/marketing and plan wording differences are preserved."},
+        "confidence": "HIGH",
+        "research_status": "COMPLETE",
+        "source_conflicts": [
+            {"field": "self_serve", "summary": "The current product overview says API access is included in every SE Ranking plan, while detailed support/pricing pages distinguish standalone API, Wallet, subscription add-on and legacy plan entitlements, and note that an unavailable key button can require add-on activation.", "source_urls": ["https://seranking.com/api.html", "https://seranking.com/api-pricing.html", "https://help.seranking.com/hc/en-us/articles/22447958135068-Getting-Started-with-SE-Ranking-s-API"], "resolution": "Do not infer universal access from the broad marketing line. Use the detailed, current API pricing and support guides: access has multiple purchase paths, credit allocations and legacy/subaccount conditions; confirm the specific account plan."},
+            {"field": "mcp", "summary": "The technical MCP guide reports 160+ tools, while the separate MCP product page advertises 180+.", "source_urls": ["https://seranking.com/api/integrations/mcp/", "https://seranking.com/mcp.html"], "resolution": "Record the first-party hosted MCP as available but treat tool count as dynamic/inconsistent; no count is used as a build requirement."}
+        ],
+        "limitations": ["No SE Ranking account, plan, API key, credit balance, live request, MCP client connection or human review was performed. Exact access for a particular tenant remains account-dependent."],
+        "researcher_notes": "Native web research only. No Composio call, tenant check, credential use, API request, MCP execution or human QA is claimed.",
+        "evidence": [
+            ev("description", "The official Data API hub documents SEO/AEO coverage across keyword, domain, backlink, AI-search and audit data, with a separate Project API surface.", "se_data"),
+            ev("auth", "SE Ranking's support guide says API requests use a dashboard-generated API key; one key authenticates both Data and Project endpoints.", "se_getting_started"),
+            ev("self_serve", "The official pricing page offers a no-card 14-day trial, Wallet credits, standalone API plans and an add-on for eligible subscriptions, rather than one universal plan path.", "se_pricing"),
+            ev("credential_access", "The key is created in the API Dashboard; shared-workspace subaccounts must currently use a key supplied by the master account, and legacy v1-v6 Essential/Pro need an add-on.", "se_getting_started"),
+            ev("api", "The official API hub describes Data API coverage and links to endpoint/cost/rate documentation; the support guide identifies the unified Data and Project API key.", "se_data"),
+            ev("mcp", "The official MCP guide gives the hosted Streamable HTTP endpoint, OAuth 2.1 dynamic registration and API-key fallback.", "se_mcp"),
+            ev("mcp", "The technical MCP guide reports 160+ tools while the separate product page advertises 180+; the exact count is unresolved.", "se_mcp_marketing", support="contradicts"),
+            ev("buildability", "Official support documentation lists credit exhaustion behavior and a 10-request/second default limit; plan/key access can require add-on activation.", "se_help_pricing"),
+        ],
+    },
+    53: {
+        "description": "Ahrefs is an SEO data platform whose API v3 exposes backlink, keyword, SERP, rank-tracking, site-audit, brand and content data, plus selected project/list management.",
+        "auth_status": "CONFIRMED",
+        "auth_methods": ["Bearer/token"],
+        "self_serve_status": "PAID_PLAN_REQUIRED",
+        "self_serve_details": "Meaningful API access is limited to eligible paid plans; the hosted MCP specifically requires Lite or higher. Other plans retain only limited free test queries. Paid tiers define rows per request and monthly API units; pay-as-you-go may be available on eligible plans.",
+        "credential_access": {"status": "GATED", "path": "A workspace owner or admin creates/limits API keys in Account settings. MCP users connect through OAuth consent or create a dedicated MCP-scoped key; direct API requests use a Bearer API key.", "plan_or_gate": "An eligible paid plan is required for the data API/MCP surface; owners/admins control key creation. Keys expire after one year and are invalidated if their creator leaves the workspace."},
+        "api": {"available": "YES", "types": ["REST"], "breadth": "BROAD", "details": "Ahrefs API v3 includes Site Explorer, Keywords Explorer, SERP Overview, Rank Tracker, Site Audit, Brand Radar, Social Media Management and Content Helper, as well as selected project/list management, subscription/usage and public endpoints. Usage is metered in API units and by rows/fields."},
+        "mcp": {"status": "AVAILABLE", "details": "Hosted remote Streamable HTTP MCP at https://api.ahrefs.com/mcp/mcp is available on Lite or higher with OAuth consent and dedicated MCP keys. Plan row limits and monthly API units apply. Ahrefs explicitly prohibits using this external MCP endpoint through custom scripts, bridges or standalone HTTP/JSON-RPC clients; programmatic integrations should use the public API instead.", "search_scope": "Opened first-party Ahrefs API introduction, API key/usage guide, hosted MCP introduction and current plan comparison. The MCP terms and public API instructions were inspected directly."},
+        "buildability": {"verdict": "BUILDABLE_WITH_CONSTRAINTS", "blocker": "The live API/MCP data entitlement requires an eligible paid plan, owner/admin-managed credentials, monthly API-unit/row limits and rate limits. The MCP endpoint cannot be used as a custom integration bridge.", "rationale": "The public REST API provides a supported custom-integration route and the hosted MCP supports compatible AI clients. Build through the public API for custom services; budget API units, row limits and the 60-request/minute default, and do not repurpose MCP as a general API."},
+        "confidence": "HIGH",
+        "research_status": "COMPLETE",
+        "source_conflicts": [],
+        "limitations": ["No Ahrefs subscription, workspace role, API key, paid usage, API request, MCP connection or human review was performed. Plan eligibility is not account-tested."],
+        "researcher_notes": "MCP availability is not equivalent to permission to use the MCP endpoint as a custom HTTP/JSON-RPC bridge; the public API is the documented programmatic interface.",
+        "evidence": [
+            ev("description", "The official API v3 introduction lists broad SEO/AEO endpoint families and selected management operations.", "ahrefs_api"),
+            ev("auth", "Ahrefs API requests use an Authorization: Bearer API key.", "ahrefs_keys"),
+            ev("self_serve", "The API introduction says API access is for eligible paid plans and other plans retain only limited test queries; the current plan page lists API/MCP on paid Lite, Standard and Advanced tiers with plan-specific limits.", "ahrefs_api"),
+            ev("self_serve", "Ahrefs' current pricing page lists API/MCP on paid Lite, Standard and Advanced subscriptions, with a plan-specific API-unit allowance.", "ahrefs_pricing"),
+            ev("credential_access", "Only workspace owners/admins can create/manage API keys; MCP creates a dedicated MCP-scoped key after OAuth consent.", "ahrefs_keys"),
+            ev("api", "API v3 documents Site Explorer, Keywords Explorer, SERP, Rank Tracker, Site Audit, Brand Radar, Social Media Management, Content Helper and selected management endpoints.", "ahrefs_api"),
+            ev("mcp", "The official MCP guide documents the hosted endpoint, paid Lite+ eligibility, OAuth consent and explicit prohibition on custom scripts/bridges/standalone HTTP JSON-RPC use.", "ahrefs_mcp"),
+            ev("buildability", "Ahrefs explicitly directs custom integrations to the public REST API and prohibits using the hosted MCP endpoint as a script/bridge/standalone JSON-RPC client.", "ahrefs_mcp"),
+        ],
+    },
+    54: {
+        "description": "MrScraper is a web-data extraction platform combining AI and manual scrapers, marketplace endpoints, proxies/unblocking, scheduled workflows, API access and agent tools.",
+        "auth_status": "CONFIRMED",
+        "auth_methods": ["API key", "Bearer/token"],
+        "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+        "self_serve_details": "Official pages describe a free/no-card account and self-service API-token creation, but disagree materially on the free token allowance (1,000 versus 100 in a billing limitation paragraph) and paid-plan price/volume ($19/20,000 versus $199/200,000). The API product page also says 200,000 tokens are included in an introductory feature block without identifying its plan. Do not use an exact amount as settled pricing without confirmation.",
+        "credential_access": {"status": "SELF_SERVE", "path": "Create an account, then retrieve an API token from the MrScraper dashboard/API Token page. Hosted MCP can use browser OAuth 2.1; clients without OAuth and local MCP use an API key/Bearer token.", "plan_or_gate": "An account is required for API/MCP execution. API keys carry full account authority. Token allowances/pricing conflict across current first-party pages; API auth headers differ by endpoint, so use the documentation for the selected route."},
+        "api": {"available": "YES", "types": ["REST", "SDK", "CLI"], "breadth": "BROAD", "details": "The REST API supports general AI extraction, manual/saved scrapers, marketplace scrapers, pagination/streaming and structured results; official Python/Node SDKs and a CLI are also documented. Specific API surfaces use route-specific auth headers (for example x-api-token on one quickstart route and Bearer on a marketplace/API route)."},
+        "mcp": {"status": "AVAILABLE", "details": "The first-party hosted Streamable HTTP MCP server is at https://mcp.mrscraper.com/mcp and exposes seven tools: fetch, scrape, serp, status, rerun, results and result. Hosted OAuth 2.1 is scoped; an API-key fallback and local stdio/HTTP setup are available. The tools cover web unblocker, AI extraction, Google SERP, saved scraper reruns, account/quota status and stored results.", "search_scope": "Opened the official MrScraper product/quickstart/overview/pricing/billing pages and the complete first-party MCP guide (chunks 0-5). The marketing /mcp URL returned 404; the current linked documentation setup guide was opened instead."},
+        "buildability": {"verdict": "BUILDABLE_WITH_CONSTRAINTS", "blocker": "API/MCP execution requires an account/token or OAuth session; exact token allowance and paid-plan pricing conflict across first-party pages, and API headers are endpoint-specific.", "rationale": "The REST, SDK, CLI and hosted/local MCP surfaces are documented with concrete extraction/result workflows. Before production, confirm current credits/pricing, use endpoint-specific authentication, scope full-authority keys safely and account for site/proxy/compliance constraints."},
+        "confidence": "MEDIUM",
+        "research_status": "COMPLETE",
+        "source_conflicts": [
+            {"field": "self_serve", "summary": "The current pricing page advertises 1,000 monthly free tokens; the billing table also lists 1,000, but its Free Plan Limitations text says 100 tokens per month.", "source_urls": ["https://mrscraper.com/pricing", "https://docs.mrscraper.com/docs/getting-started/billing"], "resolution": "Preserve the free-plan availability/no-card claim but do not assert an exact allowance; confirm the current account's allocation in its billing dashboard."},
+            {"field": "self_serve", "summary": "The API product page's feature block says 200,000 tokens included without naming a plan, its FAQ says the standard post-trial plan is $19/month for 20,000 tokens, and the separate pricing page lists Pro at $199/month for 200,000 tokens.", "source_urls": ["https://mrscraper.com/web-scraper-api", "https://mrscraper.com/pricing"], "resolution": "Treat plan/price/volume as unresolved across official pages; do not select a figure or infer a migration. Obtain a current quote/account checkout view before budgeting."},
+            {"field": "auth", "summary": "Official quickstart examples show x-api-token (and a token query parameter) on the general scraper route but Authorization: Bearer on a marketplace route; the product page also demonstrates Bearer authentication.", "source_urls": ["https://docs.mrscraper.com/docs/getting-started/quickstart", "https://mrscraper.com/web-scraper-api"], "resolution": "The examples target different API surfaces. Keep headers route-specific and verify the exact route's live API reference rather than applying one universal header."}
+        ],
+        "limitations": ["No MrScraper account, token, live API request, marketplace job, MCP client or pricing checkout was used. No human review was performed; token/plan conflicts remain unresolved."],
+        "researcher_notes": "A 404 at mrscraper.com/mcp is not evidence against MCP availability; the first-party documentation page provides the supported endpoint and setup.",
+        "evidence": [
+            ev("description", "The official documentation overview covers AI/manual scraping, marketplace APIs, web unblocker, schedules, integrations and developer tools.", "mrscraper_overview"),
+            ev("auth", "The API quickstart demonstrates an x-api-token header for one endpoint and a Bearer token for a separate marketplace endpoint.", "mrscraper_quickstart"),
+            ev("self_serve", "MrScraper advertises a no-card Free plan, but its pricing and billing pages disagree on exact token allocation and paid-plan price/volume.", "mrscraper_pricing"),
+            ev("self_serve", "The billing article's plan table lists 1,000 Free tokens while its limitations paragraph says 100, so the precise allocation is unresolved.", "mrscraper_billing"),
+            ev("self_serve", "The API product page's generic feature block says 200,000 tokens included, but its FAQ lists a $19/20,000 post-trial plan; the separate pricing page gives a different Pro figure.", "mrscraper_api_product", support="contradicts"),
+            ev("credential_access", "The product page instructs users to sign in to the dashboard and copy an API token; the MCP guide documents hosted OAuth and a key fallback.", "mrscraper_api_product"),
+            ev("api", "The official product/API pages document REST endpoints, structured extraction, marketplace APIs, streaming/pagination, SDKs and CLI.", "mrscraper_api_product"),
+            ev("mcp", "The complete first-party guide documents the hosted OAuth 2.1 endpoint, seven tools, scopes, key fallback and local server options.", "mrscraper_mcp"),
+            ev("buildability", "The hosted server requires an account and the API-key fallback carries full account authority; free/paid token limits conflict across official billing pages.", "mrscraper_mcp"),
+        ],
+    },
+    55: {
+        "description": "Apify is a cloud platform for web scraping, data extraction and browser automation built around reusable Actors, structured datasets and platform APIs.",
+        "auth_status": "CONFIRMED",
+        "auth_methods": ["Bearer/token"],
+        "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+        "self_serve_details": "The free plan includes $5 of monthly platform usage without a credit card. Anonymous MCP discovery/documentation tools are available, but Actor execution and account storage/result access require an Apify account/token; Actor-specific usage and permissions affect cost and availability.",
+        "credential_access": {"status": "SELF_SERVE", "path": "Create an Apify account and copy its API token from Console > Settings > Integrations. The REST API and local MCP accept a Bearer token; hosted MCP supports OAuth sign-in or an explicit Bearer token.", "plan_or_gate": "No card is required for the free plan, but actual Actor runs consume platform/Actor usage. The MCP excludes full-permission and rental Actors; run limits and account permissions must be checked."},
+        "api": {"available": "YES", "types": ["REST"], "breadth": "BROAD", "details": "Apify API v2 is a broad REST/JSON interface across Actors, tasks, runs, datasets, key-value stores, schedules, account/platform operations and structured Actor outputs. Official clients are available for JavaScript and Python, with other client libraries also listed."},
+        "mcp": {"status": "AVAILABLE", "details": "Apify offers hosted remote Streamable HTTP MCP at https://mcp.apify.com with OAuth/Bearer authentication plus a local stdio server. Agents can discover and call Actors and access run/storage/results/docs. Actor discovery/details/docs are anonymously available for selected tools; execution and storage require authentication. Full-permission and rental Actors are excluded, and the server documents a 30 requests/second/user limit.", "search_scope": "Opened Apify's current REST API reference, agent onboarding, account pricing and MCP server guide across the setup/tool/limits chunks. The guessed docs.apify.com/pricing URL returned 404; canonical apify.com/pricing was opened."},
+        "buildability": {"verdict": "BUILDABLE_WITH_CONSTRAINTS", "blocker": "Runs incur platform/Actor usage and require authenticated account access when not explicitly anonymous; Actor permissions/pricing vary, and the hosted MCP has exclusions plus a 30-request/second limit.", "rationale": "The REST API and hosted/local MCP provide clear integration paths with SDKs and structured datasets. Select Actors and tools deliberately, apply run-cost limits, confirm permissions/pricing and protect the account token."},
+        "confidence": "HIGH",
+        "research_status": "COMPLETE",
+        "source_conflicts": [],
+        "limitations": ["No Apify account/token, Actor run, dataset, paid usage, REST request, MCP connection or human review was performed."],
+        "researcher_notes": "The documented unauthenticated MCP tools are limited discovery/documentation functions; they do not establish anonymous Actor execution or storage access.",
+        "evidence": [
+            ev("description", "Apify describes its platform as web scraping/data extraction/browser automation using Actors and structured datasets.", "apify_onboarding"),
+            ev("auth", "Apify API v2 accepts an Authorization: Bearer API token; the token query parameter is documented as less secure.", "apify_api"),
+            ev("self_serve", "The official pricing page lists a $0 Free plan with $5 of monthly platform usage and no credit card.", "apify_pricing"),
+            ev("credential_access", "Apify directs users to retrieve their API token from Console > Settings > Integrations; OAuth or a Bearer token is supported for hosted MCP.", "apify_onboarding"),
+            ev("api", "Apify API v2 is documented as RESTful JSON and describes Actor/task runs, polling, dataset items and key-value store operations.", "apify_api"),
+            ev("mcp", "The official MCP guide documents hosted OAuth/Bearer and local stdio setup, available Actor/storage/docs tools, anonymous discovery limits and excluded Actor classes.", "apify_mcp"),
+            ev("buildability", "The MCP guide documents a 30-request/second per-user limit and states that executing Actors/accessing storage always requires authentication.", "apify_mcp"),
+        ],
+    },
+    56: {
+        "description": "Firecrawl is a web-data API platform for search, scrape, crawl, map, structured extraction, browser interaction, monitoring and agentic research workflows.",
+        "auth_status": "CONFIRMED",
+        "auth_methods": ["Bearer/token"],
+        "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+        "self_serve_details": "Firecrawl offers 1,000 free monthly credits without a card and a hosted keyless MCP mode. Keyless MCP is daily/IP limited to Search, Scrape and Parse; broader tools and higher limits require OAuth or an API key and remain subject to plan/team policy.",
+        "credential_access": {"status": "SELF_SERVE", "path": "Create an API key in the Firecrawl dashboard and send it as a Bearer token, or connect the hosted MCP with a browser OAuth consent flow. Keyless MCP is also documented for its restricted free tool set.", "plan_or_gate": "No key is needed for limited hosted Search/Scrape/Parse; full MCP/API capability and rate/concurrency limits depend on the account plan and team policy."},
+        "api": {"available": "YES", "types": ["REST"], "breadth": "BROAD", "details": "The REST API at api.firecrawl.dev covers Search, Scrape, Interact, Parse, Monitor, Crawl, Map and Agent endpoints. API calls use Bearer API-key auth; rate and concurrency limits are plan/team scoped."},
+        "mcp": {"status": "AVAILABLE", "details": "First-party hosted MCP supports OAuth at https://mcp.firecrawl.dev/v2/mcp-oauth, API-key auth at /v2/mcp, and keyless access. OAuth/API key can expose the full plan-governed tool surface; keyless is limited to Search, Scrape and Parse. A local server and self-hosted API deployment are also documented.", "search_scope": "Opened the Firecrawl API v2 introduction, hosted MCP setup/keyless/tool guides, rate-limit documentation and official pricing page."},
+        "buildability": {"verdict": "BUILDABLE_WITH_CONSTRAINTS", "blocker": "Tool access and throughput depend on auth mode, team plan, daily keyless IP caps, request/credit limits and concurrency. The keyless endpoint is not equivalent to full API access.", "rationale": "The official REST and hosted/local MCP surfaces are directly documented, including free-keyless entry and OAuth/API-key paths. Use the appropriate tool set, configure backoff and budget credits/concurrency before production."},
+        "confidence": "HIGH",
+        "research_status": "COMPLETE",
+        "source_conflicts": [],
+        "limitations": ["No Firecrawl account/API key, REST request, crawl/scrape job, MCP connection, quota test or human review was performed."],
+        "researcher_notes": "Keyless availability applies to a limited tool set; it does not establish unlimited/free access to every REST or MCP operation.",
+        "evidence": [
+            ev("description", "The official API v2 introduction describes Firecrawl's web-data API and lists its Search, Scrape, Interact, Parse, Monitor, Crawl, Map and Agent features.", "firecrawl_api"),
+            ev("auth", "The API reference requires an Authorization: Bearer API key for REST requests.", "firecrawl_api"),
+            ev("self_serve", "Firecrawl's pricing page lists 1,000 free credits per month with no card and credit-based paid usage.", "firecrawl_pricing"),
+            ev("self_serve", "The official keyless hosted MCP setup requires no API key and limits the tool set to Search, Scrape and Parse with rate limits.", "firecrawl_keyless"),
+            ev("credential_access", "The hosted MCP guide supports OAuth or a self-service dashboard API key, while its keyless path needs neither.", "firecrawl_mcp"),
+            ev("api", "The official API v2 reference lists eight REST endpoint families under a shared base URL/auth scheme.", "firecrawl_api"),
+            ev("mcp", "The official MCP tools guide documents hosted OAuth/API-key/keyless modes and the keyless Search/Scrape/Parse limitation.", "firecrawl_tools"),
+            ev("buildability", "The official rate-limits page documents per-IP daily request/credit caps for keyless access and plan-based rates/concurrency for accounts.", "firecrawl_limits"),
+        ],
+    },
+    57: {
+        "description": "Bright Data provides infrastructure and APIs for public web access, search results, scraping, browser automation and structured data collection, with hosted/local agent tooling.",
+        "auth_status": "CONFIRMED",
+        "auth_methods": ["Bearer/token"],
+        "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+        "self_serve_details": "New accounts receive a 5,000-credit monthly pool shared across eligible APIs and MCP. Usage is prepaid/credit-metered; the pool is shared across products and account users, and service can stop when free credits are exhausted without deposited funds. Some products require configured zones and higher-volume terms.",
+        "credential_access": {"status": "RESTRICTED", "path": "An account receives a default API key; additional keys are managed from account settings, with admins controlling user/permission/expiry. Remote MCP takes the API token in its URL; REST/SDK/CLI requests use the Bearer token.", "plan_or_gate": "An account is required; admins control additional keys. Product zones/configuration and the shared credit pool affect API/MCP use. Dynamic pricing values are not relied on for this capture."},
+        "api": {"available": "YES", "types": ["REST", "SDK", "CLI"], "breadth": "BROAD", "details": "The official platform documents REST API access plus CLI/Python/JavaScript SDKs. Product families include SERP API, Web Unlocker, Web Scraper API, Scraper Studio and Browser API; product zones and shared credit usage govern requests."},
+        "mcp": {"status": "AVAILABLE", "details": "Bright Data offers managed remote and self-hosted/local MCP. The hosted server authenticates with an API token, has a Rapid/free search-and-page-scraping mode and Pro/tool-group options for browser automation and structured vertical datasets. Its 5,000 monthly free requests draw from the same account-wide pool used by eligible API products.", "search_scope": "Opened Bright Data API authentication and SERP API references, MCP overview/tools/remote quickstart and current free-tier billing documentation."},
+        "buildability": {"verdict": "BUILDABLE_WITH_CONSTRAINTS", "blocker": "API keys, zones, prepaid/free-credit limits and per-product request costs must be configured; the 5,000 free monthly credits are shared with MCP and other eligible products.", "rationale": "The REST API, SDK/CLI clients and hosted/local MCP are documented with direct auth/setup. Validate the selected product/zone, account permissions, credit budget and dynamic pricing before scaling."},
+        "confidence": "HIGH",
+        "research_status": "COMPLETE",
+        "source_conflicts": [],
+        "limitations": ["No Bright Data account, API token, zone, REST call, MCP session, paid balance or human review was created or tested. Dynamic price values were not used as evidence."],
+        "researcher_notes": "The MCP free allowance is not an independent grant: first-party billing docs say it draws from the same shared 5,000-credit account pool.",
+        "evidence": [
+            ev("description", "Bright Data's official MCP overview describes public-web data access and connects the agent surface to Web Unlocker and product data tools.", "brightdata_mcp"),
+            ev("auth", "Bright Data API requests use Authorization: Bearer with an account API key.", "brightdata_auth"),
+            ev("self_serve", "The official free-tier page grants new accounts a recurring 5,000-credit shared pool across eligible APIs and MCP.", "brightdata_free"),
+            ev("credential_access", "The official auth guide says a default key is created at account creation; admins manage/add scoped keys, and API tokens authenticate MCP.", "brightdata_auth"),
+            ev("api", "The SERP reference shows a REST request and the product catalog spans SERP, Web Unlocker, Web Scraper, Scraper Studio and Browser API.", "brightdata_serp"),
+            ev("api", "The API authentication guide documents the account token across REST requests plus the official CLI, Python SDK and JavaScript SDK.", "brightdata_auth"),
+            ev("api", "The shared free-tier reference enumerates multiple Bright Data API product families and browser/scraper products.", "brightdata_free"),
+            ev("mcp", "The official MCP overview documents hosted/local servers and a shared account-level 5,000-request monthly allowance.", "brightdata_mcp"),
+            ev("mcp", "The official tool reference distinguishes Rapid/free, Pro and configured domain groups, including browser automation and structured vertical datasets.", "brightdata_mcp_tools"),
+            ev("buildability", "Remote MCP setup requires the API token and draws from the same account-level credit pool; zone/product configuration is required for product APIs.", "brightdata_mcp_quickstart"),
+        ],
+    },
+    58: {
+        "description": "Sherlock is an open-source local command-line tool that checks whether a username appears across hundreds of social networks and websites.",
+        "auth_status": "CONFIRMED",
+        "auth_methods": ["Other"],
+        "self_serve_status": "SELF_SERVE",
+        "self_serve_details": "The official project offers pipx/pip and Docker installation under an MIT license. The documented interface is a local CLI; there is no Sherlock-hosted account or subscription flow in the opened first-party setup/usage guide.",
+        "credential_access": {"status": "SELF_SERVE", "path": "Install the CLI locally (for example, `pipx install sherlock-project`) or use the official Docker image. The documented commands take usernames and optional proxy/Tor/output options; no Sherlock-issued API key is required by the documented local command path.", "plan_or_gate": "MIT-licensed local software; requires a supported runtime/network access to target sites. This is not evidence of a hosted API or MCP service."},
+        "api": {"available": "YES", "types": ["CLI"], "breadth": "NARROW", "details": "The official interface is a local CLI for one or more usernames, with optional site filters, output formats/files, JSON site data, proxy/Tor and browser options. No first-party hosted REST API was verified; CLI is the documented programmatic interface."},
+        "mcp": {"status": "UNKNOWN", "details": "The official docs and repository directly document a local CLI. No first-party hosted MCP server or HTTP API was verified in the reviewed sources. Third-party Actors/community wrappers discovered during search are not treated as official Sherlock MCP. Keep this UNKNOWN rather than inferring NO from one README or a missing search result.", "search_scope": "Opened the official Sherlock docs index, Installation, Usage, supported-sites page, GitHub repository/README and LICENSE, and ran one targeted native search for first-party API/MCP surfaces. This is a bounded first-party review, not proof that no community or future MCP exists."},
+        "buildability": {"verdict": "BUILDABLE_WITH_CONSTRAINTS", "blocker": "The supported integration is a local CLI/container rather than a verified first-party HTTP API or MCP; target sites can throttle/change detection behavior and the local process must be provisioned/maintained.", "rationale": "The official project documents installable CLI/Docker interfaces and multi-username outputs, so a local subprocess/container workflow is feasible. No hosted service or native MCP integration is established; implement only with authorized, appropriate target-site use and handle site-level failures."},
+        "confidence": "MEDIUM",
+        "research_status": "COMPLETE",
+        "source_conflicts": [],
+        "limitations": ["Sherlock was not installed or run; no usernames were queried and no target-site access was tested. No account, API call, hosted API, official MCP client or human/legal review was performed."],
+        "researcher_notes": "The product's local CLI is directly documented. MCP/hosted HTTP status remains UNKNOWN; search-result snippets for third-party Actors or wrappers were not promoted to first-party evidence.",
+        "evidence": [
+            ev("description", "The official repository README describes Sherlock as a username lookup tool across social networks; its docs index lists the supported-site directory as 400+.", "sherlock_repo"),
+            ev("auth", "The official usage examples invoke the local CLI with usernames and optional proxy/Tor settings; no Sherlock API credential parameter is documented for this path.", "sherlock_usage"),
+            ev("self_serve", "The official installation guide provides direct pipx/pip and Docker installation instructions, while the repository is MIT licensed.", "sherlock_install"),
+            ev("credential_access", "The documented local installation/CLI path uses local software and username inputs rather than a vendor account token.", "sherlock_install"),
+            ev("api", "The official usage guide documents one/multiple username CLI calls, site filtering and output options; the interface type is CLI.", "sherlock_usage"),
+            ev("buildability", "The official installation and usage guides provide pipx/Docker and command-line execution paths, but do not establish a hosted API/MCP service.", "sherlock_install"),
+            ev("other", "The official repository license is MIT, with commercial use/modification/distribution allowed subject to retaining notices.", "sherlock_license"),
+        ],
+    },
+    59: {
+        "description": "Waterfall.io is a B2B contact/company data enrichment service with prospecting, profile/contact search, verified email/phone enrichment and job-change workflows exposed through a REST API.",
+        "auth_status": "CONFIRMED",
+        "auth_methods": ["API key"],
+        "self_serve_status": "PARTNER_OR_CONTACT_SALES",
+        "self_serve_details": "Waterfall describes a prepaid usage model with no regular commitment and monthly invoicing for large volumes, but public self-serve credential provisioning is not documented. API key management is labeled an Enterprise feature requiring contact with an account manager; pricing/rates are not published in the opened pages.",
+        "credential_access": {"status": "GATED", "path": "The API key guide says to contact an account manager for access to enterprise key management; once enabled, Waterfall issues a master API key used to create/list/modify subkeys.", "plan_or_gate": "Enterprise API key management/account-manager access is documented. The exact initial credential issuance and rates are not public. First-party docs use x-api-key, while the marketing site examples also show x-waterfall-api-key; confirm the accepted header before implementation."},
+        "api": {"available": "YES", "types": ["REST"], "breadth": "BROAD", "details": "Waterfall's REST API documents asynchronous prospecting/contact and company enrichment, synchronous contact/company search, phone enrichment, job-change detection, email verification, account reporting and key management. Some newer/beta endpoints are marked accordingly; exact rate card is not public."},
+        "mcp": {"status": "UNKNOWN", "details": "No first-party operational MCP server/endpoint was verified. Official developer documentation promotes Agent Skills for direct API use and owned integration code, which is not itself an MCP server. Keep MCP UNKNOWN; absence from the reviewed docs is not recorded as NO.", "search_scope": "Opened Waterfall's official API overview, authentication, API-key management, Agent Skills guide, product homepage/API samples and book-a-call page. A targeted native search for an official Waterfall MCP server returned no identifiable first-party setup guide; search results are discovery leads only. No first-party MCP setup was verified."},
+        "buildability": {"verdict": "OUTREACH_REQUIRED", "blocker": "The official API-key management guide requires contacting an account manager for the Enterprise master-key path; no public self-serve credential issuance/rate card was verified. The official docs and homepage also disagree on the API-key header name.", "rationale": "A broad REST API is documented, but implementation requires vendor/account outreach to confirm entitlement, key issuance, price/usage terms and the correct auth header. An agent skill is available for direct API use but is not evidence of a native MCP connector."},
+        "confidence": "MEDIUM",
+        "research_status": "COMPLETE",
+        "source_conflicts": [
+            {"field": "auth", "summary": "The API authentication guide specifies x-api-key, while the product homepage's use-case samples show x-waterfall-api-key; the same homepage's quick-start sample later shows x-api-key.", "source_urls": ["https://docs.waterfall.io/v1/authentication", "https://www.waterfall.io/"], "resolution": "Keep the header discrepancy unresolved. Confirm the accepted header for the specific API/version with Waterfall before coding; do not silently choose one example."},
+            {"field": "credential_access", "summary": "The product site describes prepaid usage without regular commitments, but API key management is documented as an Enterprise feature requiring contact with an account manager, and a public self-serve credential flow was not found.", "source_urls": ["https://docs.waterfall.io/v1/api-keys-overview", "https://www.waterfall.io/book-a-call"], "resolution": "Treat pricing mechanics and credential eligibility as separate claims. Record API access as sales/account-manager gated until first-party account-specific provisioning is confirmed."}
+        ],
+        "limitations": ["No Waterfall account, master key, API request, quote, account-manager confirmation, MCP endpoint or human/legal review was performed. Exact prices, initial credential issuance and the accepted auth header remain unresolved."],
+        "researcher_notes": "The first-party Agent Skills are for working with/building direct API calls; they are not counted as MCP. Product pricing copy does not establish a public self-serve API credential path.",
+        "evidence": [
+            ev("description", "The official API introduction lists prospecting, contact/company search and enrichment, phone, job-change and email-verification endpoints.", "waterfall_api"),
+            ev("auth", "The official API guide specifies the x-api-key request header.", "waterfall_auth"),
+            ev("auth", "The product homepage API examples show x-waterfall-api-key in use-case snippets and x-api-key in its quick-start sample.", "waterfall_home", support="contradicts"),
+            ev("self_serve", "Waterfall describes prepaid top-ups and no regular commitment, but large-volume billing/account access is discussed with the vendor rather than through a public rate card.", "waterfall_sales"),
+            ev("self_serve", "The key-management guide labels key management an Enterprise feature and directs customers to an account manager.", "waterfall_keys"),
+            ev("credential_access", "Waterfall says a master API key is issued after account-manager enablement and can create/manage subkeys.", "waterfall_keys"),
+            ev("api", "The API reference lists multiple REST operations for prospecting, search, enrichment, verification, job change, reporting and keys.", "waterfall_api"),
+            ev("buildability", "The API key and sales pages document account-manager/Enterprise credential conditions; exact rates and initial key self-provisioning are not publicly specified.", "waterfall_keys"),
+            ev("other", "Waterfall's official Agent Skills documentation describes direct API and integration-code skills, not a hosted MCP endpoint.", "waterfall_skills", support="context"),
+        ],
+    },
+    60: {
+        "description": "Clay is a go-to-market data and workflow platform for searching people/companies, enriching records through a 200+ provider marketplace, and running reusable functions, audiences and signals.",
+        "auth_status": "CONFIRMED",
+        "auth_methods": ["API key", "OAuth 2.0"],
+        "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+        "self_serve_details": "Clay documents a Public API/developer platform on free, trial and paid plans with plan-based search limits. MCP for Reps requires a workspace-admin invitation and permissions; credit controls/MCP-enabled Functions are limited to eligible modern paid/legacy plans, while Audiences controls and structured table access are Enterprise-only.",
+        "credential_access": {"status": "RESTRICTED", "path": "Create a personal Public API key under Settings > Account > API keys (beta), sent in the clay-api-key header. Clay MCP uses OAuth 2.0/PKCE with dynamic client registration at api.clay.com; a user signs in and selects a workspace. MCP for Reps access is separately admin-invited.", "plan_or_gate": "Basic developer/search access exists on free/trial plans but is quota-limited. MCP functions/credit controls depend on eligible plans, Audiences and structured table reads are Enterprise-only, and API table queries are read-only; CLI/plugin is a distinct interface."},
+        "api": {"available": "YES", "types": ["REST", "CLI"], "breadth": "BROAD", "details": "Clay's Public REST API/developer platform covers people/company Searches, Routines (managed/custom functions and workflows), Audiences, Signals and read-only known-table queries (Enterprise). The Clay CLI/Agent Plugin supports agent workflows; API/CLI cannot write table rows or manage campaign launch/pause controls, and Workflows are Alpha."},
+        "mcp": {"status": "AVAILABLE", "details": "Clay operates a hosted MCP resource at https://api.clay.com/v3/mcp with OAuth 2.0/PKCE and dynamic client registration. MCP for Reps supports search/enrichment and admin-approved Functions inside connected AI tools; workspace admins invite users and control credit budgets/functions. It is not the Agent Plugin/CLI; raw tables are not generally exposed, and Audiences controls are Enterprise-only.", "search_scope": "Opened Clay's developer overview/quickstart/auth/search/routines/tables docs, official API/CLI plan guide, MCP settings/connection/auth docs, and the first-party MCP-versus-plugin comparison."},
+        "buildability": {"verdict": "BUILDABLE_WITH_CONSTRAINTS", "blocker": "Plan-based search/credit limits, admin invitations and function scopes constrain MCP. Structured table access/Audiences controls are Enterprise-only; table API reads are read-only and campaigns remain in the app.", "rationale": "Clay provides a self-service Public API key and documented REST/CLI/MCP surfaces. Select the correct surface: REST for backend work, CLI/Plugin for builders, MCP for admin-approved rep workflows; honor quotas and Enterprise-only/read-only boundaries."},
+        "confidence": "HIGH",
+        "research_status": "COMPLETE",
+        "source_conflicts": [],
+        "limitations": ["No Clay workspace, API key, MCP client, OAuth approval, trial, API request, credit usage or human review was performed. Workspace-specific entitlements were not tested."],
+        "researcher_notes": "Clay MCP for Reps, the Agent Plugin/CLI and the Public API are distinct surfaces; only MCP for Reps is treated as first-party MCP evidence.",
+        "evidence": [
+            ev("description", "Clay's developer overview describes GTM searches, reusable logic, Audiences/signals and enterprise table reads as the platform's developer primitives.", "clay_overview"),
+            ev("auth", "The Public API uses a personal clay-api-key; the first-party MCP connection uses OAuth 2.0 authorization-code/PKCE.", "clay_auth"),
+            ev("auth", "Clay documents OAuth metadata, public client registration and PKCE for its hosted MCP endpoint.", "clay_mcp_connect"),
+            ev("self_serve", "The official Agent Plugin/API guide says the developer platform is available on free/trial and paid plans, with per-plan limits.", "clay_api_cli"),
+            ev("self_serve", "Clay's MCP settings guide requires an admin invite and plan eligibility for credit controls/Functions, with Enterprise-only Audiences controls.", "clay_mcp_settings"),
+            ev("credential_access", "The Public API key is created in workspace settings; Clay's MCP uses self-service dynamic OAuth client registration plus end-user workspace consent.", "clay_quickstart"),
+            ev("api", "The developer docs expose Searches and Routines, with Tables, Audiences and Signals as additional programmable primitives; Tables are Enterprise-only/read-only.", "clay_overview"),
+            ev("api", "Searches document people/company query APIs and plan-based result quotas; Routines document managed/custom logic and workflows.", "clay_searches"),
+            ev("api", "Clay's official docs distinguish the local Clay CLI/Agent Plugin from the backend Public API and hosted MCP surface.", "clay_mcp_vs_plugin"),
+            ev("mcp", "Clay documents an OAuth-protected hosted MCP server and admin controls for rep access, credit limits and Functions.", "clay_mcp_settings"),
+            ev("buildability", "Clay's official surface comparison separates MCP for Reps, the Agent Plugin/CLI and Public API, and documents Enterprise/read-only/campaign limitations.", "clay_mcp_vs_plugin"),
+        ],
+    },
+}
+
+
+def _file_hash(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def build_batch() -> dict:
+    manifest = json.loads((ROOT / "apps/apps.json").read_text(encoding="utf-8"))
+    placeholders = json.loads((ROOT / "data/raw/final_full_research.json").read_text(encoding="utf-8"))
+    base_by_id = {r["app_id"]: r for r in placeholders}
+    manifest_by_id = {r["app_id"]: r for r in manifest}
+    raw_json = ROOT / "data/raw/final_full_research.json"
+    raw_csv = ROOT / "data/raw/final_full_research.csv"
+    raw_hashes_before = {
+        "json": _file_hash(raw_json),
+        "csv": _file_hash(raw_csv),
+    }
+    records_out = []
+    traces_out = []
+    now = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+    for app_id in IDS:
+        if app_id not in base_by_id or app_id not in manifest_by_id:
+            raise ValueError(f"app_id={app_id} missing from current manifest/baseline")
+        data = copy.deepcopy(RECORDS[app_id])
+        rec = copy.deepcopy(base_by_id[app_id])
+        rec.update({k: copy.deepcopy(v) for k, v in data.items() if k != "evidence"})
+        rec["evidence"] = copy.deepcopy(data["evidence"])
+        rec["source_mode"] = "LIVE_AGENT"
+        rec["research_tool"] = TOOL
+        rec["research_timestamp"] = now
+        rec["verification_status"] = "NOT_CHECKED"
+        rec["research_run_id"] = RUN_ID
+        rec["failure_reason"] = None
+        rec["quality_gate"] = {}
+
+        query_rows = [
+            {
+                "query": query,
+                "depth": depth,
+                "search_status": "SUCCESS",
+                "lead_only": True,
+                "note": "Search results were used only to discover/check candidate sources; snippets were not used as claim evidence.",
+            }
+            for query, depth in QUERIES[app_id]
+        ]
+        app_sources = [copy.deepcopy(SOURCES[key]) for key in FETCH_COUNTS[app_id]]
+        fetch_attempts = []
+        for key, chunk_indexes in FETCH_COUNTS[app_id].items():
+            s = SOURCES[key]
+            for chunk_index in chunk_indexes:
+                fetch_attempts.append({
+                    "tool": "fetch_page",
+                    "url": s["url"],
+                    "chunk_index": chunk_index,
+                    "status": "SUCCESS",
+                    "note": "First-party source opened; the claim-relevant observation is retained in the source packet.",
+                })
+        for row in NON_EVIDENCE_FETCHES.get(app_id, []):
+            fetch_attempts.append({"tool": "fetch_page", **copy.deepcopy(row)})
+
+        query_attempts = [
+            {
+                "tool": "web_search",
+                "query": row["query"],
+                "depth": row["depth"],
+                "status": "SUCCESS",
+                "note": "Search invocation succeeded; results were discovery leads only and not claim evidence.",
+            }
+            for row in query_rows
+        ]
+        attempts = query_attempts + fetch_attempts
+        rec["query_count"] = len(query_rows)
+        rec["source_count"] = len(app_sources)
+        rec["attempt_count"] = len(attempts)
+        rec["trace_limitations"] = [
+            "This artifact enumerates the targeted Batch04 web_search invocations and the opened claim-source chunks preserved for IDs 52-60. Earlier exploratory calls from before the current preserved pass are not reconstructed or counted.",
+            "Search results/snippets are discovery leads only. Every known product/auth/gating/API/MCP/buildability claim is linked to an opened first-party page; failed/redirected exploratory URLs are kept in the attempt trace, not evidence.",
+            "Capture time is date-only because fetch_page does not expose a per-page clock time. LIVE_AGENT denotes native web research only; no provider credentials, app account/tenant, API request, MCP execution, or human review is claimed.",
+            "This is a standalone partial capture for IDs 52-60. It is not merged into the authoritative 100-row raw dataset and does not satisfy full-population research, verification sampling, human QA, analysis, tests, HTML regeneration or deployment gates.",
+        ]
+
+        source_urls = {s["url"] for s in app_sources}
+        rec["quality_gate"] = validate_record_quality(rec, source_urls=source_urls)
+        records_out.append(rec)
+        traces_out.append({
+            "app_id": app_id,
+            "app": rec["app"],
+            "source_mode": "LIVE_AGENT",
+            "status": rec["research_status"],
+            "research_run_id": RUN_ID,
+            "research_tool": TOOL,
+            "queries": query_rows,
+            "sources": app_sources,
+            "attempts": attempts,
+            "trace_limitations": copy.deepcopy(rec["trace_limitations"]),
+        })
+
+    raw_hashes_after = {
+        "json": _file_hash(raw_json),
+        "csv": _file_hash(raw_csv),
+    }
+    if raw_hashes_after != raw_hashes_before:
+        raise RuntimeError("authoritative raw JSON/CSV changed while assembling the standalone batch")
+
+    return {
+        "schema_version": "1.0",
+        "run_id": RUN_ID,
+        "run_started_at": now,
+        "run_completed_at": now,
+        "source_mode": "LIVE_AGENT",
+        "tool": TOOL,
+        "provider_credentials": {
+            "TAVILY_API_KEY": "NOT_USED_BY_NATIVE_WEB_TOOL",
+            "OPENAI_API_KEY": "NOT_USED_BY_NATIVE_WEB_TOOL",
+        },
+        "raw_dataset_hashes_before_and_after": raw_hashes_before,
+        "scope": "Apps 52-60 only. These standalone records are not merged into data/raw/final_full_research.json or CSV. This is not the completed 100-app dataset.",
+        "search_result_policy": "Search-result snippets are discovery leads only and are excluded from claim evidence. Evidence cites opened first-party vendor/developer pages.",
+        "records": records_out,
+        "traces": traces_out,
+    }
+
+
+def main() -> int:
+    payload = build_batch()
+    manifest = json.loads((ROOT / "apps/apps.json").read_text(encoding="utf-8"))
+    manifest_by_id = {r["app_id"]: r for r in manifest}
+    errors = []
+    if [r["app_id"] for r in payload["records"]] != IDS:
+        errors.append(("batch", ["record IDs/order do not exactly match the Batch04 scope"]))
+    if len(payload["traces"]) != len(IDS):
+        errors.append(("batch", ["trace count does not match the Batch04 scope"]))
+
+    for record in payload["records"]:
+        errs = validate_record(record)
+        if errs:
+            errors.append((record["app_id"], errs))
+        if record["quality_gate"]["status"] != "PASS":
+            errors.append((record["app_id"], record["quality_gate"]))
+        trace = next(t for t in payload["traces"] if t["app_id"] == record["app_id"])
+        if record["query_count"] != len(trace["queries"]):
+            errors.append((record["app_id"], ["query count mismatch"]))
+        if record["source_count"] != len(trace["sources"]):
+            errors.append((record["app_id"], ["source count mismatch"]))
+        if record["attempt_count"] != len(trace["attempts"]):
+            errors.append((record["app_id"], ["attempt count mismatch"]))
+        identity = manifest_by_id.get(record["app_id"])
+        if not identity or record["app"] != identity["app"] or record["category"] != identity["category"]:
+            errors.append((record["app_id"], ["manifest identity/category mismatch"]))
+
+    if errors:
+        print(json.dumps(errors, indent=2, ensure_ascii=False))
+        return 1
+
+    out = ROOT / "data/evidence/native_web_capture_batch04_2026-09-24.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"wrote {out.relative_to(ROOT)} with {len(payload['records'])} rows and {len(payload['traces'])} traces")
+    print("record quality:", {s: sum(r['quality_gate']['status'] == s for r in payload['records']) for s in ['PASS', 'WARN', 'FAIL']})
+    for r in payload["records"]:
+        print(r["app_id"], r["app"], r["research_status"], r["quality_gate"]["status"], r["query_count"], r["source_count"], r["attempt_count"])
+        for warning in r["quality_gate"]["warnings"]:
+            print("  WARN:", warning)
+    print("raw JSON/CSV hashes unchanged:", payload["raw_dataset_hashes_before_and_after"])
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/composio-product-ops/research-record.schema.json",
+  "title": "Composio Product Ops application research record",
+  "description": "Strict record for first-pass and normalized application research. UNKNOWN is explicit; evidence is attached to claims, not just to the app generally.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "app_id", "app", "category", "website_hint", "description",
+    "auth_status", "auth_methods", "self_serve_status", "self_serve_details",
+    "credential_access", "api", "mcp", "buildability", "evidence", "confidence",
+    "research_timestamp", "research_status", "verification_status"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "app_id": {"type": "integer", "minimum": 1, "maximum": 100},
+    "app": {"type": "string", "minLength": 1},
+    "category": {
+      "type": "string",
+      "enum": [
+        "CRM and Sales", "Support and Helpdesk", "Communications and Messaging",
+        "Marketing, Ads, Email and Social", "Ecommerce", "Data, SEO and Scraping",
+        "Developer, Infra and Data platforms", "Productivity and Project Management",
+        "Finance and Fintech", "AI, Research and Media-native"
+      ]
+    },
+    "website_hint": {"type": "string", "format": "uri-reference"},
+    "description": {"type": "string"},
+    "auth_status": {"enum": ["CONFIRMED", "PARTIAL", "UNKNOWN"]},
+    "auth_methods": {
+      "type": "array", "uniqueItems": true,
+      "items": {"enum": ["OAuth 2.0", "API key", "Bearer/token", "Basic", "Service account", "Custom", "Other"]}
+    },
+    "self_serve_status": {
+      "enum": ["SELF_SERVE", "SELF_SERVE_WITH_RESTRICTIONS", "PAID_PLAN_REQUIRED", "ADMIN_APPROVAL_REQUIRED", "PARTNER_OR_CONTACT_SALES", "ENTERPRISE_ONLY", "UNKNOWN"]
+    },
+    "self_serve_details": {"type": "string"},
+    "credential_access": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "path", "plan_or_gate"],
+      "properties": {
+        "status": {"enum": ["SELF_SERVE", "RESTRICTED", "GATED", "UNKNOWN"]},
+        "path": {"type": "string"},
+        "plan_or_gate": {"type": "string"}
+      }
+    },
+    "api": {
+      "type": "object", "additionalProperties": false,
+      "required": ["available", "types", "breadth", "details"],
+      "properties": {
+        "available": {"enum": ["YES", "NO", "UNKNOWN"]},
+        "types": {
+          "type": "array", "uniqueItems": true,
+          "items": {"enum": ["REST", "GraphQL", "SDK", "Webhooks", "SOAP", "RPC", "CLI", "Other"]}
+        },
+        "breadth": {"enum": ["BROAD", "MODERATE", "NARROW", "UNKNOWN"]},
+        "details": {"type": "string"}
+      }
+    },
+    "mcp": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "details", "search_scope"],
+      "properties": {
+        "status": {"enum": ["AVAILABLE", "NOT_FOUND", "UNKNOWN"]},
+        "details": {"type": "string"},
+        "search_scope": {"type": "string"}
+      }
+    },
+    "buildability": {
+      "type": "object", "additionalProperties": false,
+      "required": ["verdict", "blocker", "rationale"],
+      "properties": {
+        "verdict": {"enum": ["BUILDABLE_NOW", "BUILDABLE_WITH_CONSTRAINTS", "OUTREACH_REQUIRED", "NOT_REALISTIC_TODAY", "UNKNOWN"]},
+        "blocker": {"type": "string"},
+        "rationale": {"type": "string"}
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/evidence"}
+    },
+    "confidence": {"enum": ["HIGH", "MEDIUM", "LOW"]},
+    "research_timestamp": {"type": "string", "format": "date-time"},
+    "research_status": {"enum": ["COMPLETE", "PARTIAL", "FAILED"]},
+    "verification_status": {"enum": ["NOT_CHECKED", "AUTO_VERIFIED", "HUMAN_VERIFIED", "MIXED", "UNRESOLVED"]},
+    "source_mode": {"enum": ["LIVE_AGENT", "PRIOR_CAPTURE", "NOT_RUN"]},
+    "research_tool": {"type": "string"},
+    "query_count": {"type": "integer", "minimum": 0},
+    "source_count": {"type": "integer", "minimum": 0},
+    "attempt_count": {"type": ["integer", "null"], "minimum": 0},
+    "research_run_id": {"type": "string"},
+    "prior_capture_files": {
+      "type": "object",
+      "properties": {
+        "results": {"type": "string"},
+        "attempts": {"type": "string"},
+        "capture": {"type": "string"}
+      }
+    },
+    "failure_reason": {"type": "string"},
+    "quality_gate": {
+      "type": "object",
+      "required": ["status", "errors", "warnings"],
+      "properties": {
+        "status": {"enum": ["PASS", "WARN", "FAIL"]},
+        "errors": {"type": "array", "items": {"type": "string"}},
+        "warnings": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "source_conflicts": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["field", "summary", "resolution"],
+        "properties": {
+          "field": {"type": "string"},
+          "summary": {"type": "string"},
+          "resolution": {"type": "string"}
+        }
+      }
+    },
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "researcher_notes": {"type": "string"}
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["claim", "field", "source_url", "source_title", "source_type", "accessed_at", "support"],
+      "properties": {
+        "claim": {"type": "string", "minLength": 1},
+        "field": {"enum": ["description", "auth", "self_serve", "credential_access", "api", "mcp", "buildability", "other"]},
+        "source_url": {"type": "string", "format": "uri"},
+        "source_title": {"type": "string"},
+        "source_type": {"enum": ["official_docs", "official_api_docs", "official_auth_docs", "official_blog", "official_github", "official_support", "official_product", "official_pricing", "third_party", "community"]},
+        "accessed_at": {"type": "string", "format": "date"},
+        "support": {"enum": ["supports", "contradicts", "context"]},
+        "excerpt_or_observation": {"type": "string"}
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "status": "WARN",
+  "errors": [],
+  "warnings": [
+    "app_id=3 quality warning: claim evidence URL is absent from the recorded source trace: https://developers.pipedrive.com/docs/api/v1/Oauth",
+    "app_id=4 quality warning: claim evidence URL is absent from the recorded source trace: https://docs.attio.com/rest-api/overview",
+    "app_id=5 quality warning: evidence URL reused 4 times; review for over-broad source reuse: https://twenty.com/pricing",
+    "app_id=6 quality warning: claim evidence URL is absent from the recorded source trace: https://developers.podio.com/",
+    "app_id=9 quality warning: generic homepage is the only supporting source for specific api claim",
+    "app_id=15 quality warning: claim evidence URL is absent from the recorded source trace: https://www.usepylon.com/schedule-demo",
+    "app_id=16 quality warning: evidence URL reused 4 times; review for over-broad source reuse: https://support.liveagent.com/647358-mcp-integration-for-agents",
+    "app_id=20 quality warning: evidence URL reused 4 times; review for over-broad source reuse: https://help.gladly.com/developer-tutorials/docs/setup-and-testing",
+    "app_id=22 quality warning: claim evidence URL is absent from the recorded source trace: https://www.twilio.com/en-us",
+    "app_id=61 quality warning: claim evidence URL is absent from the recorded source trace: https://github.com/about",
+    "app_id=92 quality warning: evidence URL reused 4 times; review for over-broad source reuse: https://help.otter.ai/hc/en-us/articles/36130822688279-otter-ai-public-api"
+  ],
+  "record_quality_counts": {
+    "PASS": 89,
+    "WARN": 11,
+    "FAIL": 0
+  },
+  "traces": 100
+}

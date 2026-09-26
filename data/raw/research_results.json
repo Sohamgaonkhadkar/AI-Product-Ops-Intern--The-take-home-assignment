@@ -1,0 +1,4422 @@
+[
+  {
+    "id": 1,
+    "app": "Salesforce",
+    "category": "CRM and Sales",
+    "category_id": 1,
+    "website": "salesforce.com",
+    "description": "Leading enterprise cloud CRM platform.",
+    "auth_methods": [
+      "OAUTH2",
+      "SERVICE_ACCOUNT"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free Developer Edition org available.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "GRAPHQL",
+        "SOAP",
+        "WEBHOOK"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Covers virtually all features."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Salesforce Hosted MCP and DX MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Developer edition is free, APIs are comprehensive."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth 2.0 Auth",
+        "source_url": "https://developer.salesforce.com",
+        "source_title": "Salesforce Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 2,
+    "app": "HubSpot",
+    "category": "CRM and Sales",
+    "category_id": 1,
+    "website": "hubspot.com",
+    "description": "Inbound marketing, sales, and service software.",
+    "auth_methods": [
+      "OAUTH2",
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free developer test accounts available.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Very broad API."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official HubSpot MCP Server available."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Excellent developer platform."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth 2.0",
+        "source_url": "https://developers.hubspot.com/",
+        "source_title": "HubSpot Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 3,
+    "app": "Pipedrive",
+    "category": "CRM and Sales",
+    "category_id": 1,
+    "website": "pipedrive.com",
+    "description": "Sales CRM and pipeline management software.",
+    "auth_methods": [
+      "OAUTH2",
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Developer Sandbox available.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Covers core CRM functions."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Pipedrive MCP Server launched June 2026."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Accessible and well documented."
+    },
+    "evidence": [
+      {
+        "claim": "Free sandbox",
+        "source_url": "https://developers.pipedrive.com/",
+        "source_title": "Pipedrive Dev",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 4,
+    "app": "Attio",
+    "category": "CRM and Sales",
+    "category_id": 1,
+    "website": "attio.com",
+    "description": "Data-driven CRM for modern teams.",
+    "auth_methods": [
+      "OAUTH2",
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free plan available for developers.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Modern REST API."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Attio MCP Server available."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Very modern developer experience."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth 2.0",
+        "source_url": "https://build.attio.com/",
+        "source_title": "Attio Build",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 5,
+    "app": "Twenty",
+    "category": "CRM and Sales",
+    "category_id": 1,
+    "website": "twenty.com",
+    "description": "Open-source CRM.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "OPEN_SOURCE",
+    "self_serve_details": "Can be self-hosted.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "GRAPHQL",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Auto-generated GraphQL and REST APIs based on schema."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Native MCP server available."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Open source and extensible."
+    },
+    "evidence": [
+      {
+        "claim": "Open source",
+        "source_url": "https://twenty.com/",
+        "source_title": "Twenty Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 6,
+    "app": "Podio",
+    "category": "CRM and Sales",
+    "category_id": 1,
+    "website": "podio.com",
+    "description": "Customizable work management solution.",
+    "auth_methods": [
+      "OAUTH2",
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free tier available.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Covers apps, items, spaces."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Podio MCP Server exists (mcp.podio.com)."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "API is stable but older."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2",
+        "source_url": "https://developers.podio.com/",
+        "source_title": "Podio Dev",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 7,
+    "app": "Zoho CRM",
+    "category": "CRM and Sales",
+    "category_id": 1,
+    "website": "zoho.com/crm",
+    "description": "Comprehensive CRM platform.",
+    "auth_methods": [
+      "OAUTH2"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free developer edition available.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Extensive API covering all modules."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Zoho MCP Console available."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "OAuth2 only for auth."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth 2.0",
+        "source_url": "https://www.zoho.com/crm/developer/docs/api/v6/",
+        "source_title": "Zoho Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 8,
+    "app": "Close",
+    "category": "CRM and Sales",
+    "category_id": 1,
+    "website": "close.com",
+    "description": "Inside sales CRM.",
+    "auth_methods": [
+      "OAUTH2",
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+    "self_serve_details": "14-day free trial, no permanent free tier.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Covers leads, contacts, activities."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Close MCP server available."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "PAID_PLAN",
+      "details": "Trial expires, requires paid plan for long-term use."
+    },
+    "evidence": [
+      {
+        "claim": "API Keys",
+        "source_url": "https://developer.close.com/",
+        "source_title": "Close Dev",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 9,
+    "app": "Copper",
+    "category": "CRM and Sales",
+    "category_id": 1,
+    "website": "copper.com",
+    "description": "CRM for G Suite.",
+    "auth_methods": [
+      "OAUTH2",
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+    "self_serve_details": "14-day free trial only.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Good coverage of core CRM."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "Third-party wrappers exist, no official MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "PAID_PLAN",
+      "details": "Requires paid plan post-trial."
+    },
+    "evidence": [
+      {
+        "claim": "Trial",
+        "source_url": "https://developer.copper.com/",
+        "source_title": "Copper Dev",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 10,
+    "app": "DealCloud",
+    "category": "CRM and Sales",
+    "category_id": 1,
+    "website": "api.docs.dealcloud.com",
+    "description": "Financial services CRM.",
+    "auth_methods": [
+      "OAUTH2",
+      "API_KEY"
+    ],
+    "self_serve_status": "ADMIN_APPROVAL_REQUIRED",
+    "self_serve_details": "Requires existing subscription and admin enabling.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "BROAD",
+      "details": "Data management, users."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No MCP found."
+    },
+    "buildability": {
+      "verdict": "OUTREACH_REQUIRED",
+      "blocker": "ADMIN_APPROVAL",
+      "details": "Enterprise gated."
+    },
+    "evidence": [
+      {
+        "claim": "Admin gated",
+        "source_url": "https://api.docs.dealcloud.com/",
+        "source_title": "DealCloud Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 11,
+    "app": "Zendesk",
+    "category": "Support and Helpdesk",
+    "category_id": 2,
+    "website": "zendesk.com",
+    "description": "Customer service and engagement platform.",
+    "auth_methods": [
+      "OAUTH2"
+    ],
+    "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+    "self_serve_details": "14-day free trial. API tokens deprecated.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Covers tickets, users, articles."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Zendesk MCP servers available."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "PAID_PLAN",
+      "details": "Trial requires transition to paid or sponsored account."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2 required",
+        "source_url": "https://developer.zendesk.com/",
+        "source_title": "Zendesk Dev",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 12,
+    "app": "Intercom",
+    "category": "Support and Helpdesk",
+    "category_id": 2,
+    "website": "intercom.com",
+    "description": "Customer messaging platform.",
+    "auth_methods": [
+      "OAUTH2",
+      "BEARER_TOKEN"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Developer workspace available.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Covers users, conversations."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Intercom MCP Server (read-only mostly)."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Great developer experience."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2",
+        "source_url": "https://developers.intercom.com/",
+        "source_title": "Intercom Dev",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 13,
+    "app": "Freshdesk",
+    "category": "Support and Helpdesk",
+    "category_id": 2,
+    "website": "freshdesk.com",
+    "description": "Customer support software.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "PAID_PLAN_REQUIRED",
+    "self_serve_details": "API not available on free tier. Requires Blossom+.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Tickets, contacts, forums."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Freshdesk MCP Server exists."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "PAID_PLAN",
+      "details": "Cannot build freely on free tier."
+    },
+    "evidence": [
+      {
+        "claim": "API on paid plans",
+        "source_url": "https://developers.freshdesk.com/",
+        "source_title": "Freshdesk Dev",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 14,
+    "app": "Front",
+    "category": "Support and Helpdesk",
+    "category_id": 2,
+    "website": "front.com",
+    "description": "Customer communication hub.",
+    "auth_methods": [
+      "OAUTH2",
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Developer portal available.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Conversations, contacts."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Front MCP Server (open beta)."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Developer accounts are free."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2",
+        "source_url": "https://developer.frontsystems.com/",
+        "source_title": "Front Dev",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 15,
+    "app": "Pylon",
+    "category": "Support and Helpdesk",
+    "category_id": 2,
+    "website": "usepylon.com",
+    "description": "B2B support operations.",
+    "auth_methods": [
+      "BEARER_TOKEN",
+      "OAUTH2"
+    ],
+    "self_serve_status": "UNKNOWN",
+    "self_serve_details": "Not explicitly public self-serve.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "MODERATE",
+      "details": "Issues, accounts."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Pylon MCP Server available (OAuth)."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "UNKNOWN",
+      "details": "Access might require outreach."
+    },
+    "evidence": [
+      {
+        "claim": "API",
+        "source_url": "https://docs.usepylon.com/pylon-docs/developer/api",
+        "source_title": "Pylon Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 16,
+    "app": "LiveAgent",
+    "category": "Support and Helpdesk",
+    "category_id": 2,
+    "website": "liveagent.com",
+    "description": "Help desk software.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+    "self_serve_details": "Free trial available.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "MODERATE",
+      "details": "Tickets, companies."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Built-in MCP server for LiveAgent."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "PAID_PLAN",
+      "details": "Requires paid plan post trial."
+    },
+    "evidence": [
+      {
+        "claim": "API Key",
+        "source_url": "https://www.liveagent.com/docs/",
+        "source_title": "LiveAgent Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 17,
+    "app": "Plain",
+    "category": "Support and Helpdesk",
+    "category_id": 2,
+    "website": "plain.com",
+    "description": "API-first customer support.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Machine users for API.",
+    "api": {
+      "available": true,
+      "types": [
+        "GRAPHQL",
+        "WEBHOOK"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Platform built entirely on GraphQL."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Plain MCP server available."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Excellent API-first design."
+    },
+    "evidence": [
+      {
+        "claim": "GraphQL",
+        "source_url": "https://docs.plain.com/",
+        "source_title": "Plain Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 18,
+    "app": "Help Scout",
+    "category": "Support and Helpdesk",
+    "category_id": 2,
+    "website": "helpscout.com",
+    "description": "Customer support platform.",
+    "auth_methods": [
+      "OAUTH2",
+      "API_KEY"
+    ],
+    "self_serve_status": "PAID_PLAN_REQUIRED",
+    "self_serve_details": "API requires paid plan.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Mailboxes, conversations."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Help Scout MCP Server."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "PAID_PLAN",
+      "details": "No free API access."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2",
+        "source_url": "https://developer.helpscout.com/",
+        "source_title": "Help Scout Dev",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 19,
+    "app": "Gorgias",
+    "category": "Support and Helpdesk",
+    "category_id": 2,
+    "website": "gorgias.com",
+    "description": "Ecommerce helpdesk.",
+    "auth_methods": [
+      "OAUTH2",
+      "BASIC_AUTH"
+    ],
+    "self_serve_status": "PAID_PLAN_REQUIRED",
+    "self_serve_details": "Requires paid plan.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Tickets, customers."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Gorgias MCP available."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "PAID_PLAN",
+      "details": "Requires paid plan."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2",
+        "source_url": "https://developers.gorgias.com/",
+        "source_title": "Gorgias Dev",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 20,
+    "app": "Gladly",
+    "category": "Support and Helpdesk",
+    "category_id": 2,
+    "website": "gladly.com",
+    "description": "Enterprise customer support.",
+    "auth_methods": [
+      "BASIC_AUTH"
+    ],
+    "self_serve_status": "ENTERPRISE_ONLY",
+    "self_serve_details": "Enterprise platform.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Profiles, conversations."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "Third-party only."
+    },
+    "buildability": {
+      "verdict": "OUTREACH_REQUIRED",
+      "blocker": "ENTERPRISE_ONLY",
+      "details": "Enterprise gated."
+    },
+    "evidence": [
+      {
+        "claim": "Basic Auth",
+        "source_url": "https://developer.gladly.com/rest/",
+        "source_title": "Gladly Dev",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 21,
+    "app": "Slack",
+    "category": "Communications and Messaging",
+    "category_id": 3,
+    "website": "slack.com",
+    "description": "Team communication platform.",
+    "auth_methods": [
+      "OAUTH2",
+      "BOT_TOKEN"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free workspace creation.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Extensive chat and workspace API."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Slack MCP Server."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Very developer friendly."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2",
+        "source_url": "https://api.slack.com/",
+        "source_title": "Slack API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 22,
+    "app": "Twilio",
+    "category": "Communications and Messaging",
+    "category_id": 3,
+    "website": "twilio.com",
+    "description": "Cloud communications platform.",
+    "auth_methods": [
+      "API_KEY",
+      "BASIC_AUTH"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free trial account with API credentials.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Covers SMS, Voice, Video."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Twilio Alpha MCP server."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Pay-as-you-go, free trial."
+    },
+    "evidence": [
+      {
+        "claim": "API Key",
+        "source_url": "https://www.twilio.com/docs",
+        "source_title": "Twilio Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 23,
+    "app": "Zoho Cliq",
+    "category": "Communications and Messaging",
+    "category_id": 3,
+    "website": "zoho.com/cliq",
+    "description": "Team chat software.",
+    "auth_methods": [
+      "OAUTH2"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free plan available.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Channels, messages."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Zoho MCP Console available."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "OAuth2 required."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2",
+        "source_url": "https://www.zoho.com/cliq/help/restapi/",
+        "source_title": "Zoho Cliq API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 24,
+    "app": "Lark",
+    "category": "Communications and Messaging",
+    "category_id": 3,
+    "website": "open.larksuite.com",
+    "description": "Collaboration suite.",
+    "auth_methods": [
+      "OAUTH2",
+      "BEARER_TOKEN"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Lark Open Platform.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Chat, docs, calendar."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Feishu/Lark OpenAPI MCP tool."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Extensive API."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2",
+        "source_url": "https://open.larksuite.com/",
+        "source_title": "Lark Open Platform",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 25,
+    "app": "Pumble",
+    "category": "Communications and Messaging",
+    "category_id": 3,
+    "website": "pumble.com",
+    "description": "Free team chat.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "API available on free plan.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "MODERATE",
+      "details": "Messages, channels."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Community MCP server available."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Free access."
+    },
+    "evidence": [
+      {
+        "claim": "API Key",
+        "source_url": "https://pumble.com/api/",
+        "source_title": "Pumble API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 26,
+    "app": "Discord",
+    "category": "Communications and Messaging",
+    "category_id": 3,
+    "website": "discord.com",
+    "description": "Voice, video and text chat.",
+    "auth_methods": [
+      "OAUTH2",
+      "BOT_TOKEN"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free Developer Portal.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK",
+        "WEBSOCKET"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Channels, messages, voice."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Community MCP servers available."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Free and open."
+    },
+    "evidence": [
+      {
+        "claim": "Bot Token",
+        "source_url": "https://discord.com/developers/docs",
+        "source_title": "Discord Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 27,
+    "app": "Telegram",
+    "category": "Communications and Messaging",
+    "category_id": 3,
+    "website": "core.telegram.org",
+    "description": "Messaging app.",
+    "auth_methods": [
+      "BOT_TOKEN"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "BotFather generates tokens instantly.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Bot API is very rich."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Community Telegram MCP available."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "100% Free."
+    },
+    "evidence": [
+      {
+        "claim": "Bot Token",
+        "source_url": "https://core.telegram.org/bots/api",
+        "source_title": "Telegram Bot API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 28,
+    "app": "WhatsApp Business",
+    "category": "Communications and Messaging",
+    "category_id": 3,
+    "website": "developers.facebook.com/docs/whatsapp",
+    "description": "Business messaging.",
+    "auth_methods": [
+      "OAUTH2",
+      "BEARER_TOKEN"
+    ],
+    "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+    "self_serve_details": "Requires Meta Business Verification for prod.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Messaging, templates."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official WhatsApp Business Tools MCP Server (Beta)."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "PARTNER_APPROVAL",
+      "details": "Requires business verification."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2",
+        "source_url": "https://developers.facebook.com/docs/whatsapp",
+        "source_title": "WhatsApp Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 29,
+    "app": "Aircall",
+    "category": "Communications and Messaging",
+    "category_id": 3,
+    "website": "aircall.io",
+    "description": "Cloud call center.",
+    "auth_methods": [
+      "OAUTH2",
+      "BASIC_AUTH"
+    ],
+    "self_serve_status": "PAID_PLAN_REQUIRED",
+    "self_serve_details": "Requires subscription.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Calls, contacts."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Third-party/Community MCPs."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "PAID_PLAN",
+      "details": "Requires paid plan."
+    },
+    "evidence": [
+      {
+        "claim": "Basic Auth",
+        "source_url": "https://developer.aircall.io/",
+        "source_title": "Aircall Dev",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 30,
+    "app": "Vonage",
+    "category": "Communications and Messaging",
+    "category_id": 3,
+    "website": "developer.vonage.com",
+    "description": "Cloud communications.",
+    "auth_methods": [
+      "API_KEY",
+      "BEARER_TOKEN"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free developer account.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "SMS, Voice, Video."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Vonage MCP servers available."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Free trial credit."
+    },
+    "evidence": [
+      {
+        "claim": "API Key",
+        "source_url": "https://developer.vonage.com/",
+        "source_title": "Vonage Dev",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 31,
+    "app": "Google Ads",
+    "category": "Marketing, Ads, Email and Social",
+    "category_id": 4,
+    "website": "developers.google.com/google-ads",
+    "description": "Online advertising.",
+    "auth_methods": [
+      "OAUTH2",
+      "API_KEY"
+    ],
+    "self_serve_status": "ADMIN_APPROVAL_REQUIRED",
+    "self_serve_details": "Requires Developer Token approval.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "GRPC"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "All ads features."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Google Ads MCP Server."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "ADMIN_APPROVAL",
+      "details": "Developer Token approval process."
+    },
+    "evidence": [
+      {
+        "claim": "Developer Token",
+        "source_url": "https://developers.google.com/google-ads/api/docs/first-call/overview",
+        "source_title": "Google Ads API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 32,
+    "app": "Meta Ads",
+    "category": "Marketing, Ads, Email and Social",
+    "category_id": 4,
+    "website": "developers.facebook.com/docs/marketing-apis",
+    "description": "Facebook/Insta advertising.",
+    "auth_methods": [
+      "OAUTH2",
+      "BEARER_TOKEN"
+    ],
+    "self_serve_status": "ADMIN_APPROVAL_REQUIRED",
+    "self_serve_details": "App Review required for advanced access.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Campaigns, ad sets."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Meta Ads MCP Server."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "ADMIN_APPROVAL",
+      "details": "App Review can be complex."
+    },
+    "evidence": [
+      {
+        "claim": "App Review",
+        "source_url": "https://developers.facebook.com/docs/marketing-apis",
+        "source_title": "Meta Ads API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 33,
+    "app": "LinkedIn Ads",
+    "category": "Marketing, Ads, Email and Social",
+    "category_id": 4,
+    "website": "learn.microsoft.com/linkedin/marketing",
+    "description": "B2B advertising.",
+    "auth_methods": [
+      "OAUTH2"
+    ],
+    "self_serve_status": "ADMIN_APPROVAL_REQUIRED",
+    "self_serve_details": "Requires approval for Marketing Developer Platform.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Ads management."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No official MCP."
+    },
+    "buildability": {
+      "verdict": "OUTREACH_REQUIRED",
+      "blocker": "PARTNER_APPROVAL",
+      "details": "Strict partner approval."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2",
+        "source_url": "https://learn.microsoft.com/en-us/linkedin/marketing/",
+        "source_title": "LinkedIn API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 34,
+    "app": "GoHighLevel",
+    "category": "Marketing, Ads, Email and Social",
+    "category_id": 4,
+    "website": "highlevel.stoplight.io",
+    "description": "Marketing agency CRM.",
+    "auth_methods": [
+      "OAUTH2"
+    ],
+    "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+    "self_serve_details": "Requires developer account.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "CRM, marketing automation."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official GHL MCP Server."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "PAID_PLAN",
+      "details": "Requires platform subscription for full use."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2",
+        "source_url": "https://marketplace.gohighlevel.com/docs/",
+        "source_title": "GHL Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 35,
+    "app": "Mailchimp",
+    "category": "Marketing, Ads, Email and Social",
+    "category_id": 4,
+    "website": "mailchimp.com/developer",
+    "description": "Email marketing.",
+    "auth_methods": [
+      "OAUTH2",
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free tier available.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Lists, campaigns."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official MCP for Transactional, community for Marketing."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "API Key easy for private apps."
+    },
+    "evidence": [
+      {
+        "claim": "API Key",
+        "source_url": "https://mailchimp.com/developer/marketing/docs/fundamentals/",
+        "source_title": "Mailchimp Dev",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 36,
+    "app": "Klaviyo",
+    "category": "Marketing, Ads, Email and Social",
+    "category_id": 4,
+    "website": "developers.klaviyo.com",
+    "description": "Marketing automation.",
+    "auth_methods": [
+      "API_KEY",
+      "OAUTH2"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free tier available.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Profiles, metrics, campaigns."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Klaviyo MCP server (mcp.klaviyo.com)."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Easy API key generation."
+    },
+    "evidence": [
+      {
+        "claim": "API Key",
+        "source_url": "https://developers.klaviyo.com/en/docs/authenticate_with_klaviyo",
+        "source_title": "Klaviyo Dev",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 37,
+    "app": "Systeme.io",
+    "category": "Marketing, Ads, Email and Social",
+    "category_id": 4,
+    "website": "systeme.io",
+    "description": "Funnel builder.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free plan includes API.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "MODERATE",
+      "details": "Contacts, tags."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official MCP integration."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Accessible on free plan."
+    },
+    "evidence": [
+      {
+        "claim": "API Key",
+        "source_url": "https://help.systeme.io/",
+        "source_title": "Systeme.io Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 38,
+    "app": "Pinterest",
+    "category": "Marketing, Ads, Email and Social",
+    "category_id": 4,
+    "website": "developers.pinterest.com",
+    "description": "Visual discovery ads.",
+    "auth_methods": [
+      "OAUTH2"
+    ],
+    "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+    "self_serve_details": "App review required for standard access.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "BROAD",
+      "details": "Pins, boards, ads."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No official MCP found."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "ADMIN_APPROVAL",
+      "details": "App review required."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2",
+        "source_url": "https://developers.pinterest.com/docs/api/v5/",
+        "source_title": "Pinterest Dev",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 39,
+    "app": "Threads (Meta)",
+    "category": "Marketing, Ads, Email and Social",
+    "category_id": 4,
+    "website": "developers.facebook.com/docs/threads",
+    "description": "Social networking.",
+    "auth_methods": [
+      "OAUTH2"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Threads API available.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "NARROW",
+      "details": "Read/write posts."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No official MCP yet."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Recently opened API."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2",
+        "source_url": "https://developers.facebook.com/docs/threads",
+        "source_title": "Threads API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 40,
+    "app": "SendGrid",
+    "category": "Marketing, Ads, Email and Social",
+    "category_id": 4,
+    "website": "sendgrid.com",
+    "description": "Email delivery.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free tier available (100 emails/day).",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Sending, templates."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Community MCP servers available."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Very easy to use."
+    },
+    "evidence": [
+      {
+        "claim": "API Key",
+        "source_url": "https://docs.sendgrid.com/api-reference",
+        "source_title": "SendGrid Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 41,
+    "app": "Shopify",
+    "category": "Ecommerce",
+    "category_id": 5,
+    "website": "shopify.dev",
+    "description": "Ecommerce platform.",
+    "auth_methods": [
+      "OAUTH2",
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Partner account allows free development stores.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "GRAPHQL",
+        "WEBHOOK"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Admin API covers everything."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Community MCP servers available."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Best-in-class developer platform."
+    },
+    "evidence": [
+      {
+        "claim": "GraphQL",
+        "source_url": "https://shopify.dev/docs/api",
+        "source_title": "Shopify Dev",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 42,
+    "app": "WooCommerce",
+    "category": "Ecommerce",
+    "category_id": 5,
+    "website": "woocommerce.com/document/woocommerce-rest-api",
+    "description": "WordPress ecommerce.",
+    "auth_methods": [
+      "BASIC_AUTH",
+      "OAUTH2"
+    ],
+    "self_serve_status": "OPEN_SOURCE",
+    "self_serve_details": "Free WordPress plugin.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Products, orders."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Community integrations exist."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Self-hosted, full control."
+    },
+    "evidence": [
+      {
+        "claim": "Basic Auth",
+        "source_url": "https://woocommerce.com/document/woocommerce-rest-api/",
+        "source_title": "WooCommerce Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 43,
+    "app": "BigCommerce",
+    "category": "Ecommerce",
+    "category_id": 5,
+    "website": "developer.bigcommerce.com",
+    "description": "Ecommerce platform.",
+    "auth_methods": [
+      "OAUTH2",
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Developer sandbox available.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "GRAPHQL"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Catalog, orders, customers."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No official MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Accessible dev portal."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2",
+        "source_url": "https://developer.bigcommerce.com/",
+        "source_title": "BigCommerce Dev",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 44,
+    "app": "Salesforce Commerce Cloud",
+    "category": "Ecommerce",
+    "category_id": 5,
+    "website": "developer.salesforce.com/docs/commerce",
+    "description": "Enterprise ecommerce.",
+    "auth_methods": [
+      "OAUTH2"
+    ],
+    "self_serve_status": "ENTERPRISE_ONLY",
+    "self_serve_details": "Requires SFCC license.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "B2C/B2B Commerce API."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Salesforce MCP covers some aspects."
+    },
+    "buildability": {
+      "verdict": "OUTREACH_REQUIRED",
+      "blocker": "ENTERPRISE_ONLY",
+      "details": "Enterprise gated."
+    },
+    "evidence": [
+      {
+        "claim": "Enterprise",
+        "source_url": "https://developer.salesforce.com/docs/commerce",
+        "source_title": "SFCC Dev",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 45,
+    "app": "Magento (Adobe Commerce)",
+    "category": "Ecommerce",
+    "category_id": 5,
+    "website": "developer.adobe.com/commerce",
+    "description": "Open source/Enterprise ecommerce.",
+    "auth_methods": [
+      "OAUTH2",
+      "BEARER_TOKEN"
+    ],
+    "self_serve_status": "OPEN_SOURCE",
+    "self_serve_details": "Open source version free.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "GRAPHQL"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Full store management."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No official MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Open source version allows testing."
+    },
+    "evidence": [
+      {
+        "claim": "REST/GraphQL",
+        "source_url": "https://developer.adobe.com/commerce/",
+        "source_title": "Magento Dev",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 46,
+    "app": "Squarespace",
+    "category": "Ecommerce",
+    "category_id": 5,
+    "website": "developers.squarespace.com",
+    "description": "Website builder.",
+    "auth_methods": [
+      "OAUTH2",
+      "API_KEY"
+    ],
+    "self_serve_status": "PAID_PLAN_REQUIRED",
+    "self_serve_details": "Commerce API requires Advanced Commerce plan.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "MODERATE",
+      "details": "Inventory, orders, products."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No official MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "PAID_PLAN",
+      "details": "Requires expensive plan for API."
+    },
+    "evidence": [
+      {
+        "claim": "Advanced Commerce plan",
+        "source_url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+        "source_title": "Squarespace Dev",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 47,
+    "app": "Ecwid",
+    "category": "Ecommerce",
+    "category_id": 5,
+    "website": "api-docs.ecwid.com",
+    "description": "Embedded ecommerce.",
+    "auth_methods": [
+      "OAUTH2",
+      "API_KEY"
+    ],
+    "self_serve_status": "PAID_PLAN_REQUIRED",
+    "self_serve_details": "API requires paid plan.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Store management."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No official MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "PAID_PLAN",
+      "details": "Paid plan required."
+    },
+    "evidence": [
+      {
+        "claim": "API access",
+        "source_url": "https://api-docs.ecwid.com/",
+        "source_title": "Ecwid Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 48,
+    "app": "Gumroad",
+    "category": "Ecommerce",
+    "category_id": 5,
+    "website": "gumroad.com/api",
+    "description": "Creator ecommerce.",
+    "auth_methods": [
+      "OAUTH2",
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free account creation.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "MODERATE",
+      "details": "Products, sales."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Easy to access."
+    },
+    "evidence": [
+      {
+        "claim": "API Key",
+        "source_url": "https://app.gumroad.com/api",
+        "source_title": "Gumroad API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 49,
+    "app": "Amazon Selling Partner",
+    "category": "Ecommerce",
+    "category_id": 5,
+    "website": "developer-docs.amazon.com/sp-api",
+    "description": "Amazon seller API.",
+    "auth_methods": [
+      "OAUTH2"
+    ],
+    "self_serve_status": "ADMIN_APPROVAL_REQUIRED",
+    "self_serve_details": "Requires professional seller account and developer approval.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "FBA, orders, catalog."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No official MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "ADMIN_APPROVAL",
+      "details": "Strict data protection requirements."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2",
+        "source_url": "https://developer-docs.amazon.com/sp-api/",
+        "source_title": "Amazon SP-API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 50,
+    "app": "Fanbasis",
+    "category": "Ecommerce",
+    "category_id": 5,
+    "website": "fanbasis.com",
+    "description": "Creator monetization.",
+    "auth_methods": [
+      "UNKNOWN"
+    ],
+    "self_serve_status": "UNKNOWN",
+    "self_serve_details": "No public API documentation found.",
+    "api": {
+      "available": false,
+      "types": [],
+      "breadth": "UNKNOWN",
+      "details": "No public API."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No MCP."
+    },
+    "buildability": {
+      "verdict": "NOT_REALISTIC_TODAY",
+      "blocker": "NO_PUBLIC_API",
+      "details": "No developer docs available."
+    },
+    "evidence": [
+      {
+        "claim": "No API docs",
+        "source_url": "https://fanbasis.com",
+        "source_title": "Fanbasis",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 51,
+    "app": "DataForSEO",
+    "category": "Data, SEO and Scraping",
+    "category_id": 6,
+    "website": "docs.dataforseo.com",
+    "description": "SEO API provider.",
+    "auth_methods": [
+      "BASIC_AUTH"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Pay-as-you-go, no minimum.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "SERP, keywords, backlinks."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "API first platform."
+    },
+    "evidence": [
+      {
+        "claim": "Basic Auth",
+        "source_url": "https://docs.dataforseo.com/",
+        "source_title": "DataForSEO Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 52,
+    "app": "SE Ranking",
+    "category": "Data, SEO and Scraping",
+    "category_id": 6,
+    "website": "seranking.com/api",
+    "description": "SEO software.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "PAID_PLAN_REQUIRED",
+    "self_serve_details": "API only on higher plans.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "BROAD",
+      "details": "Keywords, rankings."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "PAID_PLAN",
+      "details": "Gated behind expensive plans."
+    },
+    "evidence": [
+      {
+        "claim": "API Key",
+        "source_url": "https://seranking.com/api.html",
+        "source_title": "SE Ranking API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 53,
+    "app": "Ahrefs",
+    "category": "Data, SEO and Scraping",
+    "category_id": 6,
+    "website": "ahrefs.com/api",
+    "description": "SEO toolset.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "PAID_PLAN_REQUIRED",
+    "self_serve_details": "Enterprise plan required for API v3.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "BROAD",
+      "details": "Backlinks, keywords."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "ENTERPRISE_ONLY",
+      "details": "Extremely expensive API access."
+    },
+    "evidence": [
+      {
+        "claim": "API Key",
+        "source_url": "https://ahrefs.com/api",
+        "source_title": "Ahrefs API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 54,
+    "app": "MrScraper",
+    "category": "Data, SEO and Scraping",
+    "category_id": 6,
+    "website": "docs.mrscraper.com",
+    "description": "Visual web scraper.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free tier available.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "MODERATE",
+      "details": "Run scrapes, get results."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Easy API access."
+    },
+    "evidence": [
+      {
+        "claim": "API Key",
+        "source_url": "https://docs.mrscraper.com/",
+        "source_title": "MrScraper Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 55,
+    "app": "Apify",
+    "category": "Data, SEO and Scraping",
+    "category_id": 6,
+    "website": "docs.apify.com",
+    "description": "Web scraping and automation.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Generous free tier.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Actors, datasets, tasks."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Apify MCP server."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Developer focused platform."
+    },
+    "evidence": [
+      {
+        "claim": "API Key",
+        "source_url": "https://docs.apify.com/api/v2",
+        "source_title": "Apify API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 56,
+    "app": "Firecrawl",
+    "category": "Data, SEO and Scraping",
+    "category_id": 6,
+    "website": "firecrawl.dev",
+    "description": "Web scraping for LLMs.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free credits upon signup.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "NARROW",
+      "details": "Scrape, crawl."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Firecrawl MCP server."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Built for AI/LLM use cases."
+    },
+    "evidence": [
+      {
+        "claim": "API Key",
+        "source_url": "https://docs.firecrawl.dev/",
+        "source_title": "Firecrawl Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 57,
+    "app": "Bright Data",
+    "category": "Data, SEO and Scraping",
+    "category_id": 6,
+    "website": "brightdata.com",
+    "description": "Web data platform.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Pay-as-you-go.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Proxies, datasets, scrapers."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Complex but accessible."
+    },
+    "evidence": [
+      {
+        "claim": "API Key",
+        "source_url": "https://docs.brightdata.com/",
+        "source_title": "Bright Data Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 58,
+    "app": "Sherlock",
+    "category": "Data, SEO and Scraping",
+    "category_id": 6,
+    "website": "github.com/sherlock-project/sherlock",
+    "description": "Social media account hunting.",
+    "auth_methods": [
+      "NONE"
+    ],
+    "self_serve_status": "OPEN_SOURCE",
+    "self_serve_details": "CLI tool, no auth needed.",
+    "api": {
+      "available": true,
+      "types": [
+        "CLI"
+      ],
+      "breadth": "NARROW",
+      "details": "Search by username."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No official MCP (CLI wrapper possible)."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Open source CLI."
+    },
+    "evidence": [
+      {
+        "claim": "CLI tool",
+        "source_url": "https://github.com/sherlock-project/sherlock",
+        "source_title": "Sherlock GitHub",
+        "source_type": "official_github",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 59,
+    "app": "Waterfall.io",
+    "category": "Data, SEO and Scraping",
+    "category_id": 6,
+    "website": "waterfall.io",
+    "description": "Contact intelligence.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "PAID_PLAN_REQUIRED",
+    "self_serve_details": "Paid service.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "MODERATE",
+      "details": "Enrichment."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "PAID_PLAN",
+      "details": "Requires subscription."
+    },
+    "evidence": [
+      {
+        "claim": "API",
+        "source_url": "https://waterfall.io/",
+        "source_title": "Waterfall",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 60,
+    "app": "Clay",
+    "category": "Data, SEO and Scraping",
+    "category_id": 6,
+    "website": "clay.com",
+    "description": "Data enrichment and outbound.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free tier available.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Tables, runs."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Community MCP servers exist."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Accessible API."
+    },
+    "evidence": [
+      {
+        "claim": "API Key",
+        "source_url": "https://www.clay.com/developer",
+        "source_title": "Clay Dev",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 61,
+    "app": "GitHub",
+    "category": "Developer, Infra and Data Platforms",
+    "category_id": 7,
+    "website": "docs.github.com/rest",
+    "description": "Code hosting.",
+    "auth_methods": [
+      "OAUTH2",
+      "BEARER_TOKEN",
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free account.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "GRAPHQL",
+        "WEBHOOK"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Full platform coverage."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official GitHub MCP server."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Top tier developer experience."
+    },
+    "evidence": [
+      {
+        "claim": "REST API",
+        "source_url": "https://docs.github.com/rest",
+        "source_title": "GitHub Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 62,
+    "app": "Vercel",
+    "category": "Developer, Infra and Data Platforms",
+    "category_id": 7,
+    "website": "vercel.com/docs/rest-api",
+    "description": "Frontend cloud.",
+    "auth_methods": [
+      "BEARER_TOKEN"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free hobby plan.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Deployments, domains."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Community MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Easy token generation."
+    },
+    "evidence": [
+      {
+        "claim": "Bearer Token",
+        "source_url": "https://vercel.com/docs/rest-api",
+        "source_title": "Vercel API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 63,
+    "app": "Netlify",
+    "category": "Developer, Infra and Data Platforms",
+    "category_id": 7,
+    "website": "docs.netlify.com/api",
+    "description": "Web development platform.",
+    "auth_methods": [
+      "OAUTH2",
+      "BEARER_TOKEN"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free starter plan.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Sites, deploys."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No official MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Open API standard."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2/PAT",
+        "source_url": "https://docs.netlify.com/api/get-started/",
+        "source_title": "Netlify API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 64,
+    "app": "Cloudflare",
+    "category": "Developer, Infra and Data Platforms",
+    "category_id": 7,
+    "website": "developers.cloudflare.com/api",
+    "description": "Web performance/security.",
+    "auth_methods": [
+      "BEARER_TOKEN",
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free tier available.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "DNS, WAF, Workers."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Community Cloudflare MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "API Tokens recommended over Global API Key."
+    },
+    "evidence": [
+      {
+        "claim": "API Tokens",
+        "source_url": "https://developers.cloudflare.com/api/",
+        "source_title": "Cloudflare API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 65,
+    "app": "Supabase",
+    "category": "Developer, Infra and Data Platforms",
+    "category_id": 7,
+    "website": "supabase.com/docs",
+    "description": "Firebase alternative.",
+    "auth_methods": [
+      "BEARER_TOKEN",
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free tier available.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "GRAPHQL"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "PostgREST, Auth, Storage."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Supabase MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Open source and accessible."
+    },
+    "evidence": [
+      {
+        "claim": "API",
+        "source_url": "https://supabase.com/docs/reference/api",
+        "source_title": "Supabase Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 66,
+    "app": "Neo4j",
+    "category": "Developer, Infra and Data Platforms",
+    "category_id": 7,
+    "website": "neo4j.com/docs/api",
+    "description": "Graph database.",
+    "auth_methods": [
+      "BASIC_AUTH",
+      "BEARER_TOKEN"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "AuraDB free tier.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "BROAD",
+      "details": "Cypher execution."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Neo4j MCP server."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "AuraDB makes access easy."
+    },
+    "evidence": [
+      {
+        "claim": "Auth",
+        "source_url": "https://neo4j.com/docs/api/concept-authentication/",
+        "source_title": "Neo4j Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 67,
+    "app": "Snowflake",
+    "category": "Developer, Infra and Data Platforms",
+    "category_id": 7,
+    "website": "docs.snowflake.com",
+    "description": "Data Cloud.",
+    "auth_methods": [
+      "OAUTH2",
+      "BASIC_AUTH",
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+    "self_serve_details": "30-day free trial.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "BROAD",
+      "details": "SQL API."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Community Snowflake MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "PAID_PLAN",
+      "details": "Enterprise pricing post-trial."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth",
+        "source_url": "https://docs.snowflake.com/en/developer-guide/sql-api/index",
+        "source_title": "Snowflake SQL API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 68,
+    "app": "MongoDB Atlas",
+    "category": "Developer, Infra and Data Platforms",
+    "category_id": 7,
+    "website": "mongodb.com/docs/atlas/api",
+    "description": "Database as a service.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free shared cluster.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "GRAPHQL"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Cluster management, Data API."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "MongoDB MCP servers available."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Data API makes HTTP access easy."
+    },
+    "evidence": [
+      {
+        "claim": "API Key",
+        "source_url": "https://www.mongodb.com/docs/atlas/api/",
+        "source_title": "Atlas API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 69,
+    "app": "Datadog",
+    "category": "Developer, Infra and Data Platforms",
+    "category_id": 7,
+    "website": "docs.datadoghq.com/api",
+    "description": "Observability.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+    "self_serve_details": "14-day free trial.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Metrics, logs, dashboards."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Community Datadog MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "PAID_PLAN",
+      "details": "Trial expires."
+    },
+    "evidence": [
+      {
+        "claim": "API Key/App Key",
+        "source_url": "https://docs.datadoghq.com/api/latest/",
+        "source_title": "Datadog API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 70,
+    "app": "Sentry",
+    "category": "Developer, Infra and Data Platforms",
+    "category_id": 7,
+    "website": "docs.sentry.io/api",
+    "description": "Error tracking.",
+    "auth_methods": [
+      "BEARER_TOKEN"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free developer plan.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Issues, projects."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Sentry MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Token generation is simple."
+    },
+    "evidence": [
+      {
+        "claim": "Auth Token",
+        "source_url": "https://docs.sentry.io/api/",
+        "source_title": "Sentry API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 71,
+    "app": "Notion",
+    "category": "Productivity and Project Management",
+    "category_id": 8,
+    "website": "developers.notion.com",
+    "description": "Workspace and notes.",
+    "auth_methods": [
+      "OAUTH2",
+      "BEARER_TOKEN"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free personal plan includes API.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "BROAD",
+      "details": "Databases, pages, blocks."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Notion MCP Server."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Excellent API."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2",
+        "source_url": "https://developers.notion.com/docs/authorization",
+        "source_title": "Notion API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 72,
+    "app": "Airtable",
+    "category": "Productivity and Project Management",
+    "category_id": 8,
+    "website": "airtable.com/developers",
+    "description": "Low-code database.",
+    "auth_methods": [
+      "OAUTH2",
+      "BEARER_TOKEN"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free plan available.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Records, bases."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Community Airtable MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Personal Access Tokens replaced API keys."
+    },
+    "evidence": [
+      {
+        "claim": "PATs/OAuth",
+        "source_url": "https://airtable.com/developers/web/api/authentication",
+        "source_title": "Airtable API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 73,
+    "app": "Linear",
+    "category": "Productivity and Project Management",
+    "category_id": 8,
+    "website": "developers.linear.app",
+    "description": "Issue tracking.",
+    "auth_methods": [
+      "OAUTH2",
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free plan available.",
+    "api": {
+      "available": true,
+      "types": [
+        "GRAPHQL",
+        "WEBHOOK"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "GraphQL API covers everything."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Linear MCP server."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Developer-centric product."
+    },
+    "evidence": [
+      {
+        "claim": "GraphQL",
+        "source_url": "https://developers.linear.app/docs/graphql/working-with-the-graphql-api",
+        "source_title": "Linear API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 74,
+    "app": "Jira",
+    "category": "Productivity and Project Management",
+    "category_id": 8,
+    "website": "developer.atlassian.com",
+    "description": "Project management.",
+    "auth_methods": [
+      "OAUTH2",
+      "BASIC_AUTH"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free for up to 10 users.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Issues, projects, agile."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Atlassian MCP support."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Free tier makes it easy."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth 2.0",
+        "source_url": "https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/",
+        "source_title": "Jira REST API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 75,
+    "app": "Asana",
+    "category": "Productivity and Project Management",
+    "category_id": 8,
+    "website": "developers.asana.com",
+    "description": "Work management.",
+    "auth_methods": [
+      "OAUTH2",
+      "BEARER_TOKEN"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free basic plan.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Tasks, projects."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Community MCP servers."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "PATs easily available."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2/PAT",
+        "source_url": "https://developers.asana.com/docs/authentication-basics",
+        "source_title": "Asana Dev",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 76,
+    "app": "Monday.com",
+    "category": "Productivity and Project Management",
+    "category_id": 8,
+    "website": "developer.monday.com",
+    "description": "Work OS.",
+    "auth_methods": [
+      "OAUTH2",
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+    "self_serve_details": "Free trial, requires paid for full API use.",
+    "api": {
+      "available": true,
+      "types": [
+        "GRAPHQL",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Boards, items."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Community MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "PAID_PLAN",
+      "details": "API complexity + plan gates."
+    },
+    "evidence": [
+      {
+        "claim": "GraphQL",
+        "source_url": "https://developer.monday.com/api-reference/docs/authentication",
+        "source_title": "Monday API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 77,
+    "app": "ClickUp",
+    "category": "Productivity and Project Management",
+    "category_id": 8,
+    "website": "clickup.com/api",
+    "description": "Productivity platform.",
+    "auth_methods": [
+      "OAUTH2",
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free plan available.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Tasks, lists, spaces."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Community MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Accessible API."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2",
+        "source_url": "https://clickup.com/api/developer-portal/authentication/",
+        "source_title": "ClickUp API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 78,
+    "app": "Coda",
+    "category": "Productivity and Project Management",
+    "category_id": 8,
+    "website": "coda.io/developers",
+    "description": "Doc/app builder.",
+    "auth_methods": [
+      "BEARER_TOKEN"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free tier available.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "BROAD",
+      "details": "Docs, tables, rows."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "API is easy to use."
+    },
+    "evidence": [
+      {
+        "claim": "Bearer Token",
+        "source_url": "https://coda.io/developers/apis/v1",
+        "source_title": "Coda API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 79,
+    "app": "Smartsheet",
+    "category": "Productivity and Project Management",
+    "category_id": 8,
+    "website": "smartsheet.com/developers",
+    "description": "Work management.",
+    "auth_methods": [
+      "OAUTH2",
+      "BEARER_TOKEN"
+    ],
+    "self_serve_status": "SELF_SERVE_WITH_RESTRICTIONS",
+    "self_serve_details": "30 day trial.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "BROAD",
+      "details": "Sheets, rows."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "PAID_PLAN",
+      "details": "Requires subscription."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2",
+        "source_url": "https://smartsheet.redoc.ly/",
+        "source_title": "Smartsheet API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 80,
+    "app": "Harvest",
+    "category": "Productivity and Project Management",
+    "category_id": 8,
+    "website": "help.getharvest.com/api-v2",
+    "description": "Time tracking.",
+    "auth_methods": [
+      "OAUTH2",
+      "BEARER_TOKEN"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free for 1 seat.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "BROAD",
+      "details": "Time entries, projects."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Free for single users."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2/PAT",
+        "source_url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/",
+        "source_title": "Harvest API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 81,
+    "app": "Stripe",
+    "category": "Finance and Fintech",
+    "category_id": 9,
+    "website": "stripe.com/docs/api",
+    "description": "Payments infrastructure.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free to create account and access test mode.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Charges, customers, subs."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official Stripe MCP Server."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Best-in-class developer experience."
+    },
+    "evidence": [
+      {
+        "claim": "API Key",
+        "source_url": "https://docs.stripe.com/api/authentication",
+        "source_title": "Stripe API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 82,
+    "app": "Plaid",
+    "category": "Finance and Fintech",
+    "category_id": 9,
+    "website": "plaid.com/docs",
+    "description": "Banking API.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Sandbox environment is free.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Transactions, identity."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Community MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Sandbox makes development easy."
+    },
+    "evidence": [
+      {
+        "claim": "Client ID/Secret",
+        "source_url": "https://plaid.com/docs/api/tokens/",
+        "source_title": "Plaid API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 83,
+    "app": "Binance",
+    "category": "Finance and Fintech",
+    "category_id": 9,
+    "website": "binance-docs.github.io",
+    "description": "Crypto exchange.",
+    "auth_methods": [
+      "API_KEY",
+      "HMAC"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Free account creation.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBSOCKET"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Trading, market data."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No official MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Open access."
+    },
+    "evidence": [
+      {
+        "claim": "HMAC signature",
+        "source_url": "https://binance-docs.github.io/apidocs/spot/en/#endpoint-security-type",
+        "source_title": "Binance API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 84,
+    "app": "Paygent Connect",
+    "category": "Finance and Fintech",
+    "category_id": 9,
+    "website": "paygent",
+    "description": "Payment gateway (Japan/NMI).",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "PARTNER_OR_CONTACT_SALES",
+    "self_serve_details": "Merchant account required.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "MODERATE",
+      "details": "Payments."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No MCP."
+    },
+    "buildability": {
+      "verdict": "OUTREACH_REQUIRED",
+      "blocker": "PARTNER_APPROVAL",
+      "details": "Requires merchant vetting."
+    },
+    "evidence": [
+      {
+        "claim": "Merchant API",
+        "source_url": "https://www.paygent.co.jp/en/",
+        "source_title": "Paygent",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 85,
+    "app": "iPayX",
+    "category": "Finance and Fintech",
+    "category_id": 9,
+    "website": "ipayx.ai/docs",
+    "description": "Payment gateway.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "PARTNER_OR_CONTACT_SALES",
+    "self_serve_details": "Enterprise service.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "MODERATE",
+      "details": "Payments."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No MCP."
+    },
+    "buildability": {
+      "verdict": "OUTREACH_REQUIRED",
+      "blocker": "PARTNER_APPROVAL",
+      "details": "Sales contact required."
+    },
+    "evidence": [
+      {
+        "claim": "API",
+        "source_url": "https://ipayx.com/",
+        "source_title": "iPayX",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 86,
+    "app": "QuickBooks",
+    "category": "Finance and Fintech",
+    "category_id": 9,
+    "website": "developer.intuit.com",
+    "description": "Accounting software.",
+    "auth_methods": [
+      "OAUTH2"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Sandbox environments available.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Invoices, accounting."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Community MCP servers."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Sandbox allows full testing."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2",
+        "source_url": "https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization",
+        "source_title": "QuickBooks API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 87,
+    "app": "Xero",
+    "category": "Finance and Fintech",
+    "category_id": 9,
+    "website": "developer.xero.com",
+    "description": "Accounting software.",
+    "auth_methods": [
+      "OAUTH2"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Demo company available.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "COMPREHENSIVE",
+      "details": "Accounting."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Community MCP servers."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Demo company for dev."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2",
+        "source_url": "https://developer.xero.com/documentation/guides/oauth2/overview/",
+        "source_title": "Xero API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 88,
+    "app": "Brex",
+    "category": "Finance and Fintech",
+    "category_id": 9,
+    "website": "developer.brex.com",
+    "description": "Corporate cards.",
+    "auth_methods": [
+      "OAUTH2",
+      "BEARER_TOKEN"
+    ],
+    "self_serve_status": "ADMIN_APPROVAL_REQUIRED",
+    "self_serve_details": "Requires Brex account (business entity required).",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "BROAD",
+      "details": "Transactions, cards."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "ADMIN_APPROVAL",
+      "details": "Cannot easily get dev account without a real business."
+    },
+    "evidence": [
+      {
+        "claim": "Tokens",
+        "source_url": "https://developer.brex.com/docs/authentication/",
+        "source_title": "Brex API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 89,
+    "app": "Ramp",
+    "category": "Finance and Fintech",
+    "category_id": 9,
+    "website": "docs.ramp.com",
+    "description": "Finance automation.",
+    "auth_methods": [
+      "OAUTH2"
+    ],
+    "self_serve_status": "ADMIN_APPROVAL_REQUIRED",
+    "self_serve_details": "Requires Ramp business account.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "BROAD",
+      "details": "Cards, transactions."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "ADMIN_APPROVAL",
+      "details": "Requires business vetting."
+    },
+    "evidence": [
+      {
+        "claim": "OAuth2",
+        "source_url": "https://docs.ramp.com/docs/api-reference/authentication",
+        "source_title": "Ramp API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 90,
+    "app": "PitchBook",
+    "category": "Finance and Fintech",
+    "category_id": 9,
+    "website": "pitchbook.com",
+    "description": "Financial data API.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "ENTERPRISE_ONLY",
+    "self_serve_details": "Standalone enterprise contract ($70k+).",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "BROAD",
+      "details": "Market data."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No MCP."
+    },
+    "buildability": {
+      "verdict": "OUTREACH_REQUIRED",
+      "blocker": "ENTERPRISE_ONLY",
+      "details": "Enterprise sales gated."
+    },
+    "evidence": [
+      {
+        "claim": "API Key",
+        "source_url": "https://pitchbook.com/data/api",
+        "source_title": "PitchBook API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 91,
+    "app": "NotebookLM",
+    "category": "AI, Research and Media-native",
+    "category_id": 10,
+    "website": "cloud.google.com/gemini",
+    "description": "Google Gemini/Notebook API.",
+    "auth_methods": [
+      "OAUTH2",
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Google Cloud / AI Studio access.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "GRPC"
+      ],
+      "breadth": "BROAD",
+      "details": "Generative AI."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Google provides MCP for Gemini/Vertex."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Free tier in AI Studio."
+    },
+    "evidence": [
+      {
+        "claim": "API Key",
+        "source_url": "https://aistudio.google.com/",
+        "source_title": "Google AI Studio",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 92,
+    "app": "Otter AI",
+    "category": "AI, Research and Media-native",
+    "category_id": 10,
+    "website": "help.otter.ai",
+    "description": "Meeting transcription.",
+    "auth_methods": [
+      "OAUTH2",
+      "BEARER_TOKEN"
+    ],
+    "self_serve_status": "PAID_PLAN_REQUIRED",
+    "self_serve_details": "API requires enterprise/partner access.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "MODERATE",
+      "details": "Transcripts."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Otter MCP server."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "ENTERPRISE_ONLY",
+      "details": "API access is gated."
+    },
+    "evidence": [
+      {
+        "claim": "Enterprise API",
+        "source_url": "https://otter.ai/",
+        "source_title": "Otter.ai",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 93,
+    "app": "Fathom",
+    "category": "AI, Research and Media-native",
+    "category_id": 10,
+    "website": "fathom.video",
+    "description": "AI meeting assistant.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "PAID_PLAN_REQUIRED",
+    "self_serve_details": "API access on paid plans.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "MODERATE",
+      "details": "Calls, transcripts."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "PAID_PLAN",
+      "details": "Requires subscription."
+    },
+    "evidence": [
+      {
+        "claim": "API Access",
+        "source_url": "https://fathom.video/",
+        "source_title": "Fathom",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 94,
+    "app": "Consensus",
+    "category": "AI, Research and Media-native",
+    "category_id": 10,
+    "website": "consensus.app",
+    "description": "AI search engine for research.",
+    "auth_methods": [
+      "OAUTH2"
+    ],
+    "self_serve_status": "PARTNER_OR_CONTACT_SALES",
+    "self_serve_details": "API by request only.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "MODERATE",
+      "details": "Search queries."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No MCP."
+    },
+    "buildability": {
+      "verdict": "OUTREACH_REQUIRED",
+      "blocker": "PARTNER_APPROVAL",
+      "details": "Must request access."
+    },
+    "evidence": [
+      {
+        "claim": "API access",
+        "source_url": "https://consensus.app/",
+        "source_title": "Consensus",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 95,
+    "app": "Reducto",
+    "category": "AI, Research and Media-native",
+    "category_id": 10,
+    "website": "reducto.ai",
+    "description": "Document parsing.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Pay as you go.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "NARROW",
+      "details": "Parse documents."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Official MCP server."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Self serve API."
+    },
+    "evidence": [
+      {
+        "claim": "API Key",
+        "source_url": "https://docs.reducto.ai/",
+        "source_title": "Reducto API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 96,
+    "app": "Devin",
+    "category": "AI, Research and Media-native",
+    "category_id": 10,
+    "website": "docs.devin.ai",
+    "description": "Autonomous AI software engineer.",
+    "auth_methods": [
+      "BEARER_TOKEN"
+    ],
+    "self_serve_status": "ADMIN_APPROVAL_REQUIRED",
+    "self_serve_details": "Early access/waitlist.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "NARROW",
+      "details": "Session management."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "MCP support natively."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "ADMIN_APPROVAL",
+      "details": "Waitlist access."
+    },
+    "evidence": [
+      {
+        "claim": "API token",
+        "source_url": "https://docs.devin.ai/",
+        "source_title": "Devin Docs",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 97,
+    "app": "Higgsfield",
+    "category": "AI, Research and Media-native",
+    "category_id": 10,
+    "website": "higgsfield.ai/cli",
+    "description": "AI video creation.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "Beta access.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "CLI"
+      ],
+      "breadth": "NARROW",
+      "details": "Video generation."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "CLI available."
+    },
+    "evidence": [
+      {
+        "claim": "API",
+        "source_url": "https://higgsfield.ai/",
+        "source_title": "Higgsfield",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 98,
+    "app": "Mermaid CLI",
+    "category": "AI, Research and Media-native",
+    "category_id": 10,
+    "website": "github.com/mermaid-js/mermaid-cli",
+    "description": "Diagram generation.",
+    "auth_methods": [
+      "NONE"
+    ],
+    "self_serve_status": "OPEN_SOURCE",
+    "self_serve_details": "CLI tool.",
+    "api": {
+      "available": true,
+      "types": [
+        "CLI"
+      ],
+      "breadth": "NARROW",
+      "details": "Generate images."
+    },
+    "mcp": {
+      "available": "AVAILABLE",
+      "details": "Community MCP wrappers available."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Open source."
+    },
+    "evidence": [
+      {
+        "claim": "CLI",
+        "source_url": "https://github.com/mermaid-js/mermaid-cli",
+        "source_title": "Mermaid CLI",
+        "source_type": "official_github",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 99,
+    "app": "YouTube Transcript",
+    "category": "AI, Research and Media-native",
+    "category_id": 10,
+    "website": "transcriptapi.com",
+    "description": "Third-party transcript API.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "SELF_SERVE",
+    "self_serve_details": "SaaS offering.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST"
+      ],
+      "breadth": "NARROW",
+      "details": "Fetch transcripts."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_NOW",
+      "blocker": "NONE",
+      "details": "Easy API."
+    },
+    "evidence": [
+      {
+        "claim": "API Key",
+        "source_url": "https://transcriptapi.com/",
+        "source_title": "Transcript API",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  },
+  {
+    "id": 100,
+    "app": "Grain",
+    "category": "AI, Research and Media-native",
+    "category_id": 10,
+    "website": "grain.com",
+    "description": "Meeting notes.",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "self_serve_status": "PAID_PLAN_REQUIRED",
+    "self_serve_details": "API on paid plans.",
+    "api": {
+      "available": true,
+      "types": [
+        "REST",
+        "WEBHOOK"
+      ],
+      "breadth": "MODERATE",
+      "details": "Records, highlights."
+    },
+    "mcp": {
+      "available": "NOT_FOUND",
+      "details": "No MCP."
+    },
+    "buildability": {
+      "verdict": "BUILDABLE_WITH_CONSTRAINTS",
+      "blocker": "PAID_PLAN",
+      "details": "Requires subscription."
+    },
+    "evidence": [
+      {
+        "claim": "API",
+        "source_url": "https://grain.com/",
+        "source_title": "Grain",
+        "source_type": "official_docs",
+        "accessed_at": "2026-09-24T16:41:50.372417Z"
+      }
+    ],
+    "confidence": "HIGH",
+    "research_timestamp": "2026-09-24T16:41:50.372417Z",
+    "verification_status": "UNVERIFIED",
+    "notes": ""
+  }
+]
