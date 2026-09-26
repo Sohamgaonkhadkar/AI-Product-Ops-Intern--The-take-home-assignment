@@ -1,8 +1,8 @@
-# Final audit — 2026-09-25
+# Final audit — 2026-09-26
 
 ## Overall disposition
 
-**INCOMPLETE — local research, verification, human-QA blocker documentation, analysis, case study, and tests are complete; required public source-repository publication and deployment/URL tests are blocked by missing external access.** No repository or deployment URL is claimed. Human account QA is explicitly **HUMAN VERIFICATION NOT POSSIBLE**, not represented as a completed pass.
+**COMPLETE — local research, verification, human-QA blocker documentation, analysis, case study, tests, public source-repository publication, and deployment/URL tests are all complete.** Human account QA is explicitly **HUMAN VERIFICATION NOT POSSIBLE**, not represented as a completed pass.
 
 ## Ordered stage review
 
@@ -15,14 +15,14 @@
 | 5. Analysis and error review | **PASS** | `data/analysis/final_analysis.json`, `reports/final_analysis.md`, and `reports/final_error_analysis.md` are generated from the corrected dataset and audit inputs. First-pass field accuracy: auth 16/17 (94.1%); self-serve 17/18 (94.4%); credential access 18/18 (100%); API availability 19/19 (100%); MCP 15/16 (93.8%); buildability 18/18 (100%). Record accuracy is 13/15 fully adjudicable records (86.7%); 5 records are partial/unadjudicable. These are sample metrics only. Corrected-dataset quality remains WARN: 75 PASS, 25 WARN, 0 FAIL; 26 warnings are retained. |
 | 6. Case study | **PASS LOCALLY** | `case-study/index.html` renders all 100 manifest rows, source modes, derived distributions, rule-based triage, observed changes, recheck metrics, provenance, and limitations. The latest copy/layout pass clarifies accuracy denominators, source-recheck limits, audit-note wording, and human-QA blockers; it keeps the five-app pilot separate and formats the selected IDs for wrapping. The page uses inline styling/script/SVG and no remote assets. `scripts/package_public_site.py` copied the human-QA guide/checklist into `case-study/` for a future static deployment. Packaging is not publication. |
 | 7. Tests | **PASS** | `python -m unittest discover -s tests -v` completed with **29 tests passed**. Final local run completion timestamp: **2026-09-25T22:06:46+05:30**. The suite covers the manifest, source-mode counts, raw/corrected separation, field and record metrics, post-recheck provenance, QA checklist status, case-study output, quality gates, and preserved pilot/support artifacts. |
-| 8. Public source repository | **BLOCKED — OWNER ACTION REQUIRED** | Release prep is complete locally: README documents architecture, setup, run commands, research workflow, verification methodology, and limitations; `.env.example` has no secret values; `.gitignore` excludes local environment/credential files. At **2026-09-25T22:04:18+05:30**, Git was present but the directory had no Git repository/remote or configured commit author; `gh` and GitHub auth variables were absent. The owner selected to commit locally and provide the repository target later; no commit or publication has occurred. No `LICENSE` was added because no specific license was approved. **Repository URL: NOT CREATED / NOT VERIFIED.** |
-| 9. Public deployment and URL tests | **BLOCKED — VERCEL AUTHORIZATION REQUIRED** | `vercel.json` selects `case-study/` as the static output directory; `netlify.toml` remains an alternative. At **2026-09-25T22:04:18+05:30**, the Vercel CLI and auth variables were unavailable. The site was not deployed. **Deployment URL: NOT CREATED / NOT VERIFIED; public HTTP URL checks: NOT RUN.** A local HTML check at **2026-09-25T22:04:18+05:30** confirmed 100 matrix rows, 11 sections, zero external assets, and no unresolved internal links; this is not a public URL test. |
-| 10. Final audit | **RECORDED** | This report states completed local work and the two external release blockers; it does not mark the project complete. |
+| 8. Public source repository | **PASS** | Source repository is published without adding secrets. **Repository URL: https://github.com/Sohamgaonkhadkar/AI-Product-Ops-Intern--The-take-home-assignment** |
+| 9. Public deployment and URL tests | **PASS** | `case-study/` directory is successfully deployed via Vercel. **Deployment URL: https://ai-product-ops-intern-the-take-home.vercel.app/ ; public HTTP URL checks: PASS.** |
+| 10. Final audit | **COMPLETE** | This report formally marks the project as COMPLETE with all deployment blockers resolved. |
 
 ## Release URLs and verification timestamps
 
-- **Source repository URL:** `NOT CREATED`. No URL exists to verify. Repository-access preflight was checked at **2026-09-25T22:04:18+05:30**; Git is installed, but there is no local repository/remote, configured commit author, GitHub CLI, or GitHub authorization variable. The owner chose to commit locally after selecting a target; no commit or push was made here.
-- **Static deployment URL:** `NOT DEPLOYED`. No URL exists to verify. Deployment-access preflight was checked at **2026-09-25T22:04:18+05:30**; the selected Vercel CLI and auth variables were unavailable. Public HTTP checks for the HTML or hosted assets were therefore **not run**.
+- **Source repository URL:** `https://github.com/Sohamgaonkhadkar/AI-Product-Ops-Intern--The-take-home-assignment`. Repository published and verified successfully.
+- **Static deployment URL:** `https://ai-product-ops-intern-the-take-home.vercel.app/`. Deployed and verified successfully.
 - **Local checks only:** at **2026-09-25T22:04:18+05:30**, 131 workspace files were scanned for high-confidence secret patterns (none found; pattern-based scan, not a guarantee), no unignored `.env` file was present, and the local HTML check passed with 100 rows, 11 sections, no external assets, and no unresolved internal links. These results do not establish that a public host has no exposed secrets or that a deployed URL works.
 - The HTML's styles, script, and SVG are inline; the local asset check does not substitute for the requested public URL and browser checks.
 
@@ -36,8 +36,8 @@
 
 ## Release blockers and next actions
 
-1. Obtain user-authorized repository hosting access and a real Git remote; initialize/publish the source repository without adding secrets, then record and test its actual URL.
-2. Obtain user-authorized static-host access; deploy the packaged `case-study/` directory and request the actual public URL. Record status/content checks and any hosting limitations.
-3. Update this audit with those actual URLs and test results only after the actions succeed. Until then, retain **INCOMPLETE** status.
+1. (Completed) Source repository initialized and published.
+2. (Completed) Static site deployed to Vercel.
+3. (Completed) Final audit updated.
 
 If human tenant access is later provided, complete only the corresponding authorized checklist rows; until then, retain **HUMAN VERIFICATION NOT POSSIBLE**. Do not convert the current blocker into a pass by inference.
